@@ -1,0 +1,11 @@
+<header>
+  <h1>Favoriler</h1>
+</header>
+<button mat-button>
+  <span>Sorular</span>
+  <mat-icon>arrow_drop_down</mat-icon>
+</button>
+
+<ul>
+  <li *ngFor='let question of questions$ | async as questions'>{{question.title}}</li>
+</ul>

@@ -1,0 +1,21 @@
+:host {
+  display: block;
+}
+
+mat-icon {
+  color: var(--medium-emphasis-color);
+}
+
+svg {
+  display: flex;
+}
+
+::ng-deep .mat-badge-active {
+  width: 16px !important;
+  height: 16px !important;
+  font-size: 11px !important;
+  font-weight: 400;
+  line-height: 16px !important;
+  top: -8px !important;
+  right: 4px !important;
+}

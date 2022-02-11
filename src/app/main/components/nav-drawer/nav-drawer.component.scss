@@ -1,0 +1,155 @@
+:host {
+  display: block;
+}
+
+mat-toolbar {
+  background: transparent;
+}
+
+mat-toolbar mat-icon {
+  color: var(--medium-emphasis-color);
+}
+
+.toolbar-title {
+  margin-left: 24px;
+}
+
+.mat-list-item:first-child {
+  margin-top: 0 !important;
+}
+
+.mat-list-item {
+  width: auto !important;
+  font-weight: 500;
+  color: var(--icon-color);
+  margin: 4px 12px;
+  border-radius: 28px;
+  overflow: hidden;
+}
+
+.mat-list-item mat-icon {
+  display: none;
+}
+
+
+.mat-list-item app-gf-icon {
+  display: none;
+  margin-right: 32px;
+
+  svg {
+    fill: #6200ee;
+  }
+}
+
+.mat-list-item span {
+  // margin-left: 12px;
+}
+
+.mat-list-base .mat-subheader {
+  height: 56px;
+  font-weight: 500;
+  /* height: auto;
+   line-height: 20px;
+   margin: 0;
+   padding: 8px 16px;*/
+  // color: var(--medium-emphasis-color);
+  padding: 18px 16px;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: .1px;
+  margin: 0 12px;
+  text-transform: uppercase;
+  /* M3/sys/light/on-surface-variant */
+
+  color: #49454F;
+}
+
+/*::ng-deep .overflow-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+::ng-deep .overflow-container::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.12);
+  // border-radius: 10px;
+}
+
+::ng-deep .overflow-container::-webkit-scrollbar-track {
+  // border-radius: 10px;
+}*/
+
+// Fix menu and select panel overflow scroll bar
+/*::ng-deep .mat-select-panel::-webkit-scrollbar {
+  width: 12px;
+}
+
+::ng-deep .mat-select-panel::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.12);
+  // border-radius: 10px;
+}
+
+::ng-deep .mat-select-panel::-webkit-scrollbar-track {
+  // border-radius: 10px;
+}*/
+
+.menu-icon {
+  // margin-left: -8px;
+}
+
+.overflow-container {
+  height: calc(100vh - 64px);
+  overflow: auto;
+}
+
+.overflow-container::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 8px;
+}
+
+.overflow-container::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+@-moz-document url-prefix() {
+  .overflow-container {
+    // scrollbar-color: rgba(0, 0, 0, .12) #fff;
+    scrollbar-width: thin;
+  }
+}
+
+//@media screen and (-webkit-min-device-pixel-ratio:0) and (min-resolution:.001dpcm) {
+//  /* width */
+//  .overflow-container::-webkit-scrollbar {
+//    width: 10px;
+//  }
+//
+//  /* Track */
+//  .overflow-container::-webkit-scrollbar-track {
+//    background: #f1f1f1;
+//  }
+//
+//  /* Handle */
+//  .overflow-container::-webkit-scrollbar-thumb {
+//    background: #888;
+//  }
+//
+//  /* Handle on hover */
+//  .overflow-container::-webkit-scrollbar-thumb:hover {
+//    background: #555;
+//  }
+//}
+
+mat-divider {
+  /*  margin: 0 28px;
+    width: auto;*/
+  // m3 design
+  width: auto;
+  margin: 0 24px;
+}
+
+#copyright {
+  font-size: 14px;
+  line-height: 20px;
+  color: rgba(0, 0, 0, .54);
+  padding: 16px 24px;
+}

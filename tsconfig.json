@@ -21,7 +21,16 @@
     "lib": [
       "es2020",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@shared/*": ["src/app/shared/*"],
+      "@material/*": ["src/app/material/*"],
+      "@environments/*": ["src/environments/*"],
+      "@auth/*": ["src/auth/*"],
+      "@icons/*": ["src/app/shared/modules/material-icon/*"],
+      "@components/*": ["src/app/components/*"],
+      "@modules/*": ["src/app/modules/*"],
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

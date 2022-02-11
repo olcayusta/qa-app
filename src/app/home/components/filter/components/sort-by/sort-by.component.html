@@ -1,0 +1,110 @@
+<div class="container">
+
+
+  <!--  <button mat-button [matMenuTriggerFor]="filterMenu">
+      <span>Tüm oynatma listeleri</span>
+      <mat-icon class="material-icons-outlined">keyboard_arrow_down</mat-icon>
+    </button>
+
+    <mat-menu #filterMenu overlapTrigger>
+      <button mat-menu-item>Tüm oynatma listeleri</button>
+      <button mat-menu-item>Oluşturulan oynatma listeleri</button>
+      <button mat-menu-item>Albümler ve Single'lar</button>
+    </mat-menu>-->
+
+  <button mat-button class="menu-button" [matMenuTriggerFor]="sortMenu">
+    <mat-icon>sort_by</mat-icon>
+    <span>Sıralama ölçütü</span>
+  </button>
+
+  <button mat-button class="menu-button" [matMenuTriggerFor]="filterMenu">
+    <mat-icon>filter_list</mat-icon>
+    <span>Filtreler</span>
+  </button>
+
+  <!--<span class="filter-info-text">Sıralama ölçütü:</span>
+  <button
+    mat-button
+    class="outlined-menu-button"
+    aria-label="Open sort by order interactions menu"
+    [matMenuTriggerFor]="sortMenu"
+    (menuClosed)="cdr.markForCheck()"
+  >
+    <span>{{ items[selectedIndex].label }}</span>
+    &lt;!&ndash;<mat-icon fontSet="material-icons-outlined">arrow_drop_down</mat-icon>&ndash;&gt;
+    <app-gf-icon name="arrow_drop_down"></app-gf-icon>
+  </button>-->
+
+  <!--  <mat-form-field appearance="fill">
+      <mat-label>Siralama olcutu</mat-label>
+      <mat-select disableOptionCentering>
+        <mat-option *ngFor="let food of foods" [value]="food.value">
+          {{food.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Filtre</mat-label>
+      <mat-select disableOptionCentering>
+        <mat-option *ngFor="let food of foods" [value]="food.value">
+          {{food.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>-->
+
+  <!-- <button mat-button [matMenuTriggerFor]="sortMenu">
+     <mat-icon class="material-icons-outlined">sort</mat-icon>
+     SIRALAMA ÖLÇÜTÜ:
+   </button>-->
+</div>
+
+<mat-menu #sortMenu="matMenu" class="sort-menu mat-elevation-z2">
+  <a
+    mat-menu-item
+    routerLink="/"
+    [queryParams]="{ sort: item.sort ? item.sort : null }"
+    *ngFor="let item of items; let index = index"
+    #menuItem
+    (click)="onItemClick(menuItem, index)"
+  >{{ item.label }}</a>
+<!--  <span>CUSTOM FILTERS</span>
+  <button mat-menu-item [matMenuTriggerFor]="subMenu">Daha fazla</button>-->
+</mat-menu>
+
+<mat-menu #filterMenu="matMenu" class="sort-menu mat-elevation-z2">
+  <button mat-menu-item>
+    <mat-icon>check</mat-icon>
+    No answers
+  </button>
+  <button mat-menu-item>
+    <mat-icon>check</mat-icon>
+    No accepted answers
+  </button>
+  <button mat-menu-item>Has bounty</button>
+  <button mat-menu-item [matMenuTriggerFor]="subMenu">Filtrelerim</button>
+</mat-menu>
+
+<mat-menu #subMenu="matMenu">
+  <button mat-menu-item>TypeScript</button>
+  <button mat-menu-item>Unanswered (my tags)</button>
+  <button mat-menu-item>TypeScript</button>
+  <button mat-menu-item>Angular unanswered</button>
+  <button mat-menu-item>My Tags</button>
+  <button mat-menu-item>iyi iyi</button>
+  <button mat-menu-item>bla bla</button>
+  <button mat-menu-item>bla bla</button>
+  <button mat-menu-item>bla bla</button>
+  <button mat-menu-item>bla bla</button>
+</mat-menu>
+
+<!--
+<div class="container">
+  <span class="info-text">Tagged with: </span>
+  <mat-checkbox color="primary" [checked]="true">My watched tags</mat-checkbox>
+  <mat-radio-group>
+    <mat-radio-button>Watched</mat-radio-button>
+    <mat-radio-button>Unwatched</mat-radio-button>
+  </mat-radio-group>
+</div>
+-->

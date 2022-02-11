@@ -1,0 +1,4 @@
+<ng-container *ngIf='answers$ | async as answers'>
+  <h1 itemprop='answerCount'>{{answers.length}} yanıt</h1>
+  <app-question-answer-item *ngFor='let answer of answers' [answer]='answer'></app-question-answer-item>
+</ng-container>

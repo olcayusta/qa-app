@@ -1,0 +1,84 @@
+<!--
+<header>
+  <h3 class="headline-3">Ayarlar</h3>
+</header>
+-->
+
+<qa-account-notifications></qa-account-notifications>
+
+<ng-container *ngIf="user$ | async as user">
+  <div class="center">
+
+    <img src="{{user.picture}}" alt="{{user.displayName}}">
+    <h1>{{user.displayName}}</h1>
+
+    <!--<mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          FOTOĞRAF
+        </mat-panel-title>
+        <mat-panel-description>
+          <img src="https://resources.tidal.com/images/3f5fb645/46b8/44c4/9721/e60ec54c2fa1/320x320.jpg" alt="">
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      AA
+
+      <mat-action-row>
+        <button mat-button color="primary">KAYDET</button>
+      </mat-action-row>
+    </mat-expansion-panel>-->
+
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            AD
+          </mat-panel-title>
+          <mat-panel-description>
+            Olcay Usta
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-form-field>
+          <mat-label>Ad</mat-label>
+          <input matInput>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Soyad</mat-label>
+          <input matInput>
+        </mat-form-field>
+        <mat-action-row>
+          <button mat-button color="primary">KAYDET</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            AD
+          </mat-panel-title>
+          <mat-panel-description>
+            Olcay Usta
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-form-field>
+          <mat-label>Ad</mat-label>
+          <input matInput>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Soyad</mat-label>
+          <input matInput>
+        </mat-form-field>
+        <mat-action-row>
+          <button mat-button color="primary">KAYDET</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+
+
+  </div>
+</ng-container>

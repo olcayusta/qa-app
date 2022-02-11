@@ -1,0 +1,26 @@
+:host {
+  display: block;
+  padding-top: 24px;
+}
+
+.buttons {
+  margin-bottom: 8px;
+
+  button {
+    margin-left: -8px;
+  }
+}
+
+mat-form-field {
+  width: 100%;
+  font-family: 'Roboto Mono', monospace;
+}
+
+textarea {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.preview-text {
+  margin: 24px 0;
+}

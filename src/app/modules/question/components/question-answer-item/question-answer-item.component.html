@@ -1,0 +1,21 @@
+<div itemprop='suggestedAnswer' itemscope itemtype='https://schema.org/Answer'>
+  <div class='answer-item'>
+    <div class='answer-item-user'>
+      <img class='user-avatar' src='{{answer.user.picture}}' alt='{{answer.user.displayName}}'>
+      <div class='user-info'>
+        <div itemprop='author' itemscope itemtype='https://schema.org/Person'>
+          <a routerLink='/user/{{answer.user.id}}'>
+            <div itemprop='name' class='title'>{{answer.user.displayName}}</div>
+          </a>
+        </div>
+        <div class='subtitle'>
+          <time [dateTime]='answer.creationTime'>{{answer.creationTime | date}}</time>
+        </div>
+      </div>
+    </div>
+    <div itemprop='text' #divElement [appPrivateHighlight]='answer.content'></div>
+    <!-- <app-question-content [content]="answer.content"></app-question-content>-->
+    <!--    <id-question-answer-item-content [content]="answer.content"></id-question-answer-item-content>-->
+    <!--<mat-divider></mat-divider>-->
+  </div>
+</div>

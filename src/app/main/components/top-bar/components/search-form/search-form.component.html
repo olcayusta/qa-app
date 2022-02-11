@@ -1,0 +1,41 @@
+<div class='search-form' matAutocompleteOrigin #origin='matAutocompleteOrigin'>
+  <app-gf-icon name='search'></app-gf-icon>
+  <input aria-label='Ara' autocomplete='off' spellcheck='false' placeholder='Ara' [formControl]='myControl'
+         #autoCompleteInput
+         (focusin)="origin.elementRef.nativeElement.style.width = '684px'"
+         [matAutocomplete]='auto' [matAutocompleteConnectedTo]='origin'>
+</div>
+
+<mat-autocomplete #auto='matAutocomplete' class='my-autocomplete mat-elevation-z2' [displayWith]='displayFn'
+                  (optionSelected)='selectedOption($event)'>
+
+  <ng-container *ngFor='let option of filteredQuestions | async as list'>
+
+    <mat-optgroup label='Sorular' *ngIf='option.questions'>
+      <mat-option *ngFor='let q of option.questions' [value]='q'>
+        <span [innerHTML]='q.title | highlightSearch: myControl.value'></span>
+      </mat-option>
+    </mat-optgroup>
+
+    <mat-optgroup label='Etiketler' *ngIf='option.tags'>
+      <mat-option *ngFor='let t of option.tags' [value]='t'>
+        <span [innerHTML]='t.title | highlightSearch: myControl.value'></span>
+      </mat-option>
+    </mat-optgroup>
+
+    <mat-optgroup label='Kullanıcılar' *ngIf='option.users'>
+      <mat-option *ngFor='let user of option.users' [value]='user' class='user-option'>
+        <img class='option-user-img' src='{{user.picture}}' alt=''>
+        <span [innerHTML]='user.displayName | highlightSearch: myControl.value'></span>
+      </mat-option>
+    </mat-optgroup>
+
+  </ng-container>
+
+  <div class='autocomplete-action-row'>
+    <a mat-button color='primary' routerLink='/search' [queryParams]='{q: myControl.value}'
+       (click)='closeAutocomplete()'>
+      "{{myControl.value}}" İÇİN TÜM SONUÇLARI GÖSTER
+    </a>
+  </div>
+</mat-autocomplete>

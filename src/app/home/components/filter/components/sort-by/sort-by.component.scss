@@ -1,0 +1,92 @@
+:host {
+  display: block;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+}
+
+button {
+  // font-family: Archivo, sans-serif;
+}
+
+button[aria-expanded='true'] {
+  // background-color: rgba(0, 0, 0, 0.12);
+
+  mat-icon {
+    // transform: rotate(180deg);
+  }
+
+  ::ng-deep svg {
+    // transform: rotate(180deg);
+  }
+}
+
+.filter-info-text {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  margin-right: 8px;
+  white-space: nowrap;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+mat-icon, svg {
+  color: rgba(0, 0, 0, 0.6);
+  margin-right: -4px;
+}
+
+app-gf-icon {
+  display: inline-flex;
+
+  ::ng-deep svg {
+    fill: #6200ee;
+    margin-right: -4px;
+  }
+}
+
+.outlined-menu-button {
+  // height: 32px;
+  // line-height: 32px;
+  font-weight: 400;
+  text-transform: none;
+  padding: 0 8px !important;
+  letter-spacing: 0;
+}
+
+::ng-deep .sort-menu {
+  /*margin-top: 8px;
+  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.14), 0 3px 14px rgba(0, 0, 0, 0.12),
+  0 5px 5px rgba(0, 0, 0, 0.2);*/
+  min-width: 192px !important;
+  margin-top: 8px;
+
+  .mat-menu-item {
+/*    height: 32px;
+    line-height: 32px;
+    padding-left: 8px;*/
+    // letter-spacing: .25px;
+    // font-family: Archivo, sans-serif;
+  }
+}
+
+
+.mat-menu-item-highlighted:not([disabled]) {
+  // background-color: #BB86FC1F !important;
+  // color: #6200ee;
+}
+
+.menu-button {
+  letter-spacing: 0;
+  padding: 0 !important;
+  // text-transform: uppercase;
+  font-family: Archivo, sans-serif;
+  margin-left: 24px;
+  font-weight: 500;
+
+  mat-icon {
+    margin-right: 8px;
+  }
+
+}

@@ -1,0 +1,38 @@
+<!--<div class='container'>
+
+  <span class='filter-info-text'>Filtre:</span>
+  <button
+    class='outlined-menu-button'
+    mat-button
+    [matMenuTriggerFor]='filterMenu'
+    (menuClosed)='cdr.markForCheck()'
+  >
+    <span>{{ items[selectedItemIndex].label }}</span>
+    <mat-icon fontSet='material-icons-outlined'>arrow_drop_down</mat-icon>
+  </button>
+
+  &lt;!&ndash;  <button class="outlined-menu-button" mat-button [matMenuTriggerFor]="filterMenu" (menuClosed)="cdr.markForCheck()">
+      <span>Filtreler</span>
+      <mat-icon fontSet="material-icons-outlined">arrow_drop_down</mat-icon>
+    </button>&ndash;&gt;
+</div>-->
+
+<mat-menu #filterMenu='matMenu' class='filter-menu'>
+  <!--  <div class="checkbox-item" routerLink="/" [queryParams]="{filters: item.sort ? item.sort : null}"
+         queryParamsHandling="merge" (click)="checkboxClicked($event, i)" *ngFor="let item of items; let i = index">
+      <mat-checkbox color="primary" [checked]="item.checked">{{item.label}}</mat-checkbox>
+    </div>-->
+
+  <div
+    class='menu-item'
+    *ngFor='let item of items; let i = index'
+    (click)='checkboxClicked($event, i)'
+  >
+    <mat-checkbox
+      color='primary'
+      [checked]='item.checked'
+      (change)='checkboxChange($event, i)'
+    >{{ item.label }}</mat-checkbox
+    >
+  </div>
+</mat-menu>

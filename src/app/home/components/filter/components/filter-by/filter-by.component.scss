@@ -1,0 +1,70 @@
+:host {
+  display: block;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+}
+
+button[aria-expanded='true'] {
+  background-color: rgba(0, 0, 0, 0.12);
+  // color: #6200EE;
+
+  mat-icon {
+    transform: rotate(180deg);
+  }
+}
+
+.filter-info-text {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  margin-right: 8px;
+  white-space: nowrap;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+mat-icon {
+  color: rgba(0, 0, 0, 0.6);
+  margin-right: -4px;
+}
+
+.count {
+  color: var(--medium-emphasis-color);
+  margin-left: 4px;
+}
+
+.outlined-menu-button {
+  // height: 32px;
+  // line-height: 32px;
+  font-weight: 400;
+  text-transform: none;
+  padding: 0 8px !important;
+  letter-spacing: 0;
+}
+
+mat-checkbox {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+::ng-deep .filter-menu {
+  margin-top: 8px;
+  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.14), 0 3px 14px rgba(0, 0, 0, 0.12),
+    0 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  height: 32px;
+  line-height: 32px;
+  padding-left: 8px;
+  padding-right: 16px;
+}
+
+.checkbox-item {
+  height: 32px;
+  line-height: 32px;
+}

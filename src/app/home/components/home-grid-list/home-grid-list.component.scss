@@ -1,0 +1,23 @@
+:host {
+  display: block;
+  // min-height: 100vh;
+  // height: calc(100vh - 64px);
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  grid-gap: 32px;
+}
+
+#anchor {
+  display: flex;
+  place-content: center;
+  padding: 24px 0;
+}
+
+@media (max-width: 599px) {
+  .items {
+    padding-left: 16px;
+  }
+}

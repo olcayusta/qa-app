@@ -1,0 +1,71 @@
+<ng-container *ngIf='question$ | async as question'>
+  <div itemprop='mainEntity' itemscope itemtype='https://schema.org/Question'>
+    <div class='layout-container'>
+      <header>
+
+        <div class='header-one'>
+          <h4 itemprop='name' class='headline-4'>{{question.title}}</h4>
+          <!--          <div>-->
+          <!--            <button mat-button>-->
+          <!--              <mat-icon fontSet="material-icons-outlined">favorite_border</mat-icon>-->
+          <!--              <span>BEĞEN</span>-->
+          <!--            </button>-->
+
+          <!--            <button mat-button (click)="openDialog()">
+                        <mat-icon fontSet="material-icons-outlined">share</mat-icon>
+                        <span>PAYLAŞ</span>
+                      </button>-->
+
+          <!--            <button mat-icon-button [matMenuTriggerFor]="flagMenu">-->
+          <!--              <mat-icon fontSet="material-icons-outlined">more_horiz</mat-icon>-->
+          <!--            </button>-->
+
+          <!--            <mat-menu #flagMenu="matMenu">-->
+          <!--              <button mat-menu-item>-->
+          <!--                <mat-icon fontSet="material-icons-outlined">flag</mat-icon>-->
+          <!--                <span>Bildir</span>-->
+          <!--              </button>-->
+          <!--            </mat-menu>-->
+          <!--          </div>-->
+        </div>
+
+        <div itemprop='author' itemscope itemtype='https://schema.org/Person'>
+          <div class='author'>
+            <!--      <img itemprop="image" class="author-img" src="{{question.user.picture}}"
+                       alt="{{question.user.displayName}}">-->
+
+            <inek-img-shadow class='question-user-picture-render' [src]='question.user.picture' [width]='64' [height]='64'
+                           [alt]='question.user.displayName'></inek-img-shadow>
+
+            <div class='author-info'>
+              <a routerLink='/user/{{question.user.id}}'>
+                <div itemprop='name' class='author-name'>{{question.user.displayName}}</div>
+              </a>
+              <div class='author-job'>Seviye 1</div>
+            </div>
+          </div>
+        </div>
+
+      </header>
+    </div>
+
+    <!-- Text -->
+    <qa-question-text [content]='question.content'></qa-question-text>
+
+    <!--    <qa-hero-card *qaHeroDelay="0">
+          <div [innerHTML]='question.content'></div>
+          <h1>Hello</h1>
+        </qa-hero-card>-->
+
+    <!--    <app-question-description [description]="question.content"></app-question-description>-->
+
+    <!-- Comments -->
+    <app-question-comment-list></app-question-comment-list>
+
+    <!-- Answers -->
+    <app-question-answers></app-question-answers>
+
+  </div>
+
+  <app-answer-form></app-answer-form>
+</ng-container>

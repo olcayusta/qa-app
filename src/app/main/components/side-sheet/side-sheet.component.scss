@@ -1,0 +1,27 @@
+:host {
+  display: block;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+mat-toolbar {
+  background: transparent !important;
+
+  span {
+    flex: 1;
+  }
+}
+
+mat-radio-group {
+  display: flex;
+  flex-direction: column;
+  grid-gap: 24px;
+
+  * {
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 14px;
+  }
+}
+
+section {
+  padding: 16px;
+}

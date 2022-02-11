@@ -1,32 +1,174 @@
-import { Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Inject,
+  NgZone,
+  OnInit,
+} from '@angular/core';
+import {
+  ActivatedRoute,
+  NavigationCancel,
+  NavigationEnd,
+  NavigationError,
+  ResolveEnd,
+  ResolveStart,
+  Router,
+} from '@angular/router';
+import { SocketService } from '@shared/services/socket.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { SpinnerService } from '@shared/services/spinner.service';
+import { SwPush, SwUpdate, VersionEvent } from '@angular/service-worker';
+import { PushNotificationService } from '@shared/services/push-notification.service';
+import { environment } from '@environments/environment';
+import { DOCUMENT } from '@angular/common';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { Title } from '@angular/platform-browser';
+import { Subscription } from 'rxjs';
+import { AuthService } from './auth/auth.service';
 
 @Component({
   selector: 'app-root',
-  template: `
-    <!--The content below is only a placeholder and can be replaced.-->
-    <div style="text-align:center" class="content">
-      <h1>
-        Welcome to {{title}}!
-      </h1>
-      <span style="display: block">{{ title }} app is running!</span>
-      <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-    </div>
-    <h2>Here are some links to help you start: </h2>
-    <ul>
-      <li>
-        <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-      </li>
-      <li>
-        <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-      </li>
-      <li>
-        <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-      </li>
-    </ul>
-    <router-outlet></router-outlet>
-  `,
-  styles: []
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AppComponent {
-  title = 'qa-app-v1';
+export class AppComponent implements OnInit {
+  spinner = false;
+
+  subscription!: Subscription;
+
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private socketService: SocketService,
+    private snackBar: MatSnackBar,
+    private route: ActivatedRoute,
+    private activatedRoute: ActivatedRoute,
+    private titleService: Title,
+    private spinnerService: SpinnerService,
+    private swPush: SwPush,
+    private swUpdate: SwUpdate,
+    private pushService: PushNotificationService,
+    private breakpointObserver: BreakpointObserver,
+    private zone: NgZone,
+    @Inject(DOCUMENT) private document: Document,
+  ) {
+    // THEME FIX
+    const storageKey = localStorage.getItem('theme-preference');
+    // this.loadColorScheme(storageKey!);
+
+    swUpdate.unrecoverable.subscribe((value) => {
+      console.log(value.reason, value.type);
+    });
+
+    swUpdate.versionUpdates.subscribe((event: VersionEvent) => {
+      console.log(event)
+    })
+
+    swUpdate.available.subscribe((event) => {
+      console.log(event);
+      const snackBar = this.snackBar.open('Available update!', 'TAMAM', {
+        duration: 500000,
+      });
+
+      this.subscription = snackBar.onAction().subscribe((value) => {
+        console.log(value);
+        document.location.reload();
+      });
+
+      console.log(this.subscription.closed);
+    });
+
+    // Spinner
+    router.events.subscribe((value) => {
+      if (value instanceof ResolveStart) {
+        this.spinner = true;
+        this.spinnerService.addSpinner();
+      }
+
+      if (value instanceof ResolveEnd) {
+        this.spinner = false;
+        this.spinnerService.removeSpinner();
+      }
+
+      if (
+        value instanceof (NavigationCancel || NavigationError || NavigationEnd)
+      ) {
+        this.spinner = false;
+        this.spinnerService.removeSpinner();
+      }
+    });
+  }
+
+  loadColorScheme(scheme: string) {
+    let head = document.getElementsByTagName('head')[0];
+    let link = document.createElement('link');
+
+    link.rel = 'stylesheet';
+    link.href = `/${scheme}.css`;
+
+    head.appendChild(link);
+  }
+
+  async initSwPush(): Promise<void> {
+    if (this.swPush.isEnabled) {
+      try {
+        const subscription = await this.swPush.requestSubscription({
+          serverPublicKey: environment.vapidPublic,
+        });
+        this.pushService.sendSubscriptionToTheServer(subscription).subscribe();
+      } catch (e) {
+        console.error(e);
+      }
+    }
+  }
+
+  async ngOnInit(): Promise<void> {
+    await this.initSwPush();
+
+    /* set('hello', 'world')
+      .then((value) => {
+        console.log(value);
+      })
+      .catch((reason) => {
+        console.error(reason);
+      });*/
+
+    /*    Notification.requestPermission().then((result) => {
+          console.log(result);
+
+          const notification = new Notification('Hi there!', {
+            data: 103,
+            icon: 'assets/icons/icon-72x72.png',
+            badge: 'assets/icons/icon-72x72.png',
+            body: 'This is a notification',
+            image: 'https://placeimg.com/640/360/any',
+          });
+
+          notification.onclick = (event: any) => {
+            notification.close()
+            this.zone.run(() => {
+              this.router.navigateByUrl(`/question/${notification.data}`).then(value => {
+                console.log(value);
+              })
+            })
+          };
+        });*/
+    /**
+     * Make a notification for author user id for created answer for question.
+     */
+
+    if (this.authService.userValue) {
+      this.socketService.on('new answer').subscribe(({ event, payload }) => {
+        console.log('Sorunuza, yeni ber cevap geldi.');
+        this.snackBar.open('One line text string.', 'GÖRÜNTÜLE', {
+          duration: 9999999,
+        });
+      });
+    }
+
+    /*this.socketService.on('hello').subscribe(({ payload }) => {
+      console.log(payload);
+    });*/
+  }
 }

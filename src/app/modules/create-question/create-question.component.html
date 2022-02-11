@@ -1,0 +1,64 @@
+<div class='my-content'>
+
+  <h3 class='headline-3'>Soru Sor</h3>
+
+  <form autocomplete='off' spellcheck='false' [formGroup]='form' (submit)='submit()'>
+    <div class='form-body'>
+
+      <mat-form-field floatLabel='never' hideRequiredMarker>
+        <mat-label>Başlık</mat-label>
+        <input aria-label='Başlık' matInput formControlName='title'>
+        <mat-error *ngIf="form.get('title')?.hasError('required')">Bir başlık girin</mat-error>
+      </mat-form-field>
+
+      <div>
+        <div class='buttons'>
+          <button type='button' mat-icon-button matTooltip="Kalın">
+            <mat-icon class="material-icons-outlined">format_bold</mat-icon>
+          </button>
+
+          <button type='button' mat-icon-button>
+            <mat-icon class="material-icons-outlined">format_italic</mat-icon>
+          </button>
+
+          <button type='button' mat-icon-button>
+            <mat-icon class="material-icons-outlined">insert_link</mat-icon>
+          </button>
+
+          <button type='button' mat-icon-button>
+            <mat-icon class="material-icons-outlined">format_quote</mat-icon>
+          </button>
+
+          <button type='button' mat-icon-button>
+            <mat-icon class="material-icons-outlined">data_object</mat-icon>
+          </button>
+
+          <button type='button' mat-icon-button>
+            <mat-icon class="material-icons-outlined">insert_photo</mat-icon>
+          </button>
+        </div>
+
+        <mat-form-field appearance='standard' hideRequiredMarker>
+          <mat-label>Açıklama</mat-label>
+          <textarea aria-label='Question text' (blur)='onBlur()' (focus)='onFocus()' matInput
+                    placeholder='Include all the information someone would need to answer your question'
+                    formControlName='description' cdkTextareaAutosize [cdkAutosizeMinRows]='2'
+                    [cdkAutosizeMaxRows]='16'></textarea>
+          <mat-error *ngIf="form.get('description')?.hasError('required')">Bir açıklama girin</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <div class='overline-text'>Önizleme</div>
+        <mat-divider></mat-divider>
+        <div [innerHTML]='description | marked' class='description-preview'></div>
+      </div>
+
+      <app-chips-autocomplete></app-chips-autocomplete>
+
+      <div class='form-actions'>
+        <button type='submit' mat-raised-button color='primary'>GÖNDER</button>
+      </div>
+    </div>
+  </form>
+</div>

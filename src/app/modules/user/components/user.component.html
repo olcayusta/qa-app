@@ -1,0 +1,24 @@
+<header class='header'>
+
+  <div class='header-user'>
+    <img class='user-avatar' src='{{user.picture}}' alt='{{user.displayName}}'>
+    <h4 class='headline-4'>{{user.displayName}}</h4>
+  </div>
+
+  <!-- <div>
+     <a href="https://github.com/{{user.githubUrl}}">
+       <img src="https://webdev.imgix.net/images/icons/github.svg" alt="">
+     </a>
+   </div>-->
+</header>
+
+<nav mat-tab-nav-bar mat-align-tabs='center'>
+  <a mat-tab-link *ngFor='let link of links'
+     [routerLinkActiveOptions]='{exact: true}'
+     routerLinkActive='mat-tab-label-active'
+     #rla='routerLinkActive'
+     routerLink='/user/{{user.id}}/{{link.path.toLocaleLowerCase()}}'
+     [active]='rla.isActive'> {{link.label}} </a>
+</nav>
+
+<router-outlet></router-outlet>

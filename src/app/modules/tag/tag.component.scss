@@ -1,0 +1,40 @@
+:host {
+  display: block;
+  // min-height: 100vh;
+  // height: calc(100vh - 64px);
+  padding: 24px 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+header {
+  padding: 24px 0;
+  // text-align: center;
+}
+
+.filter {
+  margin: 32px 0 0;
+}
+
+.filter mat-chip {
+  background-color: #eee;
+}
+
+.filter .mat-chip.mat-standard-chip.mat-chip-selected.mat-primary {
+  background-color: rgb(98 0 238 / .12);
+  color: #6200ee;
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  grid-gap: 32px;
+  padding-top: 32px;
+}

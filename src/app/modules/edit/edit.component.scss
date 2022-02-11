@@ -1,0 +1,10 @@
+:host {
+  display: block;
+  padding-top: 64px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  grid-gap: 24px;
+}

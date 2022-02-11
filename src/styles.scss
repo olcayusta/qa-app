@@ -1,1 +1,164 @@
-/* You can add global styles to this file, and also import other style files */
+@use "styles/reset";
+
+@use '@angular/material' as mat;
+// @use '@angular/cdk/overlay' as overlay;
+// @use '@angular/cdk/a11y' as a11y;
+// @use '@angular/material/core/focus-indicators/focus-indicators' as focus-indicators;
+
+/*@include mat.ripple();
+@include a11y.a11y-visually-hidden();
+@include overlay.overlay();
+@include focus-indicators.private-strong-focus-indicators-positioning();*/
+
+@include mat.core();
+
+$custom-typography: mat.define-typography-config(
+  $font-family: 'Archivo, sans-serif',
+);
+
+$body-and-captions-typography: mat.define-typography-config(
+  $font-family: 'Roboto, sans-serif',
+);
+
+$snackbar-typo: mat.define-typography-config(
+  $font-family: 'Archivo, sans-serif',
+);
+
+/*
+  main typo
+*/
+// @include mat-base-typography($custom-typography);
+
+@include mat.tabs-typography($custom-typography);
+
+// @include mat.list-typography($custom-typography);
+
+$my-custom-level: mat.define-typography-level(14px, 24px, 700, $letter-spacing: 10px);
+
+// List typography
+$list-typography: mat.define-typography-config(
+  $font-family: 'Archivo, sans-serif',
+  $subheading-2: $my-custom-level,
+  $body-1: $my-custom-level,
+);
+
+@include mat.list-typography($list-typography);
+
+@include mat.dialog-typography($custom-typography);
+@include mat.form-field-typography($custom-typography);
+@include mat.radio-typography($custom-typography);
+@include mat.option-typography($custom-typography);
+
+// FIXME - this is duplicate
+// @include mat.toolbar-typography($custom-typography);
+@include mat.radio-typography($custom-typography);
+
+/*
+  body and captions typo
+*/
+@include mat.badge-typography($body-and-captions-typography);
+@include mat.tooltip-typography($body-and-captions-typography);
+@include mat.checkbox-typography($body-and-captions-typography);
+@include mat.snack-bar-typography($body-and-captions-typography);
+@include mat.menu-typography($body-and-captions-typography);
+@include mat.button-typography($body-and-captions-typography);
+@include mat.optgroup-typography($body-and-captions-typography);
+@include mat.autocomplete-typography($body-and-captions-typography);
+
+$chip-typography: mat.define-typography-config(
+  $font-family: 'Roboto, sans-serif',
+  $body-2: mat.define-typography-level(14px, 20px, 400)
+);
+
+@include mat.chips-typography($chip-typography);
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Archivo, sans-serif;
+  /*  background-color: var(--surface);
+    color: var(--color);*/
+}
+
+* {
+  box-sizing: border-box;
+}
+
+svg {
+  width: 24px;
+  height: 24px;
+  // fill: var(--icon-color);
+}
+
+.mat-action-row {
+  padding: 16px 16px 16px 24px !important;
+}
+
+// Fix menu and select panel overflow scroll bar
+.mat-menu-panel::-webkit-scrollbar, .mat-select-panel::-webkit-scrollbar {
+  width: 5px;
+}
+
+.mat-menu-panel::-webkit-scrollbar-thumb, .mat-select-panel::-webkit-scrollbar-thumb {
+  background: rgba(95, 99, 104, .45);
+  border-radius: 10px;
+}
+
+.mat-menu-panel::-webkit-scrollbar-track, .mat-select-panel::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+.more-menu {
+  width: 256px;
+}
+
+.empty {
+  padding-left: 40px;
+}
+
+.text-only-menu {
+  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.14), 0 3px 14px rgba(0, 0, 0, 0.12), 0 5px 5px rgba(0, 0, 0, 0.2);
+  min-width: 128px !important;
+  // border-radius: 0 !important;
+  // margin-top: 8px;
+
+  // box-shadow: 0 8px 10px rgba(0, 0, 0, 0.14), 0 3px 14px rgba(0, 0, 0, 0.12), 0 5px 5px rgba(0, 0, 0, 0.2);
+  // border-radius: 4px;
+
+  // box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.14), 0px 3px 14px rgba(0, 0, 0, 0.12), 0px 5px 5px rgba(0, 0, 0, 0.2);
+
+  .mat-menu-item {
+    height: 32px;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: .25px;
+    padding-left: 8px;
+    display: flex;
+    align-items: center;
+  }
+
+  /*  .mat-menu-item.active {
+      background-color: #e8f0fe;
+    }*/
+}
+
+.small-menu-button-item.mat-menu-item {
+  color: #3c4043;
+  height: 32px;
+  line-height: 32px;
+  font-weight: 500;
+}
+
+.mat-optgroup .mat-option:not(.mat-option-multiple) {
+  padding-left: 48px !important;
+}
+
+
+:root {
+
+
+
+}

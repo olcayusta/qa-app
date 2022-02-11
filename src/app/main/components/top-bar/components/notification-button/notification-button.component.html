@@ -1,0 +1,32 @@
+<button mat-icon-button class='top-right-btn notification-button' aria-label='Bildirimler' hidden
+        matTooltip='Bildirimler'
+        #notificationElement='cdkOverlayOrigin'
+        cdkOverlayOrigin
+        (click)='openNotifications($event)'>
+  <app-gf-icon name='notifications' matBadge='{{notificationCount$ | async}}'
+               [matBadgeHidden]='(notificationCount$ | async) === 0'></app-gf-icon>
+</button>
+
+<!--
+<ng-template
+  cdkConnectedOverlay
+  (overlayOutsideClick)="outsideClick()"
+  [cdkConnectedOverlayScrollStrategy]="blockScrollStrategy"
+  [cdkConnectedOverlayOpen]="popupOpened"
+  [cdkConnectedOverlayOrigin]="notificationElement">
+  <app-notification-list-popup></app-notification-list-popup>
+</ng-template>
+-->
+
+<ng-template
+  cdkConnectedOverlay
+  [cdkConnectedOverlayOrigin]='notificationElement'
+  [cdkConnectedOverlayScrollStrategy]='blockScrollStrategy'
+  [cdkConnectedOverlayOpen]='popupOpened'
+  (overlayOutsideClick)='outsideClick($event)'
+  (detach)='onDetach()'>
+  <!--<app-notification-list-popup></app-notification-list-popup>-->
+  <ng-container [ngComponentOutlet]='comp!'></ng-container>
+</ng-template>
+
+

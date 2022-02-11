@@ -1,0 +1,307 @@
+@use '@angular/material' as mat;
+
+/* Override */
+/*$mat-deep-purple: (
+  50: #F2E7FE,
+  100: #DBB2FF,
+  200: #BB86FC,
+  300: #985EFF,
+  400: #7F39FB,
+  500: #6200EE,
+  600: #5600E8,
+  700: #3700B3,
+  800: #30009C,
+  900: #23036A,
+  A100: #b388ff,
+  A200: #7c4dff,
+  A400: #651fff,
+  A700: #6200ea,
+  contrast: (
+    50: mat.$dark-primary-text,
+    100: mat.$dark-primary-text,
+    200: mat.$dark-primary-text,
+    300: mat.$light-primary-text,
+    400: mat.$light-primary-text,
+    500: mat.$light-primary-text,
+    600: mat.$light-primary-text,
+    700: mat.$light-primary-text,
+    800: mat.$light-primary-text,
+    900: mat.$light-primary-text,
+    A100: mat.$dark-primary-text,
+    A200: mat.$light-primary-text,
+    A400: mat.$light-primary-text,
+    A700: mat.$light-primary-text,
+  )
+);
+$mat-secondary: (
+  50: #C8FFF4,
+  100: #70EFDE,
+  200: #03DAC5,
+  300: #00C4B4,
+  400: #00B3A6,
+  500: #01A299,
+  600: #019592,
+  700: #018786,
+  800: #017374,
+  900: #005457,
+  A100: #b388ff,
+  A200: #7c4dff,
+  A400: #651fff,
+  A700: #6200ea,
+  contrast: (
+    50: mat.$dark-primary-text,
+    100: mat.$dark-primary-text,
+    200: mat.$dark-primary-text,
+    300: mat.$light-primary-text,
+    400: mat.$light-primary-text,
+    500: mat.$light-primary-text,
+    600: mat.$light-primary-text,
+    700: mat.$light-primary-text,
+    800: mat.$light-primary-text,
+    900: mat.$light-primary-text,
+    A100: mat.$dark-primary-text,
+    A200: mat.$light-primary-text,
+    A400: mat.$light-primary-text,
+    A700: mat.$light-primary-text,
+  )
+);
+$mat-red: (
+  50: #ffebee,
+  100: #ffcdd2,
+  200: #ef9a9a,
+  300: #e57373,
+  400: #ef5350,
+  500: #b00020,
+  600: #e53935,
+  700: #d32f2f,
+  800: #c62828,
+  900: #b71c1c,
+  A100: #ff8a80,
+  A200: #ff5252,
+  A400: #ff1744,
+  A700: #d50000,
+  contrast: (
+    50: mat.$dark-primary-text,
+    100: mat.$dark-primary-text,
+    200: mat.$dark-primary-text,
+    300: mat.$dark-primary-text,
+    400: mat.$dark-primary-text,
+    500: mat.$light-primary-text,
+    600: mat.$light-primary-text,
+    700: mat.$light-primary-text,
+    800: mat.$light-primary-text,
+    900: mat.$light-primary-text,
+    A100: mat.$dark-primary-text,
+    A200: mat.$light-primary-text,
+    A400: mat.$light-primary-text,
+    A700: mat.$light-primary-text,
+  )
+);*/
+
+$dark-primary-text: rgba(black, 0.87);
+$light-primary-text: white;
+
+$deep-purple-palette: (
+  50: #F2E7FE,
+  100: #DBB2FF,
+  200: #BB86FC,
+  300: #985EFF,
+  400: #7F39FB,
+  500: #6200EE,
+  600: #5600E8,
+  700: #3700B3,
+  800: #30009C,
+  900: #23036A,
+  A100: #b388ff,
+  A200: #7c4dff,
+  A400: #651fff,
+  A700: #6200ea,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $light-primary-text,
+    400: $light-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text,
+  )
+);
+
+/* Define a light theme */
+$light-primary: mat.define-palette($deep-purple-palette);
+$light-accent: mat.define-palette($deep-purple-palette);
+$light-theme: mat.define-light-theme((
+  color: (
+    primary: $light-primary,
+    accent: $light-accent
+  )
+));
+
+/* Gray Theme */
+$gray-theme-primary: mat.define-palette(mat.$gray-palette, 900);
+$gray-theme-accent: mat.define-palette(mat.$gray-palette);
+
+// $gray-theme-warn: mat.define-palette($mat-red);
+
+$gray-theme: mat.define-light-theme((
+  color: (
+    primary: $gray-theme-primary,
+    accent: $gray-theme-accent
+  )
+));
+
+$secondary-gray-theme: mat.define-light-theme((
+  color: (
+    primary: mat.define-palette(mat.$gray-palette),
+    accent: mat.define-palette(mat.$gray-palette)
+  )
+));
+
+/* Purple */
+@include mat.core-theme($light-theme);
+@include mat.toolbar-theme($light-theme);
+@include mat.menu-theme($light-theme);
+@include mat.chips-theme($light-theme);
+@include mat.badge-theme($light-theme);
+@include mat.tooltip-theme($light-theme);
+@include mat.radio-theme($light-theme);
+@include mat.dialog-theme($light-theme);
+@include mat.autocomplete-theme($light-theme);
+@include mat.snack-bar-theme($light-theme);
+@include mat.button-theme($light-theme);
+@include mat.checkbox-theme($light-theme);
+@include mat.icon-theme($light-theme);
+@include mat.progress-bar-theme($light-theme);
+@include mat.progress-spinner-theme($light-theme);
+@include mat.expansion-theme($light-theme);
+@include mat.select-theme($light-theme);
+@include mat.button-toggle-theme($light-theme);
+@include mat.form-field-theme($light-theme);
+@include mat.slide-toggle-theme($light-theme);
+@include mat.card-theme($light-theme);
+
+/* Gray */
+@include mat.tabs-theme($gray-theme);
+@include mat.list-theme($gray-theme);
+@include mat.divider-theme($gray-theme);
+@include mat.sidenav-theme($gray-theme);
+
+:root {
+  --color: rgba(0, 0, 0, .87);
+  --mdc-theme-on-primary: #fff;
+  --mdc-theme-primary: #6200ee;
+  --medium-emphasis-color: rgba(0, 0, 0, 0.6);
+  --surface: #fff;
+  --topbar-background: #fff;
+  --high-emphasis-color: black;
+  --card-background: #fff;
+  --fab-icon-color: #fff;
+  --text-color: rgba(0, 0, 0, .87);
+  --icon-color: rgba(0, 0, 0, .6);
+  --drawer-background: #fff;
+  --autocomplete-background: #fff;
+  --search-background: rgba(0, 0, 0, 0.04);
+  --code-background: rgba(0, 0, 0, .02);
+  --border-color: rgba(0, 0, 0, .12);
+}
+
+@import "~highlight.js/scss/github";
+
+pre code.hljs  {
+  padding: 16px 0 !important;
+  overflow: unset !important;
+}
+
+svg {
+  fill: rgba(0, 0, 0, .6);
+}
+
+.mat-progress-bar-background {
+  // fill: #D2BBF4;
+  fill: #C2C2C2;
+}
+
+.mat-progress-bar-buffer {
+  // background-color: #D2BBF4;
+  background-color: #C2C2C2;
+}
+
+.mat-menu-item.active {
+  background-color: #e8f0fe;
+}
+
+.mat-menu-item-highlighted {
+  // background-color: rgba(98, 0, 238, 0.12) !important;
+  background-color: rgba(0, 0, 0, 0.12) !important;
+  // color: #6200EE;
+  color: black;
+}
+
+.mat-list-item.active {
+  color: #6200EE !important;
+  font-weight: 500 !important;
+  // background-color: rgba(0, 0, 0, .12);
+
+  /* Primary Overlay */
+  background: linear-gradient(0deg, rgba(187, 134, 252, 0.12), rgba(187, 134, 252, 0.12)), #FFFFFF;
+}
+
+/*
+  Light theme reset css
+*/
+.mat-snack-bar-container {
+  color: #fff;
+  background-color: #121212;
+}
+
+.mat-simple-snackbar {
+  color: #fff;
+}
+
+.mat-tooltip {
+  background: #666 !important;
+  color: #fff !important;
+}
+
+
+/**
+  Body WebKit Scroller
+ */
+/*::-webkit-scrollbar {
+  // width: 16px;
+}
+
+::-webkit-scrollbar-track {
+  // background: #f1f1f1;
+  background: #fafafa;
+}
+
+::-webkit-scrollbar-thumb {
+  height: 56px;
+  border-radius: 8px;
+  border: 4px solid transparent;
+  background-clip: content-box;
+  background-color: #606060;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #909090;
+}*/
+
+.mat-chip.mat-standard-chip {
+  background-color: #fff !important;
+  border: 1px solid rgba(0, 0, 0, .12);
+}
+
+::ng-deep .mat-chip-selected {
+  background: rgba(98, 0, 238, 0.08) !important;
+  color: #6200ee !important;
+  border: 1px solid rgba(98, 0, 238, 0.08) !important;
+}

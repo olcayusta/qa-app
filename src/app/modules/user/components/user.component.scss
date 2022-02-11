@@ -1,0 +1,41 @@
+:host {
+  display: block;
+}
+
+header {
+  display: flex;
+  grid-gap: 16px;
+  padding: 64px 0;
+  text-align: center;
+}
+
+.header-user {
+  display: flex;
+  align-items: center;
+}
+
+p {
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--icon-color);
+  margin: 0;
+}
+
+.user-avatar {
+  display: inline-block;
+  width: 160px;
+  height: 160px;
+  border-radius: 100%;
+  object-fit: cover;
+  margin-right: 24px;
+}
+
+::ng-deep .mat-ink-bar {
+  height: 3px !important;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+.mat-tab-label-active {
+  opacity: 1;
+}

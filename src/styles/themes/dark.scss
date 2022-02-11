@@ -1,0 +1,218 @@
+@use '@angular/material' as mat;
+
+/* Override colors */
+/*$mat-deep-purple: (
+  50: #F2E7FE,
+  100: #DBB2FF,
+  200: #BB86FC,
+  300: #985EFF,
+  400: #7F39FB,
+  500: #6200EE,
+  600: #5600E8,
+  700: #3700B3,
+  800: #30009C,
+  900: #23036A,
+  A100: #b388ff,
+  A200: #7c4dff,
+  A400: #651fff,
+  A700: #6200ea,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $light-primary-text,
+    400: $light-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text,
+  )
+);
+$mat-secondary: (
+  50: #C8FFF4,
+  100: #70EFDE,
+  200: #03DAC5,
+  300: #00C4B4,
+  400: #00B3A6,
+  500: #01A299,
+  600: #019592,
+  700: #018786,
+  800: #017374,
+  900: #005457,
+  A100: #b388ff,
+  A200: #7c4dff,
+  A400: #651fff,
+  A700: #6200ea,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $light-primary-text,
+    400: $light-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text,
+  )
+);*/
+
+$dark-primary-text: rgba(black, 0.87);
+$light-primary-text: white;
+
+$deep-purple-palette: (
+  50: #F2E7FE,
+  100: #DBB2FF,
+  200: #BB86FC,
+  300: #985EFF,
+  400: #7F39FB,
+  500: #6200ee,
+  600: #5600E8,
+  700: #3700B3,
+  800: #30009C,
+  900: #23036A,
+  A100: #b388ff,
+  A200: #7c4dff,
+  A400: #651fff,
+  A700: #6200ea,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $light-primary-text,
+    400: $light-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text,
+  )
+);
+
+$dark-primary: mat.define-palette($deep-purple-palette, 200);
+$dark-accent: mat.define-palette($deep-purple-palette);
+$dark-theme: mat.define-dark-theme((
+  color: (
+    primary: $dark-primary,
+    accent: $dark-accent
+  )
+));
+
+@include mat.all-component-themes($dark-theme);
+
+/*:root {
+  --primary-color: #BB86FC;
+  --surface: #121212;
+  --topbar-background: #272727;
+  --high-emphasis-color: rgba(255, 255, 255, 0.6);
+  --card-background: #1e1e1e;
+  --fab-icon-color: black;
+  --text-color: #fff;
+  --icon-color: rgba(255, 255, 255, 0.6);
+}*/
+
+
+html {
+  background-color: #121212;
+  color: #fff;
+}
+
+:root {
+  --color: #fff;
+  --medium-emphasis-color: rgba(255, 255, 255, 0.6);
+  --surface: #121212;
+  --topbar-background: #272727;
+  --high-emphasis-color: rgba(255, 255, 255, 0.6);
+  --card-background: #1e1e1e;
+  --fab-icon-color: black;
+  --text-color: #fff;
+  --icon-color: rgba(255, 255, 255, 0.6);
+  --drawer-background: #353535;
+  --autocomplete-background: #2f2f2f;
+  --search-background: rgba(255, 255, 255, 0.24);
+  --code-background: #1e1e1e;
+  --border-color: rgba(255, 255, 255, 0.12);
+}
+
+@import "~highlight.js/scss/tomorrow-night-blue";
+
+svg {
+  fill: rgba(255, 255, 255, 0.6);
+}
+
+.mat-list-item.active {
+  color: white !important;
+}
+
+.mat-progress-bar-background {
+  fill: #BB86FC;
+}
+
+.mat-progress-bar-buffer {
+  background-color: #4c3f5b;
+}
+
+::ng-deep mark {
+  background-color: transparent;
+  font-weight: 500;
+  color: #fff;
+}
+
+.mat-menu-item-highlighted {
+  background-color: rgba(255, 255, 255, 0.12) !important;
+  color: #ffffff;
+}
+
+.mat-tab-label-active {
+  color: #BB86FC;
+  opacity: 1;
+}
+
+svg {
+  fill: rgba(255, 255, 255, 0.6);
+}
+
+.search-form {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+::-webkit-scrollbar-track {
+  // background: #f1f1f1;
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  height: 56px;
+  border-radius: 8px;
+  border: 4px solid transparent;
+  background-clip: content-box;
+  background-color: #aaa;
+}
+
+mat-chip {
+  background-color: #ffffff12 !important;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.mat-chip-selected {
+  background: rgba(187, 134, 252, 0.12) !important;
+  color: #fff !important;
+}
+
+.check-icon {
+  background: #03DAC5;
+  color: black;
+}

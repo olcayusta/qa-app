@@ -1,0 +1,192 @@
+:host {
+  display: block;
+}
+
+main {
+  margin-top: 64px;
+  padding-bottom: 64px;
+}
+
+/*
+  mat-sidenav-content
+*/
+mat-sidenav-container {
+  background-color: var(--surface) !important;
+  min-height: 100vh;
+  // min-height: 100vh;
+  // height: auto !important;
+  overflow: unset !important;
+}
+
+mat-sidenav-content {
+  min-height: 100vh;
+  z-index: 2 !important;
+  overflow: unset !important;
+}
+
+::ng-deep .mat-drawer-backdrop.mat-drawer-shown {
+  background-color: rgba(0, 0, 0, .32);
+}
+
+/*
+  mat-sidenav
+*/
+mat-sidenav {
+  width: 360px;
+  min-height: 100vh;
+  // padding: 12px;
+  background-color: var(--drawer-background) !important;
+}
+
+.mat-drawer.mat-drawer-end {
+  width: 320px;
+  background-color: #fff;
+}
+
+.my-content {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 160px;
+  // padding: 64px 160px;
+  box-sizing: content-box;
+  // height: calc(100vh - 64px);
+}
+
+/*
+  app-top-bar fixed solution
+*/
+#content:before {
+  content: '';
+  display: block;
+  height: calc(64px);
+  margin-top: calc(-64px);
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.content-update-chip {
+  position: fixed;
+  left: 50%;
+  top: 64px + 24;
+  display: flex;
+  justify-content: center;
+  transform: translate3d(-50%, 0, 0);
+}
+
+.extended-fab {
+  width: auto;
+  max-width: 200px;
+  height: 48px;
+  padding: 0 20px 0 12px;
+  border-radius: 28px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  transition: max-width 0.5s ease-out;
+  overflow: hidden;
+  // background-color: #6200ee !important;
+
+}
+
+.mini-fab {
+  max-width: 48px;
+  transition: max-width 0.25s ease-in;
+}
+
+#main {
+  display: block;
+  min-height: calc(100% - 64px);
+}
+
+@media (prefers-color-scheme: light) {
+  .fixed-fab-btn {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    z-index: 1;
+
+    .mat-fab {
+      background-color: #6200EE;
+      // letter-spacing: 1.25px;
+    }
+
+    button, a {
+ /*     padding: 16px 20px 16px 16px;
+      width: auto;
+      height: 56px;
+      !* M3/sys/light/primary-container *!
+
+      background: #EADDFF;
+      !* M3/Elevation Light/3 *!
+
+      box-shadow: 0px 4px 8px 3px rgba(0, 0, 0, 0.15), 0px 1px 3px rgba(0, 0, 0, 0.3);
+      border-radius: 16px;*/
+    }
+
+    mat-icon {
+      margin-right: 12px;
+    }
+
+    ::ng-deep svg {
+      fill: var(--fab-icon-color);
+    }
+
+    span {
+      font-size: 14px;
+      line-height: 16px;
+      // text-transform: uppercase;
+      // letter-spacing: 1.25px
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .fixed-fab-btn {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    z-index: 1;
+
+    .mat-fab {
+      background-color: #BB86FC;
+      letter-spacing: 1.25px;
+      color: black;
+    }
+
+    button {
+      width: auto;
+      height: 48px;
+    }
+
+    ::ng-deep svg {
+      fill: var(--fab-icon-color);
+    }
+
+    span {
+      font-size: 14px;
+      line-height: 16px;
+      // text-transform: uppercase;
+      // letter-spacing: 1.25px
+    }
+  }
+}
+
+@media (max-width: 599px) {
+  main {
+    margin-top: 56px;
+    padding-bottom: 56px;
+  }
+
+  #content:before {
+    content: '';
+    display: block;
+    height: calc(56px);
+    margin-top: calc(-56px);
+    pointer-events: none;
+    visibility: hidden;
+  }
+
+  .my-content {
+    padding: 0;
+  }
+}

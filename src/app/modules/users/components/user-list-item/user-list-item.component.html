@@ -1,0 +1,17 @@
+<div class='user-box'>
+<!--  <div class='img-shadow'>
+    <img class='user-avatar' src='{{user.picture}}' alt='' #img qaLazyImg>
+  </div>-->
+
+  <inek-img-shadow [src]='user.picture' [width]='140' [height]='140' alt=''></inek-img-shadow>
+
+<!--  <qa-img-shadow [width]='100' [height]='100' src='{{user.picture}}' alt='{{user.displayName}}'></qa-img-shadow>-->
+  <div class='user-info'>
+    <a routerLink='/user/{{user.id}}'>
+      <div class='user-title'>{{user.displayName}}</div>
+    </a>
+    <button mat-stroked-button>TAKİP ET</button>
+    <!--<mat-divider></mat-divider>-->
+  </div>
+</div>
+

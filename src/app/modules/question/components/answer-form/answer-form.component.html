@@ -1,0 +1,27 @@
+<form autocomplete='off' spellcheck='false' (submit)='formSubmit()'>
+  <!-- <div class="buttons">
+     <button mat-icon-button>
+       <mat-icon>format_bold</mat-icon>
+     </button>
+     <button mat-icon-button>
+       <mat-icon>format_italic</mat-icon>
+     </button>
+   </div>-->
+  <mat-form-field appearance='fill' floatLabel='never'>
+    <mat-label>Cevap</mat-label>
+    <textarea aria-label='Answer text' matInput cdkTextareaAutosize cdkAutosizeMinRows='16'
+              [formControl]='answerControl'></textarea>
+    <mat-error *ngIf="answerControl.hasError('required')">Body is missing</mat-error>
+    <mat-error *ngIf="answerControl.hasError('minlength')">Body must be at least 24 characters; you
+      entered {{answerControl.value.length}}.
+    </mat-error>
+    <mat-hint>{{answerControl.value.length}} / 30.000</mat-hint>
+  </mat-form-field>
+
+  {{answerControl.valid | json}}
+
+  <!--<div class="preview-text" [innerHTML]="answerControl?.value | marked"></div>-->
+  <div class='preview-text' [innerHTML]='answerControl?.value'></div>
+
+  <button mat-raised-button type='submit' color='primary' [disabled]='!answerControl.valid'>GÖNDER</button>
+</form>

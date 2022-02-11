@@ -1,0 +1,11 @@
+<div class='devsite-code-buttons-container'>
+  <button type='button' mat-icon-button class='copy-code-btn' aria-label='Kod örneğini kopyala' matTooltip='Kod örneğini kopyala' (click)='copyCode()'>
+    <app-gf-icon name='content_copy'></app-gf-icon>
+  </button>
+</div>
+
+<div class='code-lang'>{{lang}}</div>
+
+<pre [innerHTML]='text.innerHTML'></pre>
+
+

@@ -1,0 +1,58 @@
+:host {
+  display: block;
+}
+
+.content {
+  margin: 64px 0 0 0;
+}
+
+::ng-deep p {
+  font-size: 16px;
+  line-height: 24px;
+  margin-top: 0;
+  margin-bottom: 16px;
+  letter-spacing: .5px;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+:host {
+  a, :link, :visited {
+    color: #3740ff;
+  }
+
+  a code, td a code {
+    color: #3740ff;
+  }
+}
+
+:not(pre) > code {
+  font-size: 13px;
+  line-height: 16px;
+  white-space: pre-wrap;
+  padding: 2px 4px;
+  background-color: #e4e6e8;
+  border-radius: 4px;
+}
+
+code, pre {
+  font-family: 'Roboto Mono', monospace;
+}
+
+pre {
+  display: flex !important;
+  max-height: 512px;
+  background-color: var(--code-background) !important;
+  font-size: 14px;
+  line-height: 24px;
+  overflow: auto;
+  margin: 24px -160px;
+  padding: 24px 160px !important;
+}
+
+@media (max-width: 599px) {
+  pre {
+    display: block !important;
+    margin: 0 -24px !important;
+    padding: 16px 24px !important;
+  }
+}
