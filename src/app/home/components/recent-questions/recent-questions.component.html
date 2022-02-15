@@ -1,7 +1,0 @@
-<div class='items'>
-  <qa-home-question-list-item *ngFor='let question of questions' [question]='question'></qa-home-question-list-item>
-</div>
-
-<div id='anchor' appIsVisible (scrolled)='loadMore()' *ngIf='questions && !dataFinished'>
-  <mat-spinner diameter='32' *ngIf='loader'></mat-spinner>
-</div>
