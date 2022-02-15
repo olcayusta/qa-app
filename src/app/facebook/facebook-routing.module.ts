@@ -8,4 +8,5 @@ const routes: Routes = [{ path: '', component: FacebookComponent }];
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class FacebookRoutingModule { }
+export class FacebookRoutingModule {
+}
