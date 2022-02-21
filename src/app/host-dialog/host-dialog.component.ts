@@ -6,14 +6,12 @@ import {
   ViewChild,
   TemplateRef,
   AfterViewInit,
-  ɵmarkDirty as markDirty,
   ViewContainerRef
 } from '@angular/core';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@modules/material/material.module';
-import { OverlayModule, ScrollStrategyOptions } from '@angular/cdk/overlay';
-import { MessageArchivedComponent } from '../message-archived/message-archived.component';
+import { OverlayModule } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'inek-host-dialog',
@@ -24,11 +22,7 @@ import { MessageArchivedComponent } from '../message-archived/message-archived.c
 export class HostDialogComponent implements OnInit, AfterViewInit {
   @ViewChild('dialogRef') dialogRef!: TemplateRef<MatDialog>;
 
-  constructor(
-    private vcr: ViewContainerRef,
-    private dialog: MatDialog,
-    private sso: ScrollStrategyOptions
-  ) {}
+  constructor(private vcr: ViewContainerRef, private dialog: MatDialog) {}
 
   ngOnInit(): void {}
 

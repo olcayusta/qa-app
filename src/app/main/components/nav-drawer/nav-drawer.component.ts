@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { SettingsDialogComponent } from '@dialogs/settings-dialog/settings-dialog.component';
+import { FeedbackDialogComponent } from '@dialogs/feedback-dialog/feedback-dialog.component';
 
 @Component({
   selector: 'inek-nav-drawer',
@@ -37,5 +38,10 @@ export class NavDrawerComponent implements OnInit {
     this.closeDrawer.emit();
   }
 
-  async openFeedbackDialog() {}
+  async openFeedbackDialog() {
+    this.dialog.open(FeedbackDialogComponent, {
+      autoFocus: 'dialog',
+      minWidth: 640
+    });
+  }
 }

@@ -1,0 +1,28 @@
+<!--
+<h1 mat-dialog-title>Geri bildirim gonder</h1>
+<mat-dialog-actions>
+  <form autocomplete='off' spellcheck='false' id='feedbackForm' (submit)='onFormSubmit($event)'>
+    <mat-form-field appearance='outline'>
+      <mat-label>Write text</mat-label>
+      <textarea matInput cdkTextareaAutosize [formControl]='formControl'></textarea>
+      <mat-error *ngIf='formControl.hasError("required")'>Text bos gecilemez!</mat-error>
+    </mat-form-field>
+  </form>
+</mat-dialog-actions>
+<mat-dialog-actions [align]='"end"'>
+  <button type='submit' mat-button color='primary' form='feedbackForm'>TAMAM</button>
+</mat-dialog-actions>-->
+
+<h1 mat-dialog-title>Geri bildirim gonder</h1>
+<mat-dialog-actions>
+  <form autocomplete='off' spellcheck='false' id='feedbackForm' [formGroup]='feedbackForm' (submit)='onFormSubmit($event)'>
+    <mat-form-field appearance='outline'>
+      <mat-label>Write text</mat-label>
+      <textarea matInput cdkTextareaAutosize formControlName='feedbackText' [cdkAutosizeMinRows]='4'></textarea>
+      <mat-error *ngIf='formControl.hasError("required")'>Text bos gecilemez!</mat-error>
+    </mat-form-field>
+  </form>
+</mat-dialog-actions>
+<mat-dialog-actions [align]='"end"'>
+  <button type='submit' mat-button color='primary' form='feedbackForm'>TAMAM</button>
+</mat-dialog-actions>

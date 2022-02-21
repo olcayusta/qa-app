@@ -38,7 +38,7 @@
   </mat-nav-list>
   <mat-divider></mat-divider>
   <mat-nav-list>
-    <a mat-list-item routerLinkActive='active' (click)='openSettingsDialog()'>
+    <a mat-list-item routerLinkActive='active' (click)='onClicked(); openSettingsDialog()'>
       <app-gf-icon name='settings'></app-gf-icon>
       <span>Hesap & ayarlar</span>
     </a>
@@ -50,7 +50,7 @@
       <app-gf-icon name='help'></app-gf-icon>
       <span>Yardım</span>
     </a>
-    <a mat-list-item routerLinkActive='active' routerLink='/feedback' (click)='onClicked()'>
+    <a mat-list-item routerLinkActive='active' (click)='onClicked(); openFeedbackDialog()'>
       <app-gf-icon name='feedback'></app-gf-icon>
       <span>Geri bildirim gönder</span>
     </a>
