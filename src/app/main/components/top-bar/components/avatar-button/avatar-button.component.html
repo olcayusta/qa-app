@@ -1,8 +1,9 @@
 <button id='avatar-btn' aria-haspopup='true'
         aria-label='Alternatif hesapların listesini açan hesap profil fotoğrafı'
         #trigger='cdkOverlayOrigin' cdkOverlayOrigin
-        (click)='openPopup()'>
-  <inek-img-shadow [src]='user.picture' [width]='32' [height]='32' alt='Avatar resmi' class='topbar-menu-button-renderer'></inek-img-shadow>
+        (click)='togglePopup()'>
+  <inek-img-shadow [src]='user.picture' [width]='32' [height]='32' alt='Avatar resmi'
+                   class='topbar-menu-button-renderer'></inek-img-shadow>
 </button>
 
 <ng-template
@@ -10,12 +11,9 @@
   (overlayOutsideClick)='outsideClick($event)'
   [cdkConnectedOverlayScrollStrategy]='blockScrollStrategy'
   [cdkConnectedOverlayOpen]='popupOpened'
-  (detach)='onDetach()'
   [cdkConnectedOverlayOrigin]='trigger'>
-
-<!--  <qa-popup-container popupContainerTitle="avatar" [outlet]="ironDropdownOutlet"></qa-popup-container>-->
-  <qa-popup-container>
-    <ng-container [ngComponentOutlet]="ironDropdownOutlet!"></ng-container>
+  <!--  <qa-popup-container popupContainerTitle="avatar" [outlet]="ironDropdownOutlet"></qa-popup-container>-->
+  <qa-popup-container (close)='popupOpened = false'>
+    <ng-container [ngComponentOutlet]='componentOutlet!'></ng-container>
   </qa-popup-container>
-
 </ng-template>

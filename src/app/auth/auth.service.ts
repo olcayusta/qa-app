@@ -19,12 +19,10 @@ interface ILogin {
 }
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class AuthService {
-  isLoggedInSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
-    false
-  );
+  isLoggedInSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   isLoggedIn$: Observable<boolean> = this.isLoggedInSubject.asObservable();
 
   // @ts-ignore
@@ -51,9 +49,7 @@ export class AuthService {
     } else {
       // The backend returned an unsuccessful response code.
       // The response body may contain clues as to what went wrong.
-      console.error(
-        `Backend returned code ${error.status}, ` + `body was: ${error.error}`
-      );
+      console.error(`Backend returned code ${error.status}, ` + `body was: ${error.error}`);
     }
     // Return an observable with a user-facing error message.
     return throwError('Something bad happened; please try again later.');
@@ -67,7 +63,7 @@ export class AuthService {
     return this.http
       .post<ILogin>(`${environment.apiUrl}/users/login`, {
         email,
-        password,
+        password
       })
       .pipe(
         tap(({ user, token }: ILogin) => {

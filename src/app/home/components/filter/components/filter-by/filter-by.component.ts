@@ -3,7 +3,7 @@ import {
   ChangeDetectorRef,
   Component,
   OnInit,
-  ViewChild,
+  ViewChild
 } from '@angular/core';
 import { MatMenu, MatMenuItem } from '@angular/material/menu';
 import { MatCheckboxChange } from '@angular/material/checkbox';
@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
   selector: 'app-filter-by',
   templateUrl: './filter-by.component.html',
   styleUrls: ['./filter-by.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FilterByComponent implements OnInit {
   @ViewChild('filterMenu') filterMenu!: MatMenu;
@@ -22,18 +22,18 @@ export class FilterByComponent implements OnInit {
     {
       filter: 'a',
       label: 'Cevapsız',
-      checked: false,
+      checked: false
     },
     {
       filter: 'b',
       label: 'Doğru cevapsız',
-      checked: false,
+      checked: false
     },
     {
       filter: 'c',
       label: 'Ödül var',
-      checked: false,
-    },
+      checked: false
+    }
   ];
 
   selectedItemIndex = 0;
@@ -64,9 +64,9 @@ export class FilterByComponent implements OnInit {
 
     this.router.navigate(['/'], {
       queryParams: {
-        filter: ['a', 'b', 'c'],
+        filter: ['a', 'b', 'c']
       },
-      queryParamsHandling: 'merge',
+      queryParamsHandling: 'merge'
     });
   }
 

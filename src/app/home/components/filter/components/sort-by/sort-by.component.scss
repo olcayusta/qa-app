@@ -32,7 +32,12 @@ button[aria-expanded='true'] {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-mat-icon, svg {
+app-gf-icon {
+  display: inline-flex;
+  margin-right: 8px;
+}
+
+/*mat-icon, svg {
   color: rgba(0, 0, 0, 0.6);
   margin-right: -4px;
 }
@@ -44,7 +49,7 @@ app-gf-icon {
     fill: #6200ee;
     margin-right: -4px;
   }
-}
+}*/
 
 .outlined-menu-button {
   // height: 32px;
@@ -73,8 +78,8 @@ app-gf-icon {
 
 
 .mat-menu-item-highlighted:not([disabled]) {
-  // background-color: #BB86FC1F !important;
-  // color: #6200ee;
+  background-color: #BB86FC1F !important;
+  color: black;
 }
 
 .menu-button {

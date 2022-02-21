@@ -4,8 +4,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'qa-filter',
   templateUrl: './filter.component.html',
   styleUrls: ['./filter.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FilterComponent {
-  constructor() {}
-}
+export class FilterComponent {}

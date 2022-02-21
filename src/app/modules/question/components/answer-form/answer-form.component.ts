@@ -3,7 +3,7 @@ import {
   OnInit,
   ChangeDetectionStrategy,
   ɵmarkDirty as markDirty,
-  AfterViewInit,
+  AfterViewInit
 } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -13,17 +13,14 @@ import { AnswerService } from '@shared/services/answer.service';
   selector: 'app-answer-form',
   templateUrl: './answer-form.component.html',
   styleUrls: ['./answer-form.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AnswerFormComponent implements OnInit, AfterViewInit {
-  answerControl: FormControl = new FormControl('', {
-    validators: [Validators.required, Validators.minLength(24)],
+  answerControl = new FormControl('', {
+    validators: [Validators.required, Validators.minLength(24)]
   });
 
-  constructor(
-    private route: ActivatedRoute,
-    private answerService: AnswerService
-  ) {}
+  constructor(private route: ActivatedRoute, private answerService: AnswerService) {}
 
   ngOnInit(): void {}
 
@@ -32,14 +29,12 @@ export class AnswerFormComponent implements OnInit, AfterViewInit {
   }
 
   /**
-   * Create an answer
+   * Submit answer
    */
   formSubmit(): void {
     const questionId = Number(this.route.snapshot.paramMap.get('questionId'));
-    this.answerService
-      .create(questionId, this.answerControl.value)
-      .subscribe((value) => {
-        console.log(value);
-      });
+    this.answerService.create(questionId, this.answerControl.value).subscribe((value) => {
+      console.log(value);
+    });
   }
 }

@@ -29,11 +29,11 @@ mat-toolbar mat-icon {
 
 .mat-list-item mat-icon {
   display: none;
+  margin-right: 32px;
 }
 
 
 .mat-list-item app-gf-icon {
-  display: none;
   margin-right: 32px;
 
   svg {
@@ -58,10 +58,11 @@ mat-toolbar mat-icon {
   line-height: 20px;
   letter-spacing: .1px;
   margin: 0 12px;
-  text-transform: uppercase;
+  // text-transform: uppercase;
   /* M3/sys/light/on-surface-variant */
 
-  color: #49454F;
+  // color: #49454F;
+  color: var(--medium-emphasis-color);
 }
 
 /*::ng-deep .overflow-container::-webkit-scrollbar {
@@ -98,6 +99,8 @@ mat-toolbar mat-icon {
 .overflow-container {
   height: calc(100vh - 64px);
   overflow: auto;
+  scrollbar-width: thin;
+  //scrollbar-color: rgba(255, 255, 255, 0.12) #353535;
 }
 
 .overflow-container::-webkit-scrollbar {
@@ -113,7 +116,7 @@ mat-toolbar mat-icon {
 @-moz-document url-prefix() {
   .overflow-container {
     // scrollbar-color: rgba(0, 0, 0, .12) #fff;
-    scrollbar-width: thin;
+
   }
 }
 

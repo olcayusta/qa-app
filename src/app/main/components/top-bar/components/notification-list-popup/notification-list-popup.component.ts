@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 import { MatListModule } from '@angular/material/list';
 import { SharedModule } from '@shared/shared.module';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MaterialModule } from '@modules/material/material.module';
 
 @Component({
   selector: 'app-notification-list-popup',
@@ -32,9 +33,9 @@ export class NotificationListPopupComponent implements OnInit {
   declarations: [NotificationListPopupComponent],
   imports: [
     CommonModule,
-    MatListModule,
+    MaterialModule,
     SharedModule,
-    MatProgressSpinnerModule,
+    MatProgressSpinnerModule
   ],
 })
 class NotificationListModule {}

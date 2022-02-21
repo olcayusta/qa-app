@@ -5,7 +5,7 @@ import { Tag } from '@shared/models/tag.model';
 import { environment } from '@environments/environment';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class TagTitleResolver implements Resolve<string> {
   resolve(route: ActivatedRouteSnapshot): Observable<string> {

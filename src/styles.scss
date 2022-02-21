@@ -13,15 +13,15 @@
 @include mat.core();
 
 $custom-typography: mat.define-typography-config(
-  $font-family: 'Archivo, sans-serif',
+        $font-family: 'Archivo, sans-serif',
 );
 
 $body-and-captions-typography: mat.define-typography-config(
-  $font-family: 'Roboto, sans-serif',
+        $font-family: 'Roboto, sans-serif',
 );
 
 $snackbar-typo: mat.define-typography-config(
-  $font-family: 'Archivo, sans-serif',
+        $font-family: 'Archivo, sans-serif',
 );
 
 /*
@@ -35,11 +35,16 @@ $snackbar-typo: mat.define-typography-config(
 
 $my-custom-level: mat.define-typography-level(14px, 24px, 700, $letter-spacing: 10px);
 
+// Badge typography
+$badge-typo: mat.define-typography-config(
+        $font-family: 'Archivo, sans-serif'
+);
+
 // List typography
 $list-typography: mat.define-typography-config(
-  $font-family: 'Archivo, sans-serif',
-  $subheading-2: $my-custom-level,
-  $body-1: $my-custom-level,
+        $font-family: 'Archivo, sans-serif',
+        $subheading-2: $my-custom-level,
+        $body-1: $my-custom-level,
 );
 
 @include mat.list-typography($list-typography);
@@ -63,11 +68,15 @@ $list-typography: mat.define-typography-config(
 @include mat.menu-typography($body-and-captions-typography);
 @include mat.button-typography($body-and-captions-typography);
 @include mat.optgroup-typography($body-and-captions-typography);
+@include mat.option-typography($badge-typo);
 @include mat.autocomplete-typography($body-and-captions-typography);
+@include mat.badge-typography($badge-typo);
+@include mat.chips-typography($badge-typo);
+@include mat.snack-bar-typography($badge-typo);
 
 $chip-typography: mat.define-typography-config(
-  $font-family: 'Roboto, sans-serif',
-  $body-2: mat.define-typography-level(14px, 20px, 400)
+        $font-family: 'Roboto, sans-serif',
+        $body-2: mat.define-typography-level(14px, 20px, 400)
 );
 
 @include mat.chips-typography($chip-typography);
@@ -156,9 +165,13 @@ svg {
   padding-left: 48px !important;
 }
 
-
-:root {
-
-
-
+:not(pre) > code {
+  font-family: "Roboto Mono", monospace;
+  font-size: 14px;
+  line-height: 20px;
+  background-color: #00000012;
+  letter-spacing: 0;
+  padding: 2px 4px;
+  border-radius: 4px;
+  display: inline-flex;
 }

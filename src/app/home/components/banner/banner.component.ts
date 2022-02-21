@@ -6,7 +6,7 @@ import { mapTo } from 'rxjs/operators';
   selector: 'app-banner',
   templateUrl: './banner.component.html',
   styleUrls: ['./banner.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BannerComponent implements OnInit {
   online$!: Observable<boolean>;

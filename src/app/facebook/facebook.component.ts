@@ -9,11 +9,9 @@ import { environment } from '@environments/environment';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FacebookComponent implements OnInit {
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   loginGithub() {
     this.http.get(`${environment.apiUrl}/login/github`).subscribe((value) => {

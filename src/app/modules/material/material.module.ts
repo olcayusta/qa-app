@@ -3,7 +3,6 @@ import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatInputModule } from '@angular/material/input';
@@ -17,6 +16,9 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatIcon, MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   exports: [
@@ -24,7 +26,6 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatDividerModule,
     MatToolbarModule,
     MatButtonModule,
-    MatIconModule,
     MatTooltipModule,
     MatInputModule,
     MatChipsModule,
@@ -38,7 +39,10 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatProgressBarModule,
     MatAutocompleteModule,
     MatSidenavModule,
-    OverlayModule,
-  ],
+    MatCheckboxModule,
+    MatProgressSpinnerModule,
+    MatIconModule,
+    OverlayModule
+  ]
 })
 export class MaterialModule {}

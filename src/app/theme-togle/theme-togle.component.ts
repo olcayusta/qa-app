@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'qa-theme-togle',
   templateUrl: './theme-togle.component.html',
   styleUrls: ['./theme-togle.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ThemeTogleComponent implements OnInit {
   storageKey = 'theme-preference';
   theme = {
-    value: 'light',
+    value: 'light'
   };
 
   constructor() {
@@ -42,9 +43,7 @@ export class ThemeTogleComponent implements OnInit {
     if (localStorage.getItem(this.storageKey)) {
       return localStorage.getItem(this.storageKey);
     } else {
-      return window.matchMedia('(prefers-color-scheme: dark)').matches
-        ? 'dark'
-        : 'light';
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     }
   }
 
@@ -57,7 +56,6 @@ export class ThemeTogleComponent implements OnInit {
   reflectPreference() {
     // @ts-ignore
     document.firstElementChild.setAttribute('data-theme', this.theme.value);
-
 
     document
       .querySelector('#theme-toggle')

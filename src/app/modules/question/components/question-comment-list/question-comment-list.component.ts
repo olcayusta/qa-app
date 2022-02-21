@@ -8,15 +8,12 @@ import { Observable } from 'rxjs';
   selector: 'app-question-comment-list',
   templateUrl: './question-comment-list.component.html',
   styleUrls: ['./question-comment-list.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class QuestionCommentListComponent implements OnInit {
   comments$!: Observable<Comment[]>;
 
-  constructor(
-    private route: ActivatedRoute,
-    private commentService: CommentService
-  ) {}
+  constructor(private route: ActivatedRoute, private commentService: CommentService) {}
 
   ngOnInit(): void {
     const questionId = this.route.snapshot.paramMap.get('questionId');

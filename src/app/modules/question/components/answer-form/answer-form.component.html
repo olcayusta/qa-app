@@ -1,17 +1,17 @@
 <form autocomplete='off' spellcheck='false' (submit)='formSubmit()'>
-  <!-- <div class="buttons">
-     <button mat-icon-button>
-       <mat-icon>format_bold</mat-icon>
-     </button>
-     <button mat-icon-button>
-       <mat-icon>format_italic</mat-icon>
-     </button>
-   </div>-->
-  <mat-form-field appearance='fill' floatLabel='never'>
+  <!--<div class='buttons'>
+    <button mat-icon-button>
+      <mat-icon>format_bold</mat-icon>
+    </button>
+    <button mat-icon-button>
+      <mat-icon>format_italic</mat-icon>
+    </button>
+  </div>-->
+  <mat-form-field appearance='outline' floatLabel='never' hideRequiredMarker>
     <mat-label>Cevap</mat-label>
-    <textarea aria-label='Answer text' matInput cdkTextareaAutosize cdkAutosizeMinRows='16'
+    <textarea aria-label='Answer text' matInput cdkTextareaAutosize cdkAutosizeMinRows='8'
               [formControl]='answerControl'></textarea>
-    <mat-error *ngIf="answerControl.hasError('required')">Body is missing</mat-error>
+    <mat-error *ngIf="answerControl.hasError('required')">Bir açıklama girin</mat-error>
     <mat-error *ngIf="answerControl.hasError('minlength')">Body must be at least 24 characters; you
       entered {{answerControl.value.length}}.
     </mat-error>

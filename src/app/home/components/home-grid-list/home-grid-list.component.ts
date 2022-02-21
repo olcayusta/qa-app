@@ -3,7 +3,7 @@ import {
   OnInit,
   ChangeDetectionStrategy,
   ɵmarkDirty as markDirty,
-  OnDestroy,
+  OnDestroy
 } from '@angular/core';
 import { Question } from '@shared/models/question.model';
 import { Observable, Subscription } from 'rxjs';
@@ -16,7 +16,7 @@ import { delay, switchMap } from 'rxjs/operators';
   selector: 'qa-home-grid-list',
   templateUrl: './home-grid-list.component.html',
   styleUrls: ['./home-grid-list.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeGridListComponent implements OnInit, OnDestroy {
   questions!: Question[];

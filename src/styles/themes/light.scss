@@ -193,31 +193,29 @@ $secondary-gray-theme: mat.define-light-theme((
 @include mat.divider-theme($gray-theme);
 @include mat.sidenav-theme($gray-theme);
 
-:root {
-  --color: rgba(0, 0, 0, .87);
-  --mdc-theme-on-primary: #fff;
-  --mdc-theme-primary: #6200ee;
-  --medium-emphasis-color: rgba(0, 0, 0, 0.6);
-  --surface: #fff;
-  --topbar-background: #fff;
-  --high-emphasis-color: black;
-  --card-background: #fff;
-  --fab-icon-color: #fff;
-  --text-color: rgba(0, 0, 0, .87);
-  --icon-color: rgba(0, 0, 0, .6);
-  --drawer-background: #fff;
-  --autocomplete-background: #fff;
-  --search-background: rgba(0, 0, 0, 0.04);
-  --code-background: rgba(0, 0, 0, .02);
-  --border-color: rgba(0, 0, 0, .12);
+@media (prefers-color-scheme: light) {
+  :root {
+    --color: rgba(0, 0, 0, .87);
+    --mdc-theme-on-primary: #fff;
+    --mdc-theme-primary: #6200ee;
+    --medium-emphasis-color: rgba(0, 0, 0, 0.6);
+    --surface: #fff;
+    --topbar-background: #fff;
+    --high-emphasis-color: black;
+    --card-background: #fff;
+    --fab-icon-color: #fff;
+    --text-color: rgba(0, 0, 0, .87);
+    --icon-color: rgba(0, 0, 0, .6);
+    --drawer-background: #fff;
+    --autocomplete-background: #fff;
+    // --search-background: rgba(0, 0, 0, 0.04);
+    --search-background: #f1f3f4;
+    --code-background: rgba(0, 0, 0, .02);
+    --border-color: rgba(0, 0, 0, .12);
+  }
 }
 
 @import "~highlight.js/scss/github";
-
-pre code.hljs  {
-  padding: 16px 0 !important;
-  overflow: unset !important;
-}
 
 svg {
   fill: rgba(0, 0, 0, .6);
@@ -248,6 +246,14 @@ svg {
   color: #6200EE !important;
   font-weight: 500 !important;
   // background-color: rgba(0, 0, 0, .12);
+
+  mat-icon {
+    color: #6200ee !important;
+  }
+
+  app-gf-icon svg {
+    fill: #6200ee !important;
+  }
 
   /* Primary Overlay */
   background: linear-gradient(0deg, rgba(187, 134, 252, 0.12), rgba(187, 134, 252, 0.12)), #FFFFFF;
@@ -295,8 +301,12 @@ svg {
   background-color: #909090;
 }*/
 
+.mat-simple-snackbar-action {
+  color: #BB86FC;
+}
+
 .mat-chip.mat-standard-chip {
-  background-color: #fff !important;
+  background-color: #fff;
   border: 1px solid rgba(0, 0, 0, .12);
 }
 
@@ -304,4 +314,9 @@ svg {
   background: rgba(98, 0, 238, 0.08) !important;
   color: #6200ee !important;
   border: 1px solid rgba(98, 0, 238, 0.08) !important;
+}
+
+.mat-badge-warn .mat-badge-content {
+  color: white;
+  background: #B00020;
 }

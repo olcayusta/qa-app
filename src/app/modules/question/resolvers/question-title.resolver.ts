@@ -5,7 +5,7 @@ import { Question } from '@shared/models/question.model';
 import { environment } from '@environments/environment';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class QuestionTitleResolver implements Resolve<string> {
   constructor() {}

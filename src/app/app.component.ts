@@ -1,10 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Inject,
-  NgZone,
-  OnInit,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, NgZone, OnInit } from '@angular/core';
 import {
   ActivatedRoute,
   NavigationCancel,
@@ -12,30 +6,27 @@ import {
   NavigationError,
   ResolveEnd,
   ResolveStart,
-  Router,
+  Router
 } from '@angular/router';
 import { SocketService } from '@shared/services/socket.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SpinnerService } from '@shared/services/spinner.service';
-import { SwPush, SwUpdate, VersionEvent } from '@angular/service-worker';
+import { SwPush, SwUpdate, VersionEvent, VersionReadyEvent } from '@angular/service-worker';
 import { PushNotificationService } from '@shared/services/push-notification.service';
 import { environment } from '@environments/environment';
 import { DOCUMENT } from '@angular/common';
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { Title } from '@angular/platform-browser';
-import { Subscription } from 'rxjs';
-import { AuthService } from './auth/auth.service';
+import { AuthService } from '@auth/auth.service';
+import { filter, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements OnInit {
   spinner = false;
-
-  subscription!: Subscription;
 
   constructor(
     private router: Router,
@@ -44,14 +35,13 @@ export class AppComponent implements OnInit {
     private snackBar: MatSnackBar,
     private route: ActivatedRoute,
     private activatedRoute: ActivatedRoute,
-    private titleService: Title,
     private spinnerService: SpinnerService,
     private swPush: SwPush,
     private swUpdate: SwUpdate,
     private pushService: PushNotificationService,
     private breakpointObserver: BreakpointObserver,
     private zone: NgZone,
-    @Inject(DOCUMENT) private document: Document,
+    @Inject(DOCUMENT) private document: Document
   ) {
     // THEME FIX
     const storageKey = localStorage.getItem('theme-preference');
@@ -61,39 +51,37 @@ export class AppComponent implements OnInit {
       console.log(value.reason, value.type);
     });
 
-    swUpdate.versionUpdates.subscribe((event: VersionEvent) => {
-      console.log(event)
-    })
+    const updatesAvailable = swUpdate.versionUpdates.pipe(
+      filter((evt): evt is VersionReadyEvent => evt.type === 'VERSION_READY'),
+      map((evt) => ({
+        type: 'UPDATE_AVAILABLE',
+        current: evt.currentVersion,
+        available: evt.latestVersion
+      }))
+    );
 
-    swUpdate.available.subscribe((event) => {
-      console.log(event);
-      const snackBar = this.snackBar.open('Available update!', 'TAMAM', {
-        duration: 500000,
-      });
-
-      this.subscription = snackBar.onAction().subscribe((value) => {
-        console.log(value);
-        document.location.reload();
-      });
-
-      console.log(this.subscription.closed);
+    updatesAvailable.subscribe((value) => {
+      this.snackBar
+        .open('Available update!', 'TAMAM', {
+          duration: 4000
+        })
+        .onAction()
+        .subscribe((_) => {
+          console.log('The snackbar action was triggered!');
+          this.document.location.reload();
+        });
     });
 
-    // Spinner
-    router.events.subscribe((value) => {
-      if (value instanceof ResolveStart) {
+    /**
+     * This is the event that is fired when the service worker is installed.
+     */
+    router.events.subscribe((event) => {
+      if (event instanceof ResolveStart) {
         this.spinner = true;
         this.spinnerService.addSpinner();
       }
 
-      if (value instanceof ResolveEnd) {
-        this.spinner = false;
-        this.spinnerService.removeSpinner();
-      }
-
-      if (
-        value instanceof (NavigationCancel || NavigationError || NavigationEnd)
-      ) {
+      if (event instanceof (ResolveEnd || NavigationCancel || NavigationError || NavigationEnd)) {
         this.spinner = false;
         this.spinnerService.removeSpinner();
       }
@@ -114,7 +102,7 @@ export class AppComponent implements OnInit {
     if (this.swPush.isEnabled) {
       try {
         const subscription = await this.swPush.requestSubscription({
-          serverPublicKey: environment.vapidPublic,
+          serverPublicKey: environment.vapidPublic
         });
         this.pushService.sendSubscriptionToTheServer(subscription).subscribe();
       } catch (e) {
@@ -125,14 +113,6 @@ export class AppComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     await this.initSwPush();
-
-    /* set('hello', 'world')
-      .then((value) => {
-        console.log(value);
-      })
-      .catch((reason) => {
-        console.error(reason);
-      });*/
 
     /*    Notification.requestPermission().then((result) => {
           console.log(result);
@@ -157,18 +137,13 @@ export class AppComponent implements OnInit {
     /**
      * Make a notification for author user id for created answer for question.
      */
-
     if (this.authService.userValue) {
       this.socketService.on('new answer').subscribe(({ event, payload }) => {
         console.log('Sorunuza, yeni ber cevap geldi.');
         this.snackBar.open('One line text string.', 'GÖRÜNTÜLE', {
-          duration: 9999999,
+          duration: 9999999
         });
       });
     }
-
-    /*this.socketService.on('hello').subscribe(({ payload }) => {
-      console.log(payload);
-    });*/
   }
 }

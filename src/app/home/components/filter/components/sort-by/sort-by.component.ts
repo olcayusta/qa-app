@@ -5,8 +5,7 @@ import {
   ViewChildren,
   QueryList,
   AfterViewInit,
-  OnInit,
-  ChangeDetectorRef,
+  OnInit
 } from '@angular/core';
 import { MatMenu, MatMenuItem } from '@angular/material/menu';
 import { ActivatedRoute } from '@angular/router';
@@ -17,10 +16,10 @@ interface Food {
 }
 
 @Component({
-  selector: 'qa-sort-filter',
+  selector: 'inek-sort-filter',
   templateUrl: './sort-by.component.html',
   styleUrls: ['./sort-by.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SortByComponent implements OnInit, AfterViewInit {
   @ViewChild('menu') menu!: MatMenu;
@@ -31,20 +30,20 @@ export class SortByComponent implements OnInit, AfterViewInit {
   foods: Food[] = [
     { value: 'steak-0', viewValue: 'Steak' },
     { value: 'pizza-1', viewValue: 'Pizza' },
-    { value: 'tacos-2', viewValue: 'Tacos' },
+    { value: 'tacos-2', viewValue: 'Tacos' }
   ];
 
   items = [
-    { sort: '', label: 'Newest' },
-    { sort: 'activity', label: 'Recent activity' },
-    { sort: 'popularity', label: 'Most votes' },
+    { sort: '', label: 'Eklenme tarihi (en yeni)' },
+    { sort: 'activity', label: 'Güncelleme tarihi (en yeni)' },
+    { sort: 'popularity', label: 'Skor sayısı (en yüksek)' },
     { sort: 'date', label: 'Most frequent' },
-    { sort: 'activity', label: 'Bounty ending soon' },
+    { sort: 'activity', label: 'Bounty ending soon' }
   ];
 
   selectedIndex = 0;
 
-  constructor(private route: ActivatedRoute, public cdr: ChangeDetectorRef) {}
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     const sort = this.route.snapshot.queryParamMap.get('sort');

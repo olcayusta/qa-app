@@ -2,6 +2,7 @@
   display: block;
 }
 
+
 a {
   color: inherit;
   text-decoration: none;
@@ -37,15 +38,6 @@ a:hover {
   color: var(--medium-emphasis-color);
 }
 
-.user-avatar {
-  display: inline-flex;
-  width: 64px;
-  height: 64px;
-  object-fit: cover;
-  border-radius: 100%;
-  margin-right: 16px;
-}
-
 [itemprop="text"] {
   font-size: 16px;
   line-height: 24px;
@@ -53,4 +45,10 @@ a:hover {
 
 ::ng-deep ul li {
   margin-bottom: 8px;
+}
+
+.answer-item-user-renderer {
+  width: 64px;
+  height: 64px;
+  margin-right: 16px;
 }

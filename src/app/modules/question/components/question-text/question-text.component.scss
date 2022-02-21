@@ -6,14 +6,62 @@
   margin: 64px 0 0 0;
 }
 
-::ng-deep p {
-  font-size: 16px;
-  line-height: 24px;
-  margin-top: 0;
-  margin-bottom: 16px;
-  letter-spacing: .5px;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+/**
+ * Markdown Styles
+ */
+::ng-deep inek-question-text {
+  h1 {
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 44px;
+  }
+
+  h2 {
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 40px;
+  }
+
+  h3 {
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 36px;
+  }
+
+  blockquote {
+    padding: 16px 32px;
+    margin: 24px 24px;
+    position: relative;
+
+    :before {
+      content: "";
+      width: 4px;
+      height: 100%;
+      background-color: rgb(0 0 0 / 24%);
+      display: flex;
+      position: absolute;
+      left: 0;
+      border-radius: 8px;
+      top: 0;
+    }
+
+    p {
+      margin: 0;
+      font-family: Archivo, sans-serif;
+      // color: var(--medium-emphasis-color);
+    }
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: .5px;
+    margin-top: 0;
+    margin-bottom: 16px;
+    // font-family: Roboto, "Helvetica Neue", sans-serif;
+  }
 }
+
 
 :host {
   a, :link, :visited {
@@ -56,3 +104,32 @@ pre {
     padding: 16px 24px !important;
   }
 }
+
+/*
+::ng-deep blockquote {
+  border-left: 5px solid #999;
+  margin: 0;
+  padding: 0;
+  position: relative;
+
+  p {
+    font-family: Georgia, Times, "Times New Roman", serif;
+    font-size: 16px;
+    line-height: 24px;
+    font-style: italic;
+  }
+}
+
+::ng-deep blockquote:before {
+  content: "\201C";
+}
+
+::ng-deep blockquote:after {
+  content: "\201D";
+}*/
+
+/*
+::ng-deep a:hover {
+  color: #3740ff;
+  background: #f8faff;
+}*/

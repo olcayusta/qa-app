@@ -6,10 +6,7 @@ import { HomeComponent } from './home.component';
 import { SharedModule } from '@shared/shared.module';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FilterComponent } from './components/filter/filter.component';
-import {
-  MAT_MENU_SCROLL_STRATEGY,
-  MatMenuModule,
-} from '@angular/material/menu';
+import { MAT_MENU_SCROLL_STRATEGY, MatMenuModule } from '@angular/material/menu';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { IsVisibleDirective } from './directives/is-visible.directive';
 import { MatButtonModule } from '@angular/material/button';
@@ -25,6 +22,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 function scrollFactory(overlay: Overlay): () => CloseScrollStrategy {
   return () => overlay.scrollStrategies.close();
@@ -38,7 +36,7 @@ function scrollFactory(overlay: Overlay): () => CloseScrollStrategy {
     IsVisibleDirective,
     SortByComponent,
     FilterByComponent,
-    HomeGridListComponent,
+    HomeGridListComponent
   ],
   imports: [
     CommonModule,
@@ -55,13 +53,14 @@ function scrollFactory(overlay: Overlay): () => CloseScrollStrategy {
     MatSelectModule,
     MatButtonToggleModule,
     MatRadioModule,
+    MatTooltipModule
   ],
   providers: [
     {
       provide: MAT_MENU_SCROLL_STRATEGY,
       useFactory: scrollFactory,
-      deps: [Overlay],
-    },
-  ],
+      deps: [Overlay]
+    }
+  ]
 })
 export class HomeModule {}

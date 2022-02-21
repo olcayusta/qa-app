@@ -1,19 +1,15 @@
-import {
-  AfterViewInit,
-  ChangeDetectionStrategy,
-  Component,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'qa-site-code',
+  selector: 'inek-site-code',
   templateUrl: './site-code.component.html',
   styleUrls: ['./site-code.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SiteCodeComponent {
   text!: HTMLPreElement;
-  lang: string = '';
+  lang = '';
 
   constructor(private snackBar: MatSnackBar) {}
 

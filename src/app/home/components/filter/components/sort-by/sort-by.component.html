@@ -12,13 +12,13 @@
       <button mat-menu-item>Albümler ve Single'lar</button>
     </mat-menu>-->
 
-  <button mat-button class="menu-button" [matMenuTriggerFor]="sortMenu">
-    <mat-icon>sort_by</mat-icon>
+  <button mat-button class="menu-button" [matMenuTriggerFor]="sortMenu" matTooltip='Yorumları sırala'>
+    <app-gf-icon name='sort'></app-gf-icon>
     <span>Sıralama ölçütü</span>
   </button>
 
   <button mat-button class="menu-button" [matMenuTriggerFor]="filterMenu">
-    <mat-icon>filter_list</mat-icon>
+    <app-gf-icon name='filter_list'></app-gf-icon>
     <span>Filtreler</span>
   </button>
 
@@ -59,7 +59,7 @@
    </button>-->
 </div>
 
-<mat-menu #sortMenu="matMenu" class="sort-menu mat-elevation-z2">
+<mat-menu #sortMenu="matMenu" class="sort-menu">
   <a
     mat-menu-item
     routerLink="/"
@@ -72,7 +72,7 @@
   <button mat-menu-item [matMenuTriggerFor]="subMenu">Daha fazla</button>-->
 </mat-menu>
 
-<mat-menu #filterMenu="matMenu" class="sort-menu mat-elevation-z2">
+<mat-menu #filterMenu="matMenu" class="sort-menu">
   <button mat-menu-item>
     <mat-icon>check</mat-icon>
     No answers

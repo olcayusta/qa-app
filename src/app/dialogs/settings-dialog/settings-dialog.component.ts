@@ -1,6 +1,7 @@
-import { Component, OnInit, ChangeDetectionStrategy, Inject } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Inject, NgModule } from '@angular/core';
 import { MatRadioChange } from '@angular/material/radio';
 import { DOCUMENT } from '@angular/common';
+import { MaterialModule } from '@modules/material/material.module';
 
 interface Food {
   value: string;
@@ -13,10 +14,10 @@ interface Car {
 }
 
 @Component({
-  selector: 'app-settings-dialog',
+  selector: 'inek-settings-dialog',
   templateUrl: './settings-dialog.component.html',
   styleUrls: ['./settings-dialog.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SettingsDialogComponent implements OnInit {
   selectedValue!: string;
@@ -25,13 +26,13 @@ export class SettingsDialogComponent implements OnInit {
   foods: Food[] = [
     { value: 'steak-0', viewValue: 'Cihaz temasını kullan' },
     { value: 'pizza-1', viewValue: 'Koyu tema' },
-    { value: 'tacos-2', viewValue: 'Açık tema' },
+    { value: 'tacos-2', viewValue: 'Açık tema' }
   ];
 
   cars: Car[] = [
     { value: 'volvo', viewValue: 'Volvo' },
     { value: 'saab', viewValue: 'Saab' },
-    { value: 'mercedes', viewValue: 'Mercedes' },
+    { value: 'mercedes', viewValue: 'Mercedes' }
   ];
 
   constructor(@Inject(DOCUMENT) private document: Document) {}
@@ -43,3 +44,9 @@ export class SettingsDialogComponent implements OnInit {
     localStorage.setItem('yt-theme', themeName);
   }
 }
+
+@NgModule({
+  declarations: [SettingsDialogComponent],
+  imports: [MaterialModule]
+})
+export class SettingsDialogModule {}

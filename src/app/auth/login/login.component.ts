@@ -1,9 +1,4 @@
-import {
-  Component,
-  OnInit,
-  ChangeDetectionStrategy,
-  ɵmarkDirty as markDirty,
-} from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ɵmarkDirty as markDirty } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
@@ -17,7 +12,7 @@ import { EMPTY } from 'rxjs';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoginComponent implements OnInit {
   form: FormGroup;
@@ -37,12 +32,15 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private title: Title
   ) {
-    this.form = formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.min(8)]],
-    }, {
-      updateOn: 'submit'
-    });
+    this.form = formBuilder.group(
+      {
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required, Validators.min(8)]]
+      },
+      {
+        updateOn: 'submit'
+      }
+    );
   }
 
   ngOnInit(): void {
@@ -59,7 +57,7 @@ export class LoginComponent implements OnInit {
         .pipe(
           catchError((err, caught) => {
             this.form.get('email')!.setErrors({
-              emailNotFound: true,
+              emailNotFound: true
             });
             markDirty(this);
             this.submitted = false;
@@ -74,16 +72,14 @@ export class LoginComponent implements OnInit {
             console.log(value);
           } else {
             // Redirect the user
-            this.router
-              .navigate([this.authService.redirectUrl])
-              .then((value1) => {
-                // Kullanicinin favori etiketlerini kaydet
-                this.tagService.getFavoriteTags().subscribe((value2) => {
-                  if (value2) {
-                    localStorage.setItem('watchedTags', JSON.stringify(value2));
-                  }
-                });
+            this.router.navigate([this.authService.redirectUrl]).then((value1) => {
+              // Kullanicinin favori etiketlerini kaydet
+              this.tagService.getFavoriteTags().subscribe((value2) => {
+                if (value2) {
+                  localStorage.setItem('watchedTags', JSON.stringify(value2));
+                }
               });
+            });
           }
         });
     }

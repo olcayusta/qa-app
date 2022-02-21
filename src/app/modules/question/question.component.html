@@ -3,45 +3,74 @@
     <div class='layout-container'>
       <header>
 
+        <!--        <div class='grid-left'>
+                  <button mat-icon-button>
+                    <mat-icon>arrow_drop_up</mat-icon>
+                  </button>
+                  <div class='score'>1</div>
+                  <button mat-icon-button>
+                    <mat-icon>arrow_drop_down</mat-icon>
+                  </button>
+                </div>-->
+
+
         <div class='header-one'>
           <h4 itemprop='name' class='headline-4'>{{question.title}}</h4>
-          <!--          <div>-->
-          <!--            <button mat-button>-->
-          <!--              <mat-icon fontSet="material-icons-outlined">favorite_border</mat-icon>-->
-          <!--              <span>BEĞEN</span>-->
-          <!--            </button>-->
 
-          <!--            <button mat-button (click)="openDialog()">
-                        <mat-icon fontSet="material-icons-outlined">share</mat-icon>
-                        <span>PAYLAŞ</span>
-                      </button>-->
+          <div class='body-2 header-one-description'>
+            <p>{{question.viewCount}} görüntüleme</p>
+            <span class='bracket'>—</span>
+            <time itemprop='dateCreated' [attr.datetime]='question.creationTime'>{{question.creationTime | relativeTimeFormat}}</time>
+          </div>
 
-          <!--            <button mat-icon-button [matMenuTriggerFor]="flagMenu">-->
-          <!--              <mat-icon fontSet="material-icons-outlined">more_horiz</mat-icon>-->
-          <!--            </button>-->
+      <!--    <div>
+            <button mat-button color='primary' matTooltip='Bunu beğendim'>
+              <app-gf-icon name='favorite'></app-gf-icon>
+              <span>Beğen</span>
+            </button>
 
-          <!--            <mat-menu #flagMenu="matMenu">-->
-          <!--              <button mat-menu-item>-->
-          <!--                <mat-icon fontSet="material-icons-outlined">flag</mat-icon>-->
-          <!--                <span>Bildir</span>-->
-          <!--              </button>-->
-          <!--            </mat-menu>-->
-          <!--          </div>-->
+            <button mat-button (click)='openShareDialog()' matTooltip='Paylaş'>
+              <app-gf-icon name='share'></app-gf-icon>
+              <span>Paylaş</span>
+            </button>
+
+            <button mat-button>
+              <mat-icon fontSet='material-icons-outlined'>follow</mat-icon>
+              <span>Takip et</span>
+            </button>
+
+            <button mat-button matTooltip='Favorilere ekle'>
+              <app-gf-icon name='bookmark_add'></app-gf-icon>
+              <span>Favorilere ekle</span>
+            </button>
+
+            &lt;!&ndash;<button mat-icon-button [matMenuTriggerFor]='flagMenu'>
+              <mat-icon fontSet='material-icons-two-tone'>more_horiz</mat-icon>
+            </button>&ndash;&gt;
+
+            <mat-menu #flagMenu='matMenu'>
+              <ng-template matMenuContent>
+                <button mat-menu-item>
+                  <app-gf-icon name='flag'></app-gf-icon>
+                  <span>Bildir</span>
+                </button>
+              </ng-template>
+            </mat-menu>
+          </div>-->
+
         </div>
 
         <div itemprop='author' itemscope itemtype='https://schema.org/Person'>
           <div class='author'>
-            <!--      <img itemprop="image" class="author-img" src="{{question.user.picture}}"
-                       alt="{{question.user.displayName}}">-->
-
-            <inek-img-shadow class='question-user-picture-render' [src]='question.user.picture' [width]='64' [height]='64'
-                           [alt]='question.user.displayName'></inek-img-shadow>
+            <inek-img-shadow class='question-user-picture-render' [src]='question.user.picture' [width]='64'
+                             [height]='64' [itemprop]='true'
+                             [alt]='question.user.displayName'></inek-img-shadow>
 
             <div class='author-info'>
               <a routerLink='/user/{{question.user.id}}'>
-                <div itemprop='name' class='author-name'>{{question.user.displayName}}</div>
+                <div itemprop='name' id='author-name'>{{question.user.displayName}}</div>
               </a>
-              <div class='author-job'>Seviye 1</div>
+              <div class='author-badge'>Seviye 1</div>
             </div>
           </div>
         </div>
@@ -49,23 +78,19 @@
       </header>
     </div>
 
-    <!-- Text -->
-    <qa-question-text [content]='question.content'></qa-question-text>
-
-    <!--    <qa-hero-card *qaHeroDelay="0">
-          <div [innerHTML]='question.content'></div>
-          <h1>Hello</h1>
-        </qa-hero-card>-->
-
-    <!--    <app-question-description [description]="question.content"></app-question-description>-->
+    <!-- Question Content -->
+    <inek-question-text [content]='question.content'></inek-question-text>
 
     <!-- Comments -->
     <app-question-comment-list></app-question-comment-list>
 
     <!-- Answers -->
-    <app-question-answers></app-question-answers>
+    <app-question-answers [acceptedAnswerId]='question?.acceptedAnswerId'></app-question-answers>
 
   </div>
 
+  <!--
+    Answer Form
+  -->
   <app-answer-form></app-answer-form>
 </ng-container>

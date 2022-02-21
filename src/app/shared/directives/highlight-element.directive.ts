@@ -1,8 +1,4 @@
-import {
-  AfterViewInit,
-  Directive,
-  ElementRef,
-} from '@angular/core';
+import { AfterViewInit, Directive, ElementRef } from '@angular/core';
 
 import hljs from 'highlight.js/lib/core';
 
@@ -13,7 +9,6 @@ import sql from 'highlight.js/lib/languages/sql';
 import php from 'highlight.js/lib/languages/php';
 import xml from 'highlight.js/lib/languages/xml';
 import cos from 'highlight.js/lib/languages/cos';
-import { DomSanitizer } from '@angular/platform-browser';
 
 hljs.registerLanguage('js', javascript);
 hljs.registerLanguage('javascript', javascript);
@@ -26,19 +21,19 @@ hljs.registerLanguage('cos', cos);
 
 hljs.configure({
   languages: ['javascript', 'typescript', 'sql', 'xml', 'css', 'php', 'cos'],
+  ignoreUnescapedHTML: true
 });
 
 @Directive({
-  selector: '[qaHighlightElement]',
+  selector: '[qaHighlightElement]'
 })
 export class HighlightElementDirective implements AfterViewInit {
-  constructor(private elementRef: ElementRef<HTMLElement>, private sanitizer: DomSanitizer) {}
+  constructor(private elementRef: ElementRef<HTMLElement>) {}
 
   ngAfterViewInit() {
-  /*  this.elementRef.nativeElement.querySelectorAll('pre').forEach((block: HTMLPreElement) => {
-      hljs.highlightElement(block);
+    this.elementRef.nativeElement.querySelectorAll('pre').forEach((block: HTMLElement) => {
+      const code = block.querySelector('code') as HTMLElement;
+      hljs.highlightElement(code);
     });
-*/
-    hljs.highlightAll();
   }
 }

@@ -1,6 +1,5 @@
 :host {
   display: block;
-  // padding: 0 160px;
 }
 
 a {
@@ -34,29 +33,7 @@ a:hover {
 }
 
 .avatar-link {
-  height: 40px;
-}
-
-/**
- * Avatar
- */
-.img-shadow {
-  width: 40px;
-  height: 40px;
-  background-color: transparent;
-  // transition: opacity 0.2s;
-  opacity: 0;
-  border-radius: 50%;
-  overflow: hidden;
-}
-
-.img-shadow[loaded] {
-  opacity: 1;
-  // transition: none
-}
-
-.no-transition {
-  transition: none;
+  // height: 40px;
 }
 
 .author-image-renderer {
@@ -66,6 +43,22 @@ a:hover {
 
 .item-right {
   flex-grow: 1;
+}
+
+.bountie {
+  font-size: 12px;
+  border-radius: 4px;
+  background-color: #ee000024;
+  color: black;
+  // display: flex;
+  /* padding: 4px; */
+  line-height: 17px;
+  padding: 1px 4px;
+  margin-right: 4px;
+  /* letter-spacing: 1.5px; */
+  font-weight: 400;
+  font-family: Archivo, sans-serif;
+  display: none;
 }
 
 .flex-cl {
@@ -95,7 +88,6 @@ a:hover {
 }
 
 mat-divider {
-  display: block;
   margin: 16px 0;
 }
 
@@ -125,19 +117,15 @@ mat-divider {
 }
 
 mat-chip-list {
-  display: flex;
+  display: inline-flex;
   flex-direction: row;
-}
-
-.tag-list {
-  display: flex;
-  padding-right: 4px;
   margin-top: 12px;
-  //margin-left: -4px;
 }
 
-::ng-deep .mat-chip-list-wrapper {
-  // margin: 0 !important;
+.mat-chip.mat-standard-chip.mat-chip-selected.mat-primary {
+  background-color: #6200ee12;
+  color: #6200ee;
+  border-color: #6200ee54;
 }
 
 .mat-basic-chip {
@@ -163,7 +151,6 @@ mat-chip-list {
   }
 
   .filter {
-
     mat-chip-list {
       display: flex;
       margin: 20px 0 0;

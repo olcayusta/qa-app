@@ -13,14 +13,14 @@ const routes: Routes = [
       {
         path: '',
         component: QuestionComponent,
-        title: QuestionTitleResolver,
+        title: QuestionTitleResolver
       }
     ]
-  },
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class QuestionRoutingModule {}

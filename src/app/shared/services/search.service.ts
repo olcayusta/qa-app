@@ -12,7 +12,7 @@ export interface ISearchResult {
 }
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class SearchService {
   constructor(private http: HttpClient) {}
@@ -20,8 +20,8 @@ export class SearchService {
   searchQuestion(searchTerm: string) {
     return this.http.get<ISearchResult[]>(`${environment.apiUrl}/search`, {
       params: {
-        q: searchTerm,
-      },
+        q: searchTerm
+      }
     });
   }
 }

@@ -1,160 +1,98 @@
 @use '@angular/material' as mat;
 
-/* Override colors */
-/*$mat-deep-purple: (
-  50: #F2E7FE,
-  100: #DBB2FF,
-  200: #BB86FC,
-  300: #985EFF,
-  400: #7F39FB,
-  500: #6200EE,
-  600: #5600E8,
-  700: #3700B3,
-  800: #30009C,
-  900: #23036A,
-  A100: #b388ff,
-  A200: #7c4dff,
-  A400: #651fff,
-  A700: #6200ea,
-  contrast: (
-    50: $dark-primary-text,
-    100: $dark-primary-text,
-    200: $dark-primary-text,
-    300: $light-primary-text,
-    400: $light-primary-text,
-    500: $light-primary-text,
-    600: $light-primary-text,
-    700: $light-primary-text,
-    800: $light-primary-text,
-    900: $light-primary-text,
-    A100: $dark-primary-text,
-    A200: $light-primary-text,
-    A400: $light-primary-text,
-    A700: $light-primary-text,
-  )
-);
-$mat-secondary: (
-  50: #C8FFF4,
-  100: #70EFDE,
-  200: #03DAC5,
-  300: #00C4B4,
-  400: #00B3A6,
-  500: #01A299,
-  600: #019592,
-  700: #018786,
-  800: #017374,
-  900: #005457,
-  A100: #b388ff,
-  A200: #7c4dff,
-  A400: #651fff,
-  A700: #6200ea,
-  contrast: (
-    50: $dark-primary-text,
-    100: $dark-primary-text,
-    200: $dark-primary-text,
-    300: $light-primary-text,
-    400: $light-primary-text,
-    500: $light-primary-text,
-    600: $light-primary-text,
-    700: $light-primary-text,
-    800: $light-primary-text,
-    900: $light-primary-text,
-    A100: $dark-primary-text,
-    A200: $light-primary-text,
-    A400: $light-primary-text,
-    A700: $light-primary-text,
-  )
-);*/
-
 $dark-primary-text: rgba(black, 0.87);
 $light-primary-text: white;
 
 $deep-purple-palette: (
-  50: #F2E7FE,
-  100: #DBB2FF,
-  200: #BB86FC,
-  300: #985EFF,
-  400: #7F39FB,
-  500: #6200ee,
-  600: #5600E8,
-  700: #3700B3,
-  800: #30009C,
-  900: #23036A,
-  A100: #b388ff,
-  A200: #7c4dff,
-  A400: #651fff,
-  A700: #6200ea,
-  contrast: (
-    50: $dark-primary-text,
-    100: $dark-primary-text,
-    200: $dark-primary-text,
-    300: $light-primary-text,
-    400: $light-primary-text,
-    500: $light-primary-text,
-    600: $light-primary-text,
-    700: $light-primary-text,
-    800: $light-primary-text,
-    900: $light-primary-text,
-    A100: $dark-primary-text,
-    A200: $light-primary-text,
-    A400: $light-primary-text,
-    A700: $light-primary-text,
-  )
+        50: #F2E7FE,
+        100: #DBB2FF,
+        200: #BB86FC,
+        300: #985EFF,
+        400: #7F39FB,
+        500: #6200EE,
+        600: #5600E8,
+        700: #3700B3,
+        800: #30009C,
+        900: #23036A,
+        A100: #b388ff,
+        A200: #7c4dff,
+        A400: #651fff,
+        A700: #6200ea,
+        contrast: (
+                50: $dark-primary-text,
+                100: $dark-primary-text,
+                200: $dark-primary-text,
+                300: $light-primary-text,
+                400: $light-primary-text,
+                500: $light-primary-text,
+                600: $light-primary-text,
+                700: $light-primary-text,
+                800: $light-primary-text,
+                900: $light-primary-text,
+                A100: $dark-primary-text,
+                A200: $light-primary-text,
+                A400: $light-primary-text,
+                A700: $light-primary-text,
+        )
 );
 
 $dark-primary: mat.define-palette($deep-purple-palette, 200);
 $dark-accent: mat.define-palette($deep-purple-palette);
 $dark-theme: mat.define-dark-theme((
-  color: (
-    primary: $dark-primary,
-    accent: $dark-accent
-  )
+        color: (
+                primary: $dark-primary,
+                accent: $dark-accent
+        )
 ));
+
 
 @include mat.all-component-themes($dark-theme);
 
-/*:root {
-  --primary-color: #BB86FC;
-  --surface: #121212;
-  --topbar-background: #272727;
-  --high-emphasis-color: rgba(255, 255, 255, 0.6);
-  --card-background: #1e1e1e;
-  --fab-icon-color: black;
-  --text-color: #fff;
-  --icon-color: rgba(255, 255, 255, 0.6);
-}*/
-
-
 html {
   background-color: #121212;
-  color: #fff;
+  color: white;
 }
 
-:root {
-  --color: #fff;
-  --medium-emphasis-color: rgba(255, 255, 255, 0.6);
-  --surface: #121212;
-  --topbar-background: #272727;
-  --high-emphasis-color: rgba(255, 255, 255, 0.6);
-  --card-background: #1e1e1e;
-  --fab-icon-color: black;
-  --text-color: #fff;
-  --icon-color: rgba(255, 255, 255, 0.6);
-  --drawer-background: #353535;
-  --autocomplete-background: #2f2f2f;
-  --search-background: rgba(255, 255, 255, 0.24);
-  --code-background: #1e1e1e;
-  --border-color: rgba(255, 255, 255, 0.12);
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --color: #fff;
+    --medium-emphasis-color: rgba(255, 255, 255, 0.6);
+    --surface: #121212;
+    --topbar-background: #272727;
+    --high-emphasis-color: rgba(255, 255, 255, 0.6);
+    --card-background: #1e1e1e;
+    --fab-icon-color: black;
+    --text-color: #fff;
+    --icon-color: rgba(255, 255, 255, 0.6);
+    --drawer-background: #353535;
+    --autocomplete-background: #2f2f2f;
+    --search-background: rgba(255, 255, 255, 0.12);
+    --code-background: #1e1e1e;
+    --border-color: rgba(255, 255, 255, 0.12);
+    // scrollbar-color: rgba(0, 0, 0, .12) #ce1c1c;
+  }
 }
 
-@import "~highlight.js/scss/tomorrow-night-blue";
+@import "~highlight.js/scss/github-dark-dimmed";
 
 svg {
   fill: rgba(255, 255, 255, 0.6);
 }
 
 .mat-list-item.active {
-  color: white !important;
+  /* States_primary overlay/Selected */
+  background: rgba(187, 134, 252, 0.08);
+  color: #BB86FC !important;
+
+  mat-icon {
+    color: #BB86FC !important;
+  }
+
+  app-gf-icon svg {
+    fill: #BB86FC !important;
+  }
 }
 
 .mat-progress-bar-background {
@@ -179,10 +117,6 @@ svg {
 .mat-tab-label-active {
   color: #BB86FC;
   opacity: 1;
-}
-
-svg {
-  fill: rgba(255, 255, 255, 0.6);
 }
 
 .search-form {

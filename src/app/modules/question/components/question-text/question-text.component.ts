@@ -1,20 +1,11 @@
-import {
-  Component,
-  OnInit,
-  ChangeDetectionStrategy,
-  Input,
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 
 @Component({
-  selector: 'qa-question-text',
+  selector: 'inek-question-text',
   templateUrl: './question-text.component.html',
   styleUrls: ['./question-text.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class QuestionTextComponent implements OnInit {
+export class QuestionTextComponent {
   @Input() content!: string;
-
-  constructor() {}
-
-  ngOnInit(): void {}
 }

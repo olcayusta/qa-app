@@ -9,4 +9,5 @@ import { Answer } from '@shared/models/answer.model';
 })
 export class QuestionAnswerItemComponent {
   @Input() answer!: Answer;
+  @Input() acceptedAnswer!: boolean;
 }

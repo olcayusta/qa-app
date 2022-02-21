@@ -9,18 +9,45 @@
   // height: 72px;
   // margin-top: 8px;
   margin-top: 24px;
+  display: grid;
+  grid-gap: 16px;
+
+  .header-one-description {
+    display: flex;
+    align-items: center;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  p, time {
+    color: var(--medium-emphasis-color);
+  }
 
   button {
+    font-family: Archivo, sans-serif;
+    letter-spacing: 0 !important;
     margin-left: 16px;
     letter-spacing: 1.25px;
   }
 
-  mat-icon {
-    color: var(--medium-emphasis-color);
+  button[color="primary"]{
+    ::ng-deep app-gf-icon svg {
+      fill: #6200ee;
+    }
+  }
+
+  app-gf-icon {
+    display: inline-flex;
+    margin-right: 8px;
+
+    svg {
+      fill: var(--medium-emphasis-color);
+    }
   }
 
   .mat-button {
-
     mat-icon {
       width: 18px;
       height: 18px;
@@ -49,35 +76,27 @@
 .author {
   display: flex;
   align-items: center;
-  margin-top: 48px;
+  margin-top: 64px;
 }
 
 .question-user-picture-render {
   width: 64px;
   height: 64px;
+  margin-right: 16px;
 }
-
-/*.author-img {
-  display: inline-block;
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  object-fit: cover;
-}*/
 
 .author-info {
   display: flex;
   flex-direction: column;
-  margin-left: 16px;
 }
 
-.author-name {
+#author-name {
   font-size: 16px;
   line-height: 20px;
   font-weight: 400;
 }
 
-.author-job {
+.author-badge {
   font-size: 13px;
   line-height: 16px;
   color: var(--medium-emphasis-color);

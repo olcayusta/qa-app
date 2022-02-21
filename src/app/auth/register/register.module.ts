@@ -15,13 +15,13 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
     RegisterRoutingModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatButtonModule,
+    MatButtonModule
   ],
   providers: [
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
-      useValue: { appearance: 'standard' },
-    },
-  ],
+      useValue: { appearance: 'standard' }
+    }
+  ]
 })
 export class RegisterModule {}

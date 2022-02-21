@@ -3,7 +3,7 @@
         #notificationElement='cdkOverlayOrigin'
         cdkOverlayOrigin
         (click)='openNotifications($event)'>
-  <app-gf-icon name='notifications' matBadge='{{notificationCount$ | async}}'
+  <app-gf-icon name='notifications' matBadge='{{notificationCount$ | async}}' matBadgeColor='warn'
                [matBadgeHidden]='(notificationCount$ | async) === 0'></app-gf-icon>
 </button>
 
@@ -23,10 +23,12 @@
   [cdkConnectedOverlayOrigin]='notificationElement'
   [cdkConnectedOverlayScrollStrategy]='blockScrollStrategy'
   [cdkConnectedOverlayOpen]='popupOpened'
-  (overlayOutsideClick)='outsideClick($event)'
-  (detach)='onDetach()'>
+  (overlayOutsideClick)='outsideClick($event)'>
   <!--<app-notification-list-popup></app-notification-list-popup>-->
-  <ng-container [ngComponentOutlet]='comp!'></ng-container>
+
+  <qa-popup-container (close)='popupOpened = false'>
+    <ng-container [ngComponentOutlet]='componentOutlet!'></ng-container>
+  </qa-popup-container>
 </ng-template>
 
 

@@ -1,26 +1,22 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  ElementRef,
-  Input,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, HostBinding, Input } from '@angular/core';
 
 @Component({
   selector: 'inek-img-shadow',
   templateUrl: './img-shadow.component.html',
   styleUrls: ['./img-shadow.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ImgShadowComponent {
   @Input() src!: string;
   @Input() alt!: string;
+  @Input() itemprop = false;
 
-  @Input() width: number = 40;
-  @Input() height: number = 40;
+  @HostBinding('style.width.px') @Input() width: number = 40;
+  @HostBinding('style.height.px') @Input() height: number = 40;
 
   constructor(private elementRef: ElementRef<HTMLImageElement>) {}
 
-  onLoad() {
+  onLoad(): void {
     this.elementRef.nativeElement.setAttribute('loaded', '');
   }
 }

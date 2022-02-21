@@ -6,26 +6,21 @@ import {
   Output,
   ɵmarkDirty as markDirty,
   ViewChild,
-  ViewContainerRef,
+  ViewContainerRef
 } from '@angular/core';
 import { User } from '@shared/models/user.model';
-import { AuthService } from '../../../auth/auth.service';
+import { AuthService } from '@auth/auth.service';
 import { Observable } from 'rxjs';
 import { StateService } from '@shared/services/state.service';
 import { NotificationService } from '@shared/services/notification.service';
-import {
-  BreakpointObserver,
-  Breakpoints,
-  BreakpointState,
-} from '@angular/cdk/layout';
+import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
 import { SpinnerService } from '@shared/services/spinner.service';
-import { SearchFormComponent } from './components/search-form/search-form.component';
 
 @Component({
   selector: 'inek-top-bar',
   templateUrl: './top-bar.component.html',
   styleUrls: ['./top-bar.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TopBarComponent implements OnInit {
   @Output() openDrawer = new EventEmitter();
@@ -54,22 +49,20 @@ export class TopBarComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.spinner$ = this.spinnerService.subject$;
-    this.breakpointObserver
-      .observe(Breakpoints.Handset)
-      .subscribe((value: BreakpointState) => {
-        this.isHandset = value.matches;
+    this.breakpointObserver.observe(Breakpoints.Handset).subscribe((value: BreakpointState) => {
+      this.isHandset = value.matches;
 
-        // Mobile phone
-        if (value.matches) {
-          this.stateService.subject.subscribe((state) => {
-            this.topbarOpened = state;
-            console.log(state);
-            markDirty(this);
-          });
-        }
+      // Mobile phone
+      if (this.isHandset) {
+        this.stateService.subject.subscribe((state) => {
+          this.topbarOpened = state;
+          // console.log(state);
+          markDirty(this);
+        });
+      }
 
-        markDirty(this);
-      });
+      markDirty(this);
+    });
 
     this.isLoggedIn$ = this.authService.isLoggedIn$;
   }

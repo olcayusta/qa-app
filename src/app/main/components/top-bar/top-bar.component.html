@@ -8,7 +8,7 @@
 
     <a routerLink='/' class='logo-link' aria-label='Ana Sayfa'>
       <span>inek.dev</span>
-      <!--<sup>beta 1</sup>-->
+   <!--   <sup>beta</sup>-->
     </a>
   </div>
 
@@ -35,31 +35,32 @@
 
       <!--<qa-theme-togle></qa-theme-togle>-->
 
-      <button mat-button routerLink='/create' class="create-button" matTooltip='Oluştur'>
+      <button mat-button routerLink='/create' class='create-button' matTooltip='Oluştur'>
         <!-- <mat-icon fontSet='material-icons-outlined'>add</mat-icon>-->
         <app-gf-icon name='add'></app-gf-icon>
-        <span>SORU SOR</span>
+        <span>Soru sor</span>
       </button>
 
       <!--      <button mat-icon-button matTooltip="Filtre" (click)="openSheet.emit()">
               <mat-icon>filter_list</mat-icon>
             </button>-->
 
-<!--      <button mat-icon-button matTooltip='İncelemeler'>
-        <mat-icon class='material-icons-outlined' matBadge='4' matBadgeColor='warn'>rate_review</mat-icon>
-      </button>-->
+      <!--      <button mat-icon-button matTooltip='İncelemeler'>
+              <mat-icon class='material-icons-outlined' matBadge='4' matBadgeColor='warn'>rate_review</mat-icon>
+            </button>-->
 
-      <qa-notification-button></qa-notification-button>
+      <inek-notification-button></inek-notification-button>
 
       <a mat-icon-button class='mobile-show' routerLink='/mobile-search'>
-        <mat-icon fontSet='material-icons-outlined'>search</mat-icon>
+    <!--    <mat-icon fontSet='material-icons-outlined'>search</mat-icon>-->
+        <app-gf-icon name='search'></app-gf-icon>
       </a>
 
-      <!--     <button mat-icon-button class="top-right-btn" matTooltip="Filtrele" (click)="openSheet.emit()">
+        <!--   <button mat-icon-button class="top-right-btn" matTooltip="Filtrele" (click)="openSheet.emit()">
              <id-filter-list-icon></id-filter-list-icon>
            </button>-->
 
-      <qa-avatar-button></qa-avatar-button>
+      <inek-avatar-button></inek-avatar-button>
 
     </ng-container>
   </div>
@@ -69,19 +70,47 @@
 </mat-toolbar>
 
 <ng-template #signIn>
-  <a mat-icon-button class='mobile-show search-btn' routerLink='/mobile-search' aria-label="Ara">
-    <mat-icon class='material-icons-outlined'>search</mat-icon>
+  <a mat-icon-button class='mobile-show search-btn' routerLink='/mobile-search' aria-label='Ara'>
+   <!-- <mat-icon class='material-icons-outlined'>search</mat-icon>-->
   </a>
 
   <ng-container *ngIf='isHandset'>
-    <a mat-icon-button routerLink='/login'>
+ <!--   <a mat-icon-button routerLink='/login'>
       <app-gf-icon name='account-circle'></app-gf-icon>
+    </a>-->
+    <a mat-button routerLink='/login'>
+      OTURUM AÇ
     </a>
   </ng-container>
 
   <ng-container *ngIf='!isHandset'>
-    <a mat-stroked-button color="primary" routerLink='/login'>
-      <mat-icon color="primary" class="material-icons">account_circle</mat-icon>
+
+<!--
+    <mat-menu #appsMenu xPosition='before'>
+      <ng-template matMenuContent>
+        <button mat-menu-item>
+          <mat-icon fontSet='material-icons-two-tone'>chat</mat-icon>
+          Sohbet
+        </button>
+      </ng-template>
+    </mat-menu>
+
+    <button mat-icon-button [matMenuTriggerFor]='appsMenu'>
+      <mat-icon fontSet='material-icons-two-tone'>apps</mat-icon>
+    </button>
+-->
+
+    <mat-menu #moreMenu xPosition='before'>
+      <button mat-menu-item>Sohbet</button>
+      <button mat-menu-item>Sozluk</button>
+      <button mat-menu-item>Turkce</button>
+    </mat-menu>
+
+    <button mat-icon-button [matMenuTriggerFor]='moreMenu'>
+      <app-gf-icon name='more_vert'></app-gf-icon>
+    </button>
+
+    <a mat-button routerLink='/login'>
       OTURUM AÇ
     </a>
   </ng-container>

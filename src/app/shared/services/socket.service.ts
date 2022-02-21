@@ -6,7 +6,7 @@ import { delay, retryWhen, tap } from 'rxjs/operators';
 
 enum socketEvent {
   newAnswer = 'new answer',
-  message = 'message',
+  message = 'message'
 }
 
 interface SubjectData {
@@ -17,12 +17,12 @@ interface SubjectData {
 type socketEventType = 'new answer' | 'message' | 'hello';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class SocketService {
   subject: WebSocketSubject<SubjectData> = webSocket({
     url: environment.WS_URL,
-    protocol: <string>localStorage.getItem('token'),
+    protocol: <string>localStorage.getItem('token')
   });
 
   constructor() {
@@ -50,7 +50,7 @@ export class SocketService {
       .subscribe({
         next: (v) => console.log(v),
         error: (e) => console.error(e),
-        complete: () => console.info('complete'),
+        complete: () => console.info('complete')
       });
   }
 
@@ -59,8 +59,8 @@ export class SocketService {
     this.subject.next({
       event: socketEvent.message,
       payload: {
-        content: message,
-      },
+        content: message
+      }
     });
   }
 

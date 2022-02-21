@@ -7,24 +7,21 @@ import { TimeAgoPipe } from './pipes/time-ago.pipe';
 import { HighlightSearchPipe } from '../main/components/top-bar/components/search-form/pipes/highlight-search.pipe';
 import { ImgShadowComponent } from './components/img-shadow/img-shadow.component';
 import { MarkedPipe } from '@shared/pipes/marked.pipe';
-import { ShareDialogComponent } from './components/share-dialog/share-dialog.component';
-import { HomeQuestionListItemAvatarComponent } from './components/home-question-list-item-avatar/home-question-list-item-avatar.component';
 import { MaterialModule } from '@modules/material/material.module';
 import { GfIconComponent } from '@shared/components/gf-icon/gf-icon.component';
 import { AutofocusDirective } from './directives/autofocus.directive';
 import { RelativeTimeFormatPipe } from './pipes/relative-time-format.pipe';
-import { ShadowDenemeDirective } from './components/home-question-list-item/shadow-deneme.directive';
 import { QListItemImgShadowComponent } from './components/q-list-item-img-shadow/q-list-item-img-shadow.component';
-import {PopupContainerComponent} from "@shared/components/popup-container/popup-container.component";
+import { PopupContainerComponent } from '@shared/components/popup-container/popup-container.component';
 import { HighlightElementDirective } from './directives/highlight-element.directive';
 import { SiteCodeComponent } from './components/site-code/site-code.component';
+import { SelectedTagPipe } from './pipes/selected-tag.pipe';
+import { SanitizeHighlightPipe } from './pipes/sanitize-highlight.pipe';
 
 @NgModule({
   declarations: [
     HomeQuestionListItemComponent,
     ImgShadowComponent,
-    ShareDialogComponent,
-    HomeQuestionListItemAvatarComponent,
     TimeAgoPipe,
     HighlightSearchPipe,
     MarkedPipe,
@@ -32,11 +29,12 @@ import { SiteCodeComponent } from './components/site-code/site-code.component';
     GfIconComponent,
     AutofocusDirective,
     RelativeTimeFormatPipe,
-    ShadowDenemeDirective,
     QListItemImgShadowComponent,
     PopupContainerComponent,
     HighlightElementDirective,
     SiteCodeComponent,
+    SelectedTagPipe,
+    SanitizeHighlightPipe
   ],
   imports: [CommonModule, RouterModule, MaterialModule],
   exports: [
@@ -50,6 +48,8 @@ import { SiteCodeComponent } from './components/site-code/site-code.component';
     MarkedPipe,
     PopupContainerComponent,
     HighlightElementDirective,
-  ],
+    SanitizeHighlightPipe,
+    RelativeTimeFormatPipe
+  ]
 })
 export class SharedModule {}

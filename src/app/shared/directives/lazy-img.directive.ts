@@ -1,13 +1,11 @@
-import { Directive, ElementRef, EventEmitter, HostBinding, OnInit, Output } from '@angular/core';
+import { Directive, ElementRef, HostBinding, OnInit } from '@angular/core';
 
 @Directive({
-  selector: '[qaLazyImg]',
+  selector: '[inekLazyImg]'
 })
 export class LazyImgDirective implements OnInit {
   @HostBinding('attr.src') src = null;
   imgSrc!: string;
-
-  @Output('lazyLoad') lazyLoad = new EventEmitter<any>();
 
   constructor(private elementRef: ElementRef<HTMLImageElement>) {}
 
@@ -20,7 +18,7 @@ export class LazyImgDirective implements OnInit {
       const img = <HTMLImageElement>target;
       if (isIntersecting) {
         img.src = this.imgSrc;
-        intersectionObserver.disconnect();
+        intersectionObserver.unobserve(img);
       }
     });
     intersectionObserver.observe(nativeElement);

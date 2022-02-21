@@ -8,7 +8,9 @@ export interface Question {
   content: string;
   rawContent: string;
   creationTime: Date;
+  answerTime: Date;
   viewCount: number;
+  acceptedAnswerId?: number;
   userId: number;
   user: User;
   tags: Tag[];

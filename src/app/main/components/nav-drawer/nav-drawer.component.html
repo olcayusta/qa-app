@@ -7,8 +7,8 @@
 <div class='overflow-container scroller'>
   <mat-nav-list>
     <a mat-list-item routerLinkActive='active' routerLink='/' [routerLinkActiveOptions]='{exact: true}'
-       (click)='onClicked()'>
-      <mat-icon fontSet='material-icons-outlined'>home</mat-icon>
+       (click)='onClicked()' title='Ana sayfa'>
+      <app-gf-icon name='home'></app-gf-icon>
       <span>Ana sayfa</span>
     </a>
     <a mat-list-item routerLinkActive='active' routerLink='/list' (click)='onClicked()'>
@@ -16,11 +16,11 @@
       <span>Sorularım</span>
     </a>
     <a mat-list-item routerLinkActive='active' routerLink='/favorites' (click)='onClicked()'>
-      <mat-icon fontSet='material-icons-outlined'>favorite_border</mat-icon>
+      <app-gf-icon name='favorite'></app-gf-icon>
       <span>Favorilerim</span>
     </a>
-    <a mat-list-item routerLinkActive='active' routerLink='/favorites' (click)='onClicked()'>
-      <mat-icon fontSet='material-icons-outlined'>favorite_border</mat-icon>
+    <a mat-list-item routerLinkActive='active' routerLink='/watched_tags' (click)='onClicked()'>
+      <app-gf-icon name='label_important'></app-gf-icon>
       <span>İzlediğim etiketler</span>
     </a>
   </mat-nav-list>
@@ -28,40 +28,33 @@
   <mat-nav-list>
     <div matSubheader>Sayfalar</div>
     <a mat-list-item routerLinkActive='active' routerLink='/users' (click)='onClicked()'>
-      <mat-icon fontSet='material-icons-outlined'>groups</mat-icon>
+      <app-gf-icon name='people'></app-gf-icon>
       <span>Kullanıcılar</span>
     </a>
     <a mat-list-item routerLinkActive='active' routerLink='/tags' (click)='onClicked()'>
-      <mat-icon fontSet='material-icons-outlined'>label</mat-icon>
+      <app-gf-icon name='style'></app-gf-icon>
       <span>Etiketler</span>
     </a>
   </mat-nav-list>
   <mat-divider></mat-divider>
   <mat-nav-list>
     <a mat-list-item routerLinkActive='active' (click)='openSettingsDialog()'>
-      <mat-icon fontSet='material-icons-outlined'>settings</mat-icon>
+      <app-gf-icon name='settings'></app-gf-icon>
       <span>Hesap & ayarlar</span>
     </a>
-    <a mat-list-item routerLinkActive='active' routerLink='/help'>
-      <mat-icon fontSet='material-icons-outlined'>help_outline</mat-icon>
+    <a mat-list-item routerLinkActive='active' routerLink='/flags' (click)='onClicked()'>
+      <app-gf-icon name='flag'></app-gf-icon>
+      <span>İçerik bildirme geçmişi</span>
+    </a>
+    <a mat-list-item routerLinkActive='active' routerLink='/help' (click)='onClicked()'>
+      <app-gf-icon name='help'></app-gf-icon>
       <span>Yardım</span>
     </a>
-    <a mat-list-item routerLinkActive='active' routerLink='/feedback'>
-      <mat-icon fontSet='material-icons-outlined'>feedback</mat-icon>
+    <a mat-list-item routerLinkActive='active' routerLink='/feedback' (click)='onClicked()'>
+      <app-gf-icon name='feedback'></app-gf-icon>
       <span>Geri bildirim gönder</span>
     </a>
   </mat-nav-list>
-  <!--
-  <mat-divider></mat-divider>
-  <mat-nav-list>
-    <mat-list-item (click)="logout()">
-      <qa-exit-to-app-icon></qa-exit-to-app-icon>
-      <span>Oturumu kapat</span>
-    </mat-list-item>
-  </mat-nav-list>
-  -->
-
   <mat-divider></mat-divider>
   <div id='copyright'>© 2021 Google LLC</div>
 </div>
-

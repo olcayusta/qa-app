@@ -7,6 +7,6 @@ import { MaterialModule } from '@modules/material/material.module';
 
 @NgModule({
   declarations: [PageNotFoundComponent],
-  imports: [CommonModule, PageNotFoundRoutingModule, MaterialModule],
+  imports: [CommonModule, PageNotFoundRoutingModule, MaterialModule]
 })
 export class PageNotFoundModule {}

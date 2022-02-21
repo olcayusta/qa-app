@@ -8,6 +8,6 @@ import { SharedModule } from '@shared/shared.module';
 @NgModule({
   declarations: [AvatarButtonComponent, NotificationButtonComponent],
   imports: [CommonModule, MaterialModule, SharedModule],
-  exports: [AvatarButtonComponent, NotificationButtonComponent],
+  exports: [AvatarButtonComponent, NotificationButtonComponent]
 })
 export class MainLayoutModule {}

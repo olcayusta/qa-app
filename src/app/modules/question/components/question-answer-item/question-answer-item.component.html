@@ -1,7 +1,11 @@
 <div itemprop='suggestedAnswer' itemscope itemtype='https://schema.org/Answer'>
-  <div class='answer-item'>
+  <div class='answer-item' [id]='"answer-" + answer.id'>
     <div class='answer-item-user'>
-      <img class='user-avatar' src='{{answer.user.picture}}' alt='{{answer.user.displayName}}'>
+
+      <inek-img-shadow [src]='answer.user.picture' [width]='64' [height]='64' [alt]='answer.user.displayName'
+                       class='answer-item-user-renderer'></inek-img-shadow>
+
+      <!--  <img class='user-avatar' src='{{answer.user.picture}}' alt='{{answer.user.displayName}}'>-->
       <div class='user-info'>
         <div itemprop='author' itemscope itemtype='https://schema.org/Person'>
           <a routerLink='/user/{{answer.user.id}}'>
@@ -13,9 +17,7 @@
         </div>
       </div>
     </div>
-    <div itemprop='text' #divElement [appPrivateHighlight]='answer.content'></div>
-    <!-- <app-question-content [content]="answer.content"></app-question-content>-->
-    <!--    <id-question-answer-item-content [content]="answer.content"></id-question-answer-item-content>-->
-    <!--<mat-divider></mat-divider>-->
+    <div itemprop='text' #divElement [qaHeroDelay]='answer.content' qaHighlightElement></div>
+
   </div>
 </div>

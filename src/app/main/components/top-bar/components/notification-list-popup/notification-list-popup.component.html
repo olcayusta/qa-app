@@ -9,8 +9,8 @@
           <a mat-list-item *ngFor="let notification of notifications">
             <img mat-list-avatar src="{{notification.user.picture}}" alt="{{notification.user.displayName}}">
             <h3 mat-line>{{notification.text}}</h3>
-            <p mat-line class="secondary-text">{{notification.user.displayName}}}</p>
-            <p mat-line class="secondary-text time">{{notification.creationTime | timeAgo}}</p>
+            <p mat-line class="secondary-text">{{notification.user.displayName}}</p>
+            <p mat-line class="secondary-text time">{{notification.creationTime | relativeTimeFormat}}</p>
           </a>
         </mat-nav-list>
       </ng-container>

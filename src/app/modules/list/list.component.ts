@@ -8,7 +8,7 @@ import { shareReplay } from 'rxjs/operators';
   selector: 'id-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ListComponent implements OnInit {
   questions$!: Observable<Question[]>;

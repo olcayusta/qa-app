@@ -13,15 +13,12 @@ import { QuestionDescriptionComponent } from './components/question-description/
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDividerModule } from '@angular/material/divider';
-import {MatTooltipModule} from "@angular/material/tooltip";
-import {SharedModule} from "@shared/shared.module";
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { SharedModule } from '@shared/shared.module';
+import { MaterialModule } from '@modules/material/material.module';
 
 @NgModule({
-  declarations: [
-    CreateQuestionComponent,
-    ChipsAutocompleteComponent,
-    QuestionDescriptionComponent,
-  ],
+  declarations: [CreateQuestionComponent, ChipsAutocompleteComponent, QuestionDescriptionComponent],
   imports: [
     CommonModule,
     CreateQuestionRoutingModule,
@@ -33,8 +30,8 @@ import {SharedModule} from "@shared/shared.module";
     MatIconModule,
     MatToolbarModule,
     MatDividerModule,
-    MatTooltipModule,
-    SharedModule,
-  ],
+    MaterialModule,
+    SharedModule
+  ]
 })
 export class CreateQuestionModule {}

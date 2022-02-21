@@ -1,0 +1,28 @@
+<div class='popup-page one-dp'>
+  <header>
+    <div>
+      <div class='title'>{{user.displayName}}</div>
+      <div class='subtitle'>{{user.email}}</div>
+    </div>
+  </header>
+  <section>
+    <mat-nav-list>
+      <a mat-list-item routerLink='/settings'>
+        <app-gf-icon name='dark_mode'></app-gf-icon>
+        <span>Görünüm: Cihaz Teması</span>
+      </a>
+      <a mat-list-item routerLink='/settings'>
+        <app-gf-icon name='settings'></app-gf-icon>
+        <span>Hesap & ayarlar</span>
+      </a>
+      <a mat-list-item routerLink='/help'>
+        <app-gf-icon name='help'></app-gf-icon>
+        <span>Yardim</span>
+      </a>
+      <mat-list-item (click)='logout()'>
+        <app-gf-icon name='logout'></app-gf-icon>
+        <span>Oturumu kapat</span>
+      </mat-list-item>
+    </mat-nav-list>
+  </section>
+</div>
