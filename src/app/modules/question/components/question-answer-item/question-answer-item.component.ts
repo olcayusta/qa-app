@@ -5,7 +5,7 @@ import { Answer } from '@shared/models/answer.model';
   selector: 'app-question-answer-item',
   templateUrl: './question-answer-item.component.html',
   styleUrls: ['./question-answer-item.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class QuestionAnswerItemComponent {
   @Input() answer!: Answer;

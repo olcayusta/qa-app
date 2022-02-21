@@ -1,11 +1,10 @@
-<div itemprop='suggestedAnswer' itemscope itemtype='https://schema.org/Answer'>
+<div itemprop='suggestedAnswer acceptedAnswer' itemscope itemtype='https://schema.org/Answer'>
   <div class='answer-item' [id]='"answer-" + answer.id'>
     <div class='answer-item-user'>
 
       <inek-img-shadow [src]='answer.user.picture' [width]='64' [height]='64' [alt]='answer.user.displayName'
                        class='answer-item-user-renderer'></inek-img-shadow>
 
-      <!--  <img class='user-avatar' src='{{answer.user.picture}}' alt='{{answer.user.displayName}}'>-->
       <div class='user-info'>
         <div itemprop='author' itemscope itemtype='https://schema.org/Person'>
           <a routerLink='/user/{{answer.user.id}}'>
@@ -13,11 +12,12 @@
           </a>
         </div>
         <div class='subtitle'>
-          <time [dateTime]='answer.creationTime'>{{answer.creationTime | date}}</time>
+          <time itemprop='dateCreated'
+                [dateTime]='answer.creationTime'>{{answer.creationTime | relativeTimeFormat}}</time>
         </div>
       </div>
     </div>
-    <div itemprop='text' #divElement [qaHeroDelay]='answer.content' qaHighlightElement></div>
-
+    <div itemprop='text' [qaHeroDelay]='answer.content' qaHighlightElement></div>
   </div>
 </div>
+<mat-divider></mat-divider>
