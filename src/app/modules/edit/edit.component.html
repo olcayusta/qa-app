@@ -1,19 +1,33 @@
-<form>
+<form autocomplete='off' spellcheck='false' [formGroup]='form'>
+  
+  <ng-container *ngIf='q$ | async as q'></ng-container>
+
+  <!-- Revisions -->
+  <mat-form-field>
+    <mat-label>Favorite food</mat-label>
+    <mat-select disableOptionCentering>
+      <mat-option *ngFor="let food of foods" [value]="food.value">
+        {{food.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 
   <!-- Başlık -->
   <mat-form-field>
     <mat-label>Başlık</mat-label>
-    <input matInput>
+    <input matInput formControlName='title'>
   </mat-form-field>
 
   <!-- Açıklama -->
   <mat-form-field>
     <mat-label>Açıklama</mat-label>
-    <textarea matInput></textarea>
+    <textarea #text matInput cdkTextareaAutosize formControlName='text'></textarea>
   </mat-form-field>
+
+  <div [innerHTML]='text.value | marked'></div>
 
   <mat-form-field>
     <mat-label>Özet</mat-label>
-    <input matInput>
+    <input matInput formControlName='summary'>
   </mat-form-field>
 </form>

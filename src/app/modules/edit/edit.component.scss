@@ -8,3 +8,19 @@ form {
   flex-direction: column;
   grid-gap: 24px;
 }
+
+textarea {
+  font-family: Roboto Mono, monospace;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+@media (prefers-color-scheme: light) {
+  ::ng-deep .mat-select-panel {
+    padding: 8px 0 !important;
+  }
+
+  .mat-option.mat-active {
+    background-color: #6200ee12 !important;
+  }
+}

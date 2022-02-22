@@ -3,7 +3,7 @@ import { marked } from 'marked';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Pipe({
-  name: 'marked',
+  name: 'marked'
 })
 export class MarkedPipe implements PipeTransform {
   constructor(private sanitizer: DomSanitizer) {}
