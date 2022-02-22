@@ -6,13 +6,11 @@ import {
   Type,
   ɵmarkDirty as markDirty
 } from '@angular/core';
-import {
-  ScrollStrategyOptions
-} from '@angular/cdk/overlay';
+import { ScrollStrategyOptions } from '@angular/cdk/overlay';
 import { User } from '@shared/models/user.model';
 import { AuthService } from '@auth/auth.service';
 
-import { IronDropdownComponent } from '@shared/components/iron-dropdown/iron-dropdown.component';
+import { UserProfilePopupComponent } from '@shared/components/user-profile-popup/user-profile-popup.component';
 
 @Component({
   selector: 'inek-avatar-button',
@@ -24,15 +22,14 @@ export class AvatarButtonComponent implements OnInit {
   user!: User;
   popupOpened = false;
 
-  componentOutlet?: Type<IronDropdownComponent>;
+  componentOutlet?: Type<UserProfilePopupComponent>;
   blockScrollStrategy = this.sso.block();
 
   constructor(
     private sso: ScrollStrategyOptions,
     private authService: AuthService,
     private elRef: ElementRef
-  ) {
-  }
+  ) {}
 
   ngOnInit(): void {
     this.user = this.authService.userValue;
@@ -51,7 +48,9 @@ export class AvatarButtonComponent implements OnInit {
   }
 
   async loadIronDropdownComponent(): Promise<void> {
-    const { IronDropdownComponent: comp } = await import('@shared/components/iron-dropdown/iron-dropdown.component');
+    const { UserProfilePopupComponent: comp } = await import(
+      '@shared/components/user-profile-popup/user-profile-popup.component'
+    );
 
     this.componentOutlet = comp;
     markDirty(this);

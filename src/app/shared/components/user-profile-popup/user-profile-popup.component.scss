@@ -3,16 +3,13 @@
   width: 344px;
 }
 
-.one-dp {
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.14), 0 2px 1px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.2);
-}
-
 .popup-page {
-  background-color: var(--card-background);
+  background-color: var(--card-bg-color);
   max-height: calc(100vh - 64px);
   display: flex;
   flex-direction: column;
   border-radius: 12px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.14), 0 2px 1px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 header {

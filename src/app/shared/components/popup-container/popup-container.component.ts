@@ -12,7 +12,7 @@ import { filter } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'qa-popup-container',
+  selector: 'inek-popup-container',
   templateUrl: './popup-container.component.html',
   styleUrls: ['./popup-container.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

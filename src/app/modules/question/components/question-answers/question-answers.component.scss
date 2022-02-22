@@ -2,8 +2,23 @@
   display: block;
 }
 
+.filter-header {
+  display: flex;
+  align-items: center;
+  grid-gap: 16px;
+
+  button mat-icon {
+    margin-right: 8px;
+    width: 18px;
+    height: 18px;
+    font-size: 18px;
+    color: var(--medium-emphasis-color);
+  }
+}
+
 h6 {
   margin: 24px 0;
 }
+
 
 

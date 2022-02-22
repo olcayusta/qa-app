@@ -66,7 +66,7 @@ registerLocaleData(localeTr);*/
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     {
       provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
-      useValue: { horizontalPosition: 'center', duration: 4000 }
+      useValue: { horizontalPosition: 'start', duration: 4000 }
     }
   ],
   bootstrap: [AppComponent]

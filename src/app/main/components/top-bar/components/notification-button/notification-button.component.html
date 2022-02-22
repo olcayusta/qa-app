@@ -1,4 +1,4 @@
-<button mat-icon-button class='top-right-btn notification-button' aria-label='Bildirimler' hidden
+<button mat-icon-button class='top-right-btn notification-button' aria-label='Bildirimler'
         matTooltip='Bildirimler'
         #notificationElement='cdkOverlayOrigin'
         cdkOverlayOrigin
@@ -26,9 +26,9 @@
   (overlayOutsideClick)='outsideClick($event)'>
   <!--<app-notification-list-popup></app-notification-list-popup>-->
 
-  <qa-popup-container (close)='popupOpened = false'>
+  <inek-popup-container (close)='popupOpened = false'>
     <ng-container [ngComponentOutlet]='componentOutlet!'></ng-container>
-  </qa-popup-container>
+  </inek-popup-container>
 </ng-template>
 
 

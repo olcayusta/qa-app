@@ -6,10 +6,10 @@
       <inek-img-shadow [src]='comment.user.picture' [width]='32' [height]='32' [alt]='comment.user.displayName'
                        class='comment-user-picture-renderer'></inek-img-shadow>
 
-     <!-- <img class='author-img' src='{{comment.user.picture}}' alt='{{comment.user.displayName}}'>-->
+      <!-- <img class='author-img' src='{{comment.user.picture}}' alt='{{comment.user.displayName}}'>-->
 
       <div>
-        <div class='author-info'>{{comment.user.displayName}} — {{comment.creationTime | date}}</div>
+        <div class='author-info'><a routerLink='/user/{{comment.user.id}}'>{{comment.user.displayName}}</a> — {{comment.creationTime | date}}</div>
         <div class='comment'>{{comment.content}}</div>
       </div>
     </div>

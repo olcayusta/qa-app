@@ -8,7 +8,7 @@ export const environment = {
   appTitle: 'QaApp',
   vapidPublic:
     'BBuui5T3pIWV_ZyyZel8ynOQLlJO5juM6knPoBzg9shZjkmcqaFm0okyCbWOw2pxSSdEo2p9kiSQYn0V8A-GOjE',
-  WS_URL: 'ws://localhost:9001/notification',
+  WS_URL: 'ws://localhost:9001/notification'
 };
 
 /*

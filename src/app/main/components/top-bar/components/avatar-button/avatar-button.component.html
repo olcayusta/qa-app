@@ -13,7 +13,7 @@
   [cdkConnectedOverlayOpen]='popupOpened'
   [cdkConnectedOverlayOrigin]='trigger'>
   <!--  <qa-popup-container popupContainerTitle="avatar" [outlet]="ironDropdownOutlet"></qa-popup-container>-->
-  <qa-popup-container (close)='popupOpened = false'>
+  <inek-popup-container (close)='popupOpened = false'>
     <ng-container [ngComponentOutlet]='componentOutlet!'></ng-container>
-  </qa-popup-container>
+  </inek-popup-container>
 </ng-template>

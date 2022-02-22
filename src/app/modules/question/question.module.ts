@@ -18,6 +18,7 @@ import { QuestionTextComponent } from './components/question-text/question-text.
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { HeroDelayDirective } from './directives/hero-delay.directive';
 import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatTooltipModule,
     MatMenuModule,
     MatProgressSpinnerModule,
-    MatIconModule
+    MatIconModule,
+    MatCardModule
   ]
 })
 export class QuestionModule {}

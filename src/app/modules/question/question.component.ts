@@ -5,7 +5,9 @@ import {
   Inject,
   OnDestroy,
   OnInit,
+  TemplateRef,
   ViewChild,
+  ViewContainerRef,
   ɵmarkDirty as markDirty
 } from '@angular/core';
 import { Question } from '@shared/models/question.model';
@@ -20,7 +22,7 @@ import { ShareDialogComponent } from '@shared/components/share-dialog/share-dial
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Overlay, OverlayRef, ScrollStrategyOptions } from '@angular/cdk/overlay';
 import { AuthService } from '@auth/auth.service';
-import { ComponentPortal } from '@angular/cdk/portal';
+import { ComponentPortal, TemplatePortal } from '@angular/cdk/portal';
 import { SafeHtml } from '@angular/platform-browser';
 import { DOCUMENT } from '@angular/common';
 import { FacebookComponent } from '../../facebook/facebook.component';
@@ -40,6 +42,7 @@ export class QuestionComponent implements OnInit, OnDestroy {
   overlayRef!: OverlayRef;
 
   @ViewChild('trigger', { read: ElementRef }) trigger!: ElementRef;
+  @ViewChild('loginPopup') loginPopup!: TemplateRef<any>;
 
   jsonLD!: SafeHtml;
 
@@ -53,7 +56,8 @@ export class QuestionComponent implements OnInit, OnDestroy {
     private sso: ScrollStrategyOptions,
     private authService: AuthService,
     private overlay: Overlay,
-    @Inject(DOCUMENT) private document: Document
+    @Inject(DOCUMENT) private document: Document,
+    private vcr: ViewContainerRef
   ) {
     if (this.authService.userValue) {
       this.loggedIn = true;
@@ -61,8 +65,7 @@ export class QuestionComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.document.body.setAttribute('itemscope', '');
-    this.document.body.setAttribute('itemtype', 'https://schema.org/QAPage');
+    this.addSchema();
 
     this.question$ = this.route.data.pipe(
       map((data) => {
@@ -74,14 +77,24 @@ export class QuestionComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    this.removeSchema();
+  }
+
+  addSchema() {
+    this.document.body.setAttribute('itemscope', '');
+    this.document.body.setAttribute('itemtype', 'https://schema.org/QAPage');
+  }
+
+  removeSchema() {
     this.document.body.removeAttribute('itemscope');
     this.document.body.removeAttribute('itemtype');
   }
 
   addToFavorite(questionId: number): void {
-    this.favoriteService.addToFavorite(questionId).subscribe((value) => {
+    this.snackBar.open('Bu soruyu bir favori listesine eklemek için oturum açın', 'TAMAM');
+    /*   this.favoriteService.addToFavorite(questionId).subscribe((value) => {
       console.log(value);
-    });
+    });*/
   }
 
   /**
@@ -111,13 +124,13 @@ export class QuestionComponent implements OnInit, OnDestroy {
         });*/
   }
 
-  createOverlay() {
-    if (this.overlayRef) {
-      this.overlayRef.detach();
-      /*      const userProfilePortal = new ComponentPortal(MessageArchivedComponent);
-      this.overlayRef.attach(userProfilePortal);*/
-    } else {
+  /**
+   * Create overlay popup
+   */
+  createPopup() {
+    if (!this.overlayRef?.hasAttached()) {
       this.overlayRef = this.overlay.create({
+        scrollStrategy: this.sso.block(),
         positionStrategy: this.overlay
           .position()
           .flexibleConnectedTo(this.trigger)
@@ -130,10 +143,23 @@ export class QuestionComponent implements OnInit, OnDestroy {
             }
           ])
       });
-      const userProfilePortal = new ComponentPortal(FacebookComponent);
+      const userProfilePortal = new TemplatePortal(this.loginPopup, this.vcr);
       this.overlayRef.attach(userProfilePortal);
+      this.overlayRef.outsidePointerEvents().subscribe((value) => {
+        this.overlayRef.dispose();
+      });
     }
   }
 
+  /**
+   * Like question event
+   */
   likeQuestion() {}
+
+  /**
+   * Open login dialog
+   */
+  openLogInPopup() {
+    // this.createPopup();
+  }
 }

@@ -10,7 +10,7 @@ import { shareReplay } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { NotificationService } from '@shared/services/notification.service';
 import { ScrollStrategy, ScrollStrategyOptions } from '@angular/cdk/overlay';
-import { NotificationListPopupComponent } from '../notification-list-popup/notification-list-popup.component';
+import { NotificationListPopupComponent } from '@shared/components/notification-list-popup/notification-list-popup.component';
 
 @Component({
   selector: 'inek-notification-button',
@@ -47,7 +47,7 @@ export class NotificationButtonComponent implements OnInit {
 
   async loadComponent() {
     const { NotificationListPopupComponent: comp } = await import(
-      '../notification-list-popup/notification-list-popup.component'
+      '@shared/components/notification-list-popup/notification-list-popup.component'
     );
     this.componentOutlet = comp;
     markDirty(this);

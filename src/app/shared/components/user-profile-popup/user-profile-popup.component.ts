@@ -7,12 +7,12 @@ import { MaterialModule } from '@modules/material/material.module';
 import { SharedModule } from '@shared/shared.module';
 
 @Component({
-  selector: 'inek-iron-dropdown',
-  templateUrl: './iron-dropdown.component.html',
-  styleUrls: ['./iron-dropdown.component.scss'],
+  selector: 'inek-user-profile-popup',
+  templateUrl: './user-profile-popup.component.html',
+  styleUrls: ['./user-profile-popup.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class IronDropdownComponent implements OnInit {
+export class UserProfilePopupComponent implements OnInit {
   user!: User;
 
   constructor(private authService: AuthService, private socketService: SocketService) {}
@@ -29,7 +29,7 @@ export class IronDropdownComponent implements OnInit {
 }
 
 @NgModule({
-  declarations: [IronDropdownComponent],
+  declarations: [UserProfilePopupComponent],
   imports: [MaterialModule, RouterModule, SharedModule]
 })
 export class IronDropdownModule {}

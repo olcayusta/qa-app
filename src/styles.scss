@@ -73,6 +73,7 @@ $list-typography: mat.define-typography-config(
 @include mat.badge-typography($badge-typo);
 @include mat.chips-typography($badge-typo);
 @include mat.snack-bar-typography($badge-typo);
+@include mat.card-typography($badge-typo);
 
 $chip-typography: mat.define-typography-config(
         $font-family: 'Roboto, sans-serif',
@@ -171,7 +172,7 @@ svg {
   line-height: 20px;
   background-color: #00000012;
   letter-spacing: 0;
-  padding: 2px 4px;
+  padding: 0 4px;
   border-radius: 4px;
   display: inline-flex;
 }

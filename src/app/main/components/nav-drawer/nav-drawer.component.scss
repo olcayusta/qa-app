@@ -103,6 +103,12 @@ mat-toolbar mat-icon {
   //scrollbar-color: rgba(255, 255, 255, 0.12) #353535;
 }
 
+@media (prefers-color-scheme: light) {
+  .overflow-container {
+    scrollbar-color: rgba(0, 0, 0, 0.24) transparent;
+  }
+}
+
 .overflow-container::-webkit-scrollbar {
   -webkit-appearance: none;
   width: 8px;
