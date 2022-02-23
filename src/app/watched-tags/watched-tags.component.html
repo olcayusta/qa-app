@@ -1,0 +1,10 @@
+<header>
+  <h6 class='headline-6'>Izlenilen etiketler</h6>
+  <p>watched-tags works!</p>
+</header>
+
+<ul>
+  <li *ngFor='let tag of tags$ | async'>
+    {{tag.title}}
+  </li>
+</ul>
