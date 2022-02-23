@@ -9,6 +9,8 @@ import {
 import { MatDialog } from '@angular/material/dialog';
 import { SettingsDialogComponent } from '@dialogs/settings-dialog/settings-dialog.component';
 import { FeedbackDialogComponent } from '@dialogs/feedback-dialog/feedback-dialog.component';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'inek-nav-drawer',
@@ -19,9 +21,13 @@ import { FeedbackDialogComponent } from '@dialogs/feedback-dialog/feedback-dialo
 export class NavDrawerComponent implements OnInit {
   @Output() closeDrawer = new EventEmitter<boolean>();
 
-  constructor(private dialog: MatDialog, private vcr: ViewContainerRef) {}
+  constructor(private dialog: MatDialog, private vcr: ViewContainerRef, private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    /*    this.router.events.pipe(filter((e) => e instanceof NavigationEnd)).subscribe((value) => {
+      console.log(value);
+    });*/
+  }
 
   async openSettingsDialog() {
     this.closeDrawer.emit();

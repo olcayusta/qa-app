@@ -12,16 +12,14 @@
     <textarea aria-label='Answer text' matInput cdkTextareaAutosize cdkAutosizeMinRows='8'
               [formControl]='answerControl'></textarea>
     <mat-error *ngIf="answerControl.hasError('required')">Bir açıklama girin</mat-error>
-    <mat-error *ngIf="answerControl.hasError('minlength')">Body must be at least 24 characters; you
-      entered {{answerControl.value.length}}.
+    <mat-error *ngIf="answerControl.hasError('minlength')">Aciklama en az 24 karakter olmalidir; sen
+      {{answerControl.value.length}} karakter girdin.
     </mat-error>
     <mat-hint>{{answerControl.value.length}} / 30.000</mat-hint>
   </mat-form-field>
 
-  {{answerControl.valid | json}}
-
   <!--<div class="preview-text" [innerHTML]="answerControl?.value | marked"></div>-->
-  <div class='preview-text' [innerHTML]='answerControl?.value'></div>
+  <div class='preview-text' [innerHTML]='answerControl?.value | marked'></div>
 
   <button mat-raised-button type='submit' color='primary' [disabled]='!answerControl.valid'>GÖNDER</button>
 </form>

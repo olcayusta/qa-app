@@ -40,6 +40,11 @@ const routes: Routes = [
         loadChildren: () => import('@modules/list/list.module').then((value) => value.ListModule)
       },
       {
+        path: 'watched_tags',
+        loadChildren: () =>
+          import('./watched-tags/watched-tags.module').then((m) => m.WatchedTagsModule)
+      },
+      {
         path: 'user/:userId',
         loadChildren: () => import('@modules/user/user.module').then((u) => u.UserModule)
       },

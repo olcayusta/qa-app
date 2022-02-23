@@ -13,20 +13,20 @@
   </mat-form-field>
 
   <!-- Başlık -->
-  <mat-form-field>
+  <mat-form-field hideRequiredMarker>
     <mat-label>Başlık</mat-label>
     <input matInput formControlName='title'>
   </mat-form-field>
 
   <!-- Açıklama -->
-  <mat-form-field>
+  <mat-form-field hideRequiredMarker>
     <mat-label>Açıklama</mat-label>
     <textarea #text matInput cdkTextareaAutosize formControlName='text'></textarea>
   </mat-form-field>
 
   <div [innerHTML]='text.value | marked'></div>
 
-  <mat-form-field>
+  <mat-form-field hideRequiredMarker>
     <mat-label>Özet</mat-label>
     <input matInput formControlName='summary'>
   </mat-form-field>

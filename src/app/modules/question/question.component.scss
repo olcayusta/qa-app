@@ -22,7 +22,7 @@
     color: var(--medium-emphasis-color);
   }
 
-  button {
+  button, a[mat-button] {
     font-family: Archivo, sans-serif;
     letter-spacing: 0 !important;
     margin-left: 16px;
@@ -46,9 +46,9 @@
 
   .mat-button {
     mat-icon {
-      width: 18px;
+     /* width: 18px;
       height: 18px;
-      font-size: 18px;
+      font-size: 18px;*/
     }
   }
 }
@@ -105,7 +105,7 @@ a {
 }
 
 a:hover {
-  text-decoration: underline;
+  // text-decoration: underline;
 }
 
 @media (max-width: 599px) {

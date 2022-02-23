@@ -52,7 +52,7 @@ input.custom-autofill {
 .login-form-container {
   position: relative;
   width: auto;
-  height: 600px;
+  min-height: 600px;
   padding: 48px;
   overflow: hidden;
   // background-color: var(--card-background);

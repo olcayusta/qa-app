@@ -1,5 +1,5 @@
 <ng-container *ngIf='answers$ | async as answers'>
-  <div class='filter-header'>
+  <div class='filter-header' *ngIf='answers.length; else noAnswer'>
     <h6 class='headline-6' itemprop='answerCount'>{{answers.length}} yanıt</h6>
     <button mat-button matTooltip='Cevapları sırala' [matMenuTriggerFor]='sortMenu'>
       <mat-icon>sort</mat-icon>
@@ -8,6 +8,10 @@
   </div>
   <app-question-answer-item *ngFor='let answer of answers' [answer]='answer'></app-question-answer-item>
 </ng-container>
+
+<ng-template #noAnswer>
+  <h6 class='headline-6'>Hic yanit yok</h6>
+</ng-template>
 
 <mat-menu #sortMenu>
   <ng-template matMenuContent>

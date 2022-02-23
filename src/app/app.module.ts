@@ -25,7 +25,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '@environments/environment';
 import { ThemeTogleComponent } from './theme-togle/theme-togle.component';
 import { TopAppBarLogoComponent } from './main/components/top-bar/components/top-app-bar-logo/top-app-bar-logo.component';
-import { FeedbackDialogComponent } from './dialogs/feedback-dialog/feedback-dialog.component';
+import { FeedbackDialogComponent } from '@dialogs/feedback-dialog/feedback-dialog.component';
 
 /* Locale initialization */
 /*import { registerLocaleData } from '@angular/common';
