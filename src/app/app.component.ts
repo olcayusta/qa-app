@@ -109,11 +109,10 @@ export class AppComponent implements OnInit {
   }
 
   /**
-   * This is the event that is fired when the service worker is installed.
-   *
+   * If sw push is supported, subscribe to push notifications.
    * @private
    */
-  private async initSwPush() {
+  private async subscribeToPush() {
     if (this.swPush.isEnabled) {
       try {
         const sub = await this.swPush.requestSubscription({
