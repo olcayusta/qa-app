@@ -96,7 +96,7 @@ export class AppComponent implements OnInit {
 
   /**
    * Change the theme of the app based on the user's preference.
-   * @param scheme
+   * @param scheme The color scheme to use. Either 'light' or 'dark'.
    */
   loadColorScheme(scheme: string) {
     let head = document.getElementsByTagName('head')[0];
