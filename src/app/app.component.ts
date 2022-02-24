@@ -1,20 +1,11 @@
 import { ChangeDetectionStrategy, Component, Inject, NgZone, OnInit } from '@angular/core';
-import {
-  ActivatedRoute,
-  NavigationCancel,
-  NavigationEnd,
-  NavigationError,
-  ResolveEnd,
-  ResolveStart,
-  Router
-} from '@angular/router';
+import { Router } from '@angular/router';
 import { SocketService } from '@shared/services/socket.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SwPush, SwUpdate, VersionEvent, VersionReadyEvent } from '@angular/service-worker';
 import { PushNotificationService } from '@shared/services/push-notification.service';
 import { environment } from '@environments/environment';
 import { DOCUMENT } from '@angular/common';
-import { BreakpointObserver } from '@angular/cdk/layout';
 import { AuthService } from '@auth/auth.service';
 import { filter, map } from 'rxjs/operators';
 import { fromEvent, merge, Observable, of, Subscription } from 'rxjs';
@@ -35,12 +26,9 @@ export class AppComponent implements OnInit {
     private authService: AuthService,
     private socketService: SocketService,
     private snackBar: MatSnackBar,
-    private route: ActivatedRoute,
-    private activatedRoute: ActivatedRoute,
     private swPush: SwPush,
     private swUpdate: SwUpdate,
     private pushService: PushNotificationService,
-    private breakpointObserver: BreakpointObserver,
     private zone: NgZone,
     @Inject(DOCUMENT) private document: Document,
     private sseService: SseService
@@ -116,16 +104,21 @@ export class AppComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-    /*    this.networkStatus = navigator.onLine;
+  /**
+   * Check network status.
+   */
+  checkNetworkStatus() {
+    this.networkStatus = navigator.onLine;
     this.networkStatus$ = merge(of(null), fromEvent(window, 'online'), fromEvent(window, 'offline'))
       .pipe(map(() => navigator.onLine))
       .subscribe((status) => {
         console.log('status', status);
         this.networkStatus = status;
         this.snackBar.open(`Status: ${this.networkStatus}`);
-      });*/
+      });
+  }
 
+  ngOnInit() {
     /*    Notification.requestPermission().then((result) => {
           console.log(result);
 
@@ -152,14 +145,10 @@ export class AppComponent implements OnInit {
     if (this.authService.userValue) {
       this.socketService.on('new answer').subscribe(({ event, payload }) => {
         console.log('Sorunuza, yeni ber cevap geldi.');
-        this.snackBar.open('One line text string.', 'GÖRÜNTÜLE', {
+        this.snackBar.open('One line text string.', 'TAMAM', {
           duration: 9999999
         });
       });
     }
-
-    this.socketService.on('hello').subscribe(({ event, payload }) => {
-      console.log(payload);
-    });
   }
 }

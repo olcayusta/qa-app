@@ -14,7 +14,7 @@ interface SubjectData {
   payload: object;
 }
 
-type socketEventType = 'new answer' | 'message' | 'hello';
+type eventType = 'new answer' | 'message' | 'hello';
 
 @Injectable({
   providedIn: 'root'
@@ -64,21 +64,26 @@ export class SocketService {
     });
   }
 
-  on(event: socketEventType): Observable<{ event: string; payload: object }> {
+  on(event: eventType): Observable<{ event: string; payload: object }> {
     return new Observable((subscriber) => {
-      this.subject.subscribe((value) => {
-        if (value.event === event) {
-          subscriber.next(value);
+      this.subject.subscribe((data) => {
+        if (data.event === event) {
+          subscriber.next(data);
         }
       });
     });
   }
 
+  /**
+   * Connect to the websocket
+   */
   connect(): void {
     this.subject.subscribe();
-    // this.subject.next('Test!');
   }
 
+  /**
+   * Disconnect from the server
+   */
   disconnect(): void {
     this.subject.unsubscribe();
   }
