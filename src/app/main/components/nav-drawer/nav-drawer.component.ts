@@ -21,6 +21,12 @@ import { filter } from 'rxjs/operators';
 export class NavDrawerComponent implements OnInit {
   @Output() closeDrawer = new EventEmitter<boolean>();
 
+  items = [
+    { label: 'Ana sayfa', link: '/' },
+    { label: 'Kullanicilar', link: '/users' },
+    { label: 'Etiketler', link: '/tags' }
+  ];
+
   constructor(private dialog: MatDialog, private vcr: ViewContainerRef, private router: Router) {}
 
   ngOnInit(): void {

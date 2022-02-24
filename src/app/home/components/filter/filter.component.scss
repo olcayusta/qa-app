@@ -2,11 +2,13 @@
   display: flex;
   align-items: center;
   padding: 24px 0;
-  /*border-bottom: 1px solid var(--border-color);
+/*  border-bottom: 1px solid var(--border-color);
   margin-bottom: 24px;*/
-  grid-gap: 16px;
 }
 
+/**
+  For mobile
+ */
 :host::-webkit-scrollbar {
   display: none;
 }

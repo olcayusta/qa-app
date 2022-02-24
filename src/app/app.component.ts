@@ -94,6 +94,10 @@ export class AppComponent implements OnInit {
     });
   }
 
+  /**
+   * Change the theme of the app based on the user's preference.
+   * @param scheme
+   */
   loadColorScheme(scheme: string) {
     let head = document.getElementsByTagName('head')[0];
     let link = document.createElement('link');
@@ -104,18 +108,21 @@ export class AppComponent implements OnInit {
     head.appendChild(link);
   }
 
-  initSwPush() {
+  /**
+   * This is the event that is fired when the service worker is installed.
+   *
+   * @private
+   */
+  private async initSwPush() {
     if (this.swPush.isEnabled) {
       try {
-        this.swPush
-          .requestSubscription({
-            serverPublicKey: environment.vapidPublic
-          })
-          .then((subscription) => {
-            this.pushService.sendSubscriptionToTheServer(subscription).subscribe();
-          });
+        const sub = await this.swPush.requestSubscription({
+          serverPublicKey: environment.PUBLIC_VAPID_KEY_OF_SERVER
+        });
+        // TODO: Send to server.
+        this.pushService.sendSubscriptionToTheServer(sub).subscribe();
       } catch (e) {
-        console.error(e);
+        console.error(`Could not subscribe due to:`, e);
       }
     }
   }
