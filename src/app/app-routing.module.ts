@@ -88,6 +88,14 @@ const routes: Routes = [
       (await import('./modules/page-not-found/page-not-found.module')).PageNotFoundModule
   },
   {
+    path: '500',
+    loadChildren: () =>
+      import('./modules/page-internal-server-error/page-internal-server-error.module').then(
+        (m) => m.PageInternalServerErrorModule
+      )
+  },
+
+  {
     path: 'facebook',
     loadChildren: async () => (await import('./facebook/facebook.module')).FacebookModule
   },

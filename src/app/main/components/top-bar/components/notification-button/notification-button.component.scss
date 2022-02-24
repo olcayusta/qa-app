@@ -10,7 +10,7 @@ svg {
   display: flex;
 }
 
-::ng-deep .mat-badge-active {
+:host ::ng-deep .mat-badge-active {
   width: 16px !important;
   height: 16px !important;
   font-size: 11px !important;

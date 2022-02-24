@@ -1,10 +1,10 @@
 <form autocomplete='off' spellcheck='false' [formGroup]='form'>
-  
+
   <ng-container *ngIf='q$ | async as q'></ng-container>
 
   <!-- Revisions -->
   <mat-form-field>
-    <mat-label>Favorite food</mat-label>
+    <mat-label>Duzenlemeler</mat-label>
     <mat-select disableOptionCentering>
       <mat-option *ngFor="let food of foods" [value]="food.value">
         {{food.viewValue}}
@@ -21,7 +21,7 @@
   <!-- Açıklama -->
   <mat-form-field hideRequiredMarker>
     <mat-label>Açıklama</mat-label>
-    <textarea #text matInput cdkTextareaAutosize formControlName='text'></textarea>
+    <textarea #text matInput cdkTextareaAutosize cdkAutosizeMaxRows='8' formControlName='text'></textarea>
   </mat-form-field>
 
   <div [innerHTML]='text.value | marked'></div>

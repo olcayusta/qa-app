@@ -29,6 +29,7 @@ export class EditComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private revisionService: RevisionService) {
     this.form = this.fb.group({
+      revisions: [null],
       title: [null, Validators.required],
       text: [null, Validators.required],
       summary: [null, Validators.required]
@@ -40,6 +41,7 @@ export class EditComponent implements OnInit {
       tap((value) => {
         this.form.get('title')?.patchValue(value.title);
         this.form.get('text')?.patchValue(value.content);
+        this.form.get('revisions')?.patchValue(value.revisions);
       })
     );
   }

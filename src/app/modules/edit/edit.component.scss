@@ -24,3 +24,15 @@ textarea {
     background-color: #6200ee12 !important;
   }
 }
+
+textarea::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 8px;
+
+}
+
+textarea::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  cursor: pointer;
+}

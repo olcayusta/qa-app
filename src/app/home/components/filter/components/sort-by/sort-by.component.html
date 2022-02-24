@@ -73,29 +73,33 @@
 </mat-menu>
 
 <mat-menu #filterMenu="matMenu" class="sort-menu">
-  <button mat-menu-item>
-    <mat-icon>check</mat-icon>
-    No answers
-  </button>
-  <button mat-menu-item>
-    <mat-icon>check</mat-icon>
-    No accepted answers
-  </button>
-  <button mat-menu-item>Has bounty</button>
-  <button mat-menu-item [matMenuTriggerFor]="subMenu">Filtrelerim</button>
+  <ng-template matMenuContent>
+    <button mat-menu-item>
+      <mat-icon>check</mat-icon>
+      No answers
+    </button>
+    <button mat-menu-item>
+      <mat-icon>check</mat-icon>
+      No accepted answers
+    </button>
+    <button mat-menu-item>Has bounty</button>
+    <button mat-menu-item [matMenuTriggerFor]="subMenu">Filtrelerim</button>
+  </ng-template>
 </mat-menu>
 
 <mat-menu #subMenu="matMenu">
-  <button mat-menu-item>TypeScript</button>
-  <button mat-menu-item>Unanswered (my tags)</button>
-  <button mat-menu-item>TypeScript</button>
-  <button mat-menu-item>Angular unanswered</button>
-  <button mat-menu-item>My Tags</button>
-  <button mat-menu-item>iyi iyi</button>
-  <button mat-menu-item>bla bla</button>
-  <button mat-menu-item>bla bla</button>
-  <button mat-menu-item>bla bla</button>
-  <button mat-menu-item>bla bla</button>
+ <ng-template matMenuContent>
+   <button mat-menu-item>TypeScript</button>
+   <button mat-menu-item>Unanswered (my tags)</button>
+   <button mat-menu-item>TypeScript</button>
+   <button mat-menu-item>Angular unanswered</button>
+   <button mat-menu-item>My Tags</button>
+   <button mat-menu-item>iyi iyi</button>
+   <button mat-menu-item>bla bla</button>
+   <button mat-menu-item>bla bla</button>
+   <button mat-menu-item>bla bla</button>
+   <button mat-menu-item>bla bla</button>
+ </ng-template>
 </mat-menu>
 
 <!--

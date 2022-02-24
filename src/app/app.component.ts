@@ -18,6 +18,8 @@ import { DOCUMENT } from '@angular/common';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { AuthService } from '@auth/auth.service';
 import { filter, map } from 'rxjs/operators';
+import { fromEvent, merge, of, Subscription } from 'rxjs';
+import { SseService } from '@shared/services/sse.service';
 
 @Component({
   selector: 'app-root',
@@ -27,6 +29,9 @@ import { filter, map } from 'rxjs/operators';
 })
 export class AppComponent implements OnInit {
   spinner = false;
+
+  networkStatus: boolean = false;
+  networkStatus$: Subscription = Subscription.EMPTY;
 
   constructor(
     private router: Router,
@@ -41,7 +46,8 @@ export class AppComponent implements OnInit {
     private pushService: PushNotificationService,
     private breakpointObserver: BreakpointObserver,
     private zone: NgZone,
-    @Inject(DOCUMENT) private document: Document
+    @Inject(DOCUMENT) private document: Document,
+    private sseService: SseService
   ) {
     // THEME FIX
     const storageKey = localStorage.getItem('theme-preference');
@@ -98,21 +104,37 @@ export class AppComponent implements OnInit {
     head.appendChild(link);
   }
 
-  async initSwPush(): Promise<void> {
+  initSwPush() {
     if (this.swPush.isEnabled) {
       try {
-        const subscription = await this.swPush.requestSubscription({
-          serverPublicKey: environment.vapidPublic
-        });
-        this.pushService.sendSubscriptionToTheServer(subscription).subscribe();
+        this.swPush
+          .requestSubscription({
+            serverPublicKey: environment.vapidPublic
+          })
+          .then((subscription) => {
+            this.pushService.sendSubscriptionToTheServer(subscription).subscribe();
+          });
       } catch (e) {
         console.error(e);
       }
     }
   }
 
-  async ngOnInit(): Promise<void> {
-    await this.initSwPush();
+  ngOnInit() {
+    /*    this.sseService.observerMessages(`http://localhost:9001/stream`).subscribe((value) => {
+      console.log(value);
+    });*/
+
+    /*    this.networkStatus = navigator.onLine;
+    this.networkStatus$ = merge(of(null), fromEvent(window, 'online'), fromEvent(window, 'offline'))
+      .pipe(map(() => navigator.onLine))
+      .subscribe((status) => {
+        console.log('status', status);
+        this.networkStatus = status;
+        this.snackBar.open(`Status: ${this.networkStatus}`);
+      });*/
+
+    // await this.initSwPush();
 
     /*    Notification.requestPermission().then((result) => {
           console.log(result);
@@ -145,5 +167,9 @@ export class AppComponent implements OnInit {
         });
       });
     }
+
+    this.socketService.on('hello').subscribe(({ event, payload }) => {
+      console.log(payload);
+    });
   }
 }

@@ -152,3 +152,14 @@ a[mat-stroked-button] {
     margin-right: 8px;
   }
 }
+
+.badge-icon ::ng-deep .mat-badge-content {
+  width: 24px !important;
+  top: -8px !important;
+  right: -4px !important;
+  height: 16px !important;
+  border-radius: 12px !important;
+  font-size: 11px !important;
+  font-weight: 400;
+  line-height: 16px !important;
+}

@@ -15,4 +15,5 @@ export interface Question {
   user: User;
   tags: Tag[];
   answer: Answer;
+  revisions: any;
 }
