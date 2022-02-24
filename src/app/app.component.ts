@@ -126,11 +126,16 @@ export class AppComponent implements OnInit {
     }
   }
 
-  ngOnInit() {
-    /*    this.sseService.observerMessages(`http://localhost:9001/stream`).subscribe((value) => {
+  /**
+   * If SSE is supported, subscribe to SSE events.
+   */
+  subscribeToSSE(): void {
+    this.sseService.observerMessages(`http://localhost:9001/stream`).subscribe((value) => {
       console.log(value);
-    });*/
+    });
+  }
 
+  ngOnInit() {
     /*    this.networkStatus = navigator.onLine;
     this.networkStatus$ = merge(of(null), fromEvent(window, 'online'), fromEvent(window, 'offline'))
       .pipe(map(() => navigator.onLine))
@@ -139,8 +144,6 @@ export class AppComponent implements OnInit {
         this.networkStatus = status;
         this.snackBar.open(`Status: ${this.networkStatus}`);
       });*/
-
-    // await this.initSwPush();
 
     /*    Notification.requestPermission().then((result) => {
           console.log(result);
