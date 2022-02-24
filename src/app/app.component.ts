@@ -10,7 +10,6 @@ import {
 } from '@angular/router';
 import { SocketService } from '@shared/services/socket.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { SpinnerService } from '@shared/services/spinner.service';
 import { SwPush, SwUpdate, VersionEvent, VersionReadyEvent } from '@angular/service-worker';
 import { PushNotificationService } from '@shared/services/push-notification.service';
 import { environment } from '@environments/environment';
@@ -18,7 +17,7 @@ import { DOCUMENT } from '@angular/common';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { AuthService } from '@auth/auth.service';
 import { filter, map } from 'rxjs/operators';
-import { fromEvent, merge, of, Subscription } from 'rxjs';
+import { fromEvent, merge, Observable, of, Subscription } from 'rxjs';
 import { SseService } from '@shared/services/sse.service';
 
 @Component({
@@ -28,8 +27,6 @@ import { SseService } from '@shared/services/sse.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements OnInit {
-  spinner = false;
-
   networkStatus: boolean = false;
   networkStatus$: Subscription = Subscription.EMPTY;
 
@@ -40,7 +37,6 @@ export class AppComponent implements OnInit {
     private snackBar: MatSnackBar,
     private route: ActivatedRoute,
     private activatedRoute: ActivatedRoute,
-    private spinnerService: SpinnerService,
     private swPush: SwPush,
     private swUpdate: SwUpdate,
     private pushService: PushNotificationService,
@@ -76,21 +72,6 @@ export class AppComponent implements OnInit {
           console.log('The snackbar action was triggered!');
           this.document.location.reload();
         });
-    });
-
-    /**
-     * This is the event that is fired when the service worker is installed.
-     */
-    router.events.subscribe((event) => {
-      if (event instanceof ResolveStart) {
-        this.spinner = true;
-        this.spinnerService.addSpinner();
-      }
-
-      if (event instanceof (ResolveEnd || NavigationCancel || NavigationError || NavigationEnd)) {
-        this.spinner = false;
-        this.spinnerService.removeSpinner();
-      }
     });
   }
 

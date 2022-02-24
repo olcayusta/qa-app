@@ -26,8 +26,10 @@ import { environment } from '@environments/environment';
 import { ThemeTogleComponent } from './theme-togle/theme-togle.component';
 import { TopAppBarLogoComponent } from './main/components/top-bar/components/top-app-bar-logo/top-app-bar-logo.component';
 import { FeedbackDialogComponent } from '@dialogs/feedback-dialog/feedback-dialog.component';
+import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 
 /* Locale initialization */
+
 /*import { registerLocaleData } from '@angular/common';
 import localeTr from '@angular/common/locales/tr';
 registerLocaleData(localeTr);*/
@@ -43,7 +45,8 @@ registerLocaleData(localeTr);*/
     StickyDirective,
     ThemeTogleComponent,
     TopAppBarLogoComponent,
-    FeedbackDialogComponent
+    FeedbackDialogComponent,
+    ProgressBarComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +66,11 @@ registerLocaleData(localeTr);*/
   ],
   providers: [
     // { provide: LOCALE_ID, useValue: 'tr-TR' },
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    },
     {
       provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
       useValue: { horizontalPosition: 'start', duration: 4000 }
