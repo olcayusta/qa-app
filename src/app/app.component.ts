@@ -7,7 +7,7 @@ import { PushNotificationService } from '@shared/services/push-notification.serv
 import { environment } from '@environments/environment';
 import { DOCUMENT } from '@angular/common';
 import { AuthService } from '@auth/auth.service';
-import { filter, map } from 'rxjs/operators';
+import { delay, filter, map, retryWhen, tap } from 'rxjs/operators';
 import { fromEvent, merge, Observable, of, Subscription } from 'rxjs';
 import { SseService } from '@shared/services/sse.service';
 
@@ -20,6 +20,8 @@ import { SseService } from '@shared/services/sse.service';
 export class AppComponent implements OnInit {
   networkStatus: boolean = false;
   networkStatus$: Subscription = Subscription.EMPTY;
+
+  sub!: Subscription;
 
   constructor(
     private router: Router,
@@ -68,8 +70,8 @@ export class AppComponent implements OnInit {
    * @param scheme The color scheme to use. Either 'light' or 'dark'.
    */
   loadColorScheme(scheme: string) {
-    let head = document.getElementsByTagName('head')[0];
-    let link = document.createElement('link');
+    let head = this.document.getElementsByTagName('head')[0];
+    let link = this.document.createElement('link');
 
     link.rel = 'stylesheet';
     link.href = `/${scheme}.css`;
@@ -143,12 +145,39 @@ export class AppComponent implements OnInit {
      * Make a notification for author user id for created answer for question.
      */
     if (this.authService.userValue) {
-      this.socketService.on('new answer').subscribe(({ event, payload }) => {
-        console.log('Sorunuza, yeni ber cevap geldi.');
-        this.snackBar.open('One line text string.', 'TAMAM', {
-          duration: 9999999
-        });
-      });
+      /*      this.sub = this.socketService.on('new answer').subscribe(({ event, payload }) => {
+              console.log('Sorunuza, yeni ber cevap geldi.');
+              this.snackBar.open('One line text string.', 'TAMAM', {
+                duration: 9999999
+              });
+            });*/
+
     }
+
+    const observableA = this.socketService.subject.multiplex(
+      () => ({ subscribe: 'A' }), // When servers get this message, it will start sending messages for 'A'...
+      () => ({ unsubscribe: 'A' }), //...and when gets this one, it will stop.
+      (message) => message.event === 'A' // If the function returns `true` message is passed down the stream. Skipped if the function returns false.
+    );
+
+    const observableB = this.socketService.subject.multiplex(
+      // And the same goes for 'B'.
+      () => ({ subscribe: 'B' }),
+      () => ({ unsubscribe: 'B un oldu' }),
+      (message) => message.event === 'B'
+    );
+
+    const subA = observableA.subscribe((messageForA) => console.log(messageForA));
+    // At this moment WebSocket connection is established. Server gets `{"subscribe": "A"}` message and starts sending messages for 'A'
+
+    const subB = observableB.subscribe(messageForB => console.log(messageForB));
+    // Since we already have a connection, we just send `{"subscribe": "B"} message to the server. It starts sending messages for 'B'
+    // which we log here.
+
+    // Message '{"unsubscribe": "B"}' is sent to the server, which stops sending 'B' messages.
+
+    // subA.unsubscribe();
+    // Message '{"unsubscribe": "A"}' makes the server stop sending messages for 'A'. Since there is no more subscribers to root Subject,
+    // socket connection closes.
   }
 }

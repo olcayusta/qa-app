@@ -3,7 +3,7 @@ import {
   OnInit,
   ChangeDetectionStrategy,
   ɵmarkDirty as markDirty,
-  ViewChild,
+  ViewChild
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { QuestionService } from '../question/services/question.service';
@@ -11,10 +11,10 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { ChipsAutocompleteComponent } from './components/chips-autocomplete/chips-autocomplete.component';
 
 @Component({
-  selector: 'qa-create-question',
+  selector: 'inek-create-question',
   templateUrl: './create-question.component.html',
   styleUrls: ['./create-question.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CreateQuestionComponent implements OnInit {
   form: FormGroup;
@@ -32,10 +32,8 @@ export class CreateQuestionComponent implements OnInit {
     private questionService: QuestionService
   ) {
     this.form = formBuilder.group({
-      title: ['', [Validators.required]],
-      description: ['', [Validators.required]],
-    }, {
-      updateOn: 'submit'
+      title: [null, [Validators.required]],
+      description: [null, [Validators.required]]
     });
   }
 
@@ -45,11 +43,9 @@ export class CreateQuestionComponent implements OnInit {
       description: string;
     };
     const tags = this.chipComponent.tags;
-    this.questionService
-      .saveQuestion(title, description, tags)
-      .subscribe((value) => {
-        console.log(value);
-      });
+    this.questionService.saveQuestion(title, description, tags).subscribe((value) => {
+      console.log(value);
+    });
   }
 
   changeMetaThemeColor(): void {
@@ -76,12 +72,10 @@ export class CreateQuestionComponent implements OnInit {
   onFocus(): void {
     this.worker = new Worker('../marked.worker', {
       type: 'module',
-      name: 'marked',
+      name: 'marked'
     });
     this.worker.onmessage = ({ data }) => {
-      this.description = this.domSanitizer.bypassSecurityTrustHtml(
-        data
-      ) as string;
+      this.description = this.domSanitizer.bypassSecurityTrustHtml(data) as string;
       markDirty(this);
     };
   }

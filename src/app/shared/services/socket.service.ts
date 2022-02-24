@@ -4,6 +4,11 @@ import { Observable } from 'rxjs';
 import { environment } from '@environments/environment';
 import { delay, retryWhen, tap } from 'rxjs/operators';
 
+interface SocketData {
+  event: string;
+  payload: object;
+}
+
 enum socketEvent {
   newAnswer = 'new answer',
   message = 'message'
@@ -14,7 +19,7 @@ interface SubjectData {
   payload: object;
 }
 
-type eventType = 'new answer' | 'message' | 'hello';
+type eventType = 'new answer' | 'message' | 'hello' | 'sport news' | 'chat';
 
 @Injectable({
   providedIn: 'root'
@@ -36,22 +41,21 @@ export class SocketService {
   }
 
   reconnect() {
-    this.subject
-      .pipe(
-        retryWhen((errors) =>
-          errors.pipe(
-            tap((err) => {
-              console.error('Got error', err);
-            }),
-            delay(1000)
-          )
+    this.subject.pipe(
+      retryWhen((errors) =>
+        errors.pipe(
+          tap((err) => {
+            console.error('Got error', err);
+          }),
+          delay(1000)
         )
       )
-      .subscribe({
+    );
+    /*  .subscribe({
         next: (v) => console.log(v),
         error: (e) => console.error(e),
         complete: () => console.info('complete')
-      });
+      });*/
   }
 
   sendMessage(message: string) {
@@ -64,13 +68,29 @@ export class SocketService {
     });
   }
 
-  on(event: eventType): Observable<{ event: string; payload: object }> {
+  /**
+   * @description
+   * @param event Custom event type (new answer, message, etc.)
+   * @returns {Observable<Socket>} Return an observable that emits the event
+   */
+  on(event: eventType): Observable<SocketData> {
     return new Observable((subscriber) => {
-      this.subject.subscribe((data) => {
-        if (data.event === event) {
-          subscriber.next(data);
-        }
-      });
+      this.subject
+        .pipe(
+          retryWhen((errors) =>
+            errors.pipe(
+              tap((err) => {
+                console.error('Got error', err);
+              }),
+              delay(1000)
+            )
+          )
+        )
+        .subscribe((data) => {
+          if (data.event === event) {
+            subscriber.next(data);
+          }
+        });
     });
   }
 
