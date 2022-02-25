@@ -5,7 +5,7 @@ import { environment } from '@environments/environment';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class RegisterService {
   constructor(private http: HttpClient) {}
@@ -20,7 +20,7 @@ export class RegisterService {
       email,
       password,
       displayName,
-      picture,
+      picture
     });
   }
 }

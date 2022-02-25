@@ -20,11 +20,11 @@ export class AuthService {
   redirectUrl = '/';
 
   constructor(private http: HttpClient) {
-    const userObject = JSON.parse(localStorage.getItem('user') as string);
-    const loggedIn = !!userObject;
+    const u = JSON.parse(<string>localStorage.getItem('user'));
+    const loggedIn = !!u;
 
     this.isLoggedInSubject.next(loggedIn);
-    this.userSubject.next(userObject);
+    this.userSubject.next(u);
   }
 
   get userValue(): User {

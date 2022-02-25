@@ -2,8 +2,6 @@ import { Component, OnInit, ChangeDetectionStrategy, ɵmarkDirty as markDirty } 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
-import { Title } from '@angular/platform-browser';
-import { environment } from '@environments/environment';
 import { TagService } from '@modules/tag/services/tag.service';
 import { catchError } from 'rxjs/operators';
 import { EMPTY } from 'rxjs';
@@ -29,13 +27,12 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private tagService: TagService,
-    private router: Router,
-    private title: Title
+    private router: Router
   ) {
     this.form = formBuilder.group(
       {
-        email: ['', [Validators.required, Validators.email]],
-        password: ['', [Validators.required, Validators.min(8)]]
+        email: [null, [Validators.required, Validators.email]],
+        password: [null, [Validators.required, Validators.min(8)]]
       },
       {
         updateOn: 'submit'
@@ -43,13 +40,13 @@ export class LoginComponent implements OnInit {
     );
   }
 
-  ngOnInit(): void {
-    this.title.setTitle(`Oturum Aç - ${environment.appTitle}`);
-  }
+  ngOnInit(): void {}
 
   submit(): void {
     if (this.form.valid) {
       this.submitted = true;
+
+      // Get the form values
       const { email, password } = this.form.value;
 
       this.authService
@@ -66,7 +63,6 @@ export class LoginComponent implements OnInit {
         )
         .subscribe((value) => {
           this.submitted = false;
-          // @ts-ignore
           if (value.error) {
             alert('error');
             console.log(value);
@@ -75,9 +71,7 @@ export class LoginComponent implements OnInit {
             this.router.navigate([this.authService.redirectUrl]).then((value1) => {
               // Kullanicinin favori etiketlerini kaydet
               this.tagService.getFavoriteTags().subscribe((value2) => {
-                if (value2) {
-                  localStorage.setItem('watchedTags', JSON.stringify(value2));
-                }
+                value2 && localStorage.setItem('watchedTags', JSON.stringify(value2));
               });
             });
           }
