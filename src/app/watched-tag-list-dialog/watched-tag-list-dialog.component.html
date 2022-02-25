@@ -1,0 +1,26 @@
+<h1 mat-dialog-title>Watched Tags</h1>
+<mat-dialog-content>
+  <p>watched-tag-list-dialog works!</p>
+
+  <mat-chip-list>
+    <mat-chip removable>
+      Angular
+      <button matChipRemove>
+        <mat-icon>cancel</mat-icon>
+      </button>
+    </mat-chip>
+
+  <!--  <mat-form-field>
+      <mat-chip-list #chipList>
+        <mat-chip>Chip 1</mat-chip>
+        <mat-chip>Chip 2</mat-chip>
+      </mat-chip-list>
+      <input [matChipInputFor]="chipList">
+    </mat-form-field>-->
+
+  </mat-chip-list>
+</mat-dialog-content>
+<mat-dialog-actions [align]='"end"'>
+  <button mat-button>CANCEL</button>
+  <button mat-button color='primary'>OK</button>
+</mat-dialog-actions>

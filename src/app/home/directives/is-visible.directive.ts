@@ -15,13 +15,10 @@ export class IsVisibleDirective implements AfterViewInit, OnDestroy {
 
   observer!: IntersectionObserver;
 
-  /**
-   * @param elementRef
-   */
   constructor(private elementRef: ElementRef<HTMLDivElement>) {}
 
   /**
-   * Initialize the intersection observer
+   * Create an intersection observer and emit an event when the element is visible
    */
   ngAfterViewInit(): void {
     this.observer = new IntersectionObserver(([entry]) => {
@@ -31,7 +28,7 @@ export class IsVisibleDirective implements AfterViewInit, OnDestroy {
   }
 
   /**
-   * Destroy the intersection observer
+   * Destroy the intersection observer if component is destroyed
    */
   ngOnDestroy() {
     this.observer.unobserve(this.elementRef.nativeElement);

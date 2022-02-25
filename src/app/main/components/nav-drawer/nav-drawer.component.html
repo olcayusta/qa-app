@@ -19,7 +19,7 @@
       <app-gf-icon name='favorite'></app-gf-icon>
       <span>Favorilerim</span>
     </a>
-    <a mat-list-item routerLinkActive='active' routerLink='/watched_tags' (click)='onClicked()'>
+    <a mat-list-item routerLinkActive='active' routerLink='/watched_tags' (click)='onClicked(); openWatchedTagsDialog()'>
       <app-gf-icon name='label_important'></app-gf-icon>
       <span>İzlediğim etiketler</span>
     </a>

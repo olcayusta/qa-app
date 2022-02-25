@@ -38,10 +38,7 @@ export class CreateQuestionComponent implements OnInit {
   }
 
   submit(): void {
-    const { title, description } = this.form.value as {
-      title: string;
-      description: string;
-    };
+    const { title, description } = <{ title: string; description: string }>this.form.value;
     const tags = this.chipComponent.tags;
     this.questionService.saveQuestion(title, description, tags).subscribe((value) => {
       console.log(value);
@@ -50,13 +47,12 @@ export class CreateQuestionComponent implements OnInit {
 
   changeMetaThemeColor(): void {
     // @ts-ignore
-    /*    document.querySelectorAll('meta[name=theme-color]').forEach((value) => {
+    document.querySelectorAll('meta[name=theme-color]').forEach((value) => {
       value.setAttribute('content', 'yellow');
-    });*/
+    });
   }
 
   ngOnInit(): void {
-    this.changeMetaThemeColor();
     this.form.get('description')!.valueChanges.subscribe((value) => {
       this.worker.postMessage(value);
 
