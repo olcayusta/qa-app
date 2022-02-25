@@ -10,7 +10,7 @@ import { ILogin } from '@auth/interfaces/ILogin';
   providedIn: 'root'
 })
 export class AuthService {
-  isLoggedInSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  isLoggedInSubject = new BehaviorSubject<boolean>(false);
   isLoggedIn$: Observable<boolean> = this.isLoggedInSubject.asObservable();
 
   // @ts-ignore
@@ -27,10 +27,15 @@ export class AuthService {
     this.userSubject.next(userObject);
   }
 
-  public get userValue(): User {
+  get userValue(): User {
     return this.userSubject.value;
   }
 
+  /**
+   * Login
+   * @param email
+   * @param password
+   */
   login(email: string, password: string): Observable<ILogin> {
     return this.http
       .post<ILogin>(`${environment.apiUrl}/users/login`, {
@@ -39,21 +44,26 @@ export class AuthService {
       })
       .pipe(
         tap(({ user, token }: ILogin) => {
-          if (token) {
-            this.saveUserToLocalStorage(user, token);
-          }
+          token && this.saveUserToLocalStorage(user, token);
         })
       );
   }
 
-  /**
+  /*  /!**
    * Kullanicinin bilgilerini localStorage veritabanina kaydediyoruz.
    * Kullanicinin login bilgisini bildiriyoruz.
    * Sayfa yenilendikce, verilerimiz kaybolmayacak.
    * @param user
    * @param token
+   *!/
    */
-  private saveUserToLocalStorage(user: User, token: string) {
+
+  /**
+   * Save user to local storage.
+   * @param user
+   * @param token
+   */
+  saveUserToLocalStorage(user: User, token: string) {
     localStorage.setItem('user', JSON.stringify(user));
     localStorage.setItem('token', token);
     this.isLoggedInSubject.next(true);
@@ -61,10 +71,17 @@ export class AuthService {
   }
 
   /**
-   * LocalStorage'den kullanici verilerini sil ve aktif state'i null hale getir.
+   * Logout
    */
-  logout(): void {
+  logout() {
+    this.removeUserFromLocalStorage();
     this.isLoggedInSubject.next(false);
+  }
+
+  /**
+   * Delete user from local storage.
+   */
+  removeUserFromLocalStorage() {
     localStorage.clear();
   }
 }

@@ -16,6 +16,9 @@ export class ImgShadowComponent {
 
   constructor(private elementRef: ElementRef<HTMLImageElement>) {}
 
+  /**
+   * Host component set attribute loaded if image is loaded
+   */
   onLoad(): void {
     this.elementRef.nativeElement.setAttribute('loaded', '');
   }

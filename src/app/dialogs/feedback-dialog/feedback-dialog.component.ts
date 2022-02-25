@@ -28,6 +28,10 @@ export class FeedbackDialogComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  /**
+   * Submit feedback form
+   * @param $event
+   */
   onFormSubmit($event: SubmitEvent) {
     console.log('Form submitted!');
   }
