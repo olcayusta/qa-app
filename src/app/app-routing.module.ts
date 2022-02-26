@@ -94,11 +94,6 @@ const routes: Routes = [
         (m) => m.PageInternalServerErrorModule
       )
   },
-
-  {
-    path: 'facebook',
-    loadChildren: async () => (await import('./facebook/facebook.module')).FacebookModule
-  },
   {
     path: '**',
     loadChildren: async () =>

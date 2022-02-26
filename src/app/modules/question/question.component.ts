@@ -25,7 +25,6 @@ import { AuthService } from '@auth/auth.service';
 import { ComponentPortal, TemplatePortal } from '@angular/cdk/portal';
 import { SafeHtml } from '@angular/platform-browser';
 import { DOCUMENT } from '@angular/common';
-import { FacebookComponent } from '../../facebook/facebook.component';
 
 @Component({
   selector: 'app-question',

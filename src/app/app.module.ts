@@ -27,7 +27,7 @@ import { ThemeTogleComponent } from './theme-togle/theme-togle.component';
 import { TopAppBarLogoComponent } from './main/components/top-bar/components/top-app-bar-logo/top-app-bar-logo.component';
 import { FeedbackDialogComponent } from '@dialogs/feedback-dialog/feedback-dialog.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
-import { WatchedTagListDialogComponent } from './watched-tag-list-dialog/watched-tag-list-dialog.component';
+import { WatchedTagListDialogComponent } from './dialogs/watched-tag-list-dialog/watched-tag-list-dialog.component';
 
 /* Locale initialization */
 
