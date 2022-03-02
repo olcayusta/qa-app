@@ -11,7 +11,7 @@ import { SettingsDialogComponent } from '@dialogs/settings-dialog/settings-dialo
 import { FeedbackDialogComponent } from '@dialogs/feedback-dialog/feedback-dialog.component';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
-import { WatchedTagListDialogComponent } from '../../../dialogs/watched-tag-list-dialog/watched-tag-list-dialog.component';
+import { WatchedTagListDialogComponent } from '@dialogs/watched-tag-list-dialog/watched-tag-list-dialog.component';
 
 @Component({
   selector: 'inek-nav-drawer',
@@ -62,6 +62,6 @@ export class NavDrawerComponent implements OnInit {
     const dialog = this.dialog.open(WatchedTagListDialogComponent, {
       minWidth: 512,
       autoFocus: false
-    })
+    });
   }
 }

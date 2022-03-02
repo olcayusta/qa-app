@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { CreateQuestionRoutingModule } from './create-question-routing.module';
 import { CreateQuestionComponent } from './create-question.component';
 import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ChipsAutocompleteComponent } from './components/chips-autocomplete/chips-autocomplete.component';
 import { MatChipsModule } from '@angular/material/chips';
@@ -21,7 +20,6 @@ import { MaterialModule } from '@modules/material/material.module';
     CommonModule,
     CreateQuestionRoutingModule,
     MatInputModule,
-    MatButtonModule,
     ReactiveFormsModule,
     MatChipsModule,
     MatAutocompleteModule,

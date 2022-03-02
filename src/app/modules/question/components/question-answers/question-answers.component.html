@@ -1,6 +1,6 @@
 <ng-container *ngIf='answers$ | async as answers'>
   <div class='filter-header' *ngIf='answers.length; else noAnswer'>
-    <h6 class='headline-6' itemprop='answerCount'>{{answers.length}} yanıt</h6>
+    <div id='answer-count' itemprop='answerCount'>{{answers.length}} Yanıt</div>
     <button mat-button matTooltip='Cevapları sırala' [matMenuTriggerFor]='sortMenu'>
       <mat-icon>sort</mat-icon>
       <span>SIRALAMA ÖLÇÜTÜ</span>
@@ -17,6 +17,6 @@
   <ng-template matMenuContent>
     <button mat-menu-item>Eklenme tarihi (en yeni)</button>
     <button mat-menu-item>Eklenme tarihi (en eski)</button>
-    <button mat-menu-item>Em popüler</button>
+    <button mat-menu-item>En iyi yorumlar</button>
   </ng-template>
 </mat-menu>

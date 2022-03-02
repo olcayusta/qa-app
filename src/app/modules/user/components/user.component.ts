@@ -8,7 +8,7 @@ import { environment } from '@environments/environment';
   selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UserComponent implements OnInit {
   user!: User;
@@ -16,24 +16,24 @@ export class UserComponent implements OnInit {
   links = [
     {
       path: '/',
-      label: 'Ana Sayfa',
+      label: 'Ana Sayfa'
     },
     {
       path: '/questions',
-      label: 'Sorular',
+      label: 'Sorular'
     },
     {
       path: '/answers',
-      label: 'Cevaplar',
+      label: 'Cevaplar'
     },
     {
       path: '/tags',
-      label: 'Etiketler',
+      label: 'Etiketler'
     },
     {
       path: '/tags',
-      label: 'Bookmarks',
-    },
+      label: 'Bookmarks'
+    }
   ];
 
   // activeLink = this.links[0];

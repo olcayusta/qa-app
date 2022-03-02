@@ -11,12 +11,6 @@ import { SharedModule } from '@shared/shared.module';
 
 @NgModule({
   declarations: [UsersComponent, UserListItemComponent, UserListComponent],
-  imports: [
-    CommonModule,
-    UsersRoutingModule,
-    MatDividerModule,
-    MatButtonModule,
-    SharedModule,
-  ],
+  imports: [CommonModule, UsersRoutingModule, MatDividerModule, MatButtonModule, SharedModule]
 })
 export class UsersModule {}

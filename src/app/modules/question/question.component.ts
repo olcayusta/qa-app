@@ -22,9 +22,10 @@ import { ShareDialogComponent } from '@shared/components/share-dialog/share-dial
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Overlay, OverlayRef, ScrollStrategyOptions } from '@angular/cdk/overlay';
 import { AuthService } from '@auth/auth.service';
-import { ComponentPortal, TemplatePortal } from '@angular/cdk/portal';
+import { TemplatePortal } from '@angular/cdk/portal';
 import { SafeHtml } from '@angular/platform-browser';
 import { DOCUMENT } from '@angular/common';
+import { FlagDialogComponent } from '@dialogs/flag-dialog/flag-dialog.component';
 
 @Component({
   selector: 'app-question',
@@ -89,6 +90,10 @@ export class QuestionComponent implements OnInit, OnDestroy {
     this.document.body.removeAttribute('itemtype');
   }
 
+  /**
+   * Soruyu kullanicinin favorilerine ekler.
+   * @param questionId
+   */
   addToFavorite(questionId: number): void {
     this.snackBar.open('Bu soruyu bir favori listesine eklemek için oturum açın', 'TAMAM');
     /*   this.favoriteService.addToFavorite(questionId).subscribe((value) => {
@@ -160,5 +165,12 @@ export class QuestionComponent implements OnInit, OnDestroy {
    */
   openLogInPopup() {
     // this.createPopup();
+  }
+
+  openFlagDialog() {
+    const dialog = this.dialog.open(FlagDialogComponent, {
+      autoFocus: false,
+      minWidth: 560
+    });
   }
 }

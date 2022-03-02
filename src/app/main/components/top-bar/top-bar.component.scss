@@ -67,7 +67,7 @@ a[mat-button] {
 mat-toolbar {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
-  background-color: var(--topbar-background) !important;
+  background-color: var(--topbar-background)
   // width: calc(100vw - 17px);
   /* box-shadow: none !important;
    border-bottom: 2px solid rgba(0, 0, 0, .12);*/

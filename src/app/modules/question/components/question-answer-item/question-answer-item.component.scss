@@ -2,7 +2,6 @@
   display: block;
 }
 
-
 a {
   color: inherit;
   text-decoration: none;
@@ -84,4 +83,17 @@ a:hover {
       font-size: 18px;
     }
   }
+}
+
+.mat-stroked-button {
+  border-radius: 18px;
+  border-color: #6200ee;
+
+  mat-icon {
+    margin-right: 8px;
+  }
+}
+
+:host ::ng-deep p a {
+  color: #6200ee;
 }

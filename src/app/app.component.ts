@@ -10,6 +10,7 @@ import { AuthService } from '@auth/auth.service';
 import { delay, filter, map, retryWhen, tap } from 'rxjs/operators';
 import { fromEvent, merge, Observable, of, Subscription } from 'rxjs';
 import { SseService } from '@shared/services/sse.service';
+import { BroadcastChannelService } from '@shared/services/broadcast-channel.service';
 
 @Component({
   selector: 'app-root',
@@ -33,7 +34,8 @@ export class AppComponent implements OnInit {
     private pushService: PushNotificationService,
     private zone: NgZone,
     @Inject(DOCUMENT) private document: Document,
-    private sseService: SseService
+    private sseService: SseService,
+    private broadcastChannel: BroadcastChannelService
   ) {
     // THEME FIX
     const storageKey = localStorage.getItem('theme-preference');
@@ -121,37 +123,20 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    /*    Notification.requestPermission().then((result) => {
-          console.log(result);
+    this.broadcastChannel.getMessage().subscribe((ev) => {
+      console.log(ev.data);
+    })
 
-          const notification = new Notification('Hi there!', {
-            data: 103,
-            icon: 'assets/icons/icon-72x72.png',
-            badge: 'assets/icons/icon-72x72.png',
-            body: 'This is a notification',
-            image: 'https://placeimg.com/640/360/any',
-          });
-
-          notification.onclick = (event: any) => {
-            notification.close()
-            this.zone.run(() => {
-              this.router.navigateByUrl(`/question/${notification.data}`).then(value => {
-                console.log(value);
-              })
-            })
-          };
-        });*/
     /**
      * Make a notification for author user id for created answer for question.
      */
     if (this.authService.userValue) {
-      /*      this.sub = this.socketService.on('new answer').subscribe(({ event, payload }) => {
-              console.log('Sorunuza, yeni ber cevap geldi.');
-              this.snackBar.open('One line text string.', 'TAMAM', {
-                duration: 9999999
-              });
-            });*/
-
+      this.sub = this.socketService.on('new answer').subscribe(({ event, payload }) => {
+        console.log('Sorunuza, yeni ber cevap geldi.');
+        this.snackBar.open('One line text string.', 'TAMAM', {
+          duration: 9999999
+        });
+      });
     }
 
     const observableA = this.socketService.subject.multiplex(
@@ -167,10 +152,10 @@ export class AppComponent implements OnInit {
       (message) => message.event === 'B'
     );
 
-    const subA = observableA.subscribe((messageForA) => console.log(messageForA));
+    // const subA = observableA.subscribe((messageForA) => console.log(messageForA));
     // At this moment WebSocket connection is established. Server gets `{"subscribe": "A"}` message and starts sending messages for 'A'
 
-    const subB = observableB.subscribe(messageForB => console.log(messageForB));
+    // const subB = observableB.subscribe((messageForB) => console.log(messageForB));
     // Since we already have a connection, we just send `{"subscribe": "B"} message to the server. It starts sending messages for 'B'
     // which we log here.
 

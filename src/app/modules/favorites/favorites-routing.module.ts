@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { FavoritesComponent } from './favorites.component';
 
-const routes: Routes = [{ path: '', component: FavoritesComponent }];
+const routes: Routes = [{ path: '', component: FavoritesComponent, title: 'Favori sorular' }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

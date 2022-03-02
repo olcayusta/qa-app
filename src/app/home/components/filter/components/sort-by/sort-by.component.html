@@ -60,16 +60,17 @@
 </div>
 
 <mat-menu #sortMenu="matMenu" class="sort-menu">
-  <a
-    mat-menu-item
-    routerLink="/"
-    [queryParams]="{ sort: item.sort ? item.sort : null }"
-    *ngFor="let item of items; let index = index"
-    #menuItem
-    (click)="onItemClick(menuItem, index)"
-  >{{ item.label }}</a>
-<!--  <span>CUSTOM FILTERS</span>
-  <button mat-menu-item [matMenuTriggerFor]="subMenu">Daha fazla</button>-->
+  <ng-template matMenuContent>
+    <a
+      mat-menu-item
+      routerLink="/"
+      [queryParams]="{ sort: item.sort ? item.sort : null }"
+      *ngFor="let item of items; let index = index"
+      #menuItem
+      [class.menu-active]='selectedIndex === index'
+      (click)="menuItemClicked(menuItem, index)"
+    >{{ item.label }}</a>
+  </ng-template>
 </mat-menu>
 
 <mat-menu #filterMenu="matMenu" class="sort-menu">

@@ -89,7 +89,7 @@ export class RelativeTimeFormatPipe implements PipeTransform {
   }
 
   // @ts-ignore
-  transform(value: Date, ...args: unknown[]): unknown {
+  transform(value: Date): unknown {
     return this.timeAgoV2(value, 'tr');
   }
 }

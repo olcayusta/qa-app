@@ -32,4 +32,4 @@ export class UserProfilePopupComponent implements OnInit {
   declarations: [UserProfilePopupComponent],
   imports: [MaterialModule, RouterModule, SharedModule]
 })
-export class IronDropdownModule {}
+export class UserProfilePopupModule {}

@@ -10,12 +10,12 @@ const routes: Routes = [
     path: '',
     component: UsersComponent,
     resolve: { users: UsersResolver },
-    title: `Kullanıcılar - ${environment.appTitle}`,
-  },
+    title: `Kullanıcılar - ${environment.appTitle}`
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class UsersRoutingModule {}

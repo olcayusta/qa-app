@@ -76,8 +76,7 @@ app-gf-icon {
   }
 }
 
-
-.mat-menu-item-highlighted:not([disabled]) {
+.menu-active {
   background-color: #BB86FC1F !important;
   color: black;
 }

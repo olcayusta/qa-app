@@ -1,15 +1,18 @@
 <form autocomplete='off' spellcheck='false' (submit)='formSubmit()'>
-  <!--<div class='buttons'>
-    <button mat-icon-button>
+  <div class='buttons'>
+    <button mat-icon-button matTooltip='Kalın yazı'>
       <mat-icon>format_bold</mat-icon>
     </button>
-    <button mat-icon-button>
+    <button mat-icon-button matTooltip='İtalik'>
       <mat-icon>format_italic</mat-icon>
     </button>
-  </div>-->
+    <button mat-icon-button matTooltip='Alıntı'>
+      <mat-icon>format_quote</mat-icon>
+    </button>
+  </div>
   <mat-form-field appearance='outline' floatLabel='never' hideRequiredMarker>
-    <mat-label>Cevap</mat-label>
     <textarea aria-label='Answer text' matInput cdkTextareaAutosize cdkAutosizeMinRows='8'
+              placeholder='Açıklayıcı bir şekilde cevap yazın'
               [formControl]='answerControl'></textarea>
     <mat-error *ngIf="answerControl.hasError('required')">Bir açıklama girin</mat-error>
     <mat-error *ngIf="answerControl.hasError('minlength')">Aciklama en az 24 karakter olmalidir; sen

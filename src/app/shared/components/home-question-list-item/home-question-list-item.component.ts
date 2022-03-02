@@ -3,7 +3,7 @@ import { Question } from '@shared/models/question.model';
 import { Tag } from '@shared/models/tag.model';
 
 @Component({
-  selector: 'qa-home-question-list-item',
+  selector: 'inek-home-question-list-item',
   templateUrl: './home-question-list-item.component.html',
   styleUrls: ['./home-question-list-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

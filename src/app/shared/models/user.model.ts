@@ -4,7 +4,10 @@ export interface User {
   readonly picture: string;
   readonly email: string;
   readonly password: string;
-  readonly signupDate?: Date;
+  readonly signupDate: Date;
+  lastSeenTime: Date;
   readonly token?: string;
   readonly githubUrl: string;
+  readonly twitterUrl: string;
+  readonly isVerified: boolean;
 }

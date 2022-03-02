@@ -5,7 +5,8 @@ import {
   ViewChildren,
   QueryList,
   AfterViewInit,
-  OnInit
+  OnInit,
+  ɵmarkDirty as markDirty
 } from '@angular/core';
 import { MatMenu, MatMenuItem } from '@angular/material/menu';
 import { ActivatedRoute } from '@angular/router';
@@ -25,7 +26,9 @@ export class SortByComponent implements OnInit, AfterViewInit {
   @ViewChild('menu') menu!: MatMenu;
   @ViewChildren('menuItem') menuItemList!: QueryList<MatMenuItem>;
 
-  menuItems!: any;
+  @ViewChild('sortMenu') sortMenu!: MatMenu;
+
+  menuItems!: MatMenuItem[];
 
   foods: Food[] = [
     { value: 'steak-0', viewValue: 'Steak' },
@@ -53,18 +56,15 @@ export class SortByComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.menuItems = this.menuItemList.toArray();
-    this.menuItems[this.selectedIndex]._highlighted = true;
   }
 
-  async onItemClick(menuItem: MatMenuItem, index: number): Promise<void> {
-    // remove highlight
-    this.menuItems[this.selectedIndex]._highlighted = false;
-
-    // change selected index
+  /**
+   *
+   * @param menuItem
+   * @param index
+   */
+  menuItemClicked(menuItem: MatMenuItem, index: number) {
     this.selectedIndex = index;
 
-    // add highlight
-    menuItem._highlighted = true;
   }
 }

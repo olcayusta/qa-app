@@ -5,7 +5,6 @@ import { environment } from '@environments/environment';
 import { Question } from '@shared/models/question.model';
 import { Answer } from '@shared/models/answer.model';
 import { throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +28,6 @@ export class UserService {
 
   getUser(userId: number) {
     return this.http.get<User>(`${environment.apiUrl}/users/${userId}`);
-    // .pipe(catchError(this.handleError));
   }
 
   getUserQuestions(userId: number) {

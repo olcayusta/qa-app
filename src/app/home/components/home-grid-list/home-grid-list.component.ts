@@ -13,7 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 import { delay, switchMap } from 'rxjs/operators';
 
 @Component({
-  selector: 'qa-home-grid-list',
+  selector: 'inek-home-grid-list',
   templateUrl: './home-grid-list.component.html',
   styleUrls: ['./home-grid-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

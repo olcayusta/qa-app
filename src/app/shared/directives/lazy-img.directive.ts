@@ -13,12 +13,10 @@ export class LazyImgDirective implements OnInit {
     const { nativeElement } = this.elementRef;
     this.imgSrc = nativeElement.src;
 
-    const intersectionObserver = new IntersectionObserver(([entry]) => {
-      const { isIntersecting, target } = entry;
-      const img = <HTMLImageElement>target;
+    const intersectionObserver = new IntersectionObserver(([{ isIntersecting }]) => {
       if (isIntersecting) {
-        img.src = this.imgSrc;
-        intersectionObserver.unobserve(img);
+        nativeElement.src = this.imgSrc;
+        intersectionObserver.unobserve(nativeElement);
       }
     });
     intersectionObserver.observe(nativeElement);

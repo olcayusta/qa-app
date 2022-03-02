@@ -1,5 +1,6 @@
 <div itemprop='suggestedAnswer acceptedAnswer' itemscope itemtype='https://schema.org/Answer'>
   <div class='answer-item' [id]='"answer-" + answer.id'>
+
     <div class='answer-item-user'>
 
       <inek-img-shadow [src]='answer.user.picture' [width]='64' [height]='64' [alt]='answer.user.displayName'
@@ -17,6 +18,16 @@
         </div>
       </div>
     </div>
+
+    <!--
+      Accept Answer Component
+    -->
+    <button mat-stroked-button color='primary' (click)='acceptAnswer()'>
+      <mat-icon>check</mat-icon>
+      <span>Doğru cevap olarak işaretle</span>
+    </button>
+
+    <!--Answer Text-->
     <div itemprop='text' [qaHeroDelay]='answer.content' qaHighlightElement></div>
   </div>
 </div>

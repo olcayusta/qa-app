@@ -48,7 +48,12 @@
               <span>Favorilere ekle</span>
             </button>
 
-            <!--<button mat-icon-button [matMenuTriggerFor]='flagMenu'>
+            <button mat-button (click)='openFlagDialog()'>
+              <app-gf-icon name='flag'></app-gf-icon>
+              <span>Bildir</span>
+            </button>
+
+       <!--     <button mat-icon-button [matMenuTriggerFor]='flagMenu'>
               <mat-icon fontSet='material-icons-two-tone'>more_horiz</mat-icon>
             </button>-->
 

@@ -1,5 +1,5 @@
 <div class='items'>
-  <qa-home-question-list-item *ngFor='let question of questions' [question]='question'></qa-home-question-list-item>
+  <inek-home-question-list-item *ngFor='let question of questions' [question]='question'></inek-home-question-list-item>
 </div>
 
 <div id='anchor' appIsVisible (scrolled)='loadMore()' *ngIf='questions && !dataFinished'>
