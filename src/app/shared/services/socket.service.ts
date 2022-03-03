@@ -61,7 +61,7 @@ export class SocketService {
   sendMessage(message: string) {
     this.subject.subscribe();
     this.subject.next({
-      event: socketEvent.message,
+      event: 'hello',
       payload: {
         content: message
       }

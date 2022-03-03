@@ -1,12 +1,12 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   EventEmitter,
   OnInit,
-  ChangeDetectionStrategy,
   Output,
-  ɵmarkDirty as markDirty,
   ViewChild,
-  ViewContainerRef
+  ViewContainerRef,
+  ɵmarkDirty as markDirty
 } from '@angular/core';
 import { User } from '@shared/models/user.model';
 import { AuthService } from '@auth/auth.service';
