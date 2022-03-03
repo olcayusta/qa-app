@@ -1,7 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Title } from '@angular/platform-browser';
-import { environment } from '@environments/environment';
 import { RegisterService } from './services/register.service';
 
 @Component({
@@ -13,16 +11,12 @@ import { RegisterService } from './services/register.service';
 export class RegisterComponent implements OnInit {
   form: FormGroup;
 
-  constructor(
-    private fb: FormBuilder,
-    private registerService: RegisterService,
-    private title: Title
-  ) {
+  constructor(private fb: FormBuilder, private registerService: RegisterService) {
     this.form = fb.group(
       {
-        email: ['', [Validators.required, Validators.email]],
-        password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(16)]],
-        displayName: [''],
+        email: [null, [Validators.required, Validators.email]],
+        password: [null, [Validators.required, Validators.minLength(8), Validators.maxLength(16)]],
+        displayName: [null, [Validators.required]],
         picture: [
           'https://resources.tidal.com/images/3f5fb645/46b8/44c4/9721/e60ec54c2fa1/320x320.jpg'
         ]
@@ -31,14 +25,12 @@ export class RegisterComponent implements OnInit {
     );
   }
 
-  ngOnInit(): void {
-    this.title.setTitle(`Kayıt ol - ${environment.appTitle}`);
-  }
+  ngOnInit(): void {}
 
   submit(): void {
     const { email, password, displayName, picture } = this.form.value;
-    this.registerService.createUser(email, password, displayName, picture).subscribe((value) => {
-      console.log('Üye kaydedildi!');
+    this.registerService.createUser(email, password, displayName, picture).subscribe((user) => {
+      console.log('Üye kaydedildi!', user);
     });
   }
 }

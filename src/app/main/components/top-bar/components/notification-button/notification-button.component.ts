@@ -48,10 +48,10 @@ export class NotificationButtonComponent implements OnInit {
   }
 
   async loadComp() {
-    const { NotificationListPopupComponent: comp } = await import(
+    const { NotificationListPopupComponent } = await import(
       '@shared/components/notification-list-popup/notification-list-popup.component'
     );
-    this.componentOutlet = comp;
+    this.componentOutlet = NotificationListPopupComponent;
   }
 
   /**

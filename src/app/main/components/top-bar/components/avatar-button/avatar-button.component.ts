@@ -53,11 +53,11 @@ export class AvatarButtonComponent implements OnInit {
    * Loads the user profile popup component.
    */
   async loadComp(): Promise<void> {
-    const { UserProfilePopupComponent: comp } = await import(
+    const { UserProfilePopupComponent } = await import(
       '@shared/components/user-profile-popup/user-profile-popup.component'
     );
 
-    this.componentOutlet = comp;
+    this.componentOutlet = UserProfilePopupComponent;
   }
 
   /**

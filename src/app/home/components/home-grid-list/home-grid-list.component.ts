@@ -6,7 +6,7 @@ import {
   ChangeDetectorRef
 } from '@angular/core';
 import { Question } from '@shared/models/question.model';
-import { BehaviorSubject, Observable, Subscription, tap } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { QuestionService } from '@modules/question/services/question.service';
 import { FilterService } from '@shared/services/filter.service';
 import { ActivatedRoute } from '@angular/router';
