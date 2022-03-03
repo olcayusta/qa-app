@@ -56,8 +56,11 @@ export class HomeGridListComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.recentQuestionsSubscription = this.route.queryParamMap
       .pipe(
-        switchMap((value) => {
-          return this.filterService.getQuestionsByFiltered(value.get('sort'), value.get('filter'));
+        switchMap((paramMap) => {
+          return this.filterService.getQuestionsByFiltered(
+            paramMap.get('sort'),
+            paramMap.get('filter')
+          );
         })
       )
       .subscribe((questions) => {
@@ -85,7 +88,7 @@ export class HomeGridListComponent implements OnInit, OnDestroy {
   /**
    * Load more questions is called when the user scrolls down the page
    */
-  loadMore(): void {
+  loadMoreQuestionsIsIntersecting(): void {
     this.loader = true;
     this.recentQuestionsSubscription = this.questionService
       .getMoreQuestions(this.offset)

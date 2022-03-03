@@ -104,11 +104,25 @@
 
     <mat-menu #moreMenu xPosition='before'>
       <button mat-menu-item>
+        <mat-icon>dark_mode</mat-icon>
+        <span>Görünüm: Cihaz teması</span>
+      </button>
+      <button mat-menu-item>
         <mat-icon>settings</mat-icon>
         <span>Ayarlar</span>
       </button>
-      <button mat-menu-item>Sozluk</button>
-      <button mat-menu-item>Turkce</button>
+      <button mat-menu-item>
+        <mat-icon>help_outline</mat-icon>
+        <span>Yardım</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>feedback</mat-icon>
+        <span>Geri bildirim gönder</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>keyboard</mat-icon>
+        <span>Klavye kısayolları</span>
+      </button>
     </mat-menu>
 
     <button mat-icon-button [matMenuTriggerFor]='moreMenu' matTooltip='Ayarlar'>

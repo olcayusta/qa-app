@@ -68,7 +68,7 @@ export class LoginComponent implements OnInit {
         } else {
           // Redirect the user
           this.router.navigate([this.authService.redirectUrl]).then((value1) => {
-            this.saveFavoriteTagsToLocaleStorage();
+            //this.saveFavoriteTagsToLocaleStorage();
           });
         }
       });
