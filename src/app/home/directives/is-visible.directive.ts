@@ -21,8 +21,8 @@ export class IsVisibleDirective implements AfterViewInit, OnDestroy {
    * Create an intersection observer and emit an event when the element is visible
    */
   ngAfterViewInit(): void {
-    this.observer = new IntersectionObserver(([entry]) => {
-      entry.isIntersecting && this.scrolled.emit();
+    this.observer = new IntersectionObserver(([{ isIntersecting }]) => {
+      isIntersecting && this.scrolled.emit();
     });
     this.observer.observe(this.elementRef.nativeElement);
   }

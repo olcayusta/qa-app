@@ -10,11 +10,11 @@ import { Question } from '@shared/models/question.model';
 export class FilterService {
   constructor(private http: HttpClient) {}
 
-  getQuestionsByFiltered(sort: string, filter: string): Observable<Question[]> {
+  getQuestionsByFiltered(sort?: string | null, filter?: string | null): Observable<Question[]> {
     if (sort) {
       const params = {
         sort: sort,
-        filter: filter
+       // filter: filter
       };
       return this.http.get<Question[]>(`${environment.apiUrl}/questions/sort/${filter}`, {
         params

@@ -5,3 +5,18 @@
 <div id='anchor' appIsVisible (scrolled)='loadMore()' *ngIf='questions && !dataFinished'>
   <mat-spinner diameter='32' *ngIf='loader'></mat-spinner>
 </div>
+
+<!--
+<ng-container *ngIf='questions$ | async as sorular'>
+  <div class='items'>
+    <inek-home-question-list-item *ngFor='let question of sorular' [question]='question'></inek-home-question-list-item>
+  </div>
+
+  <div id='anchor' appIsVisible (scrolled)='loadMorev2()' *ngIf='sorular.length && !dataFinished'>
+    <mat-spinner diameter='32' *ngIf='loader'></mat-spinner>
+  </div>
+</ng-container>
+
+-->
+
+

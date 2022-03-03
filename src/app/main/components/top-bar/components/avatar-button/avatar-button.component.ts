@@ -1,10 +1,10 @@
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   ElementRef,
   OnInit,
-  Type,
-  ɵmarkDirty as markDirty
+  Type
 } from '@angular/core';
 import { ScrollStrategyOptions } from '@angular/cdk/overlay';
 import { User } from '@shared/models/user.model';
@@ -28,7 +28,8 @@ export class AvatarButtonComponent implements OnInit {
   constructor(
     private sso: ScrollStrategyOptions,
     private authService: AuthService,
-    private elRef: ElementRef
+    private elRef: ElementRef,
+    private cd: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -42,22 +43,21 @@ export class AvatarButtonComponent implements OnInit {
     if (this.popupOpened) {
       this.popupOpened = false;
     } else {
-      await this.loadUserProfilePopupComponent();
+      await this.loadComp();
       this.popupOpened = true;
+      this.cd.markForCheck();
     }
   }
 
   /**
    * Loads the user profile popup component.
    */
-  async loadUserProfilePopupComponent(): Promise<void> {
+  async loadComp(): Promise<void> {
     const { UserProfilePopupComponent: comp } = await import(
       '@shared/components/user-profile-popup/user-profile-popup.component'
     );
 
     this.componentOutlet = comp;
-    // Mark the component as dirty to trigger change detection.
-    markDirty(this);
   }
 
   /**

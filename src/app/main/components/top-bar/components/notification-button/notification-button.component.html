@@ -2,7 +2,7 @@
         matTooltip='Bildirimler'
         #notificationElement='cdkOverlayOrigin'
         cdkOverlayOrigin
-        (click)='openNotifications($event)'>
+        (click)='togglePopup()'>
   <app-gf-icon name='notifications' matBadge='{{notificationCount$ | async}}' matBadgeColor='warn'
                [matBadgeHidden]='(notificationCount$ | async) === 0'></app-gf-icon>
 </button>

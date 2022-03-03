@@ -29,7 +29,9 @@ import { FeedbackDialogComponent } from '@dialogs/feedback-dialog/feedback-dialo
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { WatchedTagListDialogComponent } from '@dialogs/watched-tag-list-dialog/watched-tag-list-dialog.component';
 import { FlagDialogComponent } from '@dialogs/flag-dialog/flag-dialog.component';
-import { ProfilePictureDialogComponent } from './dialogs/profile-picture-dialog/profile-picture-dialog.component';
+import { ProfilePictureDialogComponent } from '@dialogs/profile-picture-dialog/profile-picture-dialog.component';
+import { MAT_ICON_DEFAULT_OPTIONS } from '@angular/material/icon';
+
 
 /* Locale initialization */
 
@@ -80,6 +82,12 @@ registerLocaleData(localeTr);*/
     {
       provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
       useValue: { horizontalPosition: 'start', duration: 4000 }
+    },
+    {
+      provide: MAT_ICON_DEFAULT_OPTIONS,
+      useValue: {
+        fontSet: 'material-icons-outlined'
+      }
     }
   ],
   bootstrap: [AppComponent]

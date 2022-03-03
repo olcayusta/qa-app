@@ -2,11 +2,11 @@ import {
   Component,
   OnInit,
   ChangeDetectionStrategy,
-  ɵmarkDirty as markDirty,
-  OnDestroy
+  OnDestroy,
+  ChangeDetectorRef
 } from '@angular/core';
 import { Question } from '@shared/models/question.model';
-import { Observable, Subscription } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription, tap } from 'rxjs';
 import { QuestionService } from '@modules/question/services/question.service';
 import { FilterService } from '@shared/services/filter.service';
 import { ActivatedRoute } from '@angular/router';
@@ -20,7 +20,6 @@ import { delay, switchMap } from 'rxjs/operators';
 })
 export class HomeGridListComponent implements OnInit, OnDestroy {
   questions!: Question[];
-  questions$!: Observable<Question[]>;
 
   /**
    * Number of questions to load as you scroll down the page
@@ -30,64 +29,76 @@ export class HomeGridListComponent implements OnInit, OnDestroy {
   /**
    * Subscription to the route params
    */
-  subscription!: Subscription;
+  recentQuestionsSubscription!: Subscription;
 
+  /**
+   * Subscription to the load more questions
+   */
+  loadMoreSubscription!: Subscription;
+
+  /**
+   * Spinner to show when loading more questions
+   */
   loader = false;
 
+  /**
+   * Spinner hide load questions finished
+   */
   dataFinished = false;
 
   constructor(
     private questionService: QuestionService,
     private filterService: FilterService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private cd: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
-    this.subscription = this.route.queryParamMap
+    this.recentQuestionsSubscription = this.route.queryParamMap
       .pipe(
         switchMap((value) => {
-          return this.filterService.getQuestionsByFiltered(
-            value.get('sort') as string,
-            value.get('filter') as string
-          );
+          return this.filterService.getQuestionsByFiltered(value.get('sort'), value.get('filter'));
         })
       )
-      .subscribe((value) => {
-        this.questions = value;
-        markDirty(this);
+      .subscribe((questions) => {
+        this.questions = questions;
+        this.cd.markForCheck();
       });
   }
 
   ngOnDestroy(): void {
     /**
-     * Unsubscribe from the subscription
+     * Subscription if not unsubscribed, will cause memory leak,
+     * so we unsubscribe here
      */
-    this.subscription && this.subscription.unsubscribe();
+    !this.recentQuestionsSubscription.closed && this.recentQuestionsSubscription.unsubscribe();
+
+    /**
+     * Same as above
+     * It's a little different as it will be created if there is a subscription scroll
+     */
+    if (this.loadMoreSubscription?.closed === false) {
+      this.loadMoreSubscription.unsubscribe();
+    }
   }
 
-  // TODO
-  // ilk yukleme yapilirken, ekranda loading belirdigi icin, questions undefined hatasi var
-  // fixlenicek
+  /**
+   * Load more questions is called when the user scrolls down the page
+   */
   loadMore(): void {
-    if (this.questions) {
-      this.loader = true;
-      this.questionService
-        .getMoreQuestions(this.offset)
-        .pipe(delay(400))
-        .subscribe((value) => {
-          this.loader = false;
-          markDirty(this);
-          if (value.length > 0) {
-            this.offset += 6;
-            this.questions = [...this.questions, ...value];
-            markDirty(this);
-          } else {
-            console.warn('data bitti!..');
-            this.dataFinished = true;
-          }
-        });
-    } else {
-      console.warn('Veri bulunamadi!');
-    }
+    this.loader = true;
+    this.recentQuestionsSubscription = this.questionService
+      .getMoreQuestions(this.offset)
+      .pipe(delay(400))
+      .subscribe((questions) => {
+        this.loader = false;
+        if (questions.length) {
+          this.offset += 6;
+          this.questions = [...this.questions, ...questions];
+        } else {
+          this.dataFinished = true;
+        }
+        this.cd.markForCheck();
+      });
   }
 }

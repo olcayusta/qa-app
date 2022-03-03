@@ -2,9 +2,9 @@ import {
   Component,
   OnInit,
   ChangeDetectionStrategy,
-  ɵmarkDirty as markDirty,
   Type,
-  ElementRef
+  ElementRef,
+  ChangeDetectorRef
 } from '@angular/core';
 import { shareReplay } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -29,30 +29,35 @@ export class NotificationButtonComponent implements OnInit {
   constructor(
     private notificationService: NotificationService,
     private sso: ScrollStrategyOptions,
-    private elementRef: ElementRef
+    private elementRef: ElementRef,
+    private cd: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
     this.notificationCount$ = this.notificationService.getUnseenCount().pipe(shareReplay());
   }
 
-  async openNotifications(event: Event): Promise<void> {
+  async togglePopup(): Promise<void> {
     if (this.popupOpened) {
       this.popupOpened = false;
     } else {
-      await this.loadComponent();
+      await this.loadComp();
       this.popupOpened = true;
+      this.cd.markForCheck();
     }
   }
 
-  async loadComponent() {
+  async loadComp() {
     const { NotificationListPopupComponent: comp } = await import(
       '@shared/components/notification-list-popup/notification-list-popup.component'
     );
     this.componentOutlet = comp;
-    markDirty(this);
   }
 
+  /**
+   * Close the popup when the user clicks outside it.
+   * @param e
+   */
   outsideClick(e: MouseEvent): void {
     if (!e.composedPath().includes(this.elementRef.nativeElement)) {
       this.popupOpened = false;
