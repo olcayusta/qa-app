@@ -52,7 +52,7 @@
         <span>veya</span>
       </div>-->
 
-    <form spellcheck='false' class='login-form' [formGroup]='form' (submit)='submit()'>
+      <form spellcheck='false' class='login-form' [formGroup]='form' (submit)='form.valid && submit()'>
       <div class='form-body'>
 
         <!-- E-posta -->
@@ -60,7 +60,7 @@
           <mat-label>E-posta</mat-label>
           <input aria-label='E-posta' matInput type='email' formControlName='email' qaAutofocus>
           <mat-error *ngIf="form.get('email')?.hasError('required')">Bir e-posta adresi girin</mat-error>
-          <mat-error *ngIf="form.get('email')?.hasError('email')">Duzgun email adresi girin!!!</mat-error>
+          <mat-error *ngIf="form.get('email')?.hasError('email')">Duzgun email adresi girin!</mat-error>
           <mat-error *ngIf="form.get('email')?.hasError('emailNotFound')">E-posta adresi bulunamadı</mat-error>
         </mat-form-field>
 
@@ -68,7 +68,7 @@
                 <a mat-button color='primary'>Şifremi unuttum</a>
               </div>-->
 
-        <ng-container *ngIf="form.get('email')?.valid">
+
 
           <div>
             <img class='login-avatar' src='https://i.pinimg.com/736x/df/50/b9/df50b9343610fd4d37eeba9c727125dd.jpg'
@@ -88,7 +88,6 @@
             </button>
             <mat-error *ngIf="form.get('password')?.hasError('required')">Bir şifre girin</mat-error>
           </mat-form-field>
-        </ng-container>
 
 
       </div>
