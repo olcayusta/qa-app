@@ -9,8 +9,6 @@ import {
 import { MatDialog } from '@angular/material/dialog';
 import { SettingsDialogComponent } from '@dialogs/settings-dialog/settings-dialog.component';
 import { FeedbackDialogComponent } from '@dialogs/feedback-dialog/feedback-dialog.component';
-import { NavigationEnd, Router } from '@angular/router';
-import { filter } from 'rxjs/operators';
 import { WatchedTagListDialogComponent } from '@dialogs/watched-tag-list-dialog/watched-tag-list-dialog.component';
 
 @Component({
@@ -28,13 +26,9 @@ export class NavDrawerComponent implements OnInit {
     { label: 'Etiketler', link: '/tags' }
   ];
 
-  constructor(private dialog: MatDialog, private vcr: ViewContainerRef, private router: Router) {}
+  constructor(private dialog: MatDialog, private vcr: ViewContainerRef) {}
 
-  ngOnInit(): void {
-    /*    this.router.events.pipe(filter((e) => e instanceof NavigationEnd)).subscribe((value) => {
-      console.log(value);
-    });*/
-  }
+  ngOnInit(): void {}
 
   async openSettingsDialog() {
     this.closeDrawer.emit();
