@@ -1,7 +1,7 @@
 <mat-sidenav-container id='drawer-container'>
-  <mat-sidenav #sidenav position='start' [autoFocus]='false' fixedInViewport (openedStart)='sidenavOpenedStart()'
+  <mat-sidenav #drawer position='start' [autoFocus]='false' fixedInViewport (openedStart)='sidenavOpenedStart()'
                (closedStart)='sidenavClosedStart()'>
-    <inek-nav-drawer (closeDrawer)='sidenav.close()'></inek-nav-drawer>
+    <inek-nav-drawer (closeDrawer)='drawer.close()'></inek-nav-drawer>
   </mat-sidenav>
   <mat-sidenav position='end' [mode]='mode' #sheet [autoFocus]='false' fixedInViewport
                (openedStart)='sheetOpened()' (closedStart)='sheetClosed()'
@@ -11,7 +11,7 @@
 
   <mat-sidenav-content id='drawer-content'>
     <div id='gf-full-page'>
-      <inek-top-bar (openDrawer)='sidenav.toggle()' (openSheet)='sheet.toggle()'></inek-top-bar>
+      <inek-top-bar (openDrawer)='drawer.toggle()' (openSheet)='sheet.toggle()'></inek-top-bar>
       <!--
     <div id="main">
       <div class="my-content example-sidenav-content">
