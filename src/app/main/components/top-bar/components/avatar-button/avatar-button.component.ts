@@ -3,14 +3,16 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
+  NgModule,
   OnInit,
   Type
 } from '@angular/core';
-import { ScrollStrategyOptions } from '@angular/cdk/overlay';
+import { OverlayModule, ScrollStrategyOptions } from '@angular/cdk/overlay';
 import { User } from '@shared/models/user.model';
 import { AuthService } from '@auth/auth.service';
-
 import { UserProfilePopupComponent } from '@shared/components/user-profile-popup/user-profile-popup.component';
+import { CommonModule } from '@angular/common';
+import { SharedModule } from '@shared/shared.module';
 
 @Component({
   selector: 'inek-avatar-button',
@@ -22,7 +24,7 @@ export class AvatarButtonComponent implements OnInit {
   user!: User;
   popupOpened = false;
 
-  componentOutlet?: Type<UserProfilePopupComponent>;
+  componentOutlet!: Type<UserProfilePopupComponent>;
   blockScrollStrategy = this.sso.block();
 
   constructor(
@@ -70,3 +72,9 @@ export class AvatarButtonComponent implements OnInit {
     }
   }
 }
+
+@NgModule({
+  declarations: [AvatarButtonComponent],
+  imports: [CommonModule, SharedModule, OverlayModule]
+})
+export class AvatarButtonmodule {}
