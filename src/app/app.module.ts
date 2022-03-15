@@ -18,43 +18,34 @@ import { SharedModule } from '@shared/shared.module';
 
 /* Components */
 import { TopBarComponent } from './main/components/top-bar/top-bar.component';
-import { SideSheetComponent } from './main/components/side-sheet/side-sheet.component';
 import { SearchFormComponent } from './main/components/top-bar/components/search-form/search-form.component';
-import { NavDrawerComponent } from './main/components/nav-drawer/nav-drawer.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '@environments/environment';
 import { ThemeTogleComponent } from './theme-togle/theme-togle.component';
 import { TopAppBarLogoComponent } from './main/components/top-bar/components/top-app-bar-logo/top-app-bar-logo.component';
-import { FeedbackDialogComponent } from '@dialogs/feedback-dialog/feedback-dialog.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { WatchedTagListDialogComponent } from '@dialogs/watched-tag-list-dialog/watched-tag-list-dialog.component';
-import { FlagDialogComponent } from '@dialogs/flag-dialog/flag-dialog.component';
 import { ProfilePictureDialogComponent } from '@dialogs/profile-picture-dialog/profile-picture-dialog.component';
 import { MAT_ICON_DEFAULT_OPTIONS } from '@angular/material/icon';
-
-
-/* Locale initialization */
-
-/*import { registerLocaleData } from '@angular/common';
-import localeTr from '@angular/common/locales/tr';
-registerLocaleData(localeTr);*/
+import { BroadcastChannelLogoutDialogComponent } from './broadcast-channel-logout-dialog/broadcast-channel-logout-dialog.component';
+import { GoogleIconComponent } from './google-icon/google-icon.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     TopBarComponent,
-    SideSheetComponent,
     SearchFormComponent,
-    NavDrawerComponent,
     StickyDirective,
     ThemeTogleComponent,
     TopAppBarLogoComponent,
-    FeedbackDialogComponent,
     ProgressBarComponent,
     WatchedTagListDialogComponent,
-    FlagDialogComponent,
-    ProfilePictureDialogComponent
+    ProfilePictureDialogComponent,
+    BroadcastChannelLogoutDialogComponent,
+    GoogleIconComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,
@@ -73,7 +64,6 @@ registerLocaleData(localeTr);*/
     })
   ],
   providers: [
-    // { provide: LOCALE_ID, useValue: 'tr-TR' },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,
