@@ -10,7 +10,6 @@ export class MarkedPipe implements PipeTransform {
 
   transform(value: string): unknown {
     if (!value) return;
-    const markedValue = marked.parse(value);
-    return this.sanitizer.bypassSecurityTrustHtml(markedValue);
+    return this.sanitizer.bypassSecurityTrustHtml(marked.parse(value));
   }
 }
