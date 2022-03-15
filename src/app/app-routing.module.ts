@@ -11,6 +11,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
+        pathMatch: 'full',
         loadChildren: async () => (await import('./home/home.module')).HomeModule
       },
       {
@@ -107,7 +108,6 @@ const routes: Routes = [
       urlUpdateStrategy: 'eager',
       anchorScrolling: 'enabled',
       scrollPositionRestoration: 'enabled'
-      // scrollOffset: [0, 0]
     })
   ],
   exports: [RouterModule]
