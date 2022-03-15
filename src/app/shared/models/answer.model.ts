@@ -1,4 +1,5 @@
 import { User } from './user.model';
+import { Question } from '@shared/models/question.model';
 
 export interface Answer {
   id: number;
@@ -8,4 +9,5 @@ export interface Answer {
   userId: number;
   questionId: number;
   user: User;
+  question: Question;
 }
