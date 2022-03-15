@@ -1,33 +1,20 @@
-<button mat-icon-button class='top-right-btn notification-button' aria-label='Bildirimler'
+<button mat-icon-button aria-label='Bildirimler'
         matTooltip='Bildirimler'
-        #notificationElement='cdkOverlayOrigin'
+        #notificationButton='cdkOverlayOrigin'
         cdkOverlayOrigin
         (click)='togglePopup()'>
   <app-gf-icon name='notifications' matBadge='{{notificationCount$ | async}}' matBadgeColor='warn'
                [matBadgeHidden]='(notificationCount$ | async) === 0'></app-gf-icon>
 </button>
 
-<!--
 <ng-template
   cdkConnectedOverlay
-  (overlayOutsideClick)="outsideClick()"
-  [cdkConnectedOverlayScrollStrategy]="blockScrollStrategy"
-  [cdkConnectedOverlayOpen]="popupOpened"
-  [cdkConnectedOverlayOrigin]="notificationElement">
-  <app-notification-list-popup></app-notification-list-popup>
-</ng-template>
--->
-
-<ng-template
-  cdkConnectedOverlay
-  [cdkConnectedOverlayOrigin]='notificationElement'
-  [cdkConnectedOverlayScrollStrategy]='blockScrollStrategy'
+  [cdkConnectedOverlayOrigin]='notificationButton'
+  [cdkConnectedOverlayScrollStrategy]='scrollStrategy'
   [cdkConnectedOverlayOpen]='popupOpened'
-  (overlayOutsideClick)='outsideClick($event)'>
-  <!--<app-notification-list-popup></app-notification-list-popup>-->
-
+  (overlayOutsideClick)='closePopupOnOutsideClicked($event)'>
   <inek-popup-container (close)='popupOpened = false'>
-    <ng-container [ngComponentOutlet]='componentOutlet!'></ng-container>
+    <ng-container *ngComponentOutlet='componentType'></ng-container>
   </inek-popup-container>
 </ng-template>
 

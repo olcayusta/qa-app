@@ -4,13 +4,19 @@ import {
   ChangeDetectionStrategy,
   Type,
   ElementRef,
-  ChangeDetectorRef
+  ChangeDetectorRef,
+  NgModule
 } from '@angular/core';
 import { shareReplay } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { NotificationService } from '@shared/services/notification.service';
-import { ScrollStrategy, ScrollStrategyOptions } from '@angular/cdk/overlay';
+import { OverlayModule, ScrollStrategy, ScrollStrategyOptions } from '@angular/cdk/overlay';
 import { NotificationListPopupComponent } from '@shared/components/notification-list-popup/notification-list-popup.component';
+import { CommonModule } from '@angular/common';
+import { SharedModule } from '@shared/shared.module';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'inek-notification-button',
@@ -22,9 +28,9 @@ export class NotificationButtonComponent implements OnInit {
   notificationCount$!: Observable<number>;
 
   popupOpened = false;
-  blockScrollStrategy: ScrollStrategy = this.sso.block();
 
-  componentOutlet?: Type<NotificationListPopupComponent>;
+  scrollStrategy: ScrollStrategy = this.sso.block();
+  componentType!: Type<NotificationListPopupComponent>;
 
   constructor(
     private notificationService: NotificationService,
@@ -41,26 +47,39 @@ export class NotificationButtonComponent implements OnInit {
     if (this.popupOpened) {
       this.popupOpened = false;
     } else {
-      await this.loadComp();
+      await this.loadComponent();
       this.popupOpened = true;
       this.cd.markForCheck();
     }
   }
 
-  async loadComp() {
+  async loadComponent() {
     const { NotificationListPopupComponent } = await import(
       '@shared/components/notification-list-popup/notification-list-popup.component'
     );
-    this.componentOutlet = NotificationListPopupComponent;
+    this.componentType = NotificationListPopupComponent;
   }
 
   /**
    * Close the popup when the user clicks outside it.
-   * @param e
+   * @param $event
    */
-  outsideClick(e: MouseEvent): void {
-    if (!e.composedPath().includes(this.elementRef.nativeElement)) {
+  closePopupOnOutsideClicked($event: MouseEvent) {
+    if (!$event.composedPath().includes(this.elementRef.nativeElement)) {
       this.popupOpened = false;
     }
   }
 }
+
+@NgModule({
+  declarations: [NotificationButtonComponent],
+  imports: [
+    CommonModule,
+    SharedModule,
+    OverlayModule,
+    MatButtonModule,
+    MatBadgeModule,
+    MatTooltipModule
+  ]
+})
+export class NotificationButtonModule {}
