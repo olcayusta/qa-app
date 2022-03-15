@@ -3,17 +3,17 @@
         #trigger='cdkOverlayOrigin' cdkOverlayOrigin
         (click)='togglePopup()'>
   <inek-img-shadow [src]='user.picture' [width]='32' [height]='32' alt='Avatar resmi'
-                   class='topbar-menu-button-renderer'></inek-img-shadow>
+                   class='topbar-avatar-button-renderer'></inek-img-shadow>
 </button>
 
 <ng-template
   cdkConnectedOverlay
-  (overlayOutsideClick)='outsideClick($event)'
-  [cdkConnectedOverlayScrollStrategy]='blockScrollStrategy'
+  (overlayOutsideClick)='closePopupOnOutsideClicked($event)'
+  [cdkConnectedOverlayScrollStrategy]='scrollStrategy'
   [cdkConnectedOverlayOpen]='popupOpened'
   [cdkConnectedOverlayOrigin]='trigger'>
   <!--  <qa-popup-container popupContainerTitle="avatar" [outlet]="ironDropdownOutlet"></qa-popup-container>-->
   <inek-popup-container (close)='popupOpened = false'>
-    <ng-container *ngComponentOutlet='componentOutlet'></ng-container>
+    <ng-container *ngComponentOutlet='componentType'></ng-container>
   </inek-popup-container>
 </ng-template>

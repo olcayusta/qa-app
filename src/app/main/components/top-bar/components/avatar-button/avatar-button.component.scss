@@ -2,77 +2,24 @@
   display: block;
 }
 
+button {
+  background: none;
+  padding: 0;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
 #avatar-btn {
   width: 48px;
   height: 48px;
-  background: none;
-  border: none;
-  outline: none;
   display: flex;
-  justify-content: center;
   align-items: center;
-  cursor: pointer;
-  // padding: 0 6px;
-  padding: 0;
+  justify-content: center;
   margin-left: 12px;
 }
 
-.topbar-menu-button-renderer {
+.topbar-avatar-button-renderer {
   width: 32px;
   height: 32px;
-  cursor: pointer;
-  // margin: 0 8px;
-}
-
-.img-background {
-  width: 32px;
-  height: 32px;
-  display: flex;
-  background-color: transparent;
-  border-radius: 50%;
-  opacity: 0;
-  // margin: 0 8px;
-}
-
-.img-shadow {
-  width: 32px;
-  height: 32px;
-
-  margin: 0 8px;
-  border-radius: 50%;
-  overflow: hidden;
-  background-color: transparent;
-  opacity: 0;
-}
-
-.img-shadow[loaded] {
-  opacity: 1;
-}
-
-.img-background[loaded] {
-  opacity: 1;
-}
-
-.avatar-img {
-  display: inline-block;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-@media (max-width: 599px) {
-  #avatar-btn {
-    margin-right: 8px;
-  }
-
-  .avatar-img, inek-img-shadow {
-    width: 24px;
-    height: 24px;
-  }
-
-  ::ng-deep inek-avatar-button inek-img-shadow {
-    width: 24px !important;
-    height: 24px !important;
-  }
 }

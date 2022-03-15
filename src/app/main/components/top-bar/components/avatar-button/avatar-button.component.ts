@@ -7,7 +7,7 @@ import {
   OnInit,
   Type
 } from '@angular/core';
-import { OverlayModule, ScrollStrategyOptions } from '@angular/cdk/overlay';
+import { OverlayModule, ScrollStrategy, ScrollStrategyOptions } from '@angular/cdk/overlay';
 import { User } from '@shared/models/user.model';
 import { AuthService } from '@auth/auth.service';
 import { UserProfilePopupComponent } from '@shared/components/user-profile-popup/user-profile-popup.component';
@@ -24,13 +24,13 @@ export class AvatarButtonComponent implements OnInit {
   user!: User;
   popupOpened = false;
 
-  componentOutlet!: Type<UserProfilePopupComponent>;
-  blockScrollStrategy = this.sso.block();
+  componentType!: Type<UserProfilePopupComponent>;
+  scrollStrategy: ScrollStrategy = this.sso.block();
 
   constructor(
     private sso: ScrollStrategyOptions,
     private authService: AuthService,
-    private elRef: ElementRef,
+    private elementRef: ElementRef,
     private cd: ChangeDetectorRef
   ) {}
 
@@ -45,7 +45,7 @@ export class AvatarButtonComponent implements OnInit {
     if (this.popupOpened) {
       this.popupOpened = false;
     } else {
-      await this.loadComp();
+      await this.loadComponent();
       this.popupOpened = true;
       this.cd.markForCheck();
     }
@@ -54,20 +54,20 @@ export class AvatarButtonComponent implements OnInit {
   /**
    * Loads the user profile popup component.
    */
-  async loadComp(): Promise<void> {
+  async loadComponent(): Promise<void> {
     const { UserProfilePopupComponent } = await import(
       '@shared/components/user-profile-popup/user-profile-popup.component'
     );
 
-    this.componentOutlet = UserProfilePopupComponent;
+    this.componentType = UserProfilePopupComponent;
   }
 
   /**
    * Closes the popup if outside the popup is clicked.
-   * @param e
+   * @param $event
    */
-  outsideClick(e: MouseEvent): void {
-    if (!e.composedPath().includes(this.elRef.nativeElement)) {
+  closePopupOnOutsideClicked($event: MouseEvent) {
+    if (!$event.composedPath().includes(this.elementRef.nativeElement)) {
       this.popupOpened = false;
     }
   }
