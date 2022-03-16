@@ -26,10 +26,12 @@ import { TopAppBarLogoComponent } from './main/components/top-bar/components/top
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { WatchedTagListDialogComponent } from '@dialogs/watched-tag-list-dialog/watched-tag-list-dialog.component';
 import { ProfilePictureDialogComponent } from '@dialogs/profile-picture-dialog/profile-picture-dialog.component';
-import { MAT_ICON_DEFAULT_OPTIONS } from '@angular/material/icon';
 import { BroadcastChannelLogoutDialogComponent } from './broadcast-channel-logout-dialog/broadcast-channel-logout-dialog.component';
 import { GoogleIconComponent } from './google-icon/google-icon.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { HotkeyDialogComponent } from '@dialogs/hotkey-dialog/hotkey-dialog.component';
+import { DumbComponent } from './main/components/dumb/dumb.component';
+import { ExtendedFabDirective } from './main/directives/extended-fab.directive';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,10 @@ import { WelcomeComponent } from './welcome/welcome.component';
     ProfilePictureDialogComponent,
     BroadcastChannelLogoutDialogComponent,
     GoogleIconComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    HotkeyDialogComponent,
+    DumbComponent,
+    ExtendedFabDirective
   ],
   imports: [
     BrowserModule,
@@ -72,12 +77,6 @@ import { WelcomeComponent } from './welcome/welcome.component';
     {
       provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
       useValue: { horizontalPosition: 'start', duration: 4000 }
-    },
-    {
-      provide: MAT_ICON_DEFAULT_OPTIONS,
-      useValue: {
-        fontSet: 'material-icons-outlined'
-      }
     }
   ],
   bootstrap: [AppComponent]
