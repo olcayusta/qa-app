@@ -1,6 +1,6 @@
 <div class="popup-page">
   <header>
-    <div class="header-title">Bildirimler</div>
+    <div class="subtitle-1">Bildirimler</div>
   </header>
   <section>
     <ng-container *ngIf="notifications$ | async as notifications; else loading">
@@ -23,7 +23,10 @@
     </ng-template>
 
     <ng-template #noResult>
-      <h1>Veri yok.</h1>
+      <div class='promo-message'>
+        <p class='subtitle-1'>Bildirimleriniz burada gösterilir</p>
+        <p class='body-2'>Favori kanallarınıza abone olarak bu kanalların en yeni videoları hakkında bildirim alın.</p>
+      </div>
     </ng-template>
 
   </section>
