@@ -1,4 +1,8 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { MaterialModule } from '@modules/material/material.module';
+import { SharedModule } from '@shared/shared.module';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @Component({
   selector: 'inek-flag-dialog',
@@ -7,10 +11,13 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FlagDialogComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
+
+@NgModule({
+  declarations: [FlagDialogComponent],
+  imports: [CommonModule, MaterialModule, SharedModule, MatDialogModule]
+})
+export class FlagDialogModule {}
