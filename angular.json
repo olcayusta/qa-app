@@ -67,6 +67,7 @@
                 "bundleName": "light"
               }
             ],
+            "sourceMap": true,
             "scripts": [],
             "serviceWorker": true,
             "ngswConfigPath": "ngsw-config.json",
@@ -92,8 +93,7 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
-              "outputHashing": "all",
-              "sourceMap": true
+              "outputHashing": "all"
             },
             "development": {
               "buildOptimizer": false,
