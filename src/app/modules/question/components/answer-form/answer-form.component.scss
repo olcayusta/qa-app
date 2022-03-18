@@ -4,11 +4,22 @@
 }
 
 .buttons {
-  margin-bottom: 8px;
+  display: flex;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
 
-  button {
-    margin-left: -8px;
+  mat-icon {
+    color: var(--medium-emphasis-color);
   }
+}
+
+.flex-spacer {
+  flex: 1 0 auto;
+}
+
+.left-content {
+  display: flex;
+  gap: 24px;
 }
 
 mat-form-field {

@@ -1,19 +1,76 @@
 <form autocomplete='off' spellcheck='false' (submit)='formSubmit()'>
-  <div class='buttons'>
-    <button mat-icon-button matTooltip='Kalın yazı'>
-      <mat-icon>format_bold</mat-icon>
-    </button>
-    <button mat-icon-button matTooltip='İtalik'>
-      <mat-icon>format_italic</mat-icon>
-    </button>
-    <button mat-icon-button matTooltip='Alıntı'>
-      <mat-icon>format_quote</mat-icon>
-    </button>
-  </div>
+
+  <inek-editor-buttons>
+    <div class='buttons'>
+
+      <div class='left-content'>
+        <div>
+          <button type='button' mat-icon-button matTooltip='Kalın yazı' (click)='formatApply("bold")'>
+            <mat-icon-format-bold></mat-icon-format-bold>
+          </button>
+          <button type='button' mat-icon-button matTooltip='İtalik' (click)='formatApply("italic")'>
+            <mat-icon-format-italic></mat-icon-format-italic>
+          </button>
+          <button type='button' mat-icon-button matTooltip='Strikethrough S' (click)='formatApply("strike")'>
+            <mat-icon-strikethrough-s></mat-icon-strikethrough-s>
+          </button>
+        </div>
+
+        <div>
+          <button type='button' mat-icon-button matTooltip='Title' (click)='formatApply("title")'>
+            <mat-icon-title></mat-icon-title>
+          </button>
+          <button type='button' mat-icon-button matTooltip='Format Quote' (click)='formatApply("quote")'>
+            <mat-icon-format-quote></mat-icon-format-quote>
+          </button>
+        </div>
+
+        <div>
+          <button type='button' mat-icon-button matTooltip='Insert link' (click)='formatApply("link")'>
+            <app-gf-icon name='insert_link'></app-gf-icon>
+          </button>
+          <button type='button' mat-icon-button matTooltip='Block Code' (click)='formatApply("blockCode")'>
+            <mat-icon>data_object</mat-icon>
+          </button>
+          <button type='button' mat-icon-button matTooltip='Insert photo' (click)='formatApply("image")'>
+            <mat-icon>insert_photo</mat-icon>
+          </button>
+        </div>
+
+        <div>
+
+          <button type='button' mat-icon-button matTooltip='Format List Bulleted' (click)='formatApply("ul")'>
+            <mat-icon>format_list_bulleted</mat-icon>
+          </button>
+          <button type='button' mat-icon-button matTooltip='Format List Numbered' (click)='formatApply("ol")'>
+            <mat-icon>format_list_numbered</mat-icon>
+          </button>
+
+          <button type='button' mat-icon-button matTooltip='Horizontal Rule' (click)='formatApply("hr")'>
+            <mat-icon>horizontal_rule</mat-icon>
+          </button>
+
+        </div>
+      </div>
+
+      <span class='flex-spacer'></span>
+
+      <div class='flex-end'>
+        <button mat-icon-button type='button' matTooltip='Geri al'>
+          <app-gf-icon name='undo'></app-gf-icon>
+        </button>
+
+        <button mat-icon-button type='button' matTooltip='İleri al'>
+          <mat-icon>redo</mat-icon>
+        </button>
+      </div>
+
+    </div>
+  </inek-editor-buttons>
+
   <mat-form-field appearance='outline' floatLabel='never' hideRequiredMarker>
-    <textarea aria-label='Answer text' matInput cdkTextareaAutosize cdkAutosizeMinRows='8'
-              placeholder='Açıklayıcı bir şekilde cevap yazın'
-              [formControl]='answerControl'></textarea>
+    <textarea #textAreaElement aria-label='Answer text' matInput cdkTextareaAutosize cdkAutosizeMinRows='8'
+              placeholder='Açıklayıcı bir şekilde cevap yazın' [formControl]='answerControl'></textarea>
     <mat-error *ngIf="answerControl.hasError('required')">Bir açıklama girin</mat-error>
     <mat-error *ngIf="answerControl.hasError('minlength')">Aciklama en az 24 karakter olmalidir; sen
       {{answerControl.value.length}} karakter girdin.
@@ -22,7 +79,8 @@
   </mat-form-field>
 
   <!--<div class="preview-text" [innerHTML]="answerControl?.value | marked"></div>-->
-  <div class='preview-text' [innerHTML]='answerControl?.value | marked'></div>
+  <!--  <div class='preview-text' [innerHTML]='answerControl?.value | marked'></div>-->
+  <div class='preview-text' [innerHTML]='markedText$ | async'></div>
 
   <button mat-raised-button type='submit' color='primary' [disabled]='!answerControl.valid'>GÖNDER</button>
 </form>
