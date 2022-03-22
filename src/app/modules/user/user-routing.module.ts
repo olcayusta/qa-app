@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, Route } from '@angular/router';
 
 import { UserComponent } from './components/user.component';
 import { UserResolver } from './resolvers/user.resolver';
