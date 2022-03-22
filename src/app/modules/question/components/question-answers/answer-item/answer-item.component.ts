@@ -5,12 +5,12 @@ import { ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-question-answer-item',
-  templateUrl: './question-answer-item.component.html',
-  styleUrls: ['./question-answer-item.component.scss'],
+  selector: 'app-answer-item',
+  templateUrl: './answer-item.component.html',
+  styleUrls: ['./answer-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class QuestionAnswerItemComponent {
+export class AnswerItemComponent {
   @Input() answer!: Answer;
   @Input() acceptedAnswer!: boolean;
   @Input() questionId!: number;
@@ -24,7 +24,7 @@ export class QuestionAnswerItemComponent {
   acceptAnswer() {
     const questionId = Number(this.route.snapshot.paramMap.get('questionId'));
     this.answerService.acceptAnswer(this.answer.id, questionId).subscribe((value) => {
-      this.snackBar.open('Doğru cevap olarak işaretlendi')
+      this.snackBar.open('Doğru cevap olarak işaretlendi');
     });
   }
 }

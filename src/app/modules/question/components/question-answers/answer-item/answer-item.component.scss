@@ -97,3 +97,12 @@ a:hover {
 :host ::ng-deep p a {
   color: #6200ee;
 }
+
+:host ::ng-deep img {
+  display: flex;
+  max-width: 100%;
+  height: auto;
+/*  width: 400px;
+  height: 400px;*/
+  object-fit: cover;
+}
