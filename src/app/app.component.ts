@@ -1,16 +1,27 @@
-import { ChangeDetectionStrategy, Component, Inject, NgZone, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  HostListener,
+  Inject,
+  NgZone,
+  OnInit,
+  Renderer2
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { SocketService } from '@shared/services/socket.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { SwPush, SwUpdate, VersionEvent, VersionReadyEvent } from '@angular/service-worker';
+import { SwPush, SwUpdate, VersionReadyEvent } from '@angular/service-worker';
 import { PushNotificationService } from '@shared/services/push-notification.service';
 import { environment } from '@environments/environment';
 import { DOCUMENT } from '@angular/common';
 import { AuthService } from '@auth/auth.service';
-import { delay, filter, map, retryWhen, tap } from 'rxjs/operators';
-import { fromEvent, merge, Observable, of, Subscription } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
+import { fromEvent, merge, of, Subscription } from 'rxjs';
 import { SseService } from '@shared/services/sse.service';
 import { BroadcastChannelService } from '@shared/services/broadcast-channel.service';
+import { MatDialog } from '@angular/material/dialog';
+import { BroadcastChannelLogoutDialogComponent } from './broadcast-channel-logout-dialog/broadcast-channel-logout-dialog.component';
+import { HotkeyDialogComponent } from '@dialogs/hotkey-dialog/hotkey-dialog.component';
 
 @Component({
   selector: 'app-root',
@@ -19,31 +30,44 @@ import { BroadcastChannelService } from '@shared/services/broadcast-channel.serv
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements OnInit {
-  networkStatus: boolean = false;
-  networkStatus$: Subscription = Subscription.EMPTY;
+  networkStatus = false;
+  networkStatus$ = Subscription.EMPTY;
 
   sub!: Subscription;
 
+  @HostListener('document:keydown', ['$event'])
+  ismetakey($event: KeyboardEvent) {
+    const { metaKey, key, shiftKey } = $event;
+    /*    console.log('MetaKey: ', metaKey);
+    console.log('ShiftKey: ', shiftKey);
+    console.log('key: ', key);*/
+
+    if ((metaKey && key === '/') || (shiftKey && key === '?')) {
+      console.log('Open Shortcut Dialog!');
+      const dialog = this.dialog.open(HotkeyDialogComponent, {
+        minWidth: 560
+      });
+    }
+  }
+
   constructor(
+    @Inject(DOCUMENT) private document: Document,
+    private renderer: Renderer2,
     private router: Router,
     private authService: AuthService,
     private socketService: SocketService,
+    private pushService: PushNotificationService,
+    private broadcastChannel: BroadcastChannelService,
+    private sseService: SseService,
     private snackBar: MatSnackBar,
     private swPush: SwPush,
     private swUpdate: SwUpdate,
-    private pushService: PushNotificationService,
     private zone: NgZone,
-    @Inject(DOCUMENT) private document: Document,
-    private sseService: SseService,
-    private broadcastChannel: BroadcastChannelService
+    private dialog: MatDialog
   ) {
     // THEME FIX
-    const storageKey = localStorage.getItem('theme-preference');
+    // const storageKey = localStorage.getItem('theme-preference');
     // this.loadColorScheme(storageKey!);
-
-    swUpdate.unrecoverable.subscribe((value) => {
-      console.log(value.reason, value.type);
-    });
 
     const updatesAvailable = swUpdate.versionUpdates.pipe(
       filter((evt): evt is VersionReadyEvent => evt.type === 'VERSION_READY'),
@@ -56,7 +80,7 @@ export class AppComponent implements OnInit {
 
     updatesAvailable.subscribe((value) => {
       this.snackBar
-        .open('Available update!', 'TAMAM', {
+        .open('Available update!', 'OKAY', {
           duration: 4000
         })
         .onAction()
@@ -91,7 +115,6 @@ export class AppComponent implements OnInit {
         const sub = await this.swPush.requestSubscription({
           serverPublicKey: environment.PUBLIC_VAPID_KEY_OF_SERVER
         });
-        // TODO: Send to server.
         this.pushService.sendSubscriptionToTheServer(sub).subscribe();
       } catch (e) {
         console.error(`Could not subscribe due to:`, e);
@@ -103,7 +126,7 @@ export class AppComponent implements OnInit {
    * If SSE is supported, subscribe to SSE events.
    */
   subscribeToSSE(): void {
-    this.sseService.observerMessages(`http://localhost:9001/stream`).subscribe((value) => {
+    this.sseService.observerMessages(environment.SSE_URL).subscribe((value) => {
       console.log(value);
     });
   }
@@ -111,7 +134,7 @@ export class AppComponent implements OnInit {
   /**
    * Check network status.
    */
-  checkNetworkStatus() {
+  checkNetworkStatus(): void {
     this.networkStatus = navigator.onLine;
     this.networkStatus$ = merge(of(null), fromEvent(window, 'online'), fromEvent(window, 'offline'))
       .pipe(map(() => navigator.onLine))
@@ -122,11 +145,21 @@ export class AppComponent implements OnInit {
       });
   }
 
-  ngOnInit() {
-    this.broadcastChannel.getMessage().subscribe((ev) => {
-      console.log(ev.data);
-    })
+  /**
+   * Broadcast channel for logout. (Initial version)
+   */
+  broadcast() {
+    this.broadcastChannel.messagesOfType('hello').subscribe((value) => {
+      this.zone.run(() => {
+        /*const dialog = this.dialog.open(BroadcastChannelLogoutDialogComponent, {
+          autoFocus: false,
+          minWidth: 560
+        });*/
+      });
+    });
+  }
 
+  ngOnInit() {
     /**
      * Make a notification for author user id for created answer for question.
      */
@@ -138,6 +171,10 @@ export class AppComponent implements OnInit {
         });
       });
     }
+
+    /*    this.socketService.on('hello').subscribe(({ event, payload }) => {
+      alert(event);
+    });*/
 
     const observableA = this.socketService.subject.multiplex(
       () => ({ subscribe: 'A' }), // When servers get this message, it will start sending messages for 'A'...
