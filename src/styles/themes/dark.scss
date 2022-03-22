@@ -4,60 +4,53 @@ $dark-primary-text: rgba(black, 0.87);
 $light-primary-text: white;
 
 $deep-purple-palette: (
-        50: #F2E7FE,
-        100: #DBB2FF,
-        200: #BB86FC,
-        300: #985EFF,
-        400: #7F39FB,
-        500: #6200EE,
-        600: #5600E8,
-        700: #3700B3,
-        800: #30009C,
-        900: #23036A,
-        A100: #b388ff,
-        A200: #7c4dff,
-        A400: #651fff,
-        A700: #6200ea,
-        contrast: (
-                50: $dark-primary-text,
-                100: $dark-primary-text,
-                200: $dark-primary-text,
-                300: $light-primary-text,
-                400: $light-primary-text,
-                500: $light-primary-text,
-                600: $light-primary-text,
-                700: $light-primary-text,
-                800: $light-primary-text,
-                900: $light-primary-text,
-                A100: $dark-primary-text,
-                A200: $light-primary-text,
-                A400: $light-primary-text,
-                A700: $light-primary-text,
-        )
+  50: #F2E7FE,
+  100: #DBB2FF,
+  200: #BB86FC,
+  300: #985EFF,
+  400: #7F39FB,
+  500: #6200EE,
+  600: #5600E8,
+  700: #3700B3,
+  800: #30009C,
+  900: #23036A,
+  A100: #b388ff,
+  A200: #7c4dff,
+  A400: #651fff,
+  A700: #6200ea,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $light-primary-text,
+    400: $light-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text,
+  )
 );
 
 $dark-primary: mat.define-palette($deep-purple-palette, 200);
 $dark-accent: mat.define-palette($deep-purple-palette);
 $dark-theme: mat.define-dark-theme((
-        color: (
-                primary: $dark-primary,
-                accent: $dark-accent
-        )
+  color: (
+    primary: $dark-primary,
+    accent: $dark-accent
+  )
 ));
-
-
-@include mat.all-component-themes($dark-theme);
-
-html {
-  background-color: #121212;
-  color: white;
-}
-
 
 @media (prefers-color-scheme: dark) {
   :root {
-    color-scheme: dark;
-    --color: #fff;
+    // color-scheme: dark;
+    --html-bg-color: #121212;
+    --color: white;
+    --mdc-theme-primary: #bb86fc;
     --medium-emphasis-color: rgba(255, 255, 255, 0.6);
     --surface: #121212;
     --topbar-background: #272727;
@@ -71,9 +64,14 @@ html {
     --search-background: rgba(255, 255, 255, 0.12);
     --code-background: #1e1e1e;
     --border-color: rgba(255, 255, 255, 0.12);
-    // scrollbar-color: rgba(0, 0, 0, .12) #ce1c1c;
+    --scrollbar-color: hotpink transparent;
+    --scrollbar-bg-color: #424242;
+    --thumb-bg-color: #686868;
+    --thumb-bg-hover: #a1a1a1;
   }
 }
+
+@include mat.all-component-themes($dark-theme);
 
 @import "~highlight.js/scss/github-dark-dimmed";
 
