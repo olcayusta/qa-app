@@ -1,18 +1,17 @@
 import { Injectable } from '@angular/core';
 import { webSocket, WebSocketSubject } from 'rxjs/webSocket';
-import { Observable } from 'rxjs';
+import { Observable, retry } from 'rxjs';
 import { environment } from '@environments/environment';
-import { delay, retryWhen, tap } from 'rxjs/operators';
 
 interface SocketData {
   event: string;
   payload: object;
 }
 
-enum socketEvent {
+/*enum socketEvent {
   newAnswer = 'new answer',
   message = 'message'
-}
+}*/
 
 interface SubjectData {
   event: string;
@@ -30,26 +29,13 @@ export class SocketService {
     protocol: <string>localStorage.getItem('token')
   });
 
-  constructor() {
-    // this.connect();
-    /*    this.subject.next({
-      event: 'hello',
-      payload: {
-        celebName: 'Dua Lipa',
-      },
-    });*/
-  }
+  constructor() {}
 
   reconnect() {
     this.subject.pipe(
-      retryWhen((errors) =>
-        errors.pipe(
-          tap((err) => {
-            console.error('Got error', err);
-          }),
-          delay(1000)
-        )
-      )
+      retry({
+        delay: 1000
+      })
     );
     /*  .subscribe({
         next: (v) => console.log(v),
@@ -71,26 +57,17 @@ export class SocketService {
   /**
    * @description
    * @param event Custom event type (new answer, message, etc.)
-   * @returns {Observable<Socket>} Return an observable that emits the event
+   * @returns {Observable<SocketData>} Return an observable that emits the event
    */
   on(event: eventType): Observable<SocketData> {
     return new Observable((subscriber) => {
       this.subject
         .pipe(
-          retryWhen((errors) =>
-            errors.pipe(
-              tap((err) => {
-                console.error('Got error', err);
-              }),
-              delay(1000)
-            )
-          )
+          retry({
+            delay: 1000
+          })
         )
-        .subscribe((data) => {
-          if (data.event === event) {
-            subscriber.next(data);
-          }
-        });
+        .subscribe((data) => event === data.event && subscriber.next(data));
     });
   }
 
