@@ -9,48 +9,40 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import { StickyDirective } from './main/components/top-bar/directives/sticky.directive';
 import { JwtInterceptor } from '@auth/interceptors/jwt.interceptor';
-
-/* Modules */
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '@modules/material/material.module';
 import { MainLayoutModule } from './main-layout/main-layout.module';
 import { SharedModule } from '@shared/shared.module';
-
-/* Components */
-import { TopBarComponent } from './main/components/top-bar/top-bar.component';
+import { TopAppBarComponent } from './main/components/top-bar/top-app-bar.component';
 import { SearchFormComponent } from './main/components/top-bar/components/search-form/search-form.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '@environments/environment';
-import { ThemeTogleComponent } from './theme-togle/theme-togle.component';
 import { TopAppBarLogoComponent } from './main/components/top-bar/components/top-app-bar-logo/top-app-bar-logo.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { WatchedTagListDialogComponent } from '@dialogs/watched-tag-list-dialog/watched-tag-list-dialog.component';
-import { ProfilePictureDialogComponent } from '@dialogs/profile-picture-dialog/profile-picture-dialog.component';
-import { BroadcastChannelLogoutDialogComponent } from './broadcast-channel-logout-dialog/broadcast-channel-logout-dialog.component';
-import { GoogleIconComponent } from './google-icon/google-icon.component';
-import { WelcomeComponent } from './welcome/welcome.component';
-import { HotkeyDialogComponent } from '@dialogs/hotkey-dialog/hotkey-dialog.component';
+import { MAT_ICON_DEFAULT_OPTIONS, MatIconModule } from '@angular/material/icon';
+import { WelcomeComponent } from './experimental/welcome/welcome.component';
 import { DumbComponent } from './main/components/dumb/dumb.component';
 import { ExtendedFabDirective } from './main/directives/extended-fab.directive';
+import { MaterialIconModule } from './material-icon/material-icon.module';
+import { StickyToolbarDirective } from './main/components/top-bar/directives/sticky-toolbar.directive';
+import { TitleStrategy } from '@angular/router';
+import { AppTitleStrategy } from './core/appTitle.strategy';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
-    TopBarComponent,
+    TopAppBarComponent,
     SearchFormComponent,
     StickyDirective,
-    ThemeTogleComponent,
     TopAppBarLogoComponent,
     ProgressBarComponent,
     WatchedTagListDialogComponent,
-    ProfilePictureDialogComponent,
-    BroadcastChannelLogoutDialogComponent,
-    GoogleIconComponent,
     WelcomeComponent,
-    HotkeyDialogComponent,
     DumbComponent,
-    ExtendedFabDirective
+    ExtendedFabDirective,
+    StickyToolbarDirective
   ],
   imports: [
     BrowserModule,
@@ -66,7 +58,9 @@ import { ExtendedFabDirective } from './main/directives/extended-fab.directive';
       // Register the ServiceWorker as soon as the app is stable
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
-    })
+    }),
+    MatIconModule,
+    MaterialIconModule
   ],
   providers: [
     {
@@ -77,6 +71,16 @@ import { ExtendedFabDirective } from './main/directives/extended-fab.directive';
     {
       provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
       useValue: { horizontalPosition: 'start', duration: 4000 }
+    },
+    {
+      provide: MAT_ICON_DEFAULT_OPTIONS,
+      useValue: {
+        fontSet: 'material-icons-outlined'
+      }
+    },
+    {
+      provide: TitleStrategy,
+      useClass: AppTitleStrategy
     }
   ],
   bootstrap: [AppComponent]
