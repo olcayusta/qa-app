@@ -77,4 +77,4 @@ export class AvatarButtonComponent implements OnInit {
   declarations: [AvatarButtonComponent],
   imports: [CommonModule, SharedModule, OverlayModule]
 })
-export class AvatarButtonmodule {}
+class AvatarButtonmodule {}
