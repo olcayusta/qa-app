@@ -24,7 +24,6 @@ export class ProgressBarComponent implements OnInit {
     this.router.events.subscribe((event) => {
       if (event instanceof ResolveStart) {
         this.spinnerService.show();
-        // console.log('resolve start', event.url);
       }
 
       if (
@@ -33,7 +32,6 @@ export class ProgressBarComponent implements OnInit {
         event instanceof NavigationError
       ) {
         this.spinnerService.hide();
-        // console.log('resolve ended', event.url);
       }
     });
 
