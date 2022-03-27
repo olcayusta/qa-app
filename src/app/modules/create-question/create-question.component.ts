@@ -1,14 +1,17 @@
 import {
-  Component,
-  OnInit,
   ChangeDetectionStrategy,
-  ɵmarkDirty as markDirty,
-  ViewChild
+  Component,
+  ElementRef,
+  Inject,
+  OnInit,
+  ViewChild,
+  ɵmarkDirty as markDirty
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { QuestionService } from '../question/services/question.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ChipsAutocompleteComponent } from './components/chips-autocomplete/chips-autocomplete.component';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'inek-create-question',
@@ -19,21 +22,25 @@ import { ChipsAutocompleteComponent } from './components/chips-autocomplete/chip
 export class CreateQuestionComponent implements OnInit {
   form: FormGroup;
 
-  description!: string;
+  // description!: string;
 
   worker!: Worker;
 
   @ViewChild(ChipsAutocompleteComponent)
   chipComponent!: ChipsAutocompleteComponent;
 
+  @ViewChild('markedTextarea', { read: ElementRef, static: true })
+  markedTextarea!: ElementRef<HTMLTextAreaElement>;
+
   constructor(
     private formBuilder: FormBuilder,
     private domSanitizer: DomSanitizer,
-    private questionService: QuestionService
+    private questionService: QuestionService,
+    @Inject(DOCUMENT) private document: Document
   ) {
     this.form = formBuilder.group({
       title: [null, [Validators.required]],
-      description: [null, [Validators.required]]
+      description: ['hello world\n' + '\n' + 'bye bye log', [Validators.required]]
     });
   }
 
@@ -53,26 +60,35 @@ export class CreateQuestionComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.form.get('description')!.valueChanges.subscribe((value) => {
+    /*    this.form.get('description')!.valueChanges.subscribe((value) => {
       this.worker.postMessage(value);
 
       // FIXME
       this.description = value;
-    });
+    });*/
+    /*    this.markedTextarea.nativeElement.onselectionchange = (ev) => {
+      console.log('degisti');
+    };*/
   }
 
   onBlur(): void {
-    this.worker.terminate();
+    // this.worker.terminate();
   }
 
   onFocus(): void {
-    this.worker = new Worker('../marked.worker', {
+    /*    this.worker = new Worker('../marked.worker', {
       type: 'module',
       name: 'marked'
     });
     this.worker.onmessage = ({ data }) => {
       this.description = this.domSanitizer.bypassSecurityTrustHtml(data) as string;
       markDirty(this);
-    };
+    };*/
+  }
+
+  onSelectChange($event: Event) {
+    const textarea = this.markedTextarea.nativeElement;
+    const range = window.getSelection();
+    /*    console.log('changed', document.getSelection()?.getRangeAt(0));*/
   }
 }

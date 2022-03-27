@@ -13,6 +13,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDividerModule } from '@angular/material/divider';
 import { SharedModule } from '@shared/shared.module';
 import { MaterialModule } from '@modules/material/material.module';
+import { MaterialIconModule } from '../../material-icon/material-icon.module';
 
 @NgModule({
   declarations: [CreateQuestionComponent, ChipsAutocompleteComponent],
@@ -27,7 +28,8 @@ import { MaterialModule } from '@modules/material/material.module';
     MatToolbarModule,
     MatDividerModule,
     MaterialModule,
-    SharedModule
+    SharedModule,
+    MaterialIconModule
   ]
 })
 export class CreateQuestionModule {}

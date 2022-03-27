@@ -1,6 +1,6 @@
 <div class='my-content'>
 
-  <h3 class='headline-3'>Soru Sor</h3>
+  <!--  <h6 class='headline-6'>Soru Sor</h6>-->
 
   <form autocomplete='off' spellcheck='false' [formGroup]='form' (submit)='submit()'>
     <div class='form-body'>
@@ -40,7 +40,9 @@
 
         <mat-form-field appearance='standard' hideRequiredMarker>
           <mat-label>Açıklama</mat-label>
-          <textarea aria-label='Question text' (blur)='onBlur()' (focus)='onFocus()' matInput
+          <textarea #markedTextarea (ngModelChange)='onSelectChange($event)' (change)='onSelectChange($event)'
+                    (selectionchange)='onSelectChange($event)' aria-label='Question text' (blur)='onBlur()'
+                    (focus)='onFocus()' matInput
                     placeholder='Include all the information someone would need to answer your question'
                     formControlName='description' cdkTextareaAutosize [cdkAutosizeMinRows]='2'
                     [cdkAutosizeMaxRows]='16'></textarea>
@@ -51,7 +53,7 @@
       <div>
         <div class='overline-text'>Önizleme</div>
         <mat-divider></mat-divider>
-        <div [innerHTML]='description | marked' class='description-preview'></div>
+        <div [innerHTML]='form.get("description")?.value' class='description-preview'></div>
       </div>
 
       <inek-chips-autocomplete></inek-chips-autocomplete>
