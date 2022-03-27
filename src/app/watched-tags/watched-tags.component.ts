@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { TagService } from '@modules/tag/services/tag.service';
 import { Tag } from '@shared/models/tag.model';
 import { Observable } from 'rxjs';
+import { WatchedTagService } from './services/watched-tag.service';
 
 @Component({
   selector: 'inek-watched-tags',
@@ -12,9 +12,9 @@ import { Observable } from 'rxjs';
 export class WatchedTagsComponent implements OnInit {
   tags$!: Observable<Tag[]>;
 
-  constructor(private tagService: TagService) {}
+  constructor(private watchedTagService: WatchedTagService) {}
 
   ngOnInit(): void {
-    this.tags$ = this.tagService.getFavoriteTags();
+    this.tags$ = this.watchedTagService.getFavoriteTags();
   }
 }
