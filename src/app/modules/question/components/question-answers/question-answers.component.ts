@@ -5,14 +5,15 @@ import {
   Input,
   AfterViewInit,
   ViewChildren,
-  QueryList
+  QueryList,
+  OnDestroy
 } from '@angular/core';
 import { AnswerService } from '@shared/services/answer.service';
 import { Observable, tap } from 'rxjs';
 import { Answer } from '@shared/models/answer.model';
 import { ActivatedRoute } from '@angular/router';
 import { ViewportScroller } from '@angular/common';
-import { QuestionAnswerItemComponent } from '@modules/question/components/question-answer-item/question-answer-item.component';
+import { AnswerItemComponent } from '@modules/question/components/question-answers/answer-item/answer-item.component';
 
 @Component({
   selector: 'app-question-answers',
@@ -20,10 +21,28 @@ import { QuestionAnswerItemComponent } from '@modules/question/components/questi
   styleUrls: ['./question-answers.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class QuestionAnswersComponent implements OnInit, AfterViewInit {
-  answers$!: Observable<Answer[]>;
+export class QuestionAnswersComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input('acceptedAnswerId') acceptedAnswerId?: number;
-  @ViewChildren(QuestionAnswerItemComponent) items!: QueryList<QuestionAnswerItemComponent>;
+  @ViewChildren(AnswerItemComponent) items!: QueryList<AnswerItemComponent>;
+
+  answers$!: Observable<Answer[]>;
+
+  sortItems = [
+    {
+      value: 0,
+      viewValue: 'Eklenme tarihi (en yeni)'
+    },
+    {
+      value: 1,
+      viewValue: 'Eklenme tarihi (en eski)'
+    },
+    {
+      value: 2,
+      viewValue: 'En iyi yorumlar'
+    }
+  ];
+
+  selectedIndex = 0;
 
   constructor(
     private route: ActivatedRoute,
@@ -40,12 +59,25 @@ export class QuestionAnswersComponent implements OnInit, AfterViewInit {
     );
   }
 
+  // TODO Subscribe normal sartlarda otomatik kapaniyor ama xhr hatalarinda test edilmedi.
   ngAfterViewInit() {
-    const fragment = this.route.snapshot.fragment;
-    this.scroll.setOffset([0, 64]);
+    const { fragment } = this.route.snapshot;
 
-    this.items.changes.subscribe((_) => {
-      fragment && this.scroll.scrollToAnchor(`answer-${fragment}`);
-    });
+    if (fragment) {
+      const { documentElement } = document;
+      documentElement.style.scrollBehavior = 'smooth';
+      this.scroll.setOffset([0, 64]);
+      this.items.changes.subscribe((_) => {
+        this.scroll.scrollToAnchor(`answer-${fragment}`);
+      });
+    }
+  }
+
+  ngOnDestroy() {
+    document.documentElement.style.scrollBehavior = '';
+  }
+
+  changeSelectedIndex(index: number) {
+    this.selectedIndex = index;
   }
 }

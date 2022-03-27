@@ -2,6 +2,11 @@
   display: block;
 }
 
+.menu-item-active {
+  background-color: #6200ee12;
+  color: black;
+}
+
 .filter-header {
   display: flex;
   align-items: center;

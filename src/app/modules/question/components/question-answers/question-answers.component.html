@@ -3,10 +3,10 @@
     <div id='answer-count' itemprop='answerCount'>{{answers.length}} Yanıt</div>
     <button mat-button matTooltip='Cevapları sırala' [matMenuTriggerFor]='sortMenu'>
       <mat-icon>sort</mat-icon>
-      <span>SIRALAMA ÖLÇÜTÜ</span>
+      <span>Sıralama ölçütü</span>
     </button>
   </div>
-  <app-question-answer-item *ngFor='let answer of answers' [answer]='answer'></app-question-answer-item>
+  <app-answer-item *ngFor='let answer of answers' [answer]='answer'></app-answer-item>
 </ng-container>
 
 <ng-template #noAnswer>
@@ -15,8 +15,9 @@
 
 <mat-menu #sortMenu>
   <ng-template matMenuContent>
-    <button mat-menu-item>Eklenme tarihi (en yeni)</button>
-    <button mat-menu-item>Eklenme tarihi (en eski)</button>
-    <button mat-menu-item>En iyi yorumlar</button>
+    <button mat-menu-item [class.menu-item-active]='index === selectedIndex'
+            *ngFor='let item of sortItems; let index = index' (click)='changeSelectedIndex(index)'>
+      {{item.viewValue}}
+    </button>
   </ng-template>
 </mat-menu>
