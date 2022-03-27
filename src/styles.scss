@@ -1,86 +1,103 @@
 @use "styles/reset";
-
 @use '@angular/material' as mat;
-// @use '@angular/cdk/overlay' as overlay;
-// @use '@angular/cdk/a11y' as a11y;
-// @use '@angular/material/core/focus-indicators/focus-indicators' as focus-indicators;
 
-/*@include mat.ripple();
+/*@use '@angular/cdk/overlay' as overlay;
+@use '@angular/cdk/a11y' as a11y;
+@use '@angular/material/core/focus-indicators/focus-indicators' as focus-indicators;
+
+@include mat.ripple();
 @include a11y.a11y-visually-hidden();
 @include overlay.overlay();
 @include focus-indicators.private-strong-focus-indicators-positioning();*/
 
-@include mat.core();
+$typography-configuration: mat.define-typography-config(
+  $font-family: 'Archivo, "Helvetica Neue", sans-serif',
+  $display-4: mat.define-typography-level(112px, 112px, 300),
+  $display-3: mat.define-typography-level(56px, 56px, 400),
+  $display-2: mat.define-typography-level(100px, 48px, 400),
+  $display-1: mat.define-typography-level(100px, 34px, 400),
+  $headline: mat.define-typography-level(24px, 32px, 400),
+  $title: mat.define-typography-level(20px, 32px, 500),
+  $subheading-2: mat.define-typography-level(14px, 24px, 500),
+  $subheading-1: mat.define-typography-level(16px, 24px, 400),
+  $body-2: mat.define-typography-level(14px, 20px, 400),
+  $body-1: mat.define-typography-level(16px, 24px, 400),
+  $caption: mat.define-typography-level(12px, 16px, 400),
+  $button: mat.define-typography-level(14px, 14px, 500),
+  $input: mat.define-typography-level(inherit, 1.125, 400)
+);
+
+@include mat.core($typography-configuration);
 
 $custom-typography: mat.define-typography-config(
-        $font-family: 'Archivo, sans-serif',
+  $font-family: 'Archivo, sans-serif',
+);
+
+$input-typograpghy: mat.define-typography-config(
+  $font-family: 'Roboto, sans-serif',
 );
 
 $body-and-captions-typography: mat.define-typography-config(
-        $font-family: 'Roboto, sans-serif',
+  $font-family: 'Roboto, sans-serif',
 );
 
 $snackbar-typo: mat.define-typography-config(
-        $font-family: 'Archivo, sans-serif',
+  $font-family: 'Archivo, sans-serif',
 );
 
 /*
   main typo
 */
-// @include mat-base-typography($custom-typography);
-
-@include mat.tabs-typography($custom-typography);
-
-// @include mat.list-typography($custom-typography);
 
 $my-custom-level: mat.define-typography-level(14px, 24px, 700, $letter-spacing: 10px);
 
 // Badge typography
 $badge-typo: mat.define-typography-config(
-        $font-family: 'Archivo, sans-serif'
+  $font-family: 'Archivo, sans-serif'
 );
 
 // List typography
 $list-typography: mat.define-typography-config(
-        $font-family: 'Archivo, sans-serif',
-        $subheading-2: $my-custom-level,
-        $body-1: $my-custom-level,
+  $font-family: 'Archivo, sans-serif'
 );
 
-@include mat.list-typography($list-typography);
+// Chips typography
+$chip-typography: mat.define-typography-config(
+  $font-family: 'Roboto, sans-serif',
+  $body-2: mat.define-typography-level(14px, 20px, 400)
+);
 
-@include mat.dialog-typography($custom-typography);
-@include mat.form-field-typography($custom-typography);
+@include mat.tabs-typography($custom-typography);
+
+// @include mat.list-typography($list-typography);
+// @include mat.chips-typography($chip-typography);
+// @include mat.dialog-typography($custom-typography);
+@include mat.form-field-typography($input-typograpghy);
 @include mat.radio-typography($custom-typography);
 @include mat.option-typography($custom-typography);
-
-// FIXME - this is duplicate
-// @include mat.toolbar-typography($custom-typography);
 @include mat.radio-typography($custom-typography);
-
-/*
-  body and captions typo
-*/
-@include mat.badge-typography($body-and-captions-typography);
 @include mat.tooltip-typography($body-and-captions-typography);
+
+/**
+  Body and captions
+ */
+@include mat.badge-typography($body-and-captions-typography);
 @include mat.checkbox-typography($body-and-captions-typography);
 @include mat.snack-bar-typography($body-and-captions-typography);
 @include mat.menu-typography($body-and-captions-typography);
-@include mat.button-typography($body-and-captions-typography);
+// @include mat.button-typography($body-and-captions-typography);
 @include mat.optgroup-typography($body-and-captions-typography);
 @include mat.option-typography($badge-typo);
 @include mat.autocomplete-typography($body-and-captions-typography);
-@include mat.badge-typography($badge-typo);
-@include mat.chips-typography($badge-typo);
+// @include mat.badge-typography($badge-typo);
+// @include mat.chips-typography($badge-typo);
 @include mat.snack-bar-typography($badge-typo);
 @include mat.card-typography($badge-typo);
 
-$chip-typography: mat.define-typography-config(
-        $font-family: 'Roboto, sans-serif',
-        $body-2: mat.define-typography-level(14px, 20px, 400)
-);
-
-@include mat.chips-typography($chip-typography);
+html {
+  background-color: var(--html-bg-color);
+  color: var(--color);
+}
 
 html, body {
   height: 100%;
@@ -89,8 +106,6 @@ html, body {
 body {
   margin: 0;
   font-family: Archivo, sans-serif;
-  /*  background-color: var(--surface);
-    color: var(--color);*/
 }
 
 * {
@@ -163,7 +178,7 @@ svg {
 }
 
 .mat-optgroup .mat-option:not(.mat-option-multiple) {
-  padding-left: 48px !important;
+  // padding-left: 24px !important;
 }
 
 :not(pre) > code {
@@ -175,4 +190,73 @@ svg {
   padding: 0 4px;
   border-radius: 4px;
   display: inline-flex;
+}
+
+.thin-scrollbar {
+  // For Chrome, Safari.
+  &::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 12px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 16px;
+    height: 56px;
+    border: 4px solid transparent;
+    background-color: transparent;
+    background-clip: content-box;
+  }
+
+  &:hover::-webkit-scrollbar-thumb {
+    background-color: #c1c1c1;
+
+    &:hover {
+      background-color: #787878;
+    }
+  }
+
+  // For Firefox.
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-color);
+}
+
+[standardized-themed-scrollbar]::-webkit-scrollbar {
+  width: 16px;
+  background-color: var(--scrollbar-bg-color);
+  border-left: 1px solid var(--border-color);
+  // MacOS Style
+  // background: linear-gradient(90deg,rgb(0 0 0 / 08%),rgb(0 0 0 / 08%) 1px,#fafafa 0,#fafafa);
+}
+
+[standardized-themed-scrollbar]::-webkit-scrollbar-thumb {
+  height: 56px;
+  border-radius: 8px;
+  border: 4px solid transparent;
+  background-color: var(--thumb-bg-color);
+  background-clip: content-box;
+}
+
+[standardized-themed-scrollbar]::-webkit-scrollbar-thumb:hover {
+  background-color: var(--thumb-bg-hover);
+}
+
+.mat-ink-bar {
+  height: 3px !important;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+noscript {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  place-content: center;
+  gap: 24px;
+
+  img {
+    display: flex;
+    width: 200px;
+    border-radius: 4px;
+  }
 }
