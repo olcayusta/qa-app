@@ -7,7 +7,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { AccountNotificationsComponent } from './components/account-notifications/account-notifications.component';
-import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [SettingsComponent, AccountNotificationsComponent],
@@ -17,7 +17,7 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
     MatExpansionModule,
     MatInputModule,
     MatButtonModule,
-    MatSlideToggleModule,
-  ],
+    MatSlideToggleModule
+  ]
 })
 export class SettingsModule {}

@@ -6,17 +6,18 @@
 
 <!--<qa-account-notifications></qa-account-notifications>-->
 
-<ng-container *ngIf='user$ | async as user'>
+<ng-container *ngIf='user'>
   <div class='center'>
 
-    <div>
+    <div class='big-hero'>
       <img src='{{user.picture}}' alt='{{user.displayName}}' (click)='openProfilePictureDialog()'>
       <h1>{{user.displayName}}</h1>
     </div>
 
-    <div>
+    <div class='accordion-title'>
       Kişisel Bilgiler
     </div>
+
     <mat-accordion displayMode='flat' class='example-headers-align'>
       <mat-expansion-panel hideToggle>
         <mat-expansion-panel-header collapsedHeight='80px'>
@@ -47,7 +48,6 @@
         </mat-action-row>
       </mat-expansion-panel>
     </mat-accordion>
-
 
     <!--    <mat-accordion>
           <mat-expansion-panel>
