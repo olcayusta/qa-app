@@ -1,6 +1,8 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, NgModule } from '@angular/core';
 import { AuthService } from '@auth/auth.service';
 import { User } from '@shared/models/user.model';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'inek-profile-picture-dialog',
@@ -11,10 +13,15 @@ import { User } from '@shared/models/user.model';
 export class ProfilePictureDialogComponent implements OnInit {
   user!: User;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
     this.user = this.authService.userValue;
   }
-
 }
+
+@NgModule({
+  declarations: [ProfilePictureDialogComponent],
+  imports: [MatDialogModule, MatButtonModule]
+})
+class ProfilePictureDialogModule {}
