@@ -1,5 +1,6 @@
 import { Injectable, NgZone } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '@environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -7,20 +8,19 @@ import { Observable } from 'rxjs';
 export class SseService {
   constructor(private zone: NgZone) {}
 
-  observerMessages(sseUrl: string): Observable<any> {
+  getMessages(): Observable<any> {
     return new Observable<any>((subscriber) => {
-      const es = new EventSource(sseUrl);
-      es.addEventListener('message', (ev) => {
+      const eventSource = new EventSource(environment.SSE_URL);
+      eventSource.addEventListener('message', (ev) => {
         subscriber.next(JSON.parse(ev.data));
       });
-      es.addEventListener('add', (ev) => {
-        // @ts-ignore
+      eventSource.addEventListener('add', (ev) => {
         subscriber.next(JSON.parse(ev?.data));
       });
-      es.onerror = (err) => {
+      eventSource.onerror = (err) => {
         subscriber.error(err);
       };
-      return () => es.close();
+      return () => eventSource.close();
     });
   }
 }
