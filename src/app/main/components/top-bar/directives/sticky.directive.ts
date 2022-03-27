@@ -1,17 +1,18 @@
-import { AfterViewInit, Directive, ElementRef, Renderer2 } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, OnDestroy, Renderer2 } from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { fromEvent } from 'rxjs';
+import { fromEvent, Subscription, throttleTime } from 'rxjs';
 import { distinctUntilChanged, map, pairwise, startWith } from 'rxjs/operators';
 
 @Directive({
   selector: '[inekSticky]'
 })
-export class StickyDirective implements AfterViewInit {
+export class StickyDirective implements AfterViewInit, OnDestroy {
   THRESHOLD = 56;
+  subscription!: Subscription;
 
   constructor(
     private renderer: Renderer2,
-    private elRef: ElementRef<HTMLElement>,
+    private elementRef: ElementRef<HTMLElement>,
     private breakpointObserver: BreakpointObserver
   ) {}
 
@@ -19,17 +20,22 @@ export class StickyDirective implements AfterViewInit {
     const isSmallScreen = this.breakpointObserver.isMatched('(max-width: 599px)');
 
     if (isSmallScreen) {
-      fromEvent(window, 'scroll')
+      this.subscription = fromEvent(window, 'scroll')
         .pipe(
+          throttleTime(100),
           map(() => window.scrollY),
           pairwise(),
-          map(([prev, next]) => next < this.THRESHOLD || prev > next),
+          map(([y1, y2]) => y2 < this.THRESHOLD || y2 < y1),
           distinctUntilChanged(),
           startWith(true)
         )
         .subscribe((stuck) => {
-          this.renderer.setAttribute(this.elRef.nativeElement, 'data-stuck', String(stuck));
+          this.renderer.setAttribute(this.elementRef.nativeElement, 'data-stuck', String(stuck));
         });
     }
+  }
+
+  ngOnDestroy() {
+    this.subscription?.unsubscribe();
   }
 }
