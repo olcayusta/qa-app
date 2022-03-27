@@ -1,3 +1,6 @@
 <ul>
-  <li *ngFor='let answer of answers$ | async'>{{answer.content}}</li>
+  <li *ngFor='let answer of answers'>
+    <a routerLink='/question/{{answer.questionId}}' [fragment]='answer.id.toString()'>{{answer.question.title}}</a>
+    <time>{{answer.creationTime | relativeTimeFormat}}</time>
+  </li>
 </ul>
