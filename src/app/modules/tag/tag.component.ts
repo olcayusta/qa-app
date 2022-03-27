@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
   selector: 'app-tag',
   templateUrl: './tag.component.html',
   styleUrls: ['./tag.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TagComponent implements OnInit {
   tag$!: Observable<Tag>;
@@ -16,10 +16,6 @@ export class TagComponent implements OnInit {
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.tag$ = this.route.data.pipe(
-      map((data) => {
-        return (<{ tag: Tag }>data).tag;
-      })
-    );
+    this.tag$ = this.route.data.pipe(map(({ tag }) => tag));
   }
 }

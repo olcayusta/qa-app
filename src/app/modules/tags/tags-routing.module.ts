@@ -9,13 +9,15 @@ const routes: Routes = [
   {
     path: '',
     component: TagsComponent,
-    resolve: { tags: TagsResolver },
-    title: `Etiketler - ${environment.appTitle}`
-  },
+    resolve: {
+      tags: TagsResolver
+    },
+    title: 'Etiketler'
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class TagsRoutingModule {}

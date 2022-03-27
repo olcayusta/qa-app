@@ -14,7 +14,7 @@ export class TagsComponent implements OnInit {
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    const { tags } = <{ tags: Tag[] }>this.route.snapshot.data;
+    const { tags } = this.route.snapshot.data as { tags: Tag[] };
     this.tags = tags;
   }
 }

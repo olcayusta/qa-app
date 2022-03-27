@@ -5,16 +5,12 @@ import { Tag } from '@shared/models/tag.model';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class TagService {
   apiUrl = `${environment.apiUrl}/tags`;
 
   constructor(private http: HttpClient) {}
-
-  getFavoriteTags(): Observable<Tag[]> {
-    return this.http.get<Tag[]>(`${environment.apiUrl}/watched-tags`);
-  }
 
   getTag(tagId: string | null): Observable<Tag> {
     return this.http.get<Tag>(`${environment.apiUrl}/tags/${tagId}`);

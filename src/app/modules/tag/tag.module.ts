@@ -8,6 +8,6 @@ import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [TagComponent],
-  imports: [CommonModule, TagRoutingModule, SharedModule, MatDividerModule],
+  imports: [CommonModule, TagRoutingModule, SharedModule, MatDividerModule]
 })
 export class TagModule {}
