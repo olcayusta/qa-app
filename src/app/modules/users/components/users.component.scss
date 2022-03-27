@@ -4,6 +4,12 @@
 
 header {
   margin: 48px 0;
-  border-bottom: 1px solid rgba(0, 0, 0, .12);
+  border-bottom: 1px solid var(--border-color);
   padding-bottom: 16px;
+}
+
+@media (max-width: 599px) {
+  :host {
+    padding: 0 16px;
+  }
 }
