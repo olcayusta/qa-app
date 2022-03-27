@@ -1,0 +1,124 @@
+<mat-toolbar class='mat-elevation-z4'>
+  <div class='mat-toolbar__start'>
+    <button mat-icon-button aria-label='Open navigation drawer' (click)='onMenuBtnClickedOpenSidenav()'>
+      <mat-icon-menu></mat-icon-menu>
+    </button>
+
+    <inek-top-app-bar-logo></inek-top-app-bar-logo>
+
+  </div>
+
+  <div class='mat-toolbar__center'>
+<!--     <ng-container *ngComponentOutlet='searchFormComponentOutlet'></ng-container>-->
+    <inek-search-form></inek-search-form>
+  </div>
+
+  <div class='mat-toolbar__end'>
+    <ng-container *ngIf='isLoggedIn$ | async; else signIn'>
+
+     <!-- <button mat-icon-button matTooltip='Filtre' (click)='openSheet.emit()'>
+        <mat-icon>filter_list</mat-icon>
+      </button>-->
+
+      <!--   <div class='filter-bracket'>
+           <button mat-icon-button matTooltip='Filtrele' (click)='openSheet.emit()'>
+             <mat-icon fontSet='material-icons-outlined'>filter_list</mat-icon>
+           </button>
+         </div>
+         <qa-theme-togle></qa-theme-togle>
+         <button mat-icon-button matTooltip='Soruları filtrele'>
+           <mat-icon>filter_alt_off</mat-icon>
+         </button>
+         <button mat-icon-button matTooltip='Filtre' (click)='openSheet.emit()'>
+           <mat-icon>filter_list</mat-icon>
+         </button>
+
+         <button mat-icon-button matTooltip='İncelemeler'>
+           <mat-icon class='material-icons-outlined' matBadge='4' matBadgeColor='warn'>rate_review</mat-icon>
+         </button>
+
+         <button mat-icon-button class='badge-icon' aria-label='Achievements (2 new reputation)' aria-haspopup='true'
+                 title='You have new reputation changes' role='menuitem' aria-expanded='false'>
+           <app-gf-icon name='award' matBadge='+2'></app-gf-icon>
+         </button>-->
+
+      <!--      <a mat-icon-button class='mobile-show' routerLink='/mobile-search'>
+              &lt;!&ndash;    <mat-icon fontSet='material-icons-outlined'>search</mat-icon>&ndash;&gt;
+              <app-gf-icon name='search'></app-gf-icon>
+            </a>-->
+
+      <ng-container *ngIf='componentsLoaded; else componentNotLoaded'>
+        <a mat-stroked-button routerLink='/create' class='create-button' matTooltip='Oluştur' hidden>
+          <app-gf-icon name='add'></app-gf-icon>
+          <span>Soru sor</span>
+        </a>
+
+   <!--     <button mat-icon-button>
+          <mat-icon>tune</mat-icon>
+        </button>-->
+
+<!--        <button mat-icon-button>
+          <mat-icon>apps</mat-icon>
+        </button>-->
+ <!--       <button mat-icon-button>
+          <app-gf-icon name='emoji_events'></app-gf-icon>
+        </button>-->
+        <ng-container *ngComponentOutlet='notificationButtonOutlet'></ng-container>
+        <ng-container *ngComponentOutlet='avatarButtonOutlet'></ng-container>
+      </ng-container>
+
+      <ng-template #componentNotLoaded>
+        <div class='masthead-skeleton-icon'></div>
+        <div class='masthead-skeleton-icon'></div>
+        <div class='masthead-skeleton-icon'></div>
+      </ng-template>
+
+      <!--<inek-notification-button></inek-notification-button>-->
+     <!-- <inek-avatar-button></inek-avatar-button>-->
+
+    </ng-container>
+  </div>
+
+  <!--  <mat-progress-bar mode="indeterminate" *ngIf="spinner$ | async"></mat-progress-bar>-->
+
+
+</mat-toolbar>
+
+<ng-template #signIn>
+  <mat-menu #moreMenu xPosition='before'>
+    <ng-template matMenuContent>
+      <button mat-menu-item>
+        <app-gf-icon name='dark_mode'></app-gf-icon>
+        <span>Görünüm: Cihaz teması</span>
+      </button>
+      <button mat-menu-item>
+        <app-gf-icon name='settings'></app-gf-icon>
+        <span>Ayarlar</span>
+      </button>
+      <button mat-menu-item>
+        <app-gf-icon name='help'></app-gf-icon>
+        <span>Yardım</span>
+      </button>
+      <button mat-menu-item>
+        <app-gf-icon name='feedback'></app-gf-icon>
+        <span>Geri bildirim gönder</span>
+      </button>
+      <button mat-menu-item>
+        <app-gf-icon name='keyboard'></app-gf-icon>
+        <span>Klavye kısayolları</span>
+      </button>
+    </ng-template>
+  </mat-menu>
+
+  <!-- Settings Icon Button -->
+  <button mat-icon-button [matMenuTriggerFor]='moreMenu' matTooltip='Ayarlar'>
+    <app-gf-icon name='more_vert'></app-gf-icon>
+  </button>
+
+  <!-- Sign In Text Button Link -->
+  <a mat-button routerLink='/login'>
+    OTURUM AÇ
+  </a>
+
+</ng-template>
+
