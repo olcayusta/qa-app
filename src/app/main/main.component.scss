@@ -13,6 +13,7 @@ main {
 mat-sidenav-container {
   background-color: var(--surface);
   min-height: 100vh;
+
   // min-height: 100vh;
   // height: auto !important;
   // overflow: unset !important;
@@ -24,6 +25,7 @@ mat-sidenav-container {
 mat-sidenav-content {
   min-height: 100vh;
   z-index: 2;
+
   // overflow: unset !important;
 }
 
@@ -42,17 +44,32 @@ mat-sidenav {
 }
 
 .mat-drawer.mat-drawer-end {
-  width: 320px;
+  width: 364px;
   background-color: #fff;
 }
 
+.mat-drawer.mat-drawer-side {
+  z-index: 1 !important;
+}
+
 .my-content {
-  max-width: 1600px;
-  margin: 0 auto;
-  padding: 0 160px;
-  // padding: 64px 160px;
-  box-sizing: content-box;
-  // height: calc(100vh - 64px);
+  --padding: 48px;
+  // --padding: 128px;
+  /*  max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 160px;
+    // padding: 64px 160px;
+    box-sizing: content-box;
+    // height: calc(100vh - 64px);*/
+
+    width: min(100% - var(--padding, 48px), 1440px);
+    margin-inline: auto;
+
+  // Alternative
+  // margin-inline: max((100% - 1600px) / 2, 24px);
+
+  // Alternative
+  // width: clamp(599px, 100% - 48px, 1600px);
 }
 
 /*
@@ -113,7 +130,6 @@ mat-sidenav {
     z-index: 1;
 
     .mat-fab {
-      background-color: #6200EE;
       // letter-spacing: 1.25px;
     }
 
@@ -128,6 +144,12 @@ mat-sidenav {
 
            box-shadow: 0px 4px 8px 3px rgba(0, 0, 0, 0.15), 0px 1px 3px rgba(0, 0, 0, 0.3);
            border-radius: 16px;*/
+    }
+
+    app-gf-icon {
+      display: inline-flex;
+      align-items: center;
+      margin-right: 12px;
     }
 
     ::ng-deep svg {
@@ -158,7 +180,7 @@ mat-sidenav {
 
     button {
       width: auto;
-      height: 48px;
+      // height: 48px;
     }
 
     ::ng-deep svg {
@@ -190,6 +212,6 @@ mat-sidenav {
   }
 
   .my-content {
-    padding: 0;
+    --padding: 0;
   }
 }

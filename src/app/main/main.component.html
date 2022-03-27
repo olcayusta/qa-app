@@ -1,54 +1,46 @@
 <mat-sidenav-container id='drawer-container'>
-  <mat-sidenav #drawer position='start' [autoFocus]='false' fixedInViewport (openedStart)='sidenavOpenedStart()'
+  <mat-sidenav #sidenav position='start' [autoFocus]='false' fixedInViewport (openedStart)='sidenavOpenedStart()'
                (closedStart)='sidenavClosedStart()'>
-    <inek-nav-drawer (closeDrawer)='drawer.close()'></inek-nav-drawer>
+    <ng-container *ngComponentOutlet='navDrawerComponent'></ng-container>
+    <!--<ng-container #navDrawerComponentRef></ng-container>-->
   </mat-sidenav>
   <mat-sidenav position='end' [mode]='mode' #sheet [autoFocus]='false' fixedInViewport
                (openedStart)='sheetOpened()' (closedStart)='sheetClosed()'
                [fixedTopGap]="mode == 'side' ? 64 : 0">
-    <app-side-sheet></app-side-sheet>
+
+    <!--<app-side-sheet></app-side-sheet>-->
+    <ng-container *ngComponentOutlet='sideSheetComponent'></ng-container>
   </mat-sidenav>
 
   <mat-sidenav-content id='drawer-content'>
     <div id='gf-full-page'>
-      <inek-top-bar (openDrawer)='drawer.toggle()' (openSheet)='sheet.toggle()'></inek-top-bar>
-      <!--
-    <div id="main">
-      <div class="my-content example-sidenav-content">
-              <router-outlet></router-outlet>
-        &lt;!&ndash; <a mat-fab color="primary" class="fixed-fab-b
-
-        tn" routerLink="/create">
-           <mat-icon>add</mat-icon>
-           <span>SORU SOR</span>
-         </a>&ndash;&gt;
-        &lt;!&ndash;<app-bottom-bar></app-bottom-bar>&ndash;&gt;
-      </div>
-    </div>-->
+      <inek-top-app-bar (openSheet)='loadSidenavSheetComponent(); sheet.toggle()' inekSticky></inek-top-app-bar>
       <main>
         <div id='content'>
           <div class='my-content'>
             <router-outlet></router-outlet>
 
-            <!--        <div class='fixed-chip'>
-                      <mat-chip class='mat-elevation-z4'>New Releases</mat-chip>
-                    </div>
-                    <div class='fixed-fab-btn with-icon'>
-                      <a mat-fab color='accent' routerLink='/create' class='extended-fab' #extendedFab id='extended-fab'>
-                        <mat-icon fontSet='material-icons-outlined'>create</mat-icon>
-                        <span>OLUŞTUR</span>
-                      </a>
-                    </div>-->
+          <!--  <div class='fixed-chip'>
+              <mat-chip class='mat-elevation-z4'>New Releases</mat-chip>
+            </div>-->
 
-    <!--        <div class='fixed-fab-btn'>
-              <a mat-fab matTooltip='Oluştur'>
-                <mat-icon fontSet='material-icons-outlined'>create</mat-icon>
+<!--            <div class='fixed-fab-btn with-icon'>
+              <a mat-fab routerLink='/create' class='extended-fab' inekExtendedFab id='extended-fab'>
+               &lt;!&ndash; <mat-icon>create</mat-icon>&ndash;&gt;
+                <app-gf-icon name='add'></app-gf-icon>
+                <span>Soru sor</span>
               </a>
             </div>-->
 
-         <!--     <div class="content-update-chip">
-                <mat-chip>Yeni öneriler</mat-chip>
-              </div>-->
+            <!--        <div class='fixed-fab-btn'>
+                      <a mat-fab matTooltip='Oluştur'>
+                        <mat-icon fontSet='material-icons-outlined'>create</mat-icon>
+                      </a>
+                    </div>-->
+
+            <!--     <div class="content-update-chip">
+                   <mat-chip>Yeni öneriler</mat-chip>
+                 </div>-->
           </div>
         </div>
       </main>

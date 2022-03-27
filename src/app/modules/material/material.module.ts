@@ -11,7 +11,6 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   exports: [
@@ -26,8 +25,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatProgressBarModule,
     MatAutocompleteModule,
     MatSidenavModule,
-    MatProgressSpinnerModule,
-    MatIconModule
+    MatProgressSpinnerModule
   ]
 })
 export class MaterialModule {}

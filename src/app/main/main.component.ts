@@ -4,17 +4,19 @@ import {
   ChangeDetectionStrategy,
   Inject,
   ViewChild,
-  ElementRef,
   AfterViewInit,
-  Renderer2
+  Renderer2,
+  Type,
+  ChangeDetectorRef,
+  ViewContainerRef
 } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatDrawerMode } from '@angular/material/sidenav';
+import { MatDrawerMode, MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { DOCUMENT } from '@angular/common';
-import { MatAnchor } from '@angular/material/button';
-import { fromEvent } from 'rxjs';
-import { distinctUntilChanged, map, pairwise, startWith } from 'rxjs/operators';
+import { SideSheetComponent } from './components/side-sheet/side-sheet.component';
+import { NavDrawerComponent } from './components/nav-drawer/nav-drawer.component';
+import { DrawerService } from './components/nav-drawer/drawer.service';
 
 @Component({
   selector: 'app-main',
@@ -26,71 +28,54 @@ export class MainComponent implements OnInit, AfterViewInit {
   mode!: MatDrawerMode;
   isSmallScreen!: boolean;
 
-  @ViewChild('extendedFab', { static: true, read: ElementRef }) extendedFab!: ElementRef<MatAnchor>;
+  @ViewChild('sidenav', { static: true }) navSidenav!: MatSidenav;
+  @ViewChild('sheet') sidenavSheet!: MatSidenav;
+  @ViewChild('navDrawerComponentRef', { read: ViewContainerRef })
+  navDrawerComponentRef!: ViewContainerRef;
+
+  navDrawerComponent!: Type<NavDrawerComponent>;
+  sideSheetComponent!: Type<SideSheetComponent>;
 
   constructor(
+    @Inject(DOCUMENT) private document: Document,
     private snackBar: MatSnackBar,
     private breakpointObserver: BreakpointObserver,
     private renderer: Renderer2,
-    @Inject(DOCUMENT) private document: Document
+    private cd: ChangeDetectorRef,
+    private drawerService: DrawerService
   ) {}
 
-  /**
-   * Mobil tasarimda, scroll kaydirilinca, asagi veya yukari durumuna gore,
-   * fab width degeri degistir.
-   */
-  fabButtonMakeWidthOnScroll(): void {
-    /**
-     * Scroll kaydirilinca, asagi veya yukari durumuna gore, fab width degeri degistir.
-     */
-    fromEvent(window, 'scroll')
-      .pipe(
-        map(() => window.scrollY),
-        pairwise(),
-        map(([prev, next]) => next > prev),
-        distinctUntilChanged(),
-        startWith(false)
-      )
-      .subscribe((value) => {
-        if (value) {
-          this.renderer.addClass(this.extendedFab.nativeElement, 'mini-fab');
-        } else {
-          this.renderer.removeClass(this.extendedFab.nativeElement, 'mini-fab');
-        }
-      });
-
-    /**
-     * Mobil tasarimda, scroll kaydirilinca, asagi veya yukari durumuna gore,
-     */
-    /*    let prevScrollPosition = window.scrollY;
-    window.onscroll = () => {
-      const currentScrollPos = window.scrollY;
-      if (currentScrollPos > prevScrollPosition) {
-        this.renderer.addClass(this.extendedFab.nativeElement, 'mini-fab');
-      } else {
-        this.renderer.removeClass(this.extendedFab.nativeElement, 'mini-fab');
-      }
-      prevScrollPosition = currentScrollPos;
-    };*/
-  }
-
   ngAfterViewInit() {
-    // this.fabButtonMakeWidthOnScroll();
+    this.drawerService.setSidenav(this.navSidenav);
   }
 
   ngOnInit(): void {
     this.isSmallScreen = this.breakpointObserver.isMatched('(max-width: 599px)');
     this.isSmallScreen ? (this.mode = 'over') : 'side';
-
     this.mode = 'side';
   }
 
-  sidenavOpenedStart(): void {
+  sidenavOpenedStart() {
+    this.loadNavDrawerComponent();
+    this.hideScrollBar();
+  }
+
+  hideScrollBar() {
     this.document.body.style.overflow = 'hidden';
   }
 
-  sidenavClosedStart(): void {
+  showScrollBar() {
     this.document.body.style.overflow = '';
+  }
+
+  sidenavClosedStart(): void {
+    this.showScrollBar();
+  }
+
+  async loadNavDrawerComponent() {
+    const { NavDrawerComponent } = await import('./components/nav-drawer/nav-drawer.component');
+    this.navDrawerComponent = NavDrawerComponent;
+    this.cd.markForCheck();
   }
 
   sheetOpened(): void {
@@ -101,5 +86,11 @@ export class MainComponent implements OnInit, AfterViewInit {
 
   sheetClosed(): void {
     this.document.body.style.overflow = '';
+  }
+
+  async loadSidenavSheetComponent() {
+    const { SideSheetComponent } = await import('./components/side-sheet/side-sheet.component');
+    this.sideSheetComponent = SideSheetComponent;
+    this.cd.markForCheck();
   }
 }

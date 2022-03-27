@@ -82,4 +82,4 @@ export class NotificationButtonComponent implements OnInit {
     MatTooltipModule
   ]
 })
-export class NotificationButtonModule {}
+class NotificationButtonModule {}
