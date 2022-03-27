@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '@environments/environment';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { User } from '@shared/models/user.model';
 import { tap } from 'rxjs/operators';
 import { ILogin } from '@auth/interfaces/ILogin';
@@ -10,21 +10,24 @@ import { ILogin } from '@auth/interfaces/ILogin';
   providedIn: 'root'
 })
 export class AuthService {
-  isLoggedInSubject = new BehaviorSubject<boolean>(false);
+  private isLoggedInSubject = new BehaviorSubject<boolean>(false);
   isLoggedIn$: Observable<boolean> = this.isLoggedInSubject.asObservable();
 
-  // @ts-ignore
-  userSubject = new BehaviorSubject<User>(null);
+  private userSubject: BehaviorSubject<User>;
+  user$: Observable<User>;
 
   // store the URL so we can redirect after logging in
   redirectUrl = '/';
 
   constructor(private http: HttpClient) {
-    const u = JSON.parse(<string>localStorage.getItem('user'));
-    const loggedIn = !!u;
+    const user = JSON.parse(<string>localStorage.getItem('user')) as User;
+    const loggedIn = !!user;
+
+    this.userSubject = new BehaviorSubject<User>(user);
+    this.user$ = this.userSubject.asObservable();
 
     this.isLoggedInSubject.next(loggedIn);
-    this.userSubject.next(u);
+    this.userSubject.next(user);
   }
 
   get userValue(): User {
