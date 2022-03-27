@@ -1,0 +1,19 @@
+<div class='item'>
+  <inek-img-shadow [src]='comment.user.picture' [width]='40' [height]='40' [alt]='comment.user.displayName'
+                   class='comment-user-picture-renderer'></inek-img-shadow>
+  <div class='flex-full'>
+    <div class='author-info'>
+      <a routerLink='/user/{{comment.user.id}}' [class.comment-badge-renderer]='comment.user.id === 12'>
+        <span>{{comment.user.displayName}}</span>
+        <!-- <mat-icon *ngIf='comment.user.id === 12' fontSet='material-icons-outlined'>local_police</mat-icon>-->
+      </a>
+      <span class='bracket'>—</span>
+      <time [attr.datetime]='comment.creationTime'>{{comment.creationTime | relativeTimeFormat}}</time>
+    </div>
+    <div class='comment'>
+      <span class='comment-text'>{{comment.content}}</span>
+    </div>
+    <mat-divider></mat-divider>
+  </div>
+</div>
+
