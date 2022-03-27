@@ -16,7 +16,6 @@
   border-radius: 8px;
 }
 
-
 input {
   background: none;
   outline: none;
@@ -24,7 +23,7 @@ input {
   width: 100%;
   height: 100%;
   font-family: Archivo, sans-serif;
-  padding: 0 0 0 4px;
+  padding: 0 0 0 8px;
   font-size: 16px;
   line-height: 20px;
   color: inherit;
@@ -38,11 +37,22 @@ mat-icon {
   // color: var(--medium-emphasis-color);
 }
 
+/**
+  ==========================================================================
+                    Material Design Autocomplete
+  ==========================================================================
+*/
+
+.mat-optgroup .mat-option:not(.mat-option-multiple) {
+  padding-left: 16px !important;
+}
+
 ::ng-deep .my-autocomplete {
   padding: 8px 0 0;
   max-height: calc(100vh - 64px) !important;
   background-color: var(--autocomplete-background);
-  margin-top: 4px;
+  // margin-top: 4px;
+  border-radius: 8px !important;
 
   .mat-option {
     height: 40px !important;
@@ -52,16 +62,15 @@ mat-icon {
     // letter-spacing: .25px;
   }
 
-  .mat-optgroup-label {
+/*  .mat-optgroup-label {
     display: flex;
     align-items: center;
     font-size: 10px;
     line-height: 16px;
     letter-spacing: 1.5px;
     color: var(--medium-emphasis-color);
-    padding-left: 48px;
     text-transform: uppercase;
-  }
+  }*/
 }
 
 .autocomplete-action-row {
@@ -112,3 +121,9 @@ mat-icon {
   }
 }
 
+
+::ng-deep mark {
+  background-color: transparent;
+  font-weight: 500;
+  color: inherit;
+}

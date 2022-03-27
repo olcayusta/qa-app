@@ -1,23 +1,28 @@
-import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, NgModule, OnInit, ViewChild } from '@angular/core';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { debounceTime, distinctUntilChanged, filter, switchMap } from 'rxjs/operators';
 import { ISearchResult, SearchService } from '@shared/services/search.service';
 import {
+  MatAutocompleteModule,
   MatAutocompleteSelectedEvent,
   MatAutocompleteTrigger
 } from '@angular/material/autocomplete';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { CommonModule } from '@angular/common';
+import { SharedModule } from '@shared/shared.module';
 
 @Component({
-  selector: 'app-search-form',
+  selector: 'inek-search-form',
   templateUrl: './search-form.component.html',
   styleUrls: ['./search-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SearchFormComponent implements OnInit {
-  myControl = new FormControl();
-  filteredQuestions!: Observable<ISearchResult[]>;
+  searchControl = new FormControl();
+  filteredResults$!: Observable<ISearchResult>;
 
   @ViewChild('autoCompleteInput', { read: MatAutocompleteTrigger })
   autoComplete!: MatAutocompleteTrigger;
@@ -25,11 +30,11 @@ export class SearchFormComponent implements OnInit {
   constructor(private searchService: SearchService, private router: Router) {}
 
   ngOnInit(): void {
-    this.filteredQuestions = this.myControl.valueChanges.pipe(
+    this.filteredResults$ = this.searchControl.valueChanges.pipe(
       filter((value) => value.length > 0),
       debounceTime(400),
       distinctUntilChanged(),
-      switchMap((term: string) => this.searchService.searchQuestion(term))
+      switchMap((searchTerm: string) => this.searchService.searchQuestion(searchTerm))
     );
   }
 
@@ -104,9 +109,9 @@ export class SearchFormComponent implements OnInit {
     RouterModule,
     ReactiveFormsModule,
     CommonModule,
-    SharedModule,
+    SharedModule
   ],
-  exports: [SearchFormComponent],
+  exports: [SearchFormComponent]
 })
 export class SearchFormModule {}
 */
