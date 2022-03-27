@@ -182,9 +182,5 @@ export class AppComponent implements OnInit {
         });
       });
     }
-
-    this.socketService.on('hello').subscribe(({ event, payload }) => {
-      console.log('Anushka Sharma, size merhaba diyor...');
-    });
   }
 }
