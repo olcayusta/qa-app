@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { SocketService } from '@shared/services/socket.service';
 import { MaterialModule } from '@modules/material/material.module';
 import { SharedModule } from '@shared/shared.module';
+import { MatListModule } from '@angular/material/list';
 
 @Component({
   selector: 'inek-user-profile-popup',
@@ -30,6 +31,6 @@ export class UserProfilePopupComponent implements OnInit {
 
 @NgModule({
   declarations: [UserProfilePopupComponent],
-  imports: [MaterialModule, RouterModule, SharedModule]
+  imports: [MaterialModule, RouterModule, SharedModule, MatListModule]
 })
 export class UserProfilePopupModule {}
