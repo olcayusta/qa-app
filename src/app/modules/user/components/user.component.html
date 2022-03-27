@@ -2,31 +2,45 @@
 
   <div class='header-user'>
     <div class='user-avatar-placeholder'>
-      <img class='user-avatar' src='{{user.picture}}' alt='{{user.displayName}}'>
+     <!-- <img class='user-avatar' src='{{user.picture}}' alt='{{user.displayName}}'>-->
+      <inek-img-shadow [width]='160' [height]='160' [src]='user.picture' [alt]='user.displayName'></inek-img-shadow>
     </div>
     <div>
       <h4 class='headline-4'>{{user.displayName}}</h4>
-      <div class='meta-item'>
-        <mat-icon>cake</mat-icon>
-        <time [attr.datetime]='user.signupDate'>{{user.signupDate | relativeTimeFormat}}</time>
+
+      <div class='meta-items'>
+        <div class='meta-item'>
+          <mat-icon>cake</mat-icon>
+          <time [attr.datetime]='user.signupDate'>{{user.signupDate | relativeTimeFormat}}</time>
+        </div>
+        <div class='meta-item'>
+          <mat-icon>history</mat-icon>
+          <time [attr.datetime]='user.signupDate'>{{user.lastSeenTime | myDate: 'tasty'}}</time>
+        </div>
+<!--        <div class='meta-item'>-->
+<!--          <mat-icon>web</mat-icon>-->
+<!--          <span>blog.patrickmcdonald.org</span>-->
+<!--        </div>-->
+        <div class='meta-item'>
+          <mat-icon>map</mat-icon>
+          <span>Dublin, Ireland</span>
+        </div>
+
+        <!--SOCIAL AUTH-->
+        <div class='social-auth'>
+          <a href='//github.com/{{user.githubUrl}}'>
+            <img src='https://webdev.imgix.net/images/icons/github.svg' alt=''>
+          </a>
+          <a href='//github.com/{{user.twitterUrl}}'>
+            <img src='https://webdev.imgix.net/images/icons/twitter.svg' alt=''>
+          </a>
+        </div>
+
       </div>
-      <div class='meta-item'>
-        <mat-icon>history</mat-icon>
-        <time [attr.datetime]='user.signupDate'>{{user.lastSeenTime | date}}</time>
-      </div>
-      <!--  <div class='social-auth'>
-          <a [href]='"//github.com/" + user.githubUrl'>Github</a>
-          <a [href]='"//twitter.com/" + user.twitterUrl'>Twitter</a>
-        </div>-->
+
     </div>
 
   </div>
-
-   <div>
-     <a href="https://github.com/{{user.githubUrl}}">
-       <img src="https://webdev.imgix.net/images/icons/github.svg" alt="">
-     </a>
-   </div>
 </header>
 
 <nav mat-tab-nav-bar mat-align-tabs='center'>

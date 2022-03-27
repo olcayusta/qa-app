@@ -4,7 +4,7 @@ import { User } from '@shared/models/user.model';
 import { environment } from '@environments/environment';
 import { Question } from '@shared/models/question.model';
 import { Answer } from '@shared/models/answer.model';
-import { throwError } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -26,15 +26,15 @@ export class UserService {
     return throwError(() => new Error('Something bad happened, please try again later.'));
   }
 
-  getUser(userId: number) {
+  getUser(userId: number): Observable<User> {
     return this.http.get<User>(`${environment.apiUrl}/users/${userId}`);
   }
 
-  getUserQuestions(userId: number) {
+  getUserQuestions(userId: number): Observable<Question[]> {
     return this.http.get<Question[]>(`${environment.apiUrl}/users/${userId}/questions`);
   }
 
-  getUserAnswers(userId: number) {
+  getUserAnswers(userId: number): Observable<Answer[]> {
     return this.http.get<Answer[]>(`${environment.apiUrl}/users/${userId}/answers`);
   }
 }

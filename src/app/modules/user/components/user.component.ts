@@ -1,8 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { User } from '@shared/models/user.model';
 import { ActivatedRoute } from '@angular/router';
-import { Title } from '@angular/platform-browser';
-import { environment } from '@environments/environment';
 
 @Component({
   selector: 'app-user',
@@ -36,13 +34,10 @@ export class UserComponent implements OnInit {
     }
   ];
 
-  // activeLink = this.links[0];
-
-  constructor(private route: ActivatedRoute, private title: Title) {}
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    const { user } = <{ user: User }>this.route.snapshot.data;
+    const { user } = this.route.snapshot.data as { user: User };
     this.user = user;
-    this.title.setTitle(`${user.displayName} - ${environment.appTitle}`);
   }
 }
