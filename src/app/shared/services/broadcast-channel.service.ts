@@ -1,30 +1,50 @@
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Injectable, NgZone } from '@angular/core';
+import { Observable, OperatorFunction, Subject } from 'rxjs';
+import { filter } from 'rxjs/operators';
+
+interface BroadcastMessage {
+  type: string;
+  payload: any;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class BroadcastChannelService {
-  // Connection to a broadcast channel
-  bc = new BroadcastChannel('test_channel');
+  private broadcastChannel: BroadcastChannel;
+  private onMessage = new Subject<any>();
 
-  constructor() {
+  constructor(private ngZone: NgZone) {
+    this.broadcastChannel = new BroadcastChannel('broadcastChannelName');
+    this.broadcastChannel.onmessage = (message) => this.onMessage.next(message);
   }
 
-  sendMessage(message: string) {
-    // Example of sending of a very simple message
-    this.bc.postMessage(message);
+  publish(message: BroadcastMessage): void {
+    this.broadcastChannel.postMessage(message);
   }
 
-  getMessage(): Observable<MessageEvent> {
-    // A handler that only logs the event to the console:
-    return new Observable((subscriber => {
-      this.bc.onmessage = (ev) => {
-        subscriber.next(ev)
-      }
-      this.bc.onmessageerror = ((ev) => {
-        subscriber.error(ev)
-      })
-    }))
+  messages(message: string) {
+    return new Observable((subscriber) => {
+      this.broadcastChannel.onmessage = (message) => subscriber.next(message);
+    });
   }
+
+  messagesOfType(type: string): Observable<BroadcastMessage> {
+    return this.onMessage.asObservable();
+  }
+}
+
+/**
+ * Custom OperatorFunction that makes sure that all lifecycle hooks of an Observable
+ * are running in the NgZone.
+ */
+export function runInZone<T>(zone: NgZone): OperatorFunction<T, T> {
+  return (source) => {
+    return new Observable((observer) => {
+      const onNext = (value: T) => zone.run(() => observer.next(value));
+      const onError = (e: any) => zone.run(() => observer.error(e));
+      const onComplete = () => zone.run(() => observer.complete());
+      return source.subscribe(onNext, onError, onComplete);
+    });
+  };
 }
