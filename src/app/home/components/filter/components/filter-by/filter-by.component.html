@@ -26,13 +26,11 @@
   <div
     class='menu-item'
     *ngFor='let item of items; let i = index'
-    (click)='checkboxClicked($event, i)'
-  >
-    <mat-checkbox
+    (click)='checkboxClicked($event, i)'>
+<!--    <mat-checkbox
       color='primary'
       [checked]='item.checked'
-      (change)='checkboxChange($event, i)'
-    >{{ item.label }}</mat-checkbox
-    >
+      (change)='checkboxChange($event, i)'>{{ item.label }}
+    </mat-checkbox>-->
   </div>
 </mat-menu>

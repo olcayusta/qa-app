@@ -1,8 +1,6 @@
 <!--
 <h1>All Questions</h1>-->
 
-
-
 <!--<button mat-button>
   <mat-icon>tune</mat-icon>
   <span>FILTRELER</span>
@@ -31,11 +29,20 @@
   </div>
 </div>-->
 
-<div class="header">
-  <h6 class="headline-6">Genel Sorular</h6>
-  <div>
-    <inek-sort-filter></inek-sort-filter>
-    <app-filter-by></app-filter-by>
+<div class='host-container'>
+  <div class='header'>
+    <h6 class='headline-6'>Genel Sorular</h6>
+    <div>
+      <inek-sort-filter (openFilter)='filterOpened =! filterOpened'></inek-sort-filter>
+      <app-filter-by></app-filter-by>
+    </div>
   </div>
 </div>
+
+
+<ng-container *ngIf='filterOpened'>
+  <div class='filter-container'>
+    <p>Filtre acildi!</p>
+  </div>
+</ng-container>
 
