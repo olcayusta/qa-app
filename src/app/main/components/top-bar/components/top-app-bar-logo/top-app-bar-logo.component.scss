@@ -7,3 +7,12 @@ a {
   font-family: Archivo, sans-serif;
   margin-left: 24px;
 }
+
+sup {
+  font-family: Archivo, sans-serif;
+  color: var(--medium-emphasis-color);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  padding: 0 2px;
+}

@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'inek-top-app-bar-logo',
@@ -6,11 +6,4 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   styleUrls: ['./top-app-bar-logo.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TopAppBarLogoComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-}
+export class TopAppBarLogoComponent {}
