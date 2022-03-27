@@ -6,7 +6,7 @@
   <mat-form-field>
     <mat-label>Duzenlemeler</mat-label>
     <mat-select disableOptionCentering>
-      <mat-option *ngFor="let food of foods" [value]="food.value">
+      <mat-option *ngFor='let food of foods' [value]='food.value'>
         {{food.viewValue}}
       </mat-option>
     </mat-select>
@@ -24,7 +24,7 @@
     <textarea #text matInput cdkTextareaAutosize cdkAutosizeMaxRows='8' formControlName='text'></textarea>
   </mat-form-field>
 
-  <div [innerHTML]='text.value | marked'></div>
+  <div [innerHTML]='text.value'></div>
 
   <mat-form-field hideRequiredMarker>
     <mat-label>Özet</mat-label>
