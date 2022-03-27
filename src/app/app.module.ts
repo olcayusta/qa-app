@@ -19,15 +19,12 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '@environments/environment';
 import { TopAppBarLogoComponent } from './main/components/top-bar/components/top-app-bar-logo/top-app-bar-logo.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
-import { WatchedTagListDialogComponent } from '@dialogs/watched-tag-list-dialog/watched-tag-list-dialog.component';
 import { MAT_ICON_DEFAULT_OPTIONS, MatIconModule } from '@angular/material/icon';
 import { WelcomeComponent } from './experimental/welcome/welcome.component';
 import { DumbComponent } from './main/components/dumb/dumb.component';
-import { ExtendedFabDirective } from './main/directives/extended-fab.directive';
 import { MaterialIconModule } from './material-icon/material-icon.module';
-import { StickyToolbarDirective } from './main/components/top-bar/directives/sticky-toolbar.directive';
 import { TitleStrategy } from '@angular/router';
-import { AppTitleStrategy } from './core/appTitle.strategy';
+import { AppTitleStrategy } from './core/app-title.strategy';
 
 @NgModule({
   declarations: [
@@ -38,11 +35,8 @@ import { AppTitleStrategy } from './core/appTitle.strategy';
     StickyDirective,
     TopAppBarLogoComponent,
     ProgressBarComponent,
-    WatchedTagListDialogComponent,
     WelcomeComponent,
-    DumbComponent,
-    ExtendedFabDirective,
-    StickyToolbarDirective
+    DumbComponent
   ],
   imports: [
     BrowserModule,

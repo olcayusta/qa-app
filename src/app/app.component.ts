@@ -20,7 +20,7 @@ import { fromEvent, merge, of, Subscription } from 'rxjs';
 import { SseService } from '@shared/services/sse.service';
 import { BroadcastChannelService } from '@shared/services/broadcast-channel.service';
 import { MatDialog } from '@angular/material/dialog';
-import { BroadcastChannelLogoutDialogComponent } from './broadcast-channel-logout-dialog/broadcast-channel-logout-dialog.component';
+import { BroadcastChannelLogoutDialogComponent } from '@dialogs/broadcast-channel-logout-dialog/broadcast-channel-logout-dialog.component';
 import { HotkeyDialogComponent } from '@dialogs/hotkey-dialog/hotkey-dialog.component';
 
 @Component({
@@ -35,15 +35,28 @@ export class AppComponent implements OnInit {
 
   sub!: Subscription;
 
+  @HostListener('document:visibilitychange')
+  visibilityChange() {
+    /*    if (document.visibilityState === 'hidden') {
+      this.socketService.subject.complete();
+    } else {
+      this.sub = this.socketService.on('hello').subscribe(({ event, payload }) => {
+        console.log('Anushka Sharma, size merhaba diyor...');
+      });
+    }*/
+  }
+
   @HostListener('document:keydown', ['$event'])
-  ismetakey($event: KeyboardEvent) {
+  async ismetakey($event: KeyboardEvent) {
     const { metaKey, key, shiftKey } = $event;
     /*    console.log('MetaKey: ', metaKey);
     console.log('ShiftKey: ', shiftKey);
     console.log('key: ', key);*/
 
     if ((metaKey && key === '/') || (shiftKey && key === '?')) {
-      console.log('Open Shortcut Dialog!');
+      const { HotkeyDialogComponent } = await import(
+        './dialogs/hotkey-dialog/hotkey-dialog.component'
+      );
       const dialog = this.dialog.open(HotkeyDialogComponent, {
         minWidth: 560
       });
@@ -122,18 +135,12 @@ export class AppComponent implements OnInit {
     }
   }
 
-  /**
-   * If SSE is supported, subscribe to SSE events.
-   */
   subscribeToSSE(): void {
-    this.sseService.observerMessages(environment.SSE_URL).subscribe((value) => {
+    this.sseService.getMessages().subscribe((value) => {
       console.log(value);
     });
   }
 
-  /**
-   * Check network status.
-   */
   checkNetworkStatus(): void {
     this.networkStatus = navigator.onLine;
     this.networkStatus$ = merge(of(null), fromEvent(window, 'online'), fromEvent(window, 'offline'))
@@ -148,18 +155,22 @@ export class AppComponent implements OnInit {
   /**
    * Broadcast channel for logout. (Initial version)
    */
-  broadcast() {
-    this.broadcastChannel.messagesOfType('hello').subscribe((value) => {
+  async broadcast() {
+    this.broadcastChannel.messagesOfType('hello').subscribe(async (value) => {
+      const { BroadcastChannelLogoutDialogComponent } = await import(
+        './dialogs/broadcast-channel-logout-dialog/broadcast-channel-logout-dialog.component'
+      );
       this.zone.run(() => {
-        /*const dialog = this.dialog.open(BroadcastChannelLogoutDialogComponent, {
+        const dialog = this.dialog.open(BroadcastChannelLogoutDialogComponent, {
           autoFocus: false,
           minWidth: 560
-        });*/
+        });
       });
     });
   }
 
   ngOnInit() {
+    this.subscribeToSSE();
     /**
      * Make a notification for author user id for created answer for question.
      */
@@ -172,34 +183,8 @@ export class AppComponent implements OnInit {
       });
     }
 
-    /*    this.socketService.on('hello').subscribe(({ event, payload }) => {
-      alert(event);
-    });*/
-
-    const observableA = this.socketService.subject.multiplex(
-      () => ({ subscribe: 'A' }), // When servers get this message, it will start sending messages for 'A'...
-      () => ({ unsubscribe: 'A' }), //...and when gets this one, it will stop.
-      (message) => message.event === 'A' // If the function returns `true` message is passed down the stream. Skipped if the function returns false.
-    );
-
-    const observableB = this.socketService.subject.multiplex(
-      // And the same goes for 'B'.
-      () => ({ subscribe: 'B' }),
-      () => ({ unsubscribe: 'B un oldu' }),
-      (message) => message.event === 'B'
-    );
-
-    // const subA = observableA.subscribe((messageForA) => console.log(messageForA));
-    // At this moment WebSocket connection is established. Server gets `{"subscribe": "A"}` message and starts sending messages for 'A'
-
-    // const subB = observableB.subscribe((messageForB) => console.log(messageForB));
-    // Since we already have a connection, we just send `{"subscribe": "B"} message to the server. It starts sending messages for 'B'
-    // which we log here.
-
-    // Message '{"unsubscribe": "B"}' is sent to the server, which stops sending 'B' messages.
-
-    // subA.unsubscribe();
-    // Message '{"unsubscribe": "A"}' makes the server stop sending messages for 'A'. Since there is no more subscribers to root Subject,
-    // socket connection closes.
+    this.socketService.on('hello').subscribe(({ event, payload }) => {
+      console.log('Anushka Sharma, size merhaba diyor...');
+    });
   }
 }
