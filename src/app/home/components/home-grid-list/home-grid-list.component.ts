@@ -11,12 +11,28 @@ import { QuestionService } from '@modules/question/services/question.service';
 import { FilterService } from '@shared/services/filter.service';
 import { ActivatedRoute } from '@angular/router';
 import { delay, switchMap } from 'rxjs/operators';
+import { animate, query, stagger, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'inek-home-grid-list',
   templateUrl: './home-grid-list.component.html',
   styleUrls: ['./home-grid-list.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [
+    trigger('pageAnimations', [
+      transition(':enter', [
+        query('.hero', [
+          style({ opacity: 0, transform: 'translateY(-100px)' }),
+          stagger(100, [
+            animate(
+              '400ms cubic-bezier(0.35, 0, 0.25, 1)',
+              style({ opacity: 1, transform: 'none' })
+            )
+          ])
+        ])
+      ])
+    ])
+  ]
 })
 export class HomeGridListComponent implements OnInit, OnDestroy {
   questions!: Question[];
