@@ -25,12 +25,11 @@ export class HeroDelayDirective {
 
         comp.instance.text = el as HTMLPreElement;
 
-        if (el.querySelector('code')?.className) {
+        const codeElement = el.querySelector('code');
+
+        if (codeElement?.className) {
           // @ts-ignore
-          comp.instance.lang = el
-            .querySelector('code')
-            ?.className?.split('-')[1]
-            .toLocaleUpperCase();
+          comp.instance.language = codeElement?.className?.split('-')[1].toLocaleUpperCase();
           /*     const codeElement = value.querySelector('code') as HTMLElement;
                const lang = codeElement?.className.split('language-')[1];
                const language = hljs.getLanguage(lang);*/
