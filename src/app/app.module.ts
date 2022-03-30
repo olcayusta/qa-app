@@ -21,7 +21,6 @@ import { TopAppBarLogoComponent } from './main/components/top-bar/components/top
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { MAT_ICON_DEFAULT_OPTIONS, MatIconModule } from '@angular/material/icon';
 import { WelcomeComponent } from './experimental/welcome/welcome.component';
-import { DumbComponent } from './main/components/dumb/dumb.component';
 import { MaterialIconModule } from './material-icon/material-icon.module';
 import { TitleStrategy } from '@angular/router';
 import { AppTitleStrategy } from './core/app-title.strategy';
@@ -35,8 +34,7 @@ import { AppTitleStrategy } from './core/app-title.strategy';
     StickyDirective,
     TopAppBarLogoComponent,
     ProgressBarComponent,
-    WelcomeComponent,
-    DumbComponent
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,
