@@ -16,11 +16,9 @@ import { environment } from '@environments/environment';
 import { DOCUMENT } from '@angular/common';
 import { AuthService } from '@auth/auth.service';
 import { filter, map } from 'rxjs/operators';
-import { fromEvent, merge, of, Subscription } from 'rxjs';
 import { SseService } from '@shared/services/sse.service';
 import { BroadcastChannelService } from '@shared/services/broadcast-channel.service';
 import { MatDialog } from '@angular/material/dialog';
-import { BroadcastChannelLogoutDialogComponent } from '@dialogs/broadcast-channel-logout-dialog/broadcast-channel-logout-dialog.component';
 import { HotkeyDialogComponent } from '@dialogs/hotkey-dialog/hotkey-dialog.component';
 
 @Component({
@@ -30,11 +28,6 @@ import { HotkeyDialogComponent } from '@dialogs/hotkey-dialog/hotkey-dialog.comp
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements OnInit {
-  networkStatus = false;
-  networkStatus$ = Subscription.EMPTY;
-
-  sub!: Subscription;
-
   @HostListener('document:visibilitychange')
   visibilityChange() {
     /*    if (document.visibilityState === 'hidden') {
@@ -93,7 +86,7 @@ export class AppComponent implements OnInit {
 
     updatesAvailable.subscribe((value) => {
       this.snackBar
-        .open('Available update!', 'OKAY', {
+        .open('Available update!', 'TAMAM', {
           duration: 4000
         })
         .onAction()
@@ -118,11 +111,7 @@ export class AppComponent implements OnInit {
     head.appendChild(link);
   }
 
-  /**
-   * If sw push is supported, subscribe to push notifications.
-   * @private
-   */
-  private async subscribeToPush() {
+  async subscribeToPush() {
     if (this.swPush.isEnabled) {
       try {
         const sub = await this.swPush.requestSubscription({
@@ -135,33 +124,13 @@ export class AppComponent implements OnInit {
     }
   }
 
-  subscribeToSSE(): void {
-    this.sseService.getMessages().subscribe((value) => {
-      console.log(value);
-    });
-  }
-
-  checkNetworkStatus(): void {
-    this.networkStatus = navigator.onLine;
-    this.networkStatus$ = merge(of(null), fromEvent(window, 'online'), fromEvent(window, 'offline'))
-      .pipe(map(() => navigator.onLine))
-      .subscribe((status) => {
-        console.log('status', status);
-        this.networkStatus = status;
-        this.snackBar.open(`Status: ${this.networkStatus}`);
-      });
-  }
-
-  /**
-   * Broadcast channel for logout. (Initial version)
-   */
-  async broadcast() {
+  async listenSessionLogout() {
     this.broadcastChannel.messagesOfType('hello').subscribe(async (value) => {
-      const { BroadcastChannelLogoutDialogComponent } = await import(
-        './dialogs/broadcast-channel-logout-dialog/broadcast-channel-logout-dialog.component'
+      const { SessionWarningDialogComponent } = await import(
+        './dialogs/session-warning-dialog/session-warning-dialog.component'
       );
       this.zone.run(() => {
-        const dialog = this.dialog.open(BroadcastChannelLogoutDialogComponent, {
+        const dialog = this.dialog.open(SessionWarningDialogComponent, {
           autoFocus: false,
           minWidth: 560
         });
@@ -169,18 +138,5 @@ export class AppComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-    this.subscribeToSSE();
-    /**
-     * Make a notification for author user id for created answer for question.
-     */
-    if (this.authService.userValue) {
-      this.sub = this.socketService.on('new answer').subscribe(({ event, payload }) => {
-        console.log('Sorunuza, yeni ber cevap geldi.');
-        this.snackBar.open('One line text string.', 'TAMAM', {
-          duration: 9999999
-        });
-      });
-    }
-  }
+  ngOnInit() {}
 }
