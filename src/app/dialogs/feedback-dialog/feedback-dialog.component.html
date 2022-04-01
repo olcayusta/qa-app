@@ -15,7 +15,7 @@
 
 <h1 mat-dialog-title>Geri bildirim gonder</h1>
 <mat-dialog-actions>
-  <form autocomplete='off' spellcheck='false' id='feedbackForm' [formGroup]='feedbackForm' (submit)='onFormSubmit($event)'>
+  <form autocomplete='off' spellcheck='false' id='feedbackForm' [formGroup]='feedbackForm' (submit)='sendFeedback($event)'>
     <mat-form-field appearance='outline'>
       <mat-label>Write text</mat-label>
       <textarea matInput cdkTextareaAutosize formControlName='feedbackText' [cdkAutosizeMinRows]='4'></textarea>

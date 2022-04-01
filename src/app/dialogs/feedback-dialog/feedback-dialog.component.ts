@@ -37,13 +37,10 @@ export class FeedbackDialogComponent implements OnInit {
     );
   }
 
-  ngOnInit(): void {}
+  ngOnInit() {
+  }
 
-  /**
-   * Submit feedback form
-   * @param $event
-   */
-  onFormSubmit($event: SubmitEvent) {
+  sendFeedback($event: SubmitEvent) {
     console.log('Form submitted!');
   }
 }
@@ -56,7 +53,9 @@ export class FeedbackDialogComponent implements OnInit {
     MaterialModule,
     MatInputModule,
     MatDialogModule,
-    FormsModule
+    FormsModule,
+    MatDialogModule
   ]
 })
-export class FeedbackDialogModule {}
+class FeedbackDialogModule {
+}

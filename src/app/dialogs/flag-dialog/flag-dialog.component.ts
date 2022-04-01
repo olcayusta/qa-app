@@ -11,13 +11,16 @@ import { MatDialogModule } from '@angular/material/dialog';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FlagDialogComponent implements OnInit {
-  constructor() {}
+  constructor() {
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 }
 
 @NgModule({
   declarations: [FlagDialogComponent],
   imports: [CommonModule, MaterialModule, SharedModule, MatDialogModule]
 })
-export class FlagDialogModule {}
+class FlagDialogModule {
+}
