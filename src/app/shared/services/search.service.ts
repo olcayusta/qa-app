@@ -18,7 +18,7 @@ export class SearchService {
   constructor(private http: HttpClient) {}
 
   searchQuestion(searchTerm: string) {
-    return this.http.get<ISearchResult[]>(`${environment.apiUrl}/search`, {
+    return this.http.get<ISearchResult>(`${environment.apiUrl}/search`, {
       params: {
         q: searchTerm
       }

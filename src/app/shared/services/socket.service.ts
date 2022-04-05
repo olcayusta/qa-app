@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { webSocket, WebSocketSubject } from 'rxjs/webSocket';
 import { Observable, retry } from 'rxjs';
 import { environment } from '@environments/environment';
+import { filter } from 'rxjs/operators';
 
 interface SocketData {
   event: string;
@@ -63,11 +64,14 @@ export class SocketService {
     return new Observable((subscriber) => {
       this.subject
         .pipe(
+          filter((value) => value.event === event),
           retry({
-            delay: 1000
+            delay: 2000
           })
         )
-        .subscribe((data) => event === data.event && subscriber.next(data));
+        .subscribe((data) => {
+          subscriber.next(data);
+        });
     });
   }
 

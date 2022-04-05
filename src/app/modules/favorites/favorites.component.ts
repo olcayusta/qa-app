@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { FavoriteService } from '@shared/services/favorite.service';
+import { FavoriteService } from '@modules/favorites/services/favorite.service';
 import { Observable } from 'rxjs';
 import { Question } from '@shared/models/question.model';
 

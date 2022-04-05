@@ -1,6 +1,5 @@
 <div class="container">
 
-
   <!--  <button mat-button [matMenuTriggerFor]="filterMenu">
       <span>Tüm oynatma listeleri</span>
       <mat-icon class="material-icons-outlined">keyboard_arrow_down</mat-icon>
@@ -17,7 +16,7 @@
     <span>Sıralama ölçütü</span>
   </button>
 
-  <button mat-button class="menu-button" [matMenuTriggerFor]="filterMenu">
+  <button mat-button class="menu-button" (click)='openFilter.emit()'>
     <app-gf-icon name='filter_list'></app-gf-icon>
     <span>Filtreler</span>
   </button>
@@ -76,11 +75,11 @@
 <mat-menu #filterMenu="matMenu" class="sort-menu">
   <ng-template matMenuContent>
     <button mat-menu-item>
-      <mat-icon>check</mat-icon>
+      <!--<mat-icon>check</mat-icon>-->
       No answers
     </button>
     <button mat-menu-item>
-      <mat-icon>check</mat-icon>
+     <!-- <mat-icon>check</mat-icon>-->
       No accepted answers
     </button>
     <button mat-menu-item>Has bounty</button>

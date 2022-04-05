@@ -3,7 +3,7 @@
                                 [question]='question'></inek-home-question-list-item>
 </div>
 
-<div id='anchor' appIsVisible (scrolled)='loadMoreQuestionsIsIntersecting()' *ngIf='questions && !dataFinished'>
+<div id='anchor' appIsVisible (intersected)='loadMoreQuestions()' *ngIf='questions && !dataFinished'>
   <mat-spinner diameter='32' *ngIf='loader'></mat-spinner>
 </div>
 

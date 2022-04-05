@@ -5,18 +5,18 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-question-comment-list',
-  templateUrl: './question-comment-list.component.html',
-  styleUrls: ['./question-comment-list.component.scss'],
+  selector: 'app-comment-list',
+  templateUrl: './comment-list.component.html',
+  styleUrls: ['./comment-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class QuestionCommentListComponent implements OnInit {
+export class CommentListComponent implements OnInit {
   comments$!: Observable<Comment[]>;
 
   constructor(private route: ActivatedRoute, private commentService: CommentService) {}
 
   ngOnInit(): void {
     const questionId = this.route.snapshot.paramMap.get('questionId');
-    this.comments$ = this.commentService.gerComments(Number(questionId));
+    this.comments$ = this.commentService.getComments(Number(questionId));
   }
 }

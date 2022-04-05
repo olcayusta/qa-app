@@ -76,9 +76,6 @@ export class AnswerFormComponent implements OnInit, AfterViewInit {
     // markDirty(this);
   }
 
-  /**
-   * Submit answer
-   */
   formSubmit(): void {
     const questionId = Number(this.route.snapshot.paramMap.get('questionId'));
     this.answerService.create(questionId, this.answerControl.value).subscribe((value) => {

@@ -1,6 +1,5 @@
-import { Injectable, NgZone } from '@angular/core';
-import { Observable, OperatorFunction, Subject } from 'rxjs';
-import { filter } from 'rxjs/operators';
+import { Injectable } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 
 interface BroadcastMessage {
   type: string;
@@ -14,9 +13,10 @@ export class BroadcastChannelService {
   private broadcastChannel: BroadcastChannel;
   private onMessage = new Subject<any>();
 
-  constructor(private ngZone: NgZone) {
+  constructor() {
     this.broadcastChannel = new BroadcastChannel('broadcastChannelName');
     this.broadcastChannel.onmessage = (message) => this.onMessage.next(message);
+    this.broadcastChannel.onmessageerror = (message) => this.onMessage.error(message);
   }
 
   publish(message: BroadcastMessage): void {
@@ -29,22 +29,19 @@ export class BroadcastChannelService {
     });
   }
 
+  getMessages() {
+    return new Observable(subscriber => {
+      this.broadcastChannel.onmessage = (message) => {
+        subscriber.next(message);
+      };
+      this.broadcastChannel.onmessageerror = (message) => {
+        subscriber.error(message);
+      };
+      return () => this.broadcastChannel.close();
+    });
+  }
+
   messagesOfType(type: string): Observable<BroadcastMessage> {
     return this.onMessage.asObservable();
   }
-}
-
-/**
- * Custom OperatorFunction that makes sure that all lifecycle hooks of an Observable
- * are running in the NgZone.
- */
-export function runInZone<T>(zone: NgZone): OperatorFunction<T, T> {
-  return (source) => {
-    return new Observable((observer) => {
-      const onNext = (value: T) => zone.run(() => observer.next(value));
-      const onError = (e: any) => zone.run(() => observer.error(e));
-      const onComplete = () => zone.run(() => observer.complete());
-      return source.subscribe(onNext, onError, onComplete);
-    });
-  };
 }

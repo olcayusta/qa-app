@@ -6,7 +6,6 @@ import { RouterModule } from '@angular/router';
 import { TimeAgoPipe } from './pipes/time-ago.pipe';
 import { HighlightSearchPipe } from '../main/components/top-bar/components/search-form/pipes/highlight-search.pipe';
 import { ImgShadowComponent } from './components/img-shadow/img-shadow.component';
-import { MarkedPipe } from '@shared/pipes/marked.pipe';
 import { MaterialModule } from '@modules/material/material.module';
 import { GfIconComponent } from '@shared/components/gf-icon/gf-icon.component';
 import { AutofocusDirective } from './directives/autofocus.directive';
@@ -16,7 +15,7 @@ import { PopupContainerComponent } from '@shared/components/popup-container/popu
 import { HighlightElementDirective } from './directives/highlight-element.directive';
 import { SiteCodeComponent } from './components/site-code/site-code.component';
 import { SelectedTagPipe } from './pipes/selected-tag.pipe';
-import { SanitizeHighlightPipe } from './pipes/sanitize-highlight.pipe';
+import { MyDatePipe } from './pipes/my-date.pipe';
 
 @NgModule({
   declarations: [
@@ -24,7 +23,6 @@ import { SanitizeHighlightPipe } from './pipes/sanitize-highlight.pipe';
     ImgShadowComponent,
     TimeAgoPipe,
     HighlightSearchPipe,
-    MarkedPipe,
     LazyImgDirective,
     GfIconComponent,
     AutofocusDirective,
@@ -34,7 +32,7 @@ import { SanitizeHighlightPipe } from './pipes/sanitize-highlight.pipe';
     HighlightElementDirective,
     SiteCodeComponent,
     SelectedTagPipe,
-    SanitizeHighlightPipe
+    MyDatePipe
   ],
   imports: [CommonModule, RouterModule, MaterialModule],
   exports: [
@@ -45,11 +43,10 @@ import { SanitizeHighlightPipe } from './pipes/sanitize-highlight.pipe';
     TimeAgoPipe,
     LazyImgDirective,
     AutofocusDirective,
-    MarkedPipe,
     PopupContainerComponent,
     HighlightElementDirective,
-    SanitizeHighlightPipe,
-    RelativeTimeFormatPipe
+    RelativeTimeFormatPipe,
+    MyDatePipe
   ]
 })
 export class SharedModule {}

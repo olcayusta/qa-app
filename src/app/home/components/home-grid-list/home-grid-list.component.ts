@@ -6,7 +6,7 @@ import {
   ChangeDetectorRef
 } from '@angular/core';
 import { Question } from '@shared/models/question.model';
-import { Subscription } from 'rxjs';
+import { BehaviorSubject, first, Observable, Subscription, take } from 'rxjs';
 import { QuestionService } from '@modules/question/services/question.service';
 import { FilterService } from '@shared/services/filter.service';
 import { ActivatedRoute } from '@angular/router';
@@ -37,37 +37,31 @@ import { animate, query, stagger, style, transition, trigger } from '@angular/an
 export class HomeGridListComponent implements OnInit, OnDestroy {
   questions!: Question[];
 
-  /**
-   * Number of questions to load as you scroll down the page
-   */
+  // Number of questions to load as you scroll down the page
   offset = 12;
 
-  /**
-   * Subscription to the route params
-   */
+  // Active page number
+  pageNumber = 1;
+
+  // subscription to the route params
   recentQuestionsSubscription!: Subscription;
 
-  /**
-   * Subscription to the load more questions
-   */
+  // subscription to the load more questions
   loadMoreSubscription!: Subscription;
 
-  /**
-   * Spinner to show when loading more questions
-   */
+  // Spinner to show when loading more questions
   loader = false;
 
-  /**
-   * Spinner hide load questions finished
-   */
+  // Spinner hide load questions finished
   dataFinished = false;
 
   constructor(
     private questionService: QuestionService,
     private filterService: FilterService,
     private route: ActivatedRoute,
-    private cd: ChangeDetectorRef
-  ) {}
+    private cdr: ChangeDetectorRef
+  ) {
+  }
 
   ngOnInit(): void {
     this.recentQuestionsSubscription = this.route.queryParamMap
@@ -81,7 +75,7 @@ export class HomeGridListComponent implements OnInit, OnDestroy {
       )
       .subscribe((questions) => {
         this.questions = questions;
-        this.cd.markForCheck();
+        this.cdr.markForCheck();
       });
   }
 
@@ -104,7 +98,7 @@ export class HomeGridListComponent implements OnInit, OnDestroy {
   /**
    * Load more questions is called when the user scrolls down the page
    */
-  loadMoreQuestionsIsIntersecting(): void {
+  loadMoreQuestions(): void {
     this.loader = true;
     this.recentQuestionsSubscription = this.questionService
       .getMoreQuestions(this.offset)
@@ -112,12 +106,16 @@ export class HomeGridListComponent implements OnInit, OnDestroy {
       .subscribe((questions) => {
         this.loader = false;
         if (questions.length) {
-          this.offset += 6;
           this.questions = [...this.questions, ...questions];
+          this.offset += 12;
         } else {
           this.dataFinished = true;
         }
-        this.cd.markForCheck();
+        this.cdr.markForCheck();
       });
+
+    this.questionService.getFeedContent(this.pageNumber).subscribe((value) => {
+      this.pageNumber += 1;
+    });
   }
 }

@@ -4,9 +4,7 @@
       <mat-icon-search></mat-icon-search>
     </button>
     <input aria-label='Ara' autocomplete='off' spellcheck='false' placeholder='Ara' [formControl]='searchControl'
-           #autoCompleteInputs
            (keydown.enter)='onEnter($event)'
-           (focusin)="origin.elementRef.nativeElement.style.width = '684px'"
            [matAutocomplete]='auto' [matAutocompleteConnectedTo]='origin'>
   </div>
 </form>

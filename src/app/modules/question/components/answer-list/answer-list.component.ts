@@ -13,31 +13,40 @@ import { Observable, tap } from 'rxjs';
 import { Answer } from '@shared/models/answer.model';
 import { ActivatedRoute } from '@angular/router';
 import { ViewportScroller } from '@angular/common';
-import { AnswerItemComponent } from '@modules/question/components/question-answers/answer-item/answer-item.component';
+import { AnswerItemComponent } from '@modules/question/components/answer-list/answer-item/answer-item.component';
+
+interface SortItem {
+  value: number;
+  viewValue: string;
+  sortBy: string;
+}
 
 @Component({
-  selector: 'app-question-answers',
-  templateUrl: './question-answers.component.html',
-  styleUrls: ['./question-answers.component.scss'],
+  selector: 'app-answer-list',
+  templateUrl: './answer-list.component.html',
+  styleUrls: ['./answer-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class QuestionAnswersComponent implements OnInit, AfterViewInit, OnDestroy {
+export class AnswerListComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input('acceptedAnswerId') acceptedAnswerId?: number;
   @ViewChildren(AnswerItemComponent) items!: QueryList<AnswerItemComponent>;
 
   answers$!: Observable<Answer[]>;
 
-  sortItems = [
+  sortItems: SortItem[] = [
     {
       value: 0,
+      sortBy: 'DESC',
       viewValue: 'Eklenme tarihi (en yeni)'
     },
     {
       value: 1,
+      sortBy: 'ASC',
       viewValue: 'Eklenme tarihi (en eski)'
     },
     {
       value: 2,
+      sortBy: 'VOTE',
       viewValue: 'En iyi yorumlar'
     }
   ];
@@ -51,6 +60,15 @@ export class QuestionAnswersComponent implements OnInit, AfterViewInit, OnDestro
   ) {}
 
   ngOnInit(): void {
+    const sortBy = localStorage.getItem('sortBy')
+    if (sortBy) {
+      const { value } = JSON.parse(sortBy) as SortItem;
+      console.log(value)
+      this.selectedIndex = value;
+    }
+
+    this.selectedIndex = 1;
+
     const questionId = this.route.snapshot.paramMap.get('questionId');
     this.answers$ = this.answerService.getAnswers(Number(questionId)).pipe(
       tap((value) => {
@@ -65,7 +83,7 @@ export class QuestionAnswersComponent implements OnInit, AfterViewInit, OnDestro
 
     if (fragment) {
       const { documentElement } = document;
-      documentElement.style.scrollBehavior = 'smooth';
+      // documentElement.style.scrollBehavior = 'smooth';
       this.scroll.setOffset([0, 64]);
       this.items.changes.subscribe((_) => {
         this.scroll.scrollToAnchor(`answer-${fragment}`);
@@ -77,7 +95,14 @@ export class QuestionAnswersComponent implements OnInit, AfterViewInit, OnDestro
     document.documentElement.style.scrollBehavior = '';
   }
 
+  // score - modified - create
   changeSelectedIndex(index: number) {
     this.selectedIndex = index;
+    localStorage.setItem('sortBy', JSON.stringify(this.sortItems[index]));
+
+    const { sortBy } = JSON.parse(localStorage.getItem('sortBy')!) as SortItem;
+
+    const questionId = Number(this.route.snapshot.paramMap.get('questionId'));
+    this.answers$ = this.answerService.getAnswersBySort(questionId, sortBy);
   }
 }

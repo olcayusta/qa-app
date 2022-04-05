@@ -17,6 +17,7 @@ import { DOCUMENT } from '@angular/common';
 import { SideSheetComponent } from './components/side-sheet/side-sheet.component';
 import { NavDrawerComponent } from './components/nav-drawer/nav-drawer.component';
 import { DrawerService } from './components/nav-drawer/drawer.service';
+import { SocketService } from '@shared/services/socket.service';
 
 @Component({
   selector: 'app-main',
@@ -42,7 +43,8 @@ export class MainComponent implements OnInit, AfterViewInit {
     private breakpointObserver: BreakpointObserver,
     private renderer: Renderer2,
     private cd: ChangeDetectorRef,
-    private drawerService: DrawerService
+    private drawerService: DrawerService,
+    private socketService: SocketService
   ) {}
 
   ngAfterViewInit() {
@@ -53,6 +55,16 @@ export class MainComponent implements OnInit, AfterViewInit {
     this.isSmallScreen = this.breakpointObserver.isMatched('(max-width: 599px)');
     this.isSmallScreen ? (this.mode = 'over') : 'side';
     this.mode = 'side';
+    this.listenToAnsweredQuestions();
+  }
+
+  listenToAnsweredQuestions() {
+    this.socketService.on('new answer').subscribe(({ event, payload }) => {
+      console.log('Sorunuza, yeni ber cevap geldi.');
+      this.snackBar.open('One line text string.', 'TAMAM', {
+        duration: 9999999
+      });
+    });
   }
 
   sidenavOpenedStart() {

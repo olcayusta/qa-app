@@ -49,4 +49,4 @@ export class SettingsDialogComponent implements OnInit {
   declarations: [SettingsDialogComponent],
   imports: [MaterialModule]
 })
-export class SettingsDialogModule {}
+class SettingsDialogModule {}

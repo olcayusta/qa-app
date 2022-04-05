@@ -11,7 +11,7 @@ import {
   selector: '[appIsVisible]'
 })
 export class IsVisibleDirective implements AfterViewInit, OnDestroy {
-  @Output() scrolled = new EventEmitter();
+  @Output() intersected = new EventEmitter<boolean>();
 
   observer!: IntersectionObserver;
 
@@ -22,7 +22,7 @@ export class IsVisibleDirective implements AfterViewInit, OnDestroy {
    */
   ngAfterViewInit(): void {
     this.observer = new IntersectionObserver(([{ isIntersecting }]) => {
-      isIntersecting && this.scrolled.emit();
+      isIntersecting && this.intersected.emit(true);
     });
     this.observer.observe(this.elementRef.nativeElement);
   }

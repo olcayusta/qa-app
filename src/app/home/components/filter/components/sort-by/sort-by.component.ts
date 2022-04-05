@@ -6,7 +6,8 @@ import {
   QueryList,
   AfterViewInit,
   OnInit,
-  ɵmarkDirty as markDirty
+  Output,
+  EventEmitter
 } from '@angular/core';
 import { MatMenu, MatMenuItem } from '@angular/material/menu';
 import { ActivatedRoute } from '@angular/router';
@@ -29,6 +30,8 @@ export class SortByComponent implements OnInit, AfterViewInit {
   @ViewChild('sortMenu') sortMenu!: MatMenu;
 
   menuItems!: MatMenuItem[];
+
+  @Output() openFilter = new EventEmitter();
 
   foods: Food[] = [
     { value: 'steak-0', viewValue: 'Steak' },
@@ -55,8 +58,7 @@ export class SortByComponent implements OnInit, AfterViewInit {
     }
   }
 
-  ngAfterViewInit(): void {
-  }
+  ngAfterViewInit(): void {}
 
   /**
    *
@@ -65,6 +67,5 @@ export class SortByComponent implements OnInit, AfterViewInit {
    */
   menuItemClicked(menuItem: MatMenuItem, index: number) {
     this.selectedIndex = index;
-
   }
 }

@@ -1,0 +1,20 @@
+<div class='media'>
+  <!--  <div class='media-user'>
+      <img class='media__avatar'
+           src='https://cdn.dribbble.com/users/2417352/screenshots/15197452/media/8e61474be3aef19d7f058bf42db34e18.png?compress=1&resize=1200x900&vertical=top'
+           alt='Avatar resmi'>
+    </div>-->
+  <div class='media__reply'>
+    <form autocomplete='off' spellcheck='false' (submit)='saveComment()'>
+      <mat-form-field floatLabel='never'>
+        <mat-label>Yorum ekleyin...</mat-label>
+        <input matInput placeholder='Aa' [formControl]='commentControl'>
+        <!--<mat-hint>{{commentControl.value.length}}</mat-hint>-->
+      </mat-form-field>
+      <div class='media__form-actions'>
+        <button type='button' mat-button>İptal</button>
+        <button type='submit' mat-raised-button color='primary'>Yorum yap</button>
+      </div>
+    </form>
+  </div>
+</div>

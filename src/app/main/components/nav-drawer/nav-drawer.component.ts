@@ -53,9 +53,6 @@ export class NavDrawerComponent implements OnInit, OnDestroy {
     this.vcr.clear();*/
   }
 
-  /**
-   * Experimental Dialog Open
-   */
   async openFeedbackDialog() {
     const { FeedbackDialogComponent } = await import(
       '@dialogs/feedback-dialog/feedback-dialog.component'
@@ -95,4 +92,4 @@ export class NavDrawerComponent implements OnInit, OnDestroy {
     MaterialIconModule
   ]
 })
-export class NavDrawerModule {}
+class NavDrawerModule {}

@@ -1,24 +1,50 @@
-import { Directive, ElementRef, HostBinding, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Directive,
+  ElementRef,
+  HostBinding,
+  OnDestroy,
+  OnInit
+} from '@angular/core';
 
 @Directive({
   selector: '[inekLazyImg]'
 })
-export class LazyImgDirective implements OnInit {
-  @HostBinding('attr.src') src = null;
+export class LazyImgDirective implements OnInit, OnDestroy, AfterViewInit {
+  // @HostBinding('attr.src') src = null;
   imgSrc!: string;
+
+  intersectionObserver!: IntersectionObserver;
 
   constructor(private elementRef: ElementRef<HTMLImageElement>) {}
 
-  ngOnInit(): void {
+  ngAfterViewInit() {}
+
+  init() {
     const { nativeElement } = this.elementRef;
     this.imgSrc = nativeElement.src;
 
-    const intersectionObserver = new IntersectionObserver(([{ isIntersecting }]) => {
+    this.intersectionObserver = new IntersectionObserver(([{ isIntersecting }]) => {
       if (isIntersecting) {
         nativeElement.src = this.imgSrc;
-        intersectionObserver.unobserve(nativeElement);
+        this.intersectionObserver.unobserve(nativeElement);
       }
     });
-    intersectionObserver.observe(nativeElement);
+    this.intersectionObserver.observe(nativeElement);
+  }
+
+  ngOnInit(): void {
+    /*    if ('loading' in HTMLImageElement.prototype) {
+      console.log('Lazy loading supported!');
+      this.elementRef.nativeElement.decoding = 'async';
+      /!*     const { nativeElement: img } = this.elementRef;
+      img.loading = 'lazy';
+      img.decoding = 'async';*!/
+    }*/
+    // this.init();
+  }
+
+  ngOnDestroy() {
+    // this.intersectionObserver.unobserve(this.elementRef.nativeElement);
   }
 }

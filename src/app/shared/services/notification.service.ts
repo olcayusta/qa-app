@@ -5,6 +5,10 @@ import { Notification } from '../models/notification.model';
 import { Observable } from 'rxjs';
 import { environment } from '@environments/environment';
 
+interface UnSeenNotification {
+  unseenCount: number;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -15,7 +19,7 @@ export class NotificationService {
     return this.http.get<Notification[]>(`${environment.apiUrl}/notifications`);
   }
 
-  getUnseenCount(): Observable<number> {
-    return this.http.get<number>(`${environment.apiUrl}/unseen_count`);
+  getUnseenCount(): Observable<UnSeenNotification> {
+    return this.http.get<UnSeenNotification>(`${environment.apiUrl}/notifications/unseen-count`);
   }
 }

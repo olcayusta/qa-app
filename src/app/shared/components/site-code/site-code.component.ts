@@ -9,11 +9,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class SiteCodeComponent {
   text!: HTMLPreElement;
-  lang = '';
+  language: string = '';
 
   constructor(private snackBar: MatSnackBar) {}
 
-  async copyCode() {
+  async copyCodeToClipboard() {
     await navigator.clipboard.writeText(this.text.textContent!);
     this.snackBar.open('Kod panoya kopyalandı');
   }

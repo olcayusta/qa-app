@@ -15,6 +15,12 @@
           <input aria-label='Şifre' matInput type='password' formControlName='password' autocomplete='new-password'>
           <mat-error>Bir şifre girin</mat-error>
         </mat-form-field>
+
+        <mat-form-field appearance='outline' hideRequiredMarker>
+          <mat-label>Display Name</mat-label>
+          <input aria-label='Display name' matInput formControlName='displayName'>
+          <mat-error>Display name girin</mat-error>
+        </mat-form-field>
       </div>
 
       <div class='row-actions'>

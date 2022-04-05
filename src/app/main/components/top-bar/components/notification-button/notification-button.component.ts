@@ -7,7 +7,7 @@ import {
   ChangeDetectorRef,
   NgModule
 } from '@angular/core';
-import { shareReplay } from 'rxjs/operators';
+import { map, shareReplay } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { NotificationService } from '@shared/services/notification.service';
 import { OverlayModule, ScrollStrategy, ScrollStrategyOptions } from '@angular/cdk/overlay';
@@ -40,7 +40,10 @@ export class NotificationButtonComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.notificationCount$ = this.notificationService.getUnseenCount().pipe(shareReplay());
+    this.notificationCount$ = this.notificationService.getUnseenCount().pipe(
+      map(notification => notification.unseenCount),
+      shareReplay()
+    );
   }
 
   async togglePopup(): Promise<void> {

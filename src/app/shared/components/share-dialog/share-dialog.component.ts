@@ -1,5 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy, NgModule } from '@angular/core';
 import { MaterialModule } from '@modules/material/material.module';
+import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-share-dialog',
@@ -19,9 +21,9 @@ export class ShareDialogComponent implements OnInit {
 
 @NgModule({
   declarations: [ShareDialogComponent],
-  imports: [MaterialModule]
+  imports: [MaterialModule, MatInputModule, MatDialogModule]
 })
-export class ShareDialogModule {
+class ShareDialogModule {
   /*  public static components = {
       ShareDialogComponent
     }*/

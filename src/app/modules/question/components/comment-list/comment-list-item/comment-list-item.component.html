@@ -11,7 +11,7 @@
       <time [attr.datetime]='comment.creationTime'>{{comment.creationTime | relativeTimeFormat}}</time>
     </div>
     <div class='comment'>
-      <span class='comment-text'>{{comment.content}}</span>
+      <span class='comment-text' [innerHTML]='comment.text'>{{comment.text}}</span>
     </div>
     <mat-divider></mat-divider>
   </div>

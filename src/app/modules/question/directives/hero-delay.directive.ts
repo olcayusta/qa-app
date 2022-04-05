@@ -10,7 +10,8 @@ export class HeroDelayDirective {
   constructor(
     private elementRef: ElementRef<HTMLElement>,
     private viewContainerRef: ViewContainerRef
-  ) {}
+  ) {
+  }
 
   @Input()
   // @ts-ignore

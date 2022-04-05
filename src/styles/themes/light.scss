@@ -4,46 +4,46 @@ $dark-primary-text: rgba(black, 0.87);
 $light-primary-text: white;
 
 $deep-purple-palette: (
-        50: #F2E7FE,
-        100: #DBB2FF,
-        200: #BB86FC,
-        300: #985EFF,
-        400: #7F39FB,
-        500: #6200EE,
-        600: #5600E8,
-        700: #3700B3,
-        800: #30009C,
-        900: #23036A,
-        A100: #b388ff,
-        A200: #7c4dff,
-        A400: #651fff,
-        A700: #6200ea,
-        contrast: (
-                50: $dark-primary-text,
-                100: $dark-primary-text,
-                200: $dark-primary-text,
-                300: $light-primary-text,
-                400: $light-primary-text,
-                500: $light-primary-text,
-                600: $light-primary-text,
-                700: $light-primary-text,
-                800: $light-primary-text,
-                900: $light-primary-text,
-                A100: $dark-primary-text,
-                A200: $light-primary-text,
-                A400: $light-primary-text,
-                A700: $light-primary-text,
-        )
+  50: #F2E7FE,
+  100: #DBB2FF,
+  200: #BB86FC,
+  300: #985EFF,
+  400: #7F39FB,
+  500: #6200EE,
+  600: #5600E8,
+  700: #3700B3,
+  800: #30009C,
+  900: #23036A,
+  A100: #b388ff,
+  A200: #7c4dff,
+  A400: #651fff,
+  A700: #6200ea,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $light-primary-text,
+    400: $light-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text,
+  )
 );
 
 /* Define a light theme */
 $light-primary: mat.define-palette($deep-purple-palette);
 $light-accent: mat.define-palette($deep-purple-palette);
 $light-theme: mat.define-light-theme((
-        color: (
-                primary: $light-primary,
-                accent: $light-accent
-        )
+  color: (
+    primary: $light-primary,
+    accent: $light-accent
+  )
 ));
 
 /* Gray Theme */
@@ -53,21 +53,20 @@ $gray-theme-accent: mat.define-palette(mat.$gray-palette);
 // $gray-theme-warn: mat.define-palette($mat-red);
 
 $gray-theme: mat.define-light-theme((
-        color: (
-                primary: $gray-theme-primary,
-                accent: $gray-theme-accent
-        )
+  color: (
+    primary: $gray-theme-primary,
+    accent: $gray-theme-accent
+  )
 ));
 
 $secondary-gray-theme: mat.define-light-theme((
-        color: (
-                primary: mat.define-palette(mat.$gray-palette),
-                accent: mat.define-palette(mat.$gray-palette)
-        )
+  color: (
+    primary: mat.define-palette(mat.$gray-palette),
+    accent: mat.define-palette(mat.$gray-palette)
+  )
 ));
 
-/* Purple */
-@include mat.core-theme($light-theme);
+/*@include mat.core-theme($light-theme);
 @include mat.toolbar-theme($light-theme);
 @include mat.menu-theme($light-theme);
 @include mat.chips-theme($light-theme);
@@ -88,18 +87,23 @@ $secondary-gray-theme: mat.define-light-theme((
 @include mat.form-field-theme($light-theme);
 @include mat.slide-toggle-theme($light-theme);
 @include mat.card-theme($light-theme);
-
-/* Gray */
 @include mat.tabs-theme($light-theme);
+
 @include mat.list-theme($gray-theme);
 @include mat.divider-theme($gray-theme);
-@include mat.sidenav-theme($gray-theme);
+@include mat.sidenav-theme($gray-theme);*/
+
+@include mat.all-component-themes($light-theme);
 
 @media (prefers-color-scheme: light) {
   :root {
+    // color-scheme: light;
+    --html-bg-color: #fff;
     --color: rgba(0, 0, 0, .87);
     --mdc-theme-on-primary: #fff;
     --mdc-theme-primary: #6200ee;
+    --mdc-theme-primary-200: 187, 134, 252;
+    --mdc-theme-primary-overlay-selected: rgba(var(--mdc-theme-primary-200), 0.12);
     --medium-emphasis-color: rgba(0, 0, 0, 0.6);
     --surface: #fff;
     --topbar-background: #fff;
@@ -112,53 +116,54 @@ $secondary-gray-theme: mat.define-light-theme((
     --autocomplete-background: #fff;
     // --search-background: rgba(0, 0, 0, 0.04);
     --search-background: #f1f3f4;
-    --code-background: rgba(0, 0, 0, .02);
+    --code-background: white;
     --border-color: rgba(0, 0, 0, .12);
+    --scrollbar-color: #00000060 transparent;
+    --scrollbar-bg-color: #fafafa;
+    --thumb-bg-color: #c2c2c2;
+    --thumb-bg-hover: #7d7d7d;
   }
 }
 
+/**
+  Highlight.js
+ */
 @import "~highlight.js/scss/github";
 
 svg {
-  fill: rgba(0, 0, 0, .6);
+  fill: var(--medium-emphasis-color);
 }
 
+/**
+  Progress-bar
+  ====================
+ */
 .mat-progress-bar-background {
-  // fill: #D2BBF4;
-  fill: #C2C2C2;
+  fill: #D2BBF4;
+  // fill: #C2C2C2;
 }
 
 .mat-progress-bar-buffer {
-  // background-color: #D2BBF4;
-  background-color: #C2C2C2;
-}
-
-.mat-menu-item.active {
-  background-color: #e8f0fe;
-}
-
-.mat-menu-item-highlighted {
-  // background-color: rgba(98, 0, 238, 0.12) !important;
-  background-color: rgba(0, 0, 0, 0.12) !important;
-  // color: #6200EE;
-  color: black;
+  background-color: #D2BBF4;
+  // background-color: #C2C2C2;
 }
 
 .mat-list-item.active {
-  color: #6200EE !important;
+  color: var(--mdc-theme-primary) !important;
   font-weight: 500 !important;
   // background-color: rgba(0, 0, 0, .12);
 
   mat-icon {
-    color: #6200ee !important;
+    color: var(--mdc-theme-primary) !important;
   }
 
   app-gf-icon svg {
-    fill: #6200ee !important;
+    fill: var(--mdc-theme-primary);
   }
 
   /* Primary Overlay */
-  background: linear-gradient(0deg, rgba(187, 134, 252, 0.12), rgba(187, 134, 252, 0.12)), #FFFFFF;
+  // background: linear-gradient(0deg, rgba(187, 134, 252, 0.12), rgba(187, 134, 252, 0.12)), #FFFFFF;
+  background-color: var(--mdc-theme-primary-overlay-selected);
 }
 
 /*
@@ -173,34 +178,9 @@ svg {
   color: #fff;
 }
 
-.mat-tooltip {
+/*.mat-tooltip {
   background: #666 !important;
   color: #fff !important;
-}
-
-
-/**
-  Body WebKit Scroller
- */
-/*::-webkit-scrollbar {
-  // width: 16px;
-}
-
-::-webkit-scrollbar-track {
-  // background: #f1f1f1;
-  background: #fafafa;
-}
-
-::-webkit-scrollbar-thumb {
-  height: 56px;
-  border-radius: 8px;
-  border: 4px solid transparent;
-  background-clip: content-box;
-  background-color: #606060;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background-color: #909090;
 }*/
 
 .mat-simple-snackbar-action {
@@ -214,7 +194,7 @@ svg {
 
 ::ng-deep .mat-chip-selected {
   background: rgba(98, 0, 238, 0.08) !important;
-  color: #6200ee !important;
+  color: var(--mdc-theme-primary) !important;
   border: 1px solid rgba(98, 0, 238, 0.08) !important;
 }
 

@@ -6,7 +6,7 @@ import {
   ActivatedRouteSnapshot,
   NavigationError
 } from '@angular/router';
-import { EMPTY, Observable, tap } from 'rxjs';
+import { EMPTY, Observable } from 'rxjs';
 import { QuestionService } from '../services/question.service';
 import { Question } from '@shared/models/question.model';
 import { catchError } from 'rxjs/operators';
@@ -15,7 +15,8 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class QuestionResolver implements Resolve<Question> {
-  constructor(private questionService: QuestionService, private router: Router) {}
+  constructor(private questionService: QuestionService, private router: Router) {
+  }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Question> {
     const questionId = Number(route.paramMap.get('questionId'));

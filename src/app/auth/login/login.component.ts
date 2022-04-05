@@ -2,7 +2,6 @@ import { Component, OnInit, ChangeDetectionStrategy, ɵmarkDirty as markDirty } 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
-import { TagService } from '@modules/tag/services/tag.service';
 import { catchError } from 'rxjs/operators';
 import { EMPTY } from 'rxjs';
 
@@ -26,7 +25,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private tagService: TagService,
+    // private tagService: TagService,
     private router: Router
   ) {
     this.form = formBuilder.group(
@@ -52,7 +51,7 @@ export class LoginComponent implements OnInit {
       .login(email, password)
       .pipe(
         catchError((err, caught) => {
-          console.error(err)
+          console.error(err);
           this.form.get('email')!.setErrors({
             emailNotFound: true
           });
@@ -78,8 +77,8 @@ export class LoginComponent implements OnInit {
    * Save favorite tags to local storage
    */
   saveFavoriteTagsToLocaleStorage() {
-    this.tagService.getFavoriteTags().subscribe((value2) => {
+    /*this.tagService.getFavoriteTags().subscribe((value2) => {
       value2 && localStorage.setItem('watchedTags', JSON.stringify(value2));
-    });
+    });*/
   }
 }

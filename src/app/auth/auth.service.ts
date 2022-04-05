@@ -20,7 +20,7 @@ export class AuthService {
   redirectUrl = '/';
 
   constructor(private http: HttpClient) {
-    const user = JSON.parse(<string>localStorage.getItem('user')) as User;
+    const user = this.getToken('user') as User;
     const loggedIn = !!user;
 
     this.userSubject = new BehaviorSubject<User>(user);
@@ -34,11 +34,10 @@ export class AuthService {
     return this.userSubject.value;
   }
 
-  /**
-   * Login
-   * @param email
-   * @param password
-   */
+  getToken(key: string) {
+    return JSON.parse(<string>localStorage.getItem(key));
+  }
+
   login(email: string, password: string): Observable<ILogin> {
     return this.http
       .post<ILogin>(`${environment.apiUrl}/users/login`, {
@@ -47,7 +46,10 @@ export class AuthService {
       })
       .pipe(
         tap(({ user, token }: ILogin) => {
-          token && this.saveUserToLocalStorage(user, token);
+          localStorage.setItem('user', JSON.stringify(user));
+          localStorage.setItem('token', token);
+          this.userSubject.next(user);
+          this.isLoggedInSubject.next(true);
         })
       );
   }
@@ -61,29 +63,11 @@ export class AuthService {
    *!/
    */
 
-  /**
-   * Save user to local storage.
-   * @param user
-   * @param token
-   */
-  saveUserToLocalStorage(user: User, token: string) {
-    localStorage.setItem('user', JSON.stringify(user));
-    localStorage.setItem('token', token);
-    this.isLoggedInSubject.next(true);
-    this.userSubject.next(user);
-  }
-
-  /**
-   * Logout
-   */
   logout() {
     this.removeUserFromLocalStorage();
     this.isLoggedInSubject.next(false);
   }
 
-  /**
-   * Delete user from local storage.
-   */
   removeUserFromLocalStorage() {
     localStorage.clear();
   }

@@ -5,12 +5,12 @@ import { Question } from '@shared/models/question.model';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class ListService {
   constructor(private http: HttpClient) {}
 
   getMyQuestions(): Observable<Question[]> {
-    return this.http.get<Question[]>(`${environment.apiUrl}/list`);
+    return this.http.get<Question[]>(`${environment.apiUrl}/me/list`);
   }
 }

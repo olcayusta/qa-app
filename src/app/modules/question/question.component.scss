@@ -2,6 +2,15 @@
   display: block;
 }
 
+a:hover {
+  text-decoration: underline;
+}
+
+.button-grid-list {
+  display: flex;
+  gap: 16px;
+}
+
 .header-one {
   display: flex;
   align-items: flex-start;
@@ -25,7 +34,6 @@
   button, a[mat-button] {
     font-family: Archivo, sans-serif;
     letter-spacing: 0 !important;
-    margin-left: 16px;
     letter-spacing: 1.25px;
   }
 

@@ -33,8 +33,8 @@ $custom-typography: mat.define-typography-config(
   $font-family: 'Archivo, sans-serif',
 );
 
-$input-typograpghy: mat.define-typography-config(
-  $font-family: 'Roboto, sans-serif',
+$headlines-and-subtitles-typography: mat.define-typography-config(
+  $font-family: 'Archivo, sans-serif'
 );
 
 $body-and-captions-typography: mat.define-typography-config(
@@ -67,15 +67,14 @@ $chip-typography: mat.define-typography-config(
   $body-2: mat.define-typography-level(14px, 20px, 400)
 );
 
-@include mat.tabs-typography($custom-typography);
+@include mat.tabs-typography($headlines-and-subtitles-typography);
 
 // @include mat.list-typography($list-typography);
 // @include mat.chips-typography($chip-typography);
 // @include mat.dialog-typography($custom-typography);
-@include mat.form-field-typography($input-typograpghy);
-@include mat.radio-typography($custom-typography);
-@include mat.option-typography($custom-typography);
-@include mat.radio-typography($custom-typography);
+@include mat.form-field-typography($body-and-captions-typography);
+@include mat.radio-typography($body-and-captions-typography);
+@include mat.option-typography($body-and-captions-typography);
 @include mat.tooltip-typography($body-and-captions-typography);
 
 /**
@@ -97,7 +96,18 @@ $chip-typography: mat.define-typography-config(
 html {
   background-color: var(--html-bg-color);
   color: var(--color);
+  // scrollbar-gutter: stable;
+
+  @supports (overflow: overlay) {
+    // overflow: overlay;
+  }
+
+  @supports (scrollbar-width: thin) {
+    // scrollbar-width: thin;
+    // scrollbar-color: #00000060 transparent;
+  }
 }
+
 
 html, body {
   height: 100%;
@@ -122,7 +132,7 @@ svg {
   padding: 16px 16px 16px 24px !important;
 }
 
-// Fix menu and select panel overflow scroll bar
+//
 .mat-menu-panel::-webkit-scrollbar, .mat-select-panel::-webkit-scrollbar {
   width: 6px;
 }
@@ -196,12 +206,12 @@ svg {
   // For Chrome, Safari.
   &::-webkit-scrollbar {
     -webkit-appearance: none;
-    width: 12px;
+    width: 16px;
   }
 
   &::-webkit-scrollbar-thumb {
     border-radius: 16px;
-    height: 56px;
+    min-height: 56px;
     border: 4px solid transparent;
     background-color: transparent;
     background-clip: content-box;

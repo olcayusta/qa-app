@@ -49,7 +49,7 @@ export class AppComponent implements OnInit {
     if ((metaKey && key === '/') || (shiftKey && key === '?')) {
       const { HotkeyDialogComponent } = await import(
         './dialogs/hotkey-dialog/hotkey-dialog.component'
-      );
+        );
       const dialog = this.dialog.open(HotkeyDialogComponent, {
         minWidth: 560
       });
@@ -125,10 +125,10 @@ export class AppComponent implements OnInit {
   }
 
   async listenSessionLogout() {
-    this.broadcastChannel.messagesOfType('hello').subscribe(async (value) => {
+    this.broadcastChannel.getMessages().subscribe(async () => {
       const { SessionWarningDialogComponent } = await import(
         './dialogs/session-warning-dialog/session-warning-dialog.component'
-      );
+        );
       this.zone.run(() => {
         const dialog = this.dialog.open(SessionWarningDialogComponent, {
           autoFocus: false,
@@ -138,5 +138,6 @@ export class AppComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 }

@@ -3,19 +3,19 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-  selector: 'inek-broadcast-channel-logout-dialog',
-  templateUrl: './broadcast-channel-logout-dialog.component.html',
-  styleUrls: ['./broadcast-channel-logout-dialog.component.scss'],
+  selector: 'inek-session-warning-dialog',
+  templateUrl: './session-warning-dialog.component.html',
+  styleUrls: ['./session-warning-dialog.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class BroadcastChannelLogoutDialogComponent implements OnInit {
+export class SessionWarningDialogComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
 }
 
 @NgModule({
-  declarations: [BroadcastChannelLogoutDialogComponent],
+  declarations: [SessionWarningDialogComponent],
   imports: [MatDialogModule, MatButtonModule]
 })
-class BroadcastChannelLogoutDialogModule {}
+class SessionWarningDialogModule {}

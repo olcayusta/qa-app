@@ -8,7 +8,9 @@ import { QuestionTitleResolver } from '@modules/question/resolvers/question-titl
 const routes: Routes = [
   {
     path: '',
-    resolve: { question: QuestionResolver },
+    resolve: {
+      question: QuestionResolver
+    },
     children: [
       {
         path: '',
