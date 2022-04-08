@@ -54,7 +54,7 @@ const routes: Routes = [
         loadChildren: async () => (await import('@modules/question/question.module')).QuestionModule
       },
       {
-        path: 'create',
+        path: 'questions/create',
         loadChildren: async () =>
           (await import('@modules/create-question/create-question.module')).CreateQuestionModule
       },
