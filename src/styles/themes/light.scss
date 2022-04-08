@@ -166,9 +166,9 @@ svg {
   background-color: var(--mdc-theme-primary-overlay-selected);
 }
 
-/*
-  Light theme reset css
-*/
+/**
+  Snackbar
+ */
 .mat-snack-bar-container {
   color: #fff;
   background-color: #121212;
@@ -178,15 +178,21 @@ svg {
   color: #fff;
 }
 
+.mat-simple-snackbar-action {
+  color: #BB86FC;
+}
+
+/**
+  Tooltip
+ */
 /*.mat-tooltip {
   background: #666 !important;
   color: #fff !important;
 }*/
 
-.mat-simple-snackbar-action {
-  color: #BB86FC;
-}
-
+/**
+  Chip
+ */
 .mat-chip.mat-standard-chip {
   background-color: #fff;
   border: 1px solid rgba(0, 0, 0, .12);
@@ -198,6 +204,9 @@ svg {
   border: 1px solid rgba(98, 0, 238, 0.08) !important;
 }
 
+/**
+  Badge
+ */
 .mat-badge-warn .mat-badge-content {
   color: white;
   background: #B00020;

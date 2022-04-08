@@ -3,34 +3,16 @@
   line-height: 20px;
 }
 
-// letter spacing fixed
-.mat-list-item span {
-  // letter-spacing: 0.1px;
-}
-
 .extended-fab {
   letter-spacing: 1.25px;
 }
 
-/**
-  Material Design Reset
-  START
- */
 mat-nav-list {
   padding-bottom: 8px;
 }
 
 .mat-button {
   padding: 0 8px !important;
-}
-
-/**
-  Material Design Reset
-  END
- */
-
-.mat-checkbox-inner-container {
-  // margin-right: 12px !important;
 }
 
 .outlined-menu-button {
@@ -41,10 +23,6 @@ mat-nav-list {
 /*.outlined-menu-button[aria-expanded=true] {
   background: #000;
 }*/
-
-.mat-raised-button {
-  letter-spacing: 1.25px;
-}
 
 .mat-simple-snackbar {
   letter-spacing: 0.25px;
@@ -64,11 +42,6 @@ mat-nav-list {
   }
 }
 
-/* || GENERAL STYLES */
-
-/*
-  mat-chip
-*/
 mat-chip {
   line-height: 20px;
   // letter-spacing: .25px;
@@ -111,10 +84,6 @@ mat-chip {
   color: var(--medium-emphasis-color);
 }
 
-
-/**
-  MATERIAL DESIGN TYPOGRAPHY
- */
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
 }
@@ -156,12 +125,14 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
+  letter-spacing: .15px;
 }
 
 .subtitle-2 {
   font-weight: 500;
   font-size: 14px;
   line-height: 24px;
+  letter-spacing: .1px;
 }
 
 .body-1 {
