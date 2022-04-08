@@ -55,10 +55,6 @@ $chip-typography: mat.define-typography-config(
 );
 
 @include mat.tabs-typography($headlines-and-subtitles-typography);
-
-// @include mat.list-typography($list-typography);
-// @include mat.chips-typography($chip-typography);
-// @include mat.dialog-typography($custom-typography);
 @include mat.form-field-typography($body-and-captions-typography);
 @include mat.radio-typography($body-and-captions-typography);
 @include mat.option-typography($body-and-captions-typography);
@@ -71,12 +67,9 @@ $chip-typography: mat.define-typography-config(
 @include mat.checkbox-typography($body-and-captions-typography);
 @include mat.snack-bar-typography($body-and-captions-typography);
 @include mat.menu-typography($body-and-captions-typography);
-// @include mat.button-typography($body-and-captions-typography);
 @include mat.optgroup-typography($body-and-captions-typography);
 @include mat.option-typography($badge-typo);
 @include mat.autocomplete-typography($body-and-captions-typography);
-// @include mat.badge-typography($badge-typo);
-// @include mat.chips-typography($badge-typo);
 @include mat.snack-bar-typography($badge-typo);
 @include mat.card-typography($badge-typo);
 
