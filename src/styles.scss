@@ -95,7 +95,6 @@ html {
   }
 }
 
-
 html, body {
   height: 100%;
 }
@@ -117,20 +116,6 @@ svg {
 
 .mat-action-row {
   padding: 16px 16px 16px 24px !important;
-}
-
-//
-.mat-menu-panel::-webkit-scrollbar, .mat-select-panel::-webkit-scrollbar {
-  width: 6px;
-}
-
-.mat-menu-panel::-webkit-scrollbar-thumb, .mat-select-panel::-webkit-scrollbar-thumb {
-  background: rgb(95 99 104 / 0.24);
-  border-radius: 12px;
-}
-
-.mat-menu-panel::-webkit-scrollbar-track, .mat-select-panel::-webkit-scrollbar-track {
-  border-radius: 10px;
 }
 
 .more-menu {

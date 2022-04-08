@@ -18,7 +18,6 @@
 }
 
 
-
 button[aria-expanded='true'] {
   // background-color: rgba(0, 0, 0, 0.12);
 
@@ -69,30 +68,13 @@ app-gf-icon {
 }
 
 // Material Design Mini Menu
-::ng-deep .sort-menu {
-  min-width: 192px !important;
-
-  .mat-menu-item {
-    height: 32px;
-    line-height: 32px;
-    padding-left: 8px;
-  }
+.inek-menu-item {
+  height: 32px;
+  line-height: 32px;
+  padding-left: 8px;
 }
 
-.menu-active {
+.inek-menu-item-active {
   background-color: #BB86FC1F !important;
   color: black;
 }
-
-/*
-.mat-menu-item.active {
-  background-color: #e8f0fe;
-}
-
-.mat-menu-item-highlighted {
-  // background-color: rgba(98, 0, 238, 0.12) !important;
-  background-color: rgba(0, 0, 0, 0.12) !important;
-  // color: #6200EE;
-  color: black;
-}
-*/

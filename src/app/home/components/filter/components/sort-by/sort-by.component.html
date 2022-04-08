@@ -62,11 +62,12 @@
   <ng-template matMenuContent>
     <a
       mat-menu-item
+      class="inek-menu-item"
       routerLink="/"
       [queryParams]="{ sort: item.sort ? item.sort : null }"
       *ngFor="let item of items; let index = index"
       #menuItem
-      [class.menu-active]='selectedIndex === index'
+      [class.inek-menu-item-active]='selectedIndex === index'
       (click)="menuItemClicked(menuItem, index)"
     >{{ item.label }}</a>
   </ng-template>
