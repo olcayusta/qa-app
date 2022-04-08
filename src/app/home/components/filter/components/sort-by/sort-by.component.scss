@@ -5,11 +5,19 @@
 .container {
   display: flex;
   align-items: center;
+  column-gap: 8px;
+
+  .menu-button {
+    font-family: Archivo, sans-serif;
+
+    mat-icon {
+      margin-right: 8px;
+    }
+  }
+
 }
 
-button {
-  // font-family: Archivo, sans-serif;
-}
+
 
 button[aria-expanded='true'] {
   // background-color: rgba(0, 0, 0, 0.12);
@@ -68,8 +76,6 @@ app-gf-icon {
     height: 32px;
     line-height: 32px;
     padding-left: 8px;
-    letter-spacing: .25px;
-    font-family: Archivo, sans-serif;
   }
 }
 
@@ -90,17 +96,3 @@ app-gf-icon {
   color: black;
 }
 */
-
-.menu-button {
-  letter-spacing: 0;
-  padding: 0 !important;
-  // text-transform: uppercase;
-  font-family: Archivo, sans-serif;
-  margin-left: 24px;
-  font-weight: 500;
-
-  mat-icon {
-    margin-right: 8px;
-  }
-
-}

@@ -1,15 +1,6 @@
 @use "styles/reset";
 @use '@angular/material' as mat;
 
-/*@use '@angular/cdk/overlay' as overlay;
-@use '@angular/cdk/a11y' as a11y;
-@use '@angular/material/core/focus-indicators/focus-indicators' as focus-indicators;
-
-@include mat.ripple();
-@include a11y.a11y-visually-hidden();
-@include overlay.overlay();
-@include focus-indicators.private-strong-focus-indicators-positioning();*/
-
 $typography-configuration: mat.define-typography-config(
   $font-family: 'Archivo, "Helvetica Neue", sans-serif',
   $display-4: mat.define-typography-level(112px, 112px, 300),
@@ -44,10 +35,6 @@ $body-and-captions-typography: mat.define-typography-config(
 $snackbar-typo: mat.define-typography-config(
   $font-family: 'Archivo, sans-serif',
 );
-
-/*
-  main typo
-*/
 
 $my-custom-level: mat.define-typography-level(14px, 24px, 700, $letter-spacing: 10px);
 
@@ -239,10 +226,10 @@ svg {
 }
 
 [standardized-themed-scrollbar]::-webkit-scrollbar-thumb {
-  height: 56px;
+  min-height: 56px;
   border-radius: 8px;
   border: 4px solid transparent;
-  background-color: var(--thumb-bg-color);
+  background-color: var(--scrollbar-thumb-background);
   background-clip: content-box;
 }
 
