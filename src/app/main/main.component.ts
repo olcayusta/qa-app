@@ -67,17 +67,17 @@ export class MainComponent implements OnInit, AfterViewInit {
     });
   }
 
-  sidenavOpenedStart() {
-    this.loadNavDrawerComponent();
-    this.hideScrollBar();
-  }
-
   hideScrollBar() {
     this.document.body.style.overflow = 'hidden';
   }
 
   showScrollBar() {
     this.document.body.style.overflow = '';
+  }
+
+  async sidenavOpenedStart() {
+    await this.loadNavDrawerComponent();
+    this.hideScrollBar();
   }
 
   sidenavClosedStart(): void {

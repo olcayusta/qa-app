@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs';
 import {
+  Event,
   NavigationCancel,
   NavigationError,
   ResolveEnd,
@@ -21,7 +22,7 @@ export class ProgressBarComponent implements OnInit {
   constructor(private router: Router, private spinnerService: SpinnerService) {}
 
   ngOnInit(): void {
-    this.router.events.subscribe((event) => {
+    this.router.events.subscribe((event: Event) => {
       if (event instanceof ResolveStart) {
         this.spinnerService.show();
       }
