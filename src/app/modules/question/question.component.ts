@@ -19,7 +19,11 @@ import { FavoriteService } from '@modules/favorites/services/favorite.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ShareDialogComponent } from '@shared/components/share-dialog/share-dialog.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Overlay, OverlayRef, ScrollStrategyOptions } from '@angular/cdk/overlay';
+import {
+  Overlay,
+  OverlayRef,
+  ScrollStrategyOptions
+} from '@angular/cdk/overlay';
 import { AuthService } from '@auth/auth.service';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { DOCUMENT } from '@angular/common';
@@ -74,16 +78,12 @@ export class QuestionComponent implements OnInit, OnDestroy {
     this.question$ = this.route.data.pipe(
       map((data) => data['question']),
       tap(({ id: questionId }) => {
-        const observableA = this.socketService.subject.multiplex(
-          () => ({ event: 'watch', subscribe: `subscribe_${questionId}` }),
-          () => ({ event: 'watch', unsubscribe: `subscribe_${questionId}` }),
-          (message) => message.event === `subscribe_${questionId}`
-        );
-
-        this.subA = observableA.subscribe((messageForA) => {
-          console.log(messageForA);
-          this.snackBar.open('1 yeni cevap gönderildi', 'TAMAM');
-        });
+        this.subA = this.socketService
+          .watch('watch', `q:${questionId}`)
+          .subscribe((messageForA) => {
+            console.log(messageForA);
+            this.snackBar.open('1 yeni cevap gönderildi', 'TAMAM');
+          });
       })
     );
 
@@ -100,7 +100,10 @@ export class QuestionComponent implements OnInit, OnDestroy {
    * @param questionId
    */
   addToFavoriteToQuestion(questionId: number): void {
-    this.snackBar.open('Bu soruyu bir favori listesine eklemek için oturum açın', 'TAMAM');
+    this.snackBar.open(
+      'Bu soruyu bir favori listesine eklemek için oturum açın',
+      'TAMAM'
+    );
     /*   this.favoriteService.addToFavorite(questionId).subscribe((value) => {
       console.log(value);
     });*/
@@ -159,7 +162,9 @@ export class QuestionComponent implements OnInit, OnDestroy {
   }
 
   async openFlagDialog() {
-    const { FlagDialogComponent } = await import('@dialogs/flag-dialog/flag-dialog.component');
+    const { FlagDialogComponent } = await import(
+      '@dialogs/flag-dialog/flag-dialog.component'
+    );
     this.dialog.open(FlagDialogComponent, {
       autoFocus: false,
       minWidth: 560

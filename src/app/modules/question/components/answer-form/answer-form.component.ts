@@ -18,7 +18,7 @@ import { MarkedService } from '@shared/services/marked.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AnswerFormComponent implements OnInit, AfterViewInit {
-  answerControl = new FormControl('Dua lipa is beautiful singer!', {
+  answerControl = new FormControl('Dua lipa is a beautiful singer!', {
     validators: [Validators.required, Validators.minLength(24)]
   });
 

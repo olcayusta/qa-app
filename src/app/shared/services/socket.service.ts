@@ -14,7 +14,7 @@ interface SocketData {
   message = 'message'
 }*/
 
-interface SubjectData {
+export interface SubjectData {
   event: string;
   payload: object;
 }
@@ -43,6 +43,14 @@ export class SocketService {
         error: (e) => console.error(e),
         complete: () => console.info('complete')
       });*/
+  }
+
+  watch(event: string, subscribe: string): Observable<SubjectData> {
+    return this.subject.multiplex(
+      () => ({ event: 'watch', subscribe: subscribe }),
+      () => ({ event: 'watch', unsubscribe: subscribe }),
+      (message) => message.event === subscribe
+    );
   }
 
   sendMessage(message: string) {
