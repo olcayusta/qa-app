@@ -126,6 +126,5 @@
         }
       }
     }
-  },
-  "defaultProject": "qa-app-v1"
+  }
 }
