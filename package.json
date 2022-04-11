@@ -38,6 +38,7 @@
     "typescript": "^4.6.3"
   },
   "prettier": {
-    "singleQuote": true
+    "singleQuote": true,
+    "printWidth": 120
   }
 }
