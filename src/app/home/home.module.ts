@@ -19,6 +19,7 @@ import { HomeGridListComponent } from './components/home-grid-list/home-grid-lis
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatIconModule } from '@angular/material/icon';
 
 function scrollFactory(overlay: Overlay): () => CloseScrollStrategy {
   return () => overlay.scrollStrategies.close();
@@ -45,7 +46,8 @@ function scrollFactory(overlay: Overlay): () => CloseScrollStrategy {
     MatChipsModule,
     MatInputModule,
     MatSelectModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatIconModule
   ],
   providers: [
     {

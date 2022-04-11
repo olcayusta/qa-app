@@ -15,6 +15,7 @@ import { ActivatedRoute } from '@angular/router';
 interface Food {
   value: string;
   viewValue: string;
+  disabled?: boolean;
 }
 
 @Component({
@@ -42,9 +43,9 @@ export class SortByComponent implements OnInit, AfterViewInit {
   items = [
     { sort: '', label: 'Eklenme tarihi (en yeni)' },
     { sort: 'activity', label: 'Güncelleme tarihi (en yeni)' },
-    { sort: 'popularity', label: 'Skor sayısı (en yüksek)' },
-    { sort: 'date', label: 'Most frequent' },
-    { sort: 'activity', label: 'Bounty ending soon' }
+    { sort: 'popularity', label: 'Highest score (en yüksek)' },
+    { sort: 'date', label: 'Most frequent ', disabled: true },
+    { sort: 'activity', label: 'Bounty ending soon', disabled: true }
   ];
 
   selectedIndex = 0;

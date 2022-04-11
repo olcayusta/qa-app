@@ -1,38 +1,53 @@
-<header>
-  <h2 class='headline-2'>Sorularım</h2>
+<ng-container *ngIf="isLoggedIn$ | async; else notLogged">
+  <header>
+    <h2 class='headline-2'>Sorularım</h2>
+  </header>
 
-<!--  <mat-chip-list selectable>
-    <mat-chip color="primary" selected>
-      <mat-icon>tune</mat-icon>
-    </mat-chip>
-    <mat-chip>Sorular</mat-chip>
-    <mat-chip>Cevaplar</mat-chip>
-  </mat-chip-list>-->
+  <!--<qa-home-question-list-item *ngFor="let question of questions$ | async" [question]="question"></qa-home-question-list-item>-->
 
-</header>
+  <div class='grid-list'>
+    <div class='grid-item' *ngFor='let question of questions$ | async'>
+      <div class='title'>
+        <a routerLink='/question/{{question.id}}'>{{question.title}}</a>
+      </div>
+      <div class='subtitle'>
+        <!--<span>{{question.user.displayName}}</span>
+        <span class="bracket">—</span>-->
 
-<!--<qa-home-question-list-item *ngFor="let question of questions$ | async" [question]="question"></qa-home-question-list-item>-->
+        <!-- Answered -->
+        <ng-container *ngIf='question.answer'>
+          <!--<img src="{{question.answer.user.picture}}" alt="{{question.answer.user.displayName}}">-->
+          <a routerLink='/user/{{question.answer.user.id}}'>
+            <span>{{question.answer?.user?.displayName}}</span>
+          </a>
+          <span class='bracket'>—</span>
+          <span>{{question.answer.creationTime | timeAgo}} yanıtladı</span>
+        </ng-container>
+      </div>
 
-<div class='grid-list'>
-  <div class='grid-item' *ngFor='let question of questions$ | async'>
-    <div class='title'>
-      <a routerLink='/question/{{question.id}}'>{{question.title}}</a>
+      <mat-divider></mat-divider>
     </div>
-    <div class='subtitle'>
-      <!--<span>{{question.user.displayName}}</span>
-      <span class="bracket">—</span>-->
-
-      <!-- Answered -->
-      <ng-container *ngIf='question.answer'>
-        <!--<img src="{{question.answer.user.picture}}" alt="{{question.answer.user.displayName}}">-->
-        <a routerLink='/user/{{question.answer.user.id}}'>
-          <span>{{question.answer?.user?.displayName}}</span>
-        </a>
-        <span class='bracket'>—</span>
-        <span>{{question.answer.creationTime | timeAgo}} yanıtladı</span>
-      </ng-container>
-    </div>
-
-    <mat-divider></mat-divider>
   </div>
-</div>
+</ng-container>
+
+<ng-template #notLogged>
+  <div class="browse-results-renderer">
+    <div class="promo-image">
+      <app-gf-icon name="question_answer"></app-gf-icon>
+    </div>
+    <div class="promo-title headline-5">
+      Favori videolarınızın keyfini çıkarın
+    </div>
+    <div class="promo-subtitle">
+      Beğendiğiniz veya kaydettiğiniz videolara erişmek için oturum açın
+    </div>
+    <div>
+      <a routerLink="/login" mat-stroked-button color="primary">
+        OTURUM AÇ
+      </a>
+    </div>
+  </div>
+</ng-template>
+
+
+

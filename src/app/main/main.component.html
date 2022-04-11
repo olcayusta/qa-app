@@ -4,7 +4,7 @@
     <ng-container *ngComponentOutlet='navDrawerComponent'></ng-container>
     <!--<ng-container #navDrawerComponentRef></ng-container>-->
   </mat-sidenav>
-  <mat-sidenav position='end' [mode]='mode' #sheet [autoFocus]='false' fixedInViewport
+  <mat-sidenav #sheet position='end' [autoFocus]='false' fixedInViewport [mode]='mode'
                (openedStart)='sheetOpened()' (closedStart)='sheetClosed()'
                [fixedTopGap]="mode == 'side' ? 64 : 0">
 
@@ -14,23 +14,23 @@
 
   <mat-sidenav-content id='drawer-content'>
     <div id='gf-full-page'>
-      <inek-top-app-bar (openSheet)='loadSidenavSheetComponent(); sheet.toggle()' inekSticky></inek-top-app-bar>
+      <id-top-app-bar (openSheet)='loadSidenavSheetComponent(); sheet.toggle()' inekSticky></id-top-app-bar>
       <main>
         <div id='content'>
           <div class='my-content'>
             <router-outlet></router-outlet>
 
-          <!--  <div class='fixed-chip'>
-              <mat-chip class='mat-elevation-z4'>New Releases</mat-chip>
-            </div>-->
+            <!--  <div class='fixed-chip'>
+                <mat-chip class='mat-elevation-z4'>New Releases</mat-chip>
+              </div>-->
 
-<!--            <div class='fixed-fab-btn with-icon'>
-              <a mat-fab routerLink='/create' class='extended-fab' inekExtendedFab id='extended-fab'>
-               &lt;!&ndash; <mat-icon>create</mat-icon>&ndash;&gt;
-                <app-gf-icon name='add'></app-gf-icon>
-                <span>Soru sor</span>
-              </a>
-            </div>-->
+            <!--            <div class='fixed-fab-btn with-icon'>
+                          <a mat-fab routerLink='/create' class='extended-fab' inekExtendedFab id='extended-fab'>
+                           &lt;!&ndash; <mat-icon>create</mat-icon>&ndash;&gt;
+                            <app-gf-icon name='add'></app-gf-icon>
+                            <span>Soru sor</span>
+                          </a>
+                        </div>-->
 
             <!--        <div class='fixed-fab-btn'>
                       <a mat-fab matTooltip='Oluştur'>

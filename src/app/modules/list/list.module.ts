@@ -8,6 +8,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [ListComponent],
@@ -18,7 +19,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatDividerModule,
     MatBadgeModule,
     MatChipsModule,
-    MatIconModule
+    MatIconModule,
+    MatButtonModule
   ]
 })
 export class ListModule {}

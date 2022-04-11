@@ -16,10 +16,15 @@
     <span>Sıralama ölçütü</span>
   </button>
 
-  <button mat-button class="menu-button" (click)='openFilter.emit()'>
+  <button mat-button class="menu-button" [matMenuTriggerFor]='filterMenu'>
     <app-gf-icon name='filter_list'></app-gf-icon>
     <span>Filtreler</span>
   </button>
+
+<!--  <button mat-button class="menu-button" [matMenuTriggerFor]='filterMenu' (click)='openFilter.emit()'>
+    <app-gf-icon name='filter_list'></app-gf-icon>
+    <span>Filtreler</span>
+  </button>-->
 
   <!--<span class="filter-info-text">Sıralama ölçütü:</span>
   <button
@@ -61,6 +66,7 @@
 <mat-menu #sortMenu="matMenu" class="sort-menu">
   <ng-template matMenuContent>
     <a
+      [disabled]='item.disabled'
       mat-menu-item
       class="inek-menu-item"
       routerLink="/"
@@ -76,7 +82,7 @@
 <mat-menu #filterMenu="matMenu" class="sort-menu">
   <ng-template matMenuContent>
     <button mat-menu-item>
-      <!--<mat-icon>check</mat-icon>-->
+      <mat-icon>check</mat-icon>
       No answers
     </button>
     <button mat-menu-item>

@@ -19,15 +19,21 @@ export class QuestionService {
   }
 
   getUnansweredQuestions(): Observable<Question[]> {
-    return this.http.get<Question[]>(`${environment.apiUrl}/questions/unanswered`);
+    return this.http.get<Question[]>(
+      `${environment.apiUrl}/questions/unanswered`
+    );
   }
 
   getQuestion(questionId: number): Observable<Question> {
-    return this.http.get<Question>(`${environment.apiUrl}/questions/${questionId}`);
+    return this.http.get<Question>(
+      `${environment.apiUrl}/questions/${questionId}`
+    );
   }
 
   getMoreQuestions(offset: number = 0): Observable<Question[]> {
-    return this.http.get<Question[]>(`${environment.apiUrl}/questions/loadmore/${offset}`);
+    return this.http.get<Question[]>(
+      `${environment.apiUrl}/questions/loadmore/${offset}`
+    );
   }
 
   getFeedContent(page: number = 0): Observable<Question[]> {
@@ -41,7 +47,11 @@ export class QuestionService {
     });
   }
 
-  saveQuestion(title: string, content: string, tags: number[]): Observable<Question> {
+  saveQuestion(
+    title: string,
+    content: string,
+    tags: number[]
+  ): Observable<Question> {
     return this.http.post<Question>(`${environment.apiUrl}/questions`, {
       title,
       content,
