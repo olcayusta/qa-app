@@ -14,9 +14,7 @@
       margin-right: 8px;
     }
   }
-
 }
-
 
 button[aria-expanded='true'] {
   // background-color: rgba(0, 0, 0, 0.12);
@@ -77,4 +75,11 @@ app-gf-icon {
 .inek-menu-item-active {
   background-color: #BB86FC1F !important;
   color: black;
+}
+
+.divider-text {
+  display: flex;
+  font-size: 10px;
+  line-height: 16px;
+  padding: 8px;
 }

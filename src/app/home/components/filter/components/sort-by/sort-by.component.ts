@@ -50,6 +50,23 @@ export class SortByComponent implements OnInit, AfterViewInit {
 
   selectedIndex = 0;
 
+  filters = [
+    {
+      viewValue: 'No answers',
+      checked: false
+    },
+    {
+      viewValue: 'No accepted answers',
+      checked: false
+    },
+    {
+      viewValue: 'Has bounty',
+      checked: false
+    }
+  ];
+
+  selectedFilterIndex!: number;
+
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
@@ -68,5 +85,10 @@ export class SortByComponent implements OnInit, AfterViewInit {
    */
   menuItemClicked(menuItem: MatMenuItem, index: number) {
     this.selectedIndex = index;
+  }
+
+  filterMenuItemClicked(index: number) {
+    this.filters[index].checked = true;
+    this.selectedFilterIndex = index;
   }
 }

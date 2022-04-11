@@ -1,5 +1,4 @@
-<div class="container">
-
+<div class='container'>
   <!--  <button mat-button [matMenuTriggerFor]="filterMenu">
       <span>Tüm oynatma listeleri</span>
       <mat-icon class="material-icons-outlined">keyboard_arrow_down</mat-icon>
@@ -11,20 +10,25 @@
       <button mat-menu-item>Albümler ve Single'lar</button>
     </mat-menu>-->
 
-  <button mat-button class="menu-button" [matMenuTriggerFor]="sortMenu" matTooltip='Yorumları sırala'>
+  <button
+    mat-button
+    class='menu-button'
+    [matMenuTriggerFor]='sortMenu'
+    matTooltip='Yorumları sırala'
+  >
     <app-gf-icon name='sort'></app-gf-icon>
     <span>Sıralama ölçütü</span>
   </button>
 
-  <button mat-button class="menu-button" [matMenuTriggerFor]='filterMenu'>
+  <button mat-button class='menu-button' [matMenuTriggerFor]='filterMenu'>
     <app-gf-icon name='filter_list'></app-gf-icon>
-    <span>Filtreler</span>
+    <span> Filtreler </span>
   </button>
 
-<!--  <button mat-button class="menu-button" [matMenuTriggerFor]='filterMenu' (click)='openFilter.emit()'>
-    <app-gf-icon name='filter_list'></app-gf-icon>
-    <span>Filtreler</span>
-  </button>-->
+  <!--  <button mat-button class="menu-button" [matMenuTriggerFor]='filterMenu' (click)='openFilter.emit()'>
+      <app-gf-icon name='filter_list'></app-gf-icon>
+      <span>Filtreler</span>
+    </button>-->
 
   <!--<span class="filter-info-text">Sıralama ölçütü:</span>
   <button
@@ -63,50 +67,54 @@
    </button>-->
 </div>
 
-<mat-menu #sortMenu="matMenu" class="sort-menu">
+<mat-menu #sortMenu='matMenu' class='sort-menu'>
   <ng-template matMenuContent>
     <a
       [disabled]='item.disabled'
       mat-menu-item
-      class="inek-menu-item"
-      routerLink="/"
-      [queryParams]="{ sort: item.sort ? item.sort : null }"
-      *ngFor="let item of items; let index = index"
+      class='inek-menu-item'
+      routerLink='/'
+      [queryParams]='{ sort: item.sort ? item.sort : null }'
+      *ngFor='let item of items; let index = index'
       #menuItem
       [class.inek-menu-item-active]='selectedIndex === index'
-      (click)="menuItemClicked(menuItem, index)"
-    >{{ item.label }}</a>
+      (click)='menuItemClicked(menuItem, index)'
+    >
+      {{ item.label }}
+    </a>
   </ng-template>
 </mat-menu>
 
-<mat-menu #filterMenu="matMenu" class="sort-menu">
+<mat-menu #filterMenu='matMenu' class='sort-menu'>
   <ng-template matMenuContent>
-    <button mat-menu-item>
-      <mat-icon>check</mat-icon>
-      No answers
+    <button
+      mat-menu-item
+      class='inek-menu-item'
+      *ngFor='let filter of filters; let index = index'
+      (click)='filterMenuItemClicked(index)'
+    >
+      <mat-icon *ngIf='filter.checked'>check</mat-icon>
+      {{ filter.viewValue }}
     </button>
-    <button mat-menu-item>
-     <!-- <mat-icon>check</mat-icon>-->
-      No accepted answers
-    </button>
-    <button mat-menu-item>Has bounty</button>
-    <button mat-menu-item [matMenuTriggerFor]="subMenu">Filtrelerim</button>
+    <span class='divider-text'>CUSTOM FILTERS</span>
+    <button mat-menu-item [matMenuTriggerFor]='subMenu'>Filtrelerim</button>
   </ng-template>
 </mat-menu>
 
-<mat-menu #subMenu="matMenu">
- <ng-template matMenuContent>
-   <button mat-menu-item>TypeScript</button>
-   <button mat-menu-item>Unanswered (my tags)</button>
-   <button mat-menu-item>TypeScript</button>
-   <button mat-menu-item>Angular unanswered</button>
-   <button mat-menu-item>My Tags</button>
-   <button mat-menu-item>iyi iyi</button>
-   <button mat-menu-item>bla bla</button>
-   <button mat-menu-item>bla bla</button>
-   <button mat-menu-item>bla bla</button>
-   <button mat-menu-item>bla bla</button>
- </ng-template>
+<mat-menu #subMenu='matMenu'>
+  <ng-template matMenuContent>
+    <button mat-menu-item>bbb</button>
+    <button mat-menu-item>TypeScript</button>
+    <button mat-menu-item>Unanswered (my tags)</button>
+    <button mat-menu-item>TypeScript</button>
+    <button mat-menu-item>Angular unanswered</button>
+    <button mat-menu-item>My Tags</button>
+    <button mat-menu-item>iyi iyi</button>
+    <button mat-menu-item>bla bla</button>
+    <button mat-menu-item>bla bla</button>
+    <button mat-menu-item>bla bla</button>
+    <button mat-menu-item>bla bla</button>
+  </ng-template>
 </mat-menu>
 
 <!--
