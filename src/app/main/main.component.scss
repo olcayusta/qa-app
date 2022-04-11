@@ -7,9 +7,6 @@ main {
   padding-bottom: 64px;
 }
 
-/*
-  mat-sidenav-container
-*/
 mat-sidenav-container {
   background-color: var(--surface);
   min-height: 100vh;
@@ -17,39 +14,33 @@ mat-sidenav-container {
   // min-height: 100vh;
   // height: auto !important;
   // overflow: unset !important;
-}
 
-/**
-  mat-sidenav-content
- */
-mat-sidenav-content {
-  min-height: 100vh;
-  z-index: 2;
+  mat-sidenav-content {
+    min-height: 100vh;
+    z-index: 2;
 
-  // overflow: unset !important;
+    // overflow: unset !important;
+  }
+
+  mat-sidenav {
+    width: 360px;
+    min-height: 100vh;
+    // padding: 12px;
+    background-color: var(--drawer-background);
+  }
+
+  .mat-drawer.mat-drawer-side {
+    z-index: 1 !important;
+  }
+
+  .mat-drawer.mat-drawer-end {
+    width: 364px;
+    background-color: #fff;
+  }
 }
 
 ::ng-deep .mat-drawer-backdrop.mat-drawer-shown {
   background-color: rgba(0, 0, 0, .32);
-}
-
-/*
-  mat-sidenav
-*/
-mat-sidenav {
-  width: 360px;
-  min-height: 100vh;
-  // padding: 12px;
-  background-color: var(--drawer-background);
-}
-
-.mat-drawer.mat-drawer-end {
-  width: 364px;
-  background-color: #fff;
-}
-
-.mat-drawer.mat-drawer-side {
-  z-index: 1 !important;
 }
 
 .my-content {

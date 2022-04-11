@@ -1,7 +1,4 @@
 <mat-sidenav-container id='drawer-container'>
-  <!--
-   Material Design: Navigation Drawer
-   -->
   <mat-sidenav
     #sidenav
     position='start'
@@ -12,10 +9,6 @@
   >
     <ng-container *ngComponentOutlet='navDrawerComponent'></ng-container>
   </mat-sidenav>
-
-  <!--
-    Material Design: Sheet
-   -->
   <mat-sidenav
     #sheet
     position='end'
@@ -29,7 +22,7 @@
     <ng-container *ngComponentOutlet='sideSheetComponent'></ng-container>
   </mat-sidenav>
 
-  <mat-sidenav-content id='drawer-content'>
+  <mat-sidenav-content>
     <id-top-app-bar
       inekSticky
       (openSheet)='loadSidenavSheetComponent(); sheet.toggle()'
