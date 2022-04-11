@@ -11,27 +11,12 @@ header {
 .header-user {
   display: flex;
   align-items: center;
-}
 
-p {
-  font-size: 14px;
-  line-height: 20px;
-  color: var(--icon-color);
-  margin: 0;
-}
-
-.user-avatar-placeholder {
-  width: 160px;
-  height: 160px;
-  margin-right: 24px;
-}
-
-.user-avatar {
-  display: inline-block;
-  width: 160px;
-  height: 160px;
-  border-radius: 100%;
-  object-fit: cover;
+  &__avatar {
+    width: 160px;
+    height: 160px;
+    margin-right: 24px;
+  }
 }
 
 .meta-items {
