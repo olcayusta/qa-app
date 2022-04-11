@@ -1,8 +1,5 @@
 <mat-sidenav-container id='drawer-container'>
-
-  <!--
-    Material Design: Navigation Drawer
-  -->
+  <!-- Material Design: Navigation Drawer -->
   <mat-sidenav
     #sidenav
     position='start'
@@ -15,9 +12,7 @@
     <!--<ng-container #navDrawerComponentRef></ng-container>-->
   </mat-sidenav>
 
-  <!--
-    Material Design: Sheet
-  -->
+  <!-- Material Design: Sheet -->
   <mat-sidenav
     #sheet
     position='end'
@@ -32,40 +27,38 @@
   </mat-sidenav>
 
   <mat-sidenav-content id='drawer-content'>
-    <div id='gf-full-page'>
-      <id-top-app-bar
-        inekSticky
-        (openSheet)='loadSidenavSheetComponent(); sheet.toggle()'
-      ></id-top-app-bar>
-      <main>
-        <div id='content'>
-          <div class='my-content'>
-            <router-outlet></router-outlet>
+    <id-top-app-bar
+      inekSticky
+      (openSheet)='loadSidenavSheetComponent(); sheet.toggle()'
+    ></id-top-app-bar>
+    <main>
+      <div id='content'>
+        <div class='my-content'>
+          <router-outlet></router-outlet>
 
-            <!--  <div class='fixed-chip'>
-                <mat-chip class='mat-elevation-z4'>New Releases</mat-chip>
-              </div>-->
+          <!--  <div class='fixed-chip'>
+              <mat-chip class='mat-elevation-z4'>New Releases</mat-chip>
+            </div>-->
 
-            <!--            <div class='fixed-fab-btn with-icon'>
-                          <a mat-fab routerLink='/create' class='extended-fab' inekExtendedFab id='extended-fab'>
-                           &lt;!&ndash; <mat-icon>create</mat-icon>&ndash;&gt;
-                            <app-gf-icon name='add'></app-gf-icon>
-                            <span>Soru sor</span>
-                          </a>
-                        </div>-->
+          <!--            <div class='fixed-fab-btn with-icon'>
+                        <a mat-fab routerLink='/create' class='extended-fab' inekExtendedFab id='extended-fab'>
+                         &lt;!&ndash; <mat-icon>create</mat-icon>&ndash;&gt;
+                          <app-gf-icon name='add'></app-gf-icon>
+                          <span>Soru sor</span>
+                        </a>
+                      </div>-->
 
-            <!--        <div class='fixed-fab-btn'>
-                      <a mat-fab matTooltip='Oluştur'>
-                        <mat-icon fontSet='material-icons-outlined'>create</mat-icon>
-                      </a>
-                    </div>-->
+          <!--        <div class='fixed-fab-btn'>
+                    <a mat-fab matTooltip='Oluştur'>
+                      <mat-icon fontSet='material-icons-outlined'>create</mat-icon>
+                    </a>
+                  </div>-->
 
-            <!--     <div class="content-update-chip">
-                   <mat-chip class='mat-elevation-z4'>Yeni öneriler</mat-chip>
-                 </div>-->
-          </div>
+          <!--     <div class="content-update-chip">
+                 <mat-chip class='mat-elevation-z4'>Yeni öneriler</mat-chip>
+               </div>-->
         </div>
-      </main>
-    </div>
+      </div>
+    </main>
   </mat-sidenav-content>
 </mat-sidenav-container>

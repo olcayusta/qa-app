@@ -56,10 +56,7 @@ export class AnswerFormComponent implements OnInit, AfterViewInit {
     check: ['- [x] ', ''],
     image: ['![alt text](image.jpg)', ''],
     hr: ['---\n', ''],
-    table: [
-      '| Header | Title |\n| ----------- | ----------- |\n| Paragraph | Text |\n',
-      ''
-    ],
+    table: ['| Header | Title |\n| ----------- | ----------- |\n| Paragraph | Text |\n', ''],
     title: ['# ', '']
   };
 
@@ -82,23 +79,17 @@ export class AnswerFormComponent implements OnInit, AfterViewInit {
 
   formSubmit(): void {
     const questionId = Number(this.route.snapshot.paramMap.get('questionId'));
-    this.answerService
-      .create(questionId, this.answerControl.value)
-      .subscribe((value) => {
-        console.log(value);
-      });
+    this.answerService.create(questionId, this.answerControl.value).subscribe((value) => {
+      console.log(value);
+    });
   }
 
   getSelection(): string {
     if (window.getSelection()?.toString()) {
       return window.getSelection()?.toString()!;
     } else {
-      const { selectionStart, selectionEnd } =
-        this.textAreaElement.nativeElement;
-      return this.textAreaElement.nativeElement.value.substring(
-        selectionStart,
-        selectionEnd
-      );
+      const { selectionStart, selectionEnd } = this.textAreaElement.nativeElement;
+      return this.textAreaElement.nativeElement.value.substring(selectionStart, selectionEnd);
     }
   }
 
@@ -107,9 +98,7 @@ export class AnswerFormComponent implements OnInit, AfterViewInit {
     const { nativeElement } = this.textAreaElement;
     const { value, selectionStart, selectionEnd } = nativeElement;
     this.answerControl.patchValue(
-      value.substring(0, selectionStart) +
-        text +
-        value.substring(selectionEnd, value.length)
+      value.substring(0, selectionStart) + text + value.substring(selectionEnd, value.length)
     );
 
     // Focus
@@ -137,10 +126,7 @@ export class AnswerFormComponent implements OnInit, AfterViewInit {
 
     const selectionText = this.getSelection();
 
-    if (
-      selectionText.startsWith(valueBefore) &&
-      selectionText.endsWith(valueAfter)
-    ) {
+    if (selectionText.startsWith(valueBefore) && selectionText.endsWith(valueAfter)) {
       let text;
 
       if (valueAfter.length === 0) {
@@ -150,18 +136,12 @@ export class AnswerFormComponent implements OnInit, AfterViewInit {
       }
 
       this.replaceSelection(text);
-      this.setSelection(
-        selectionStart,
-        selectionEnd - (valueBefore.length + valueAfter.length)
-      );
+      this.setSelection(selectionStart, selectionEnd - (valueBefore.length + valueAfter.length));
     } else {
       const selectedText = this.getSelection();
       this.replaceSelection(valueBefore + selectedText + valueAfter);
 
-      this.setSelection(
-        selectionStart,
-        selectionEnd + (valueBefore.length + valueAfter.length)
-      );
+      this.setSelection(selectionStart, selectionEnd + (valueBefore.length + valueAfter.length));
 
       // nativeElement.selectionStart = selectionStart;
       // nativeElement.selectionEnd = selectionEnd + valueAfter.length;

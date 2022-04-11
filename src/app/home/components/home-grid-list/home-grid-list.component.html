@@ -1,9 +1,18 @@
 <div class='items'>
-  <inek-home-question-list-item class='hero' *ngFor='let question of questions'
-                                [question]='question'></inek-home-question-list-item>
+  <inek-home-question-list-item
+    class='hero'
+    *ngFor='let question of questions'
+    [question]='question'
+  >
+  </inek-home-question-list-item>
 </div>
 
-<div id='anchor' appIsVisible (intersected)='loadMoreQuestions()' *ngIf='questions && !dataFinished'>
+<div
+  id='anchor'
+  appIsVisible
+  (intersected)='loadMoreQuestions()'
+  *ngIf='questions && !dataFinished'
+>
   <mat-spinner diameter='32' *ngIf='loader'></mat-spinner>
 </div>
 
@@ -19,5 +28,3 @@
 </ng-container>
 
 -->
-
-
