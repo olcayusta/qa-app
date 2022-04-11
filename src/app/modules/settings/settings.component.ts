@@ -13,10 +13,10 @@ import { ProfilePictureDialogComponent } from '@modules/settings/components/prof
 export class SettingsComponent implements OnInit {
   user!: User;
 
-  constructor(private activatedRoute: ActivatedRoute, private dialog: MatDialog) {}
+  constructor(private route: ActivatedRoute, private dialog: MatDialog) {}
 
   ngOnInit(): void {
-    this.user = this.activatedRoute.snapshot.data['user'];
+    this.user = this.route.snapshot.data['user'];
   }
 
   async openProfilePictureDialog() {

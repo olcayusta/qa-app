@@ -1,5 +1,7 @@
 <mat-sidenav-container id='drawer-container'>
-  <!-- Material Design: Navigation Drawer -->
+  <!--
+   Material Design: Navigation Drawer
+   -->
   <mat-sidenav
     #sidenav
     position='start'
@@ -9,10 +11,11 @@
     (closedStart)='sidenavClosedStart()'
   >
     <ng-container *ngComponentOutlet='navDrawerComponent'></ng-container>
-    <!--<ng-container #navDrawerComponentRef></ng-container>-->
   </mat-sidenav>
 
-  <!-- Material Design: Sheet -->
+  <!--
+    Material Design: Sheet
+   -->
   <mat-sidenav
     #sheet
     position='end'

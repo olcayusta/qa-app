@@ -5,7 +5,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-  selector: 'inek-profile-picture-dialog',
+  selector: 'id-profile-picture-dialog',
   templateUrl: './profile-picture-dialog.component.html',
   styleUrls: ['./profile-picture-dialog.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

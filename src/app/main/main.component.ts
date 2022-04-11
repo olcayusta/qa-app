@@ -60,19 +60,18 @@ export class MainComponent implements OnInit, AfterViewInit {
 
   listenToAnsweredQuestions() {
     this.socketService.on('new answer').subscribe(({ event, payload }) => {
-      console.log('Sorunuza, yeni ber cevap geldi.');
       this.snackBar.open('One line text string.', 'TAMAM', {
-        duration: 9999999
+        duration: 4000
       });
     });
   }
 
   hideScrollBar() {
-    this.document.body.style.overflow = 'hidden';
+    this.renderer.setStyle(this.document.body, 'overflow', 'hidden');
   }
 
   showScrollBar() {
-    this.document.body.style.overflow = '';
+    this.renderer.setStyle(this.document.body, 'overflow', '');
   }
 
   async sidenavOpenedStart() {

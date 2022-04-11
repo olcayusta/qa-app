@@ -4,7 +4,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   selector: 'qa-account-notifications',
   templateUrl: './account-notifications.component.html',
   styleUrls: ['./account-notifications.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AccountNotificationsComponent implements OnInit {
   constructor() {}
