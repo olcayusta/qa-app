@@ -8,7 +8,7 @@ import { UsersService } from '../services/users.service';
 @Injectable({
   providedIn: 'root'
 })
-export class UsersResolver implements Resolve<User[]> {
+export class UserListResolver implements Resolve<User[]> {
   constructor(private usersService: UsersService, private router: Router) {}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<User[]> {
