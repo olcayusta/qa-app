@@ -16,7 +16,7 @@ const routes: Routes = [
       },
       {
         path: 'users',
-        loadChildren: async () => (await import('@modules/users/users.module')).UsersModule
+        loadChildren: async () => (await import('./users/users.module')).UsersModule
       },
       {
         path: 'tags',
