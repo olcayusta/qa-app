@@ -36,9 +36,5 @@
     "prettier": "^2.6.2",
     "source-map-explorer": "^2.5.2",
     "typescript": "^4.6.3"
-  },
-  "prettier": {
-    "singleQuote": true,
-    "printWidth": 120
   }
 }
