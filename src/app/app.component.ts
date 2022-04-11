@@ -19,7 +19,6 @@ import { filter, map } from 'rxjs/operators';
 import { SseService } from '@shared/services/sse.service';
 import { BroadcastChannelService } from '@shared/services/broadcast-channel.service';
 import { MatDialog } from '@angular/material/dialog';
-import { HotkeyDialogComponent } from '@dialogs/hotkey-dialog/hotkey-dialog.component';
 
 @Component({
   selector: 'app-root',
@@ -49,8 +48,8 @@ export class AppComponent implements OnInit {
     if ((metaKey && key === '/') || (shiftKey && key === '?')) {
       const { HotkeyDialogComponent } = await import(
         './dialogs/hotkey-dialog/hotkey-dialog.component'
-        );
-      const dialog = this.dialog.open(HotkeyDialogComponent, {
+      );
+      this.dialog.open(HotkeyDialogComponent, {
         minWidth: 560
       });
     }
@@ -128,9 +127,9 @@ export class AppComponent implements OnInit {
     this.broadcastChannel.getMessages().subscribe(async () => {
       const { SessionWarningDialogComponent } = await import(
         './dialogs/session-warning-dialog/session-warning-dialog.component'
-        );
+      );
       this.zone.run(() => {
-        const dialog = this.dialog.open(SessionWarningDialogComponent, {
+        this.dialog.open(SessionWarningDialogComponent, {
           autoFocus: false,
           minWidth: 560
         });
@@ -138,6 +137,5 @@ export class AppComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 }
