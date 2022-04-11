@@ -27,15 +27,12 @@
     <id-top-app-bar
       inekSticky
       (openSheet)='loadSidenavSheetComponent(); sheet.toggle()'
-    ></id-top-app-bar>
+    >
+    </id-top-app-bar>
     <main>
       <div id='content'>
         <div class='my-content'>
           <router-outlet></router-outlet>
-
-          <!--  <div class='fixed-chip'>
-              <mat-chip class='mat-elevation-z4'>New Releases</mat-chip>
-            </div>-->
 
           <!--            <div class='fixed-fab-btn with-icon'>
                         <a mat-fab routerLink='/create' class='extended-fab' inekExtendedFab id='extended-fab'>
@@ -51,9 +48,9 @@
                     </a>
                   </div>-->
 
-          <!--     <div class="content-update-chip">
-                 <mat-chip class='mat-elevation-z4'>Yeni öneriler</mat-chip>
-               </div>-->
+               <div class="content-update-chip">
+                 <mat-chip class='mat-elevation-z4'>Yeni sorular (3)</mat-chip>
+               </div>
         </div>
       </div>
     </main>
