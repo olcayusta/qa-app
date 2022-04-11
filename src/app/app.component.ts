@@ -4,19 +4,14 @@ import {
   HostListener,
   Inject,
   NgZone,
-  OnInit,
-  Renderer2
+  OnInit
 } from '@angular/core';
-import { Router } from '@angular/router';
-import { SocketService } from '@shared/services/socket.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SwPush, SwUpdate, VersionReadyEvent } from '@angular/service-worker';
 import { PushNotificationService } from '@shared/services/push-notification.service';
 import { environment } from '@environments/environment';
 import { DOCUMENT } from '@angular/common';
-import { AuthService } from '@auth/auth.service';
 import { filter, map } from 'rxjs/operators';
-import { SseService } from '@shared/services/sse.service';
 import { BroadcastChannelService } from '@shared/services/broadcast-channel.service';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -30,10 +25,6 @@ export class AppComponent implements OnInit {
   @HostListener('document:keydown', ['$event'])
   async ismetakey($event: KeyboardEvent) {
     const { metaKey, key, shiftKey } = $event;
-    /*    console.log('MetaKey: ', metaKey);
-    console.log('ShiftKey: ', shiftKey);
-    console.log('key: ', key);*/
-
     if ((metaKey && key === '/') || (shiftKey && key === '?')) {
       const { HotkeyDialogComponent } = await import(
         './dialogs/hotkey-dialog/hotkey-dialog.component'
@@ -46,13 +37,8 @@ export class AppComponent implements OnInit {
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
-    private renderer: Renderer2,
-    private router: Router,
-    private authService: AuthService,
-    private socketService: SocketService,
     private pushService: PushNotificationService,
     private broadcastChannel: BroadcastChannelService,
-    private sseService: SseService,
     private snackBar: MatSnackBar,
     private swPush: SwPush,
     private swUpdate: SwUpdate,
@@ -63,7 +49,7 @@ export class AppComponent implements OnInit {
     // const storageKey = localStorage.getItem('theme-preference');
     // this.loadColorScheme(storageKey!);
 
-    const updatesAvailable = swUpdate.versionUpdates.pipe(
+    const updatesAvailable = this.swUpdate.versionUpdates.pipe(
       filter((evt): evt is VersionReadyEvent => evt.type === 'VERSION_READY'),
       map((evt) => ({
         type: 'UPDATE_AVAILABLE',
