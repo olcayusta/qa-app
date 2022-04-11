@@ -28,7 +28,7 @@ const routes: Routes = [
       },
       {
         path: 'search',
-        loadChildren: async () => (await import('@modules/search/search.module')).SearchModule
+        loadChildren: async () => (await import('./search/search.module')).SearchModule
       },
       {
         path: 'settings',
@@ -92,7 +92,7 @@ const routes: Routes = [
     path: '500',
     loadChildren: () =>
       import('./modules/page-internal-server-error/page-internal-server-error.module').then(
-        (m) => m.PageInternalServerErrorModule
+        ({ PageInternalServerErrorModule }) => PageInternalServerErrorModule
       )
   },
   {

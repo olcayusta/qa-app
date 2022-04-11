@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { SearchComponent } from './search.component';
-import { SearchTitleResolver } from '@modules/search/resolvers/search-title.resolver';
+import { SearchTitleResolver } from './resolvers/search-title.resolver';
 
 const routes: Routes = [
   {
