@@ -1,20 +1,42 @@
 <mat-sidenav-container id='drawer-container'>
-  <mat-sidenav #sidenav position='start' [autoFocus]='false' fixedInViewport (openedStart)='sidenavOpenedStart()'
-               (closedStart)='sidenavClosedStart()'>
+
+  <!--
+    Material Design: Navigation Drawer
+  -->
+  <mat-sidenav
+    #sidenav
+    position='start'
+    fixedInViewport
+    [autoFocus]='false'
+    (openedStart)='sidenavOpenedStart()'
+    (closedStart)='sidenavClosedStart()'
+  >
     <ng-container *ngComponentOutlet='navDrawerComponent'></ng-container>
     <!--<ng-container #navDrawerComponentRef></ng-container>-->
   </mat-sidenav>
-  <mat-sidenav #sheet position='end' [autoFocus]='false' fixedInViewport [mode]='mode'
-               (openedStart)='sheetOpened()' (closedStart)='sheetClosed()'
-               [fixedTopGap]="mode == 'side' ? 64 : 0">
 
-    <!--<app-side-sheet></app-side-sheet>-->
+  <!--
+    Material Design: Sheet
+  -->
+  <mat-sidenav
+    #sheet
+    position='end'
+    fixedInViewport
+    [autoFocus]='false'
+    [fixedTopGap]="mode == 'side' ? 64 : 0"
+    [mode]='mode'
+    (openedStart)='sheetOpened()'
+    (closedStart)='sheetClosed()'
+  >
     <ng-container *ngComponentOutlet='sideSheetComponent'></ng-container>
   </mat-sidenav>
 
   <mat-sidenav-content id='drawer-content'>
     <div id='gf-full-page'>
-      <id-top-app-bar (openSheet)='loadSidenavSheetComponent(); sheet.toggle()' inekSticky></id-top-app-bar>
+      <id-top-app-bar
+        inekSticky
+        (openSheet)='loadSidenavSheetComponent(); sheet.toggle()'
+      ></id-top-app-bar>
       <main>
         <div id='content'>
           <div class='my-content'>
@@ -45,6 +67,5 @@
         </div>
       </main>
     </div>
-
   </mat-sidenav-content>
 </mat-sidenav-container>

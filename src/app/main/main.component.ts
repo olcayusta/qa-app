@@ -52,7 +52,8 @@ export class MainComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.isSmallScreen = this.breakpointObserver.isMatched('(max-width: 599px)');
+    this.isSmallScreen =
+      this.breakpointObserver.isMatched('(max-width: 599px)');
     this.isSmallScreen ? (this.mode = 'over') : 'side';
     this.mode = 'side';
     this.listenToAnsweredQuestions();
@@ -85,7 +86,9 @@ export class MainComponent implements OnInit, AfterViewInit {
   }
 
   async loadNavDrawerComponent() {
-    const { NavDrawerComponent } = await import('./components/nav-drawer/nav-drawer.component');
+    const { NavDrawerComponent } = await import(
+      './components/nav-drawer/nav-drawer.component'
+    );
     this.navDrawerComponent = NavDrawerComponent;
     this.cd.markForCheck();
   }
@@ -101,7 +104,9 @@ export class MainComponent implements OnInit, AfterViewInit {
   }
 
   async loadSidenavSheetComponent() {
-    const { SideSheetComponent } = await import('./components/side-sheet/side-sheet.component');
+    const { SideSheetComponent } = await import(
+      './components/side-sheet/side-sheet.component'
+    );
     this.sideSheetComponent = SideSheetComponent;
     this.cd.markForCheck();
   }
