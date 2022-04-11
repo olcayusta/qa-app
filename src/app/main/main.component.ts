@@ -89,13 +89,13 @@ export class MainComponent implements OnInit, AfterViewInit {
     this.cd.markForCheck();
   }
 
-  sheetOpened(): void {
+  sheetOpenedStart(): void {
     if (this.isSmallScreen) {
       this.document.body.style.overflow = 'hidden';
     }
   }
 
-  sheetClosed(): void {
+  sheetClosedStart(): void {
     this.document.body.style.overflow = '';
   }
 

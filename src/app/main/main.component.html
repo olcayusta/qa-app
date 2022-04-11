@@ -9,6 +9,7 @@
   >
     <ng-container *ngComponentOutlet='navDrawerComponent'></ng-container>
   </mat-sidenav>
+
   <mat-sidenav
     #sheet
     position='end'
@@ -16,8 +17,8 @@
     [autoFocus]='false'
     [fixedTopGap]="mode == 'side' ? 64 : 0"
     [mode]='mode'
-    (openedStart)='sheetOpened()'
-    (closedStart)='sheetClosed()'
+    (openedStart)='sheetOpenedStart()'
+    (closedStart)='sheetClosedStart()'
   >
     <ng-container *ngComponentOutlet='sideSheetComponent'></ng-container>
   </mat-sidenav>
