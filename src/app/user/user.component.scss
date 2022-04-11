@@ -11,11 +11,11 @@ header {
 .header-user {
   display: flex;
   align-items: center;
+  grid-gap: 24px;
 
   &__avatar {
     width: 160px;
     height: 160px;
-    margin-right: 24px;
   }
 }
 

@@ -29,7 +29,7 @@ export class UserComponent implements OnInit {
       label: 'Etiketler'
     },
     {
-      path: '/tags',
+      path: '/bookmarks',
       label: 'Bookmarks'
     }
   ];

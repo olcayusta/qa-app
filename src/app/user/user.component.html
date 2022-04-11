@@ -1,5 +1,4 @@
 <header class='header'>
-
   <div class='header-user'>
     <div class='header-user__avatar'>
       <inek-img-shadow [width]='160' [height]='160' [src]='user.picture' [alt]='user.displayName'></inek-img-shadow>
@@ -18,10 +17,10 @@
         <!-- Last seen time -->
         <div class='meta-item'>
           <mat-icon>history</mat-icon>
-          <time [attr.datetime]='user.signupDate'>{{user.lastSeenTime | myDate: 'tasty'}}</time>
+          <time [attr.datetime]='user.lastSeenTime'>{{user.lastSeenTime | myDate: 'tasty'}}</time>
         </div>
 
-        <!-- Website -->
+        <!-- Website url -->
         <div class='meta-item'>
           <mat-icon>web</mat-icon>
           <span>blog.patrickmcdonald.org</span>
@@ -48,7 +47,7 @@
   </div>
 </header>
 
-<nav mat-tab-nav-bar mat-align-tabs='center'>
+<nav mat-tab-nav-bar mat-align-tabs='center' [tabPanel]='tabPanel'>
   <a mat-tab-link *ngFor='let link of links'
      [routerLinkActiveOptions]='{exact: true}'
      routerLinkActive='mat-tab-label-active'
@@ -56,5 +55,6 @@
      routerLink='/user/{{user.id}}/{{link.path.toLocaleLowerCase()}}'
      [active]='rla.isActive'> {{link.label}} </a>
 </nav>
+<mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
 
 <router-outlet></router-outlet>
