@@ -28,17 +28,12 @@ export class FeedbackDialogComponent implements OnInit {
 
   constructor(private fb: FormBuilder) {
     this.feedbackForm = this.fb.group(
-      {
-        feedbackText: [null, Validators.required]
-      },
-      {
-        updateOn: 'submit'
-      }
+      { feedbackText: [null, Validators.required] },
+      { updateOn: 'submit' }
     );
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   sendFeedback($event: SubmitEvent) {
     console.log('Form submitted!');
@@ -57,5 +52,4 @@ export class FeedbackDialogComponent implements OnInit {
     MatDialogModule
   ]
 })
-class FeedbackDialogModule {
-}
+class FeedbackDialogModule {}
