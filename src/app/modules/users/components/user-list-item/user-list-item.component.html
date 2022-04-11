@@ -1,11 +1,17 @@
 <div class='user-box'>
-  <inek-img-shadow [src]='user.picture' [width]='140' [height]='140' alt='' class='user-picture-renderer'></inek-img-shadow>
+  <inek-img-shadow
+    [src]='user.picture'
+    [width]='140'
+    [height]='140'
+    alt=''
+    class='user-picture-renderer'
+  >
+  </inek-img-shadow>
   <div class='user-info'>
-    <a routerLink='/user/{{user.id}}'>
-      <span class='user-title'>{{user.displayName}}</span>
+    <a routerLink='/user/{{ user.id }}'>
+      <span class='user-title'>{{ user.displayName }}</span>
     </a>
     <button mat-stroked-button>Takip et</button>
     <!--<mat-divider></mat-divider>-->
   </div>
 </div>
-
