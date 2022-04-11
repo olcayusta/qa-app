@@ -27,17 +27,6 @@ import { MatDialog } from '@angular/material/dialog';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements OnInit {
-  @HostListener('document:visibilitychange')
-  visibilityChange() {
-    /*    if (document.visibilityState === 'hidden') {
-      this.socketService.subject.complete();
-    } else {
-      this.sub = this.socketService.on('hello').subscribe(({ event, payload }) => {
-        console.log('Anushka Sharma, size merhaba diyor...');
-      });
-    }*/
-  }
-
   @HostListener('document:keydown', ['$event'])
   async ismetakey($event: KeyboardEvent) {
     const { metaKey, key, shiftKey } = $event;
