@@ -1,12 +1,12 @@
 <header class='header'>
-  <div class='header-user'>
+  <div class='header__user'>
     <div class='header-user__avatar'>
       <inek-img-shadow [width]='160' [height]='160' [src]='user.picture' [alt]='user.displayName'></inek-img-shadow>
     </div>
-    <div>
-      <h4 class='headline-4'>{{user.displayName}}</h4>
 
-      <div class='meta-items'>
+    <div class='header__details'>
+      <h4 class='headline-4'>{{user.displayName}}</h4>
+      <div class='header__meta'>
 
         <!-- Signup date -->
         <div class='meta-item'>
@@ -34,7 +34,7 @@
 
         <!-- Social account links -->
         <div class='social-auth'>
-          <a href='//github.com/{{user.githubUrl}}'>
+          <a href='//github.com/{{user.githubUrl}}' target='_blank'>
             <img src='https://webdev.imgix.net/images/icons/github.svg' alt=''>
           </a>
           <a href='//github.com/{{user.twitterUrl}}'>
