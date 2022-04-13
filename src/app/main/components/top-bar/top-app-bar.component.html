@@ -9,16 +9,16 @@
   </div>
 
   <div class='mat-toolbar__center'>
-<!--     <ng-container *ngComponentOutlet='searchFormComponentOutlet'></ng-container>-->
+    <!--     <ng-container *ngComponentOutlet='searchFormComponentOutlet'></ng-container>-->
     <inek-search-form></inek-search-form>
   </div>
 
   <div class='mat-toolbar__end'>
     <ng-container *ngIf='isLoggedIn$ | async; else signIn'>
 
-     <!-- <button mat-icon-button matTooltip='Filtre' (click)='openSheet.emit()'>
-        <mat-icon>filter_list</mat-icon>
-      </button>-->
+      <!-- <button mat-icon-button matTooltip='Filtre' (click)='openSheet.emit()'>
+         <mat-icon>filter_list</mat-icon>
+       </button>-->
 
       <!--   <div class='filter-bracket'>
            <button mat-icon-button matTooltip='Filtrele' (click)='openSheet.emit()'>
@@ -53,13 +53,13 @@
           <span>Soru sor</span>
         </a>
 
-   <!--     <button mat-icon-button>
-          <mat-icon>tune</mat-icon>
-        </button>-->
+        <!--     <button mat-icon-button>
+               <mat-icon>tune</mat-icon>
+             </button>-->
 
-<!--        <button mat-icon-button>
-          <mat-icon>apps</mat-icon>
-        </button>-->
+        <!--        <button mat-icon-button>
+                  <mat-icon>apps</mat-icon>
+                </button>-->
         <button mat-icon-button>
           <app-gf-icon name='emoji_events'></app-gf-icon>
         </button>
@@ -74,7 +74,7 @@
       </ng-template>
 
       <!--<inek-notification-button></inek-notification-button>-->
-     <!-- <inek-avatar-button></inek-avatar-button>-->
+      <!-- <inek-avatar-button></inek-avatar-button>-->
 
     </ng-container>
   </div>
@@ -116,7 +116,7 @@
   </button>
 
   <!-- Sign In Text Button Link -->
-  <a mat-button routerLink='/login'>
+  <a mat-button routerLink='/login' (click)='signInButtonClicked()'>
     OTURUM AÇ
   </a>
 

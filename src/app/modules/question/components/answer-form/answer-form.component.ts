@@ -1,11 +1,4 @@
-import {
-  AfterViewInit,
-  ChangeDetectionStrategy,
-  Component,
-  ElementRef,
-  OnInit,
-  ViewChild
-} from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { AnswerService } from '@shared/services/answer.service';
@@ -19,7 +12,8 @@ import { MarkedService } from '@shared/services/marked.service';
 })
 export class AnswerFormComponent implements OnInit, AfterViewInit {
   answerControl = new FormControl('Dua lipa is a beautiful singer!', {
-    validators: [Validators.required, Validators.minLength(24)]
+    validators: [Validators.required, Validators.minLength(24)],
+    initialValueIsDefault: true
   });
 
   @ViewChild('textAreaElement')

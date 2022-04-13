@@ -1,11 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  HostListener,
-  Inject,
-  NgZone,
-  OnInit
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, Inject, NgZone, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SwPush, SwUpdate, VersionReadyEvent } from '@angular/service-worker';
 import { PushNotificationService } from '@shared/services/push-notification.service';
@@ -26,9 +19,7 @@ export class AppComponent implements OnInit {
   async ismetakey($event: KeyboardEvent) {
     const { metaKey, key, shiftKey } = $event;
     if ((metaKey && key === '/') || (shiftKey && key === '?')) {
-      const { HotkeyDialogComponent } = await import(
-        '@dialogs/hotkey-dialog/hotkey-dialog.component'
-      );
+      const { HotkeyDialogComponent } = await import('@dialogs/hotkey-dialog/hotkey-dialog.component');
       this.dialog.open(HotkeyDialogComponent, {
         minWidth: 560
       });
@@ -99,7 +90,7 @@ export class AppComponent implements OnInit {
   }
 
   async listenSessionLogout() {
-    this.broadcastChannel.getMessages().subscribe(async () => {
+    /*this.broadcastChannel.getMessages().subscribe(async () => {
       const { SessionWarningDialogComponent } = await import(
         './dialogs/session-warning-dialog/session-warning-dialog.component'
       );
@@ -109,7 +100,7 @@ export class AppComponent implements OnInit {
           minWidth: 560
         });
       });
-    });
+    });*/
   }
 
   ngOnInit() {}

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Observable } from 'rxjs';
 
 interface BroadcastMessage {
   type: string;
@@ -11,37 +11,20 @@ interface BroadcastMessage {
 })
 export class BroadcastChannelService {
   private broadcastChannel: BroadcastChannel;
-  private onMessage = new Subject<any>();
 
   constructor() {
-    this.broadcastChannel = new BroadcastChannel('broadcastChannelName');
-    this.broadcastChannel.onmessage = (message) => this.onMessage.next(message);
-    this.broadcastChannel.onmessageerror = (message) => this.onMessage.error(message);
+    this.broadcastChannel = new BroadcastChannel('demo');
   }
 
   publish(message: BroadcastMessage): void {
     this.broadcastChannel.postMessage(message);
   }
 
-  messages(message: string) {
-    return new Observable((subscriber) => {
-      this.broadcastChannel.onmessage = (message) => subscriber.next(message);
-    });
-  }
-
-  getMessages() {
-    return new Observable(subscriber => {
-      this.broadcastChannel.onmessage = (message) => {
-        subscriber.next(message);
-      };
-      this.broadcastChannel.onmessageerror = (message) => {
-        subscriber.error(message);
-      };
+  getMessages(): Observable<MessageEvent> {
+    return new Observable((observer) => {
+      this.broadcastChannel.onmessage = (message: MessageEvent) => observer.next(message);
+      this.broadcastChannel.onmessageerror = (message: MessageEvent) => observer.error(message);
       return () => this.broadcastChannel.close();
     });
-  }
-
-  messagesOfType(type: string): Observable<BroadcastMessage> {
-    return this.onMessage.asObservable();
   }
 }

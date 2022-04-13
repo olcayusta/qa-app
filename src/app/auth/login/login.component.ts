@@ -1,9 +1,10 @@
-import { Component, OnInit, ChangeDetectionStrategy, ɵmarkDirty as markDirty } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { catchError } from 'rxjs/operators';
 import { EMPTY } from 'rxjs';
+import { User } from '@shared/models/user.model';
 
 @Component({
   selector: 'app-login',
@@ -15,22 +16,18 @@ export class LoginComponent implements OnInit {
   form: FormGroup;
 
   submitted = false;
-
   hide = true;
 
-  izin_verildi = false;
-
-  stepOne = false;
-
   constructor(
-    private formBuilder: FormBuilder,
+    private fb: FormBuilder,
     private authService: AuthService,
     // private tagService: TagService,
-    private router: Router
+    private router: Router,
+    private cd: ChangeDetectorRef
   ) {
-    this.form = formBuilder.group(
+    this.form = this.fb.group(
       {
-        email: [null, [Validators.required, Validators.email]],
+        email: ['', [Validators.required, Validators.email]],
         password: ['123456', [Validators.required, Validators.min(8)]]
       },
       {
@@ -44,32 +41,27 @@ export class LoginComponent implements OnInit {
   submit(): void {
     this.submitted = true;
 
-    // Get the form values
-    const { email, password } = this.form.value;
+    const { email, password } = this.form.value as { email: string; password: string };
 
     this.authService
       .login(email, password)
       .pipe(
-        catchError((err, caught) => {
-          console.error(err);
+        catchError((err) => {
+          this.submitted = false;
           this.form.get('email')!.setErrors({
             emailNotFound: true
           });
-          markDirty(this);
-          this.submitted = false;
+          this.cd.markForCheck();
           return EMPTY;
         })
       )
-      .subscribe((value) => {
+      .subscribe((user: User) => {
+        console.log('subscribe bitti');
         this.submitted = false;
-        if (value.error) {
-          console.log(value);
-        } else {
-          // Redirect the user
-          this.router.navigate([this.authService.redirectUrl]).then((value1) => {
-            //this.saveFavoriteTagsToLocaleStorage();
-          });
-        }
+        // Redirect the user
+        this.router.navigate([this.authService.redirectUrl]).then((value) => {
+          //this.saveFavoriteTagsToLocaleStorage();
+        });
       });
   }
 
