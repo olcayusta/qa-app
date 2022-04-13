@@ -6,37 +6,44 @@ header {
   display: flex;
   grid-gap: 16px;
   padding: 64px 0;
+
 }
 
-.header-user {
-  display: flex;
-  align-items: center;
-  grid-gap: 24px;
+.header {
 
-  &__avatar {
-    width: 160px;
-    height: 160px;
+  &__user {
+    display: flex;
+    align-items: center;
+    grid-gap: 24px;
+
+    &__avatar {
+      width: 160px;
+      height: 160px;
+    }
   }
-}
 
-.meta-items {
-  display: flex;
-  align-items: center;
-  grid-gap: 16px;
-  padding-top: 8px;
-}
+  &__details {
+  }
 
-.meta-item {
-  display: flex;
-  align-items: center;
-  grid-gap: 8px;
-  color: var(--medium-emphasis-color);
-  font-size: 14px;
-  line-height: 20px;
+  &__meta {
+    display: flex;
+    align-items: center;
+    grid-gap: 16px;
+    padding-top: 8px;
 
-  time {
-    font-size: 14px;
-    line-height: 20px;
+    .meta-item {
+      display: flex;
+      align-items: center;
+      grid-gap: 8px;
+      color: var(--medium-emphasis-color);
+      font-size: 14px;
+      line-height: 20px;
+
+      time {
+        font-size: 14px;
+        line-height: 20px;
+      }
+    }
   }
 }
 
@@ -44,25 +51,10 @@ header {
   display: flex;
   align-items: center;
   grid-gap: 8px;
-}
 
-.social-auth img {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-}
-
-/* ==========================================================================
-   Material Design Tabs
-   ========================================================================== */
-.mat-tab-link {
-  min-width: 90px;
-  opacity: 1 !important;
-  color: var(--medium-emphasis-color);
-}
-
-.mat-tab-label-active {
-  color: var(--mdc-theme-primary);
-  // color: mat.get-color-from-palette(standardized.$deep-purple-color-palette,  500);
-  // color: standardized.$mat-tab-label-active;
+  img {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+  }
 }
