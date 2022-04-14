@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { AnswerService } from '@shared/services/answer.service';
@@ -10,7 +10,7 @@ import { MarkedService } from '@shared/services/marked.service';
   styleUrls: ['./answer-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AnswerFormComponent implements OnInit, AfterViewInit {
+export class AnswerFormComponent implements OnInit, OnDestroy {
   answerControl = new FormControl('Dua lipa is a beautiful singer!', {
     validators: [Validators.required, Validators.minLength(24)],
     initialValueIsDefault: true
@@ -19,7 +19,7 @@ export class AnswerFormComponent implements OnInit, AfterViewInit {
   @ViewChild('textAreaElement')
   textAreaElement!: ElementRef<HTMLTextAreaElement>;
 
-  markedText$ = this.markedService.workerMessages();
+  markedText$ = this.markedService.getMessages();
 
   counter = 0;
 
@@ -61,14 +61,17 @@ export class AnswerFormComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit(): void {
-    this.answerControl.valueChanges.subscribe((value) => {
-      // console.log(value);
-      this.markedService.worker.postMessage(value);
-    });
-  }
+    if (!this.markedService.isAlive) {
+      this.markedService.createWorker();
+    }
 
-  ngAfterViewInit(): void {
-    // markDirty(this);
+    this.answerControl.valueChanges.subscribe((value) => {
+      this.markedService.markedWorker.postMessage(value);
+    });
+
+    this.markedService.markedWorker.onmessage = (messageEvent) => {
+      console.log(messageEvent.data);
+    };
   }
 
   formSubmit(): void {
@@ -114,9 +117,7 @@ export class AnswerFormComponent implements OnInit, AfterViewInit {
     const [valueBefore, valueAfter] = this.valueMap[token];
 
     const { nativeElement } = this.textAreaElement;
-    const { value, selectionStart, selectionEnd } = nativeElement;
-
-    let cursor;
+    const { selectionStart, selectionEnd } = nativeElement;
 
     const selectionText = this.getSelection();
 
@@ -195,5 +196,9 @@ export class AnswerFormComponent implements OnInit, AfterViewInit {
     if (document.getSelection()?.toString()) {
       // console.log('var');
     }
+  }
+
+  ngOnDestroy() {
+    this.markedService.destroyWorker();
   }
 }

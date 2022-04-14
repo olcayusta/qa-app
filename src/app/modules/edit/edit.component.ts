@@ -1,9 +1,9 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { QuestionService } from '@modules/question/services/question.service';
 import { Question } from '@shared/models/question.model';
 import { Observable, tap } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RevisionService } from '@shared/services/revision.service';
+import { MarkedService } from '@shared/services/marked.service';
 
 interface Food {
   value: string;
@@ -17,7 +17,7 @@ interface Food {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EditComponent implements OnInit {
-  q$!: Observable<Question>;
+  question$!: Observable<Question>;
 
   form!: FormGroup;
 
@@ -27,7 +27,7 @@ export class EditComponent implements OnInit {
     { value: 'tacos-2', viewValue: 'Tacos' }
   ];
 
-  constructor(private fb: FormBuilder, private revisionService: RevisionService) {
+  constructor(private fb: FormBuilder, private revisionService: RevisionService, private markedService: MarkedService) {
     this.form = this.fb.group({
       revisions: [null],
       title: [null, Validators.required],
@@ -37,11 +37,18 @@ export class EditComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.q$ = this.revisionService.getQuestion(111).pipe(
-      tap((value) => {
-        this.form.get('title')?.patchValue(value.title);
-        this.form.get('text')?.patchValue(value.content);
-        this.form.get('revisions')?.patchValue(value.revisions);
+    this.question$ = this.revisionService.getQuestion(125).pipe(
+      tap(({ title, content, revisions }: Question) => {
+        this.form.get('title')?.patchValue(title);
+        this.form.get('text')?.patchValue(content);
+        this.form.get('revisions')?.patchValue(revisions);
+
+        const formText = this.form.get('text')?.value;
+
+        this.markedService.markedWorker.postMessage(formText);
+        this.markedService.getMessages().subscribe((value) => {
+          console.log(value);
+        });
       })
     );
   }

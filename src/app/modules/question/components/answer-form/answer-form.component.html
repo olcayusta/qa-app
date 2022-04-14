@@ -27,7 +27,7 @@
 
         <div>
           <button type='button' mat-icon-button matTooltip='Insert link' (click)='formatApply("link")'>
-            <app-gf-icon name='insert_link'></app-gf-icon>
+            <mat-icon>insert_link</mat-icon>
           </button>
           <button type='button' mat-icon-button matTooltip='Block Code' (click)='formatApply("blockCode")'>
             <mat-icon>data_object</mat-icon>
@@ -55,9 +55,10 @@
 
       <span class='flex-spacer'></span>
 
+      <!-- Undo, Redo -->
       <div class='flex-end'>
         <button mat-icon-button type='button' matTooltip='Geri al'>
-          <app-gf-icon name='undo'></app-gf-icon>
+          <mat-icon>undo</mat-icon>
         </button>
 
         <button mat-icon-button type='button' matTooltip='İleri al'>

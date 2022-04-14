@@ -7,11 +7,7 @@ import { SiteCodeComponent } from '@shared/components/site-code/site-code.compon
 export class HeroDelayDirective {
   div: HTMLDivElement = document.createElement('div');
 
-  constructor(
-    private elementRef: ElementRef<HTMLElement>,
-    private viewContainerRef: ViewContainerRef
-  ) {
-  }
+  constructor(private elementRef: ElementRef<HTMLElement>, private viewContainerRef: ViewContainerRef) {}
 
   @Input()
   // @ts-ignore
@@ -36,8 +32,8 @@ export class HeroDelayDirective {
                const language = hljs.getLanguage(lang);*/
         }
 
-        const hostView = comp.hostView as EmbeddedViewRef<SiteCodeComponent>;
-        el.replaceWith(hostView.rootNodes[0]);
+        const { rootNodes } = comp.hostView as EmbeddedViewRef<SiteCodeComponent>;
+        el.replaceWith(rootNodes[0]);
       }
     });
     // this.elementRef.nativeElement.replaceWith(this.div);

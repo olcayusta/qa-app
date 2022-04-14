@@ -1,8 +1,8 @@
 <form autocomplete='off' spellcheck='false' [formGroup]='form'>
 
-  <ng-container *ngIf='q$ | async as q'></ng-container>
+  <ng-container *ngIf="question$ | async as q"></ng-container>
 
-  <!-- Revisions -->
+  <!-- Revision -->
   <mat-form-field>
     <mat-label>Duzenlemeler</mat-label>
     <mat-select disableOptionCentering>
@@ -12,7 +12,6 @@
     </mat-select>
   </mat-form-field>
 
-  <!-- Başlık -->
   <mat-form-field hideRequiredMarker>
     <mat-label>Başlık</mat-label>
     <input matInput formControlName='title'>

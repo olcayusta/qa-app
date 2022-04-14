@@ -6,24 +6,27 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
   providedIn: 'root'
 })
 export class MarkedService {
-  worker: Worker = new Worker(new URL('../tasty.worker', import.meta.url));
+  markedWorker!: Worker;
+  isAlive = false;
 
-  constructor(private domSanitizer: DomSanitizer) {}
+  constructor(private domSanitizer: DomSanitizer) {
+    this.createWorker();
+  }
 
-  workerMessages(): Observable<SafeHtml> {
+  createWorker() {
+    this.markedWorker = new Worker(new URL('../tasty.worker', import.meta.url));
+    this.isAlive = true;
+  }
+
+  getMessages(): Observable<SafeHtml> {
     return new Observable((subscriber) => {
-      this.worker.onmessage = ({ data }) => {
-        subscriber.next(this.domSanitizer.bypassSecurityTrustHtml(data));
-      };
-      this.worker.onerror = (err) => {
-        subscriber.error(err);
-      };
+      this.markedWorker.onmessage = ({ data }) => subscriber.next(data);
+      this.markedWorker.onerror = (err) => subscriber.error(err);
     });
   }
 
-  /*  setMarked(text: string): void {
-    marked.parse(text, (error, parseResult) => {
-      console.log(parseResult);
-    });
-  }*/
+  destroyWorker() {
+    this.markedWorker.terminate();
+    this.isAlive = false;
+  }
 }
