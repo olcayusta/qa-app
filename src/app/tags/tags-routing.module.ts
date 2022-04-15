@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { TagsComponent } from './tags.component';
 import { TagsResolver } from './resolvers/tags.resolver';
-import { environment } from '@environments/environment';
 
 const routes: Routes = [
   {

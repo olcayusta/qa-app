@@ -12,89 +12,88 @@ const routes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        loadChildren: async () => (await import('./home/home.module')).HomeModule,
+        loadChildren: async () => (await import('./home/home.module')).HomeModule
       },
       {
         path: 'users',
-        loadChildren: async () => (await import('./users/users.module')).UsersModule,
+        loadChildren: async () => (await import('./users/users.module')).UsersModule
       },
       {
         path: 'tags',
-        loadChildren: async () => (await import('@modules/tags/tags.module')).TagsModule,
+        loadChildren: async () => (await import('./tags/tags.module')).TagsModule
       },
       {
         path: 'tag/:tagId',
-        loadChildren: async () => (await import('@modules/tag/tag.module')).TagModule,
+        loadChildren: async () => (await import('@modules/tag/tag.module')).TagModule
       },
       {
         path: 'search',
-        loadChildren: async () => (await import('./search/search.module')).SearchModule,
+        loadChildren: async () => (await import('./search/search.module')).SearchModule
       },
       {
         path: 'settings',
         loadChildren: async () => (await import('@modules/settings/settings.module')).SettingsModule,
-        canLoad: [AuthGuard],
+        canLoad: [AuthGuard]
       },
       {
         path: 'list',
-        loadChildren: () => import('@modules/list/list.module').then((value) => value.ListModule),
+        loadChildren: () => import('@modules/list/list.module').then((value) => value.ListModule)
       },
       {
         path: 'watched_tags',
-        loadChildren: () => import('./watched-tags/watched-tags.module').then((m) => m.WatchedTagsModule),
+        loadChildren: () => import('./watched-tags/watched-tags.module').then((m) => m.WatchedTagsModule)
       },
       {
         path: 'user/:userId',
-        loadChildren: () => import('./user/user.module').then((u) => u.UserModule),
+        loadChildren: () => import('./user/user.module').then((u) => u.UserModule)
       },
       {
         path: 'question/:questionId',
-        loadChildren: async () => (await import('@modules/question/question.module')).QuestionModule,
+        loadChildren: async () => (await import('@modules/question/question.module')).QuestionModule
       },
       {
         path: 'questions/create',
-        loadChildren: async () =>
-          (await import('@modules/create-question/create-question.module')).CreateQuestionModule,
+        loadChildren: async () => (await import('@modules/create-question/create-question.module')).CreateQuestionModule
       },
       {
         path: 'edit',
-        loadChildren: async () => (await import('@modules/edit/edit.module')).EditModule,
+        loadChildren: async () => (await import('@modules/edit/edit.module')).EditModule
       },
       {
         path: 'favorites',
-        loadChildren: async () => (await import('@modules/favorites/favorites.module')).FavoritesModule,
+        loadChildren: async () => (await import('@modules/favorites/favorites.module')).FavoritesModule
       },
       {
         path: 'help',
-        loadChildren: async () => (await import('@modules/help/help.module')).HelpModule,
-      },
-    ],
+        loadChildren: async () => (await import('@modules/help/help.module')).HelpModule
+      }
+    ]
   },
   {
     path: 'login',
     loadChildren: async () => (await import('./auth/login/login.module')).LoginModule,
-    canLoad: [LoggedGuard],
+    canLoad: [LoggedGuard]
   },
   {
     path: 'register',
     loadChildren: async () => (await import('./auth/register/register.module')).RegisterModule,
-    canLoad: [LoggedGuard],
+    canLoad: [LoggedGuard]
   },
   {
     path: '404',
-    loadChildren: async () => (await import('./modules/page-not-found/page-not-found.module')).PageNotFoundModule,
+    loadChildren: async () => (await import('./modules/page-not-found/page-not-found.module')).PageNotFoundModule
   },
   {
     path: '500',
     loadChildren: () =>
       import('./modules/page-internal-server-error/page-internal-server-error.module').then(
         ({ PageInternalServerErrorModule }) => PageInternalServerErrorModule
-      ),
+      )
   },
   {
     path: '**',
-    loadChildren: async () => (await import('./modules/page-not-found/page-not-found.module')).PageNotFoundModule,
-  },
+    loadChildren: async () => (await import('./modules/page-not-found/page-not-found.module')).PageNotFoundModule
+  }
 ];
 
 @NgModule({
@@ -102,9 +101,9 @@ const routes: Routes = [
     RouterModule.forRoot(routes, {
       urlUpdateStrategy: 'eager',
       anchorScrolling: 'enabled',
-      scrollPositionRestoration: 'enabled',
-    }),
+      scrollPositionRestoration: 'enabled'
+    })
   ],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class AppRoutingModule {}
