@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'highlightSearch'
 })
 export class HighlightSearchPipe implements PipeTransform {
-  transform(value: any, ...args: any): unknown {
+  transform(value: string, args: string): unknown {
     if (!args) {
       return value;
     } else {
