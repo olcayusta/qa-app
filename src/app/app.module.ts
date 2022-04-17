@@ -24,6 +24,7 @@ import { WelcomeComponent } from './experimental/welcome/welcome.component';
 import { MaterialIconModule } from './material-icon/material-icon.module';
 import { TitleStrategy } from '@angular/router';
 import { AppTitleStrategy } from './core/app-title.strategy';
+import { HttpErrorInterceptor } from './core/interceptors/http-error.interceptor';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,11 @@ import { AppTitleStrategy } from './core/app-title.strategy';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptor,
       multi: true
     },
     {

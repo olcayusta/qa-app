@@ -6,6 +6,7 @@ import { ExtendedFabDirective } from '../main/directives/extended-fab.directive'
 
 @NgModule({
   declarations: [ExtendedFabDirective],
+  exports: [ExtendedFabDirective],
   imports: [CommonModule, MaterialModule, SharedModule]
 })
 export class MainLayoutModule {}
