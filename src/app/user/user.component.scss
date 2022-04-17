@@ -4,17 +4,15 @@
 
 header {
   display: flex;
-  grid-gap: 16px;
+  gap: 16px;
   padding: 64px 0;
-
 }
 
 .header {
-
   &__user {
     display: flex;
     align-items: center;
-    grid-gap: 24px;
+    gap: 24px;
 
     &__avatar {
       width: 160px;
@@ -28,6 +26,7 @@ header {
   &__meta {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     grid-gap: 16px;
     padding-top: 8px;
 
@@ -56,5 +55,24 @@ header {
     width: 24px;
     height: 24px;
     border-radius: 50%;
+  }
+}
+
+@media (max-width: 599px) {
+  .header {
+    padding: 64px 16px;
+
+    &__user {
+      display: block;
+    }
+
+    &__meta {
+      display: none;
+    }
+  }
+
+  .user-img-renderer {
+   /* width: 112px !important;
+    height: 112px !important;*/
   }
 }
