@@ -1,10 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  Resolve,
-  RouterStateSnapshot,
-  ActivatedRouteSnapshot,
-  NavigationError
-} from '@angular/router';
+import { Resolve, RouterStateSnapshot, ActivatedRouteSnapshot, NavigationError } from '@angular/router';
 import { EMPTY, Observable } from 'rxjs';
 import { Tag } from '@shared/models/tag.model';
 import { catchError } from 'rxjs/operators';

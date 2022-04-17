@@ -1,18 +1,10 @@
-import { ChangeDetectionStrategy, Component, NgModule, OnInit, ViewChild } from '@angular/core';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { debounceTime, distinctUntilChanged, filter, switchMap } from 'rxjs/operators';
 import { ISearchResult, SearchService } from '@shared/services/search.service';
-import {
-  MatAutocompleteModule,
-  MatAutocompleteSelectedEvent,
-  MatAutocompleteTrigger
-} from '@angular/material/autocomplete';
-import { Router, RouterModule } from '@angular/router';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { CommonModule } from '@angular/common';
-import { SharedModule } from '@shared/shared.module';
+import { MatAutocompleteSelectedEvent, MatAutocompleteTrigger } from '@angular/material/autocomplete';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'inek-search-form',
@@ -21,10 +13,10 @@ import { SharedModule } from '@shared/shared.module';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SearchFormComponent implements OnInit {
-  searchControl = new FormControl();
+  searchControl: FormControl<string> = new FormControl<string>('', { initialValueIsDefault: true });
   filteredResults$!: Observable<ISearchResult>;
 
-  @ViewChild('autoCompleteInput', { read: MatAutocompleteTrigger })
+  @ViewChild('autocompleteTrigger', { read: MatAutocompleteTrigger })
   autoComplete!: MatAutocompleteTrigger;
 
   constructor(private searchService: SearchService, private router: Router) {}
@@ -64,17 +56,6 @@ export class SearchFormComponent implements OnInit {
     this.autoComplete.closePanel();
   }
 
-  async onEnter($event: any) {
-    $event.preventDefault();
-    this.autoComplete.closePanel();
-    await this.router.navigate(['search'], {
-      queryParams: {
-        q: 'json'
-      }
-    });
-    // this.closeAutocomplete();
-  }
-
   searchWithAudio() {
     //@ts-ignore
     const SpeechRecognition = window.speechRecognition || window.webkitSpeechRecognition;
@@ -96,6 +77,16 @@ export class SearchFormComponent implements OnInit {
     setTimeout(() => {
       recognition.start();
     }, 1000);
+  }
+
+  async formSubmit($event: SubmitEvent) {
+    $event.preventDefault();
+    this.closeAutocomplete();
+    await this.router.navigate(['search'], {
+      queryParams: {
+        q: this.searchControl.value
+      }
+    });
   }
 }
 

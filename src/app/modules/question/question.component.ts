@@ -14,21 +14,18 @@ import { ActivatedRoute } from '@angular/router';
 import { AnswerService } from '@shared/services/answer.service';
 import { StateService } from '@shared/services/state.service';
 import { Observable, Subscription, tap } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, shareReplay } from 'rxjs/operators';
 import { FavoriteService } from '@modules/favorites/services/favorite.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ShareDialogComponent } from '@shared/components/share-dialog/share-dialog.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import {
-  Overlay,
-  OverlayRef,
-  ScrollStrategyOptions
-} from '@angular/cdk/overlay';
+import { Overlay, OverlayRef, ScrollStrategyOptions } from '@angular/cdk/overlay';
 import { AuthService } from '@auth/auth.service';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { DOCUMENT } from '@angular/common';
 import { FlagDialogComponent } from '@dialogs/flag-dialog/flag-dialog.component';
 import { SocketService } from '@shared/services/socket.service';
+import { VoteService } from '@shared/services/vote.service';
 
 @Component({
   selector: 'app-question',
@@ -38,6 +35,8 @@ import { SocketService } from '@shared/services/socket.service';
 })
 export class QuestionComponent implements OnInit, OnDestroy {
   question$!: Observable<Question>;
+
+  questionId!: number;
 
   popupOpened = false;
 
@@ -60,7 +59,8 @@ export class QuestionComponent implements OnInit, OnDestroy {
     private authService: AuthService,
     private overlay: Overlay,
     private vcr: ViewContainerRef,
-    private socketService: SocketService
+    private socketService: SocketService,
+    private voteService: VoteService
   ) {}
 
   initializeSchema() {
@@ -78,13 +78,13 @@ export class QuestionComponent implements OnInit, OnDestroy {
     this.question$ = this.route.data.pipe(
       map((data) => data['question']),
       tap(({ id: questionId }) => {
-        this.subA = this.socketService
-          .watch('watch', `q:${questionId}`)
-          .subscribe((messageForA) => {
-            console.log(messageForA);
-            this.snackBar.open('1 yeni cevap gönderildi', 'TAMAM');
-          });
-      })
+        this.questionId = questionId;
+        this.subA = this.socketService.watch('watch', `q:${questionId}`).subscribe((messageForA) => {
+          console.log(messageForA);
+          this.snackBar.open('1 yeni cevap gönderildi', 'TAMAM');
+        });
+      }),
+      shareReplay()
     );
 
     // this.stateService.hide();
@@ -100,19 +100,14 @@ export class QuestionComponent implements OnInit, OnDestroy {
    * @param questionId
    */
   addToFavoriteToQuestion(questionId: number): void {
-    this.snackBar.open(
-      'Bu soruyu bir favori listesine eklemek için oturum açın',
-      'TAMAM'
-    );
+    this.snackBar.open('Bu soruyu bir favori listesine eklemek için oturum açın', 'TAMAM');
     /*   this.favoriteService.addToFavorite(questionId).subscribe((value) => {
       console.log(value);
     });*/
   }
 
   async openShareDialog() {
-    const { ShareDialogComponent } = await import(
-      '@shared/components/share-dialog/share-dialog.component'
-    );
+    const { ShareDialogComponent } = await import('@shared/components/share-dialog/share-dialog.component');
     this.dialog
       .open(ShareDialogComponent, {
         minWidth: 512,
@@ -162,12 +157,16 @@ export class QuestionComponent implements OnInit, OnDestroy {
   }
 
   async openFlagDialog() {
-    const { FlagDialogComponent } = await import(
-      '@dialogs/flag-dialog/flag-dialog.component'
-    );
+    const { FlagDialogComponent } = await import('@dialogs/flag-dialog/flag-dialog.component');
     this.dialog.open(FlagDialogComponent, {
       autoFocus: false,
       minWidth: 560
+    });
+  }
+
+  voteQuestion() {
+    this.voteService.upvoteQuestion(this.questionId).subscribe((value) => {
+      console.log(value);
     });
   }
 }

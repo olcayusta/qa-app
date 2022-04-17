@@ -2,7 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core
 import { Tag } from '@shared/models/tag.model';
 
 @Component({
-  selector: 'inek-tag-list-item',
+  selector: 'id-tag-list-item',
   templateUrl: './tag-list-item.component.html',
   styleUrls: ['./tag-list-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

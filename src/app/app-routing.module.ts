@@ -87,7 +87,7 @@ const routes: Routes = [
     path: '500',
     loadChildren: () =>
       import('./modules/page-internal-server-error/page-internal-server-error.module').then(
-        ({ PageInternalServerErrorModule }) => PageInternalServerErrorModule
+        (m) => m.PageInternalServerErrorModule
       )
   },
   {

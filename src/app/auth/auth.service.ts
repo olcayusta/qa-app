@@ -4,7 +4,6 @@ import { environment } from '@environments/environment';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from '@shared/models/user.model';
 import { tap } from 'rxjs/operators';
-import { ILogin } from '@auth/interfaces/ILogin';
 
 @Injectable({
   providedIn: 'root'

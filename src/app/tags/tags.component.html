@@ -3,6 +3,11 @@
   <p class='subtitle-1 page-description'>Our latest news, updates, and stories for developers</p>
 </header>
 
-<app-tag-list>
-  <inek-tag-list-item *ngFor='let tag of tags' [tag]='tag'></inek-tag-list-item>
-</app-tag-list>
+<mat-form-field appearance='outline' [formControl]='searchControl'  ngDefaultControl>
+  <mat-label>Search...</mat-label>
+  <input matInput autocomplete='off' spellcheck='false'>
+</mat-form-field>
+
+<id-tag-list>
+  <id-tag-list-item *ngFor='let tag of tags' [tag]='tag'></id-tag-list-item>
+</id-tag-list>

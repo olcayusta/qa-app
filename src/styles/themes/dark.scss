@@ -65,9 +65,10 @@ $dark-theme: mat.define-dark-theme((
     --code-background: #1e1e1e;
     --border-color: rgba(255, 255, 255, 0.12);
     --scrollbar-color: hotpink transparent;
-    --scrollbar-bg-color: #424242;
-    --thumb-bg-color: #686868;
-    --thumb-bg-hover: #a1a1a1;
+    --scrollbar-bg-color: #2e2e2e;
+    --thumb-bg-color: #757575;
+    --scrollbar-thumb-background: #757575;
+    --thumb-bg-hover: #9e9e9e;
   }
 }
 

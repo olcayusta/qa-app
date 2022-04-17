@@ -40,7 +40,7 @@ export class HighlightElementDirective implements AfterViewInit {
       hljs.highlightElement(code);
 
       const languageName = code.classList[0]?.split('-')[1];
-      console.log(languageName);
+      // console.log(languageName);
 
       /*      if (languageName) {
         switch (languageName) {

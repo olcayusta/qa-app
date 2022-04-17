@@ -1,10 +1,11 @@
-<form id='search-form'>
+<form id='search-form' (submit)='formSubmit($event)'>
   <div class='search-form' matAutocompleteOrigin #origin='matAutocompleteOrigin'>
     <button mat-icon-button aria-label='Ara' matTooltip='Ara'>
       <mat-icon-search></mat-icon-search>
     </button>
-    <input aria-label='Ara' autocomplete='off' spellcheck='false' placeholder='Ara' [formControl]='searchControl'
-           (keydown.enter)='onEnter($event)'
+    <input aria-label='Ara' autocomplete='off' spellcheck='false' placeholder='Ara'
+           #autocompleteTrigger="matAutocompleteTrigger"
+           [formControl]='searchControl'
            [matAutocomplete]='auto' [matAutocompleteConnectedTo]='origin'>
   </div>
 </form>
@@ -27,7 +28,7 @@
   </svg>
 </button>-->
 
-<mat-autocomplete  #auto='matAutocomplete' class='my-autocomplete mat-elevation-z2' [displayWith]='displayFn'
+<mat-autocomplete #auto='matAutocomplete' class='my-autocomplete mat-elevation-z2' [displayWith]='displayFn'
                   (optionSelected)='selectedOption($event)'>
 
   <ng-container *ngIf='filteredResults$ | async as filteredResults'>
@@ -47,7 +48,7 @@
       <mat-option *ngFor='let user of filteredResults.users' [value]='user' class='user-option'>
         <img class='option-user-img' src='{{user.picture}}' alt=''>
         {{user.displayName}}
-    <!--    <span [innerHTML]='user.displayName | highlightSearch: searchControl.value'></span>-->
+        <!--    <span [innerHTML]='user.displayName | highlightSearch: searchControl.value'></span>-->
       </mat-option>
     </mat-optgroup>
   </ng-container>
