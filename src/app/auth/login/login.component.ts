@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { catchError } from 'rxjs/operators';
 import { EMPTY } from 'rxjs';
 import { User } from '@shared/models/user.model';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -55,8 +56,7 @@ export class LoginComponent implements OnInit {
       this.authService
         .login(email.value!, password.value!)
         .pipe(
-          catchError((err) => {
-            console.log(err);
+          catchError((err: HttpErrorResponse) => {
             this.submitted = false;
             email.setErrors({
               emailNotFound: true
