@@ -46,31 +46,32 @@ export class LoginComponent implements OnInit {
     this.userInfoAvailable = !!user;
   }
 
-  submit(): void {
-    this.submitted = true;
+  formSubmitted(): void {
+    if (this.form.valid) {
+      this.submitted = true;
 
-    const { email, password } = this.form.value as { email: string; password: string };
+      const { email, password } = this.form.controls;
 
-    this.authService
-      .login(email, password)
-      .pipe(
-        catchError((err) => {
+      this.authService
+        .login(email.value!, password.value!)
+        .pipe(
+          catchError((err) => {
+            console.log(err);
+            this.submitted = false;
+            email.setErrors({
+              emailNotFound: true
+            });
+            this.cd.markForCheck();
+            return EMPTY;
+          })
+        )
+        .subscribe(async (user: User) => {
           this.submitted = false;
-          this.form.get('email')!.setErrors({
-            emailNotFound: true
-          });
-          this.cd.markForCheck();
-          return EMPTY;
-        })
-      )
-      .subscribe((user: User) => {
-        console.log('subscribe bitti');
-        this.submitted = false;
-        // Redirect the user
-        this.router.navigate([this.authService.redirectUrl]).then((value) => {
+          // Redirect the user
+          await this.router.navigate([this.authService.redirectUrl]);
           //this.saveFavoriteTagsToLocaleStorage();
         });
-      });
+    }
   }
 
   /**

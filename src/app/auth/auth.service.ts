@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpContext } from '@angular/common/http';
 import { environment } from '@environments/environment';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from '@shared/models/user.model';
 import { tap } from 'rxjs/operators';
+import { BYPASS_ERROR } from '../core/interceptors/http-error.interceptor';
 
 @Injectable({
   providedIn: 'root'
@@ -39,10 +40,16 @@ export class AuthService {
 
   login(email: string, password: string): Observable<User> {
     return this.http
-      .post<User>(`${environment.apiUrl}/users/login`, {
-        email,
-        password
-      })
+      .post<User>(
+        `${environment.apiUrl}/users/login`,
+        {
+          email,
+          password
+        },
+        {
+          context: new HttpContext().set(BYPASS_ERROR, true)
+        }
+      )
       .pipe(
         tap((user) => {
           localStorage.setItem('user', JSON.stringify(user));

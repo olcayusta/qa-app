@@ -57,11 +57,11 @@
         <span>veya</span>
       </div>-->
 
-    <form spellcheck='false' class='login-form' [formGroup]='form' (submit)='form.valid && submit()'>
+    <form spellcheck='false' class='login-form' [formGroup]='form' (submit)='formSubmitted()'>
       <div class='form-body'>
 
         <!-- E-posta -->
-        <ng-container *ngIf='!userInfoAvailable'>
+
           <mat-form-field appearance='outline' hideRequiredMarker>
             <mat-label>E-posta</mat-label>
             <input aria-label='E-posta' matInput type='email' formControlName='email' qaAutofocus>
@@ -69,7 +69,7 @@
             <mat-error *ngIf="form.get('email')?.hasError('email')">Duzgun email adresi girin!</mat-error>
             <mat-error *ngIf="form.get('email')?.hasError('emailNotFound')">E-posta adresi bulunamadı</mat-error>
           </mat-form-field>
-        </ng-container>
+
 
 
         <!--      <div class='button-link-row'>
@@ -77,12 +77,12 @@
               </div>-->
 
 
-        <div class='account-info'>
+<!--        <div class='account-info'>
           <img class='login-avatar'
                src='https://i.pinimg.com/236x/11/9e/78/119e78d415616d1cf6f6d496b0317c92.jpg'
                alt=''>
           <h4>Olcay USTA</h4>
-        </div>
+        </div>-->
 
         <!-- Password -->
         <mat-form-field appearance='outline' hideRequiredMarker>
