@@ -84,3 +84,11 @@ mat-checkbox {
   transition: all 1s;
   padding: 24px 0;
 }
+
+mat-nav-list {
+  margin: 0 -16px;
+
+  mat-icon {
+    margin-right: 16px;
+  }
+}

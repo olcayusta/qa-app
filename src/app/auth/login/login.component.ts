@@ -13,10 +13,15 @@ import { User } from '@shared/models/user.model';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoginComponent implements OnInit {
-  form: FormGroup;
+  form: FormGroup<{
+    email: FormControl<string | null>;
+    password: FormControl<string | null>;
+  }>;
 
   submitted = false;
   hide = true;
+
+  userInfoAvailable = false;
 
   constructor(
     private fb: FormBuilder,
@@ -36,7 +41,10 @@ export class LoginComponent implements OnInit {
     );
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    const user = localStorage.getItem('user');
+    this.userInfoAvailable = !!user;
+  }
 
   submit(): void {
     this.submitted = true;

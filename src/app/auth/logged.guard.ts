@@ -15,7 +15,7 @@ export class LoggedGuard implements CanLoad {
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     const url: string = segments[0].path;
 
-    if (!this.authService.userValue) {
+    if (!this.authService.getToken('token')) {
       return true;
     }
 

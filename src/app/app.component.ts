@@ -76,12 +76,32 @@ export class AppComponent implements OnInit {
     head.appendChild(link);
   }
 
+  async unsubscribeToPush() {
+    const sub = await this.swPush.requestSubscription({
+      serverPublicKey: environment.PUBLIC_VAPID_KEY_OF_SERVER
+    });
+
+    this.pushService.sendUnsubscriptionToTheServer(sub).subscribe((value) => {
+      this.swPush.unsubscribe().then((value1) => {
+        console.log('Unsubscribe push!');
+      });
+    });
+  }
+
   async subscribeToPush() {
     if (this.swPush.isEnabled) {
       try {
         const sub = await this.swPush.requestSubscription({
           serverPublicKey: environment.PUBLIC_VAPID_KEY_OF_SERVER
         });
+        /*       const permission = Notification.permission;
+        if (permission === 'granted') {
+          console.log('Subscription object: ', sub);
+        } else {
+          console.log('Not subscribed to push service!');
+          this.pushService.sendSubscriptionToTheServer(sub).subscribe();
+        }*/
+
         this.pushService.sendSubscriptionToTheServer(sub).subscribe();
       } catch (e) {
         console.error(`Could not subscribe due to:`, e);
@@ -103,5 +123,7 @@ export class AppComponent implements OnInit {
     });*/
   }
 
-  ngOnInit() {}
+  async ngOnInit() {
+    await this.subscribeToPush();
+  }
 }

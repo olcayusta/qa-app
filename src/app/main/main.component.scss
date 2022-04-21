@@ -75,6 +75,9 @@ mat-sidenav-container {
   visibility: hidden;
 }
 
+/*
+  Main Page Update Chips
+*/
 .content-update-chip {
   position: fixed;
   left: 50%;
@@ -95,13 +98,12 @@ mat-sidenav-container {
   align-items: center;
   transition: max-width 0.5s ease-out;
   overflow: hidden;
-  // background-color: #6200ee !important;
-
+  letter-spacing: 0;
 }
 
 .mini-fab {
   max-width: 48px;
-  transition: max-width 0.25s ease-in;
+  transition: max-width 0.25s ease-out;
 }
 
 #main {
@@ -109,21 +111,36 @@ mat-sidenav-container {
   min-height: calc(100% - 64px);
 }
 
-@media (prefers-color-scheme: light) {
-  .with-icon mat-icon {
+.fixed-fab-btn {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 1;
+
+  mat-icon {
     margin-right: 12px;
   }
 
+  app-gf-icon {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 12px;
+  }
+
+  ::ng-deep svg {
+    fill: var(--fab-icon-color);
+  }
+
+  span {
+    font-size: 14px;
+    line-height: 16px;
+    // text-transform: uppercase;
+    // letter-spacing: 1.25px
+  }
+}
+
+@media (prefers-color-scheme: light) {
   .fixed-fab-btn {
-    position: fixed;
-    right: 16px;
-    bottom: 16px;
-    z-index: 1;
-
-    .mat-fab {
-      // letter-spacing: 1.25px;
-    }
-
     button, a {
       /*     padding: 16px 20px 16px 16px;
            width: auto;
@@ -136,33 +153,11 @@ mat-sidenav-container {
            box-shadow: 0px 4px 8px 3px rgba(0, 0, 0, 0.15), 0px 1px 3px rgba(0, 0, 0, 0.3);
            border-radius: 16px;*/
     }
-
-    app-gf-icon {
-      display: inline-flex;
-      align-items: center;
-      margin-right: 12px;
-    }
-
-    ::ng-deep svg {
-      fill: var(--fab-icon-color);
-    }
-
-    span {
-      font-size: 14px;
-      line-height: 16px;
-      // text-transform: uppercase;
-      // letter-spacing: 1.25px
-    }
   }
 }
 
 @media (prefers-color-scheme: dark) {
   .fixed-fab-btn {
-    position: fixed;
-    right: 16px;
-    bottom: 16px;
-    z-index: 1;
-
     .mat-fab {
       background-color: #BB86FC;
       letter-spacing: 1.25px;
@@ -172,17 +167,6 @@ mat-sidenav-container {
     button {
       width: auto;
       // height: 48px;
-    }
-
-    ::ng-deep svg {
-      fill: var(--fab-icon-color);
-    }
-
-    span {
-      font-size: 14px;
-      line-height: 16px;
-      // text-transform: uppercase;
-      // letter-spacing: 1.25px
     }
   }
 }

@@ -1,6 +1,25 @@
 {
-  "name": "qa-app",
-  "short_name": "qa-app",
+  "name": "App Name",
+  "short_name": "Short Name",
+  "description": "A readable Hacker News app.",
+  "lang": "tr",
+  "screenshots":[
+    {
+      "src":"assets/screenshots/screenshot1.webp",
+      "type":"image/webp",
+      "sizes":"1024x683"
+    },
+    {
+      "src":"assets/screenshots/screenshot2.webp",
+      "type":"image/webp",
+      "sizes":"1280x1920"
+    },
+    {
+      "src":"assets/screenshots/screenshot3.jpg",
+      "type":"image/jpeg",
+      "sizes":"900x676"
+    }
+  ],
   "theme_color": "#fff",
   "background_color": "#fff",
   "display_override": ["minimal-ui"],

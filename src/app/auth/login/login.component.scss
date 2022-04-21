@@ -17,12 +17,16 @@ input.custom-autofill {
   height: 24px;
 }
 
-.login-avatar {
-  width: 64px;
-  height: 64px;
-  display: flex;
-  border-radius: 50%;
-  margin: 16px auto;
+.account-info {
+  margin: 0 0 40px 0;
+
+  .login-avatar {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    border-radius: 50%;
+    margin: 16px auto;
+  }
 }
 
 .page-center {

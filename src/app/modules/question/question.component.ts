@@ -110,7 +110,8 @@ export class QuestionComponent implements OnInit, OnDestroy {
     const { ShareDialogComponent } = await import('@shared/components/share-dialog/share-dialog.component');
     this.dialog
       .open(ShareDialogComponent, {
-        minWidth: 512,
+        minWidth: 360,
+        maxWidth: 560,
         scrollStrategy: this.sso.close(),
         autoFocus: false
       })

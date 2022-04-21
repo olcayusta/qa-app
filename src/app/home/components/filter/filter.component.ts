@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-sheet';
 
 @Component({
   selector: 'inek-filter',
@@ -6,6 +7,17 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styleUrls: ['./filter.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FilterComponent {
+export class FilterComponent implements OnInit {
   filterOpened = false;
+
+  @ViewChild('bottomExample') template!: TemplateRef<any>;
+
+  constructor(private bottomSheet: MatBottomSheet) {}
+
+  ngOnInit() {}
+
+  openBottomSheet(): void {
+    console.log(this.template);
+    this.bottomSheet.open(this.template);
+  }
 }

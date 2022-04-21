@@ -33,8 +33,12 @@
   <div class='header'>
     <h6 class='headline-5'>Top Questions</h6>
     <div>
-      <inek-sort-filter (openFilter)='filterOpened =! filterOpened'></inek-sort-filter>
-      <app-filter-by></app-filter-by>
+   <!--   <div class='support-text'>I am support text.</div>-->
+      <div>
+        <inek-sort-filter (openFilter)='filterOpened =! filterOpened'></inek-sort-filter>
+        <app-filter-by></app-filter-by>
+      </div>
+      <!--<button (click)='openBottomSheet()'>OPEN BOTTOM</button>-->
     </div>
   </div>
 </div>
@@ -46,3 +50,43 @@
   </div>
 </ng-container>
 
+<ng-template #bottomExample>
+  <!--Hello from the bottom sheet!-->
+<!--  <mat-nav-list>
+    <mat-list-item>
+      <mat-icon>visibility</mat-icon>
+      <span>Preview</span>
+    </mat-list-item>
+    <mat-list-item>
+      <mat-icon>share</mat-icon>
+      <span>Share</span>
+    </mat-list-item>
+    <mat-list-item>
+      <mat-icon>favorite_outline</mat-icon>
+      <span>Add to favorites</span>
+    </mat-list-item>
+    <mat-list-item>
+      <mat-icon>link</mat-icon>
+      <span>Copy link</span>
+    </mat-list-item>
+  </mat-nav-list>-->
+
+  <mat-nav-list>
+    <mat-list-item>
+      <mat-icon>visibility</mat-icon>
+      <span>No answers</span>
+    </mat-list-item>
+    <mat-list-item>
+      <mat-icon>share</mat-icon>
+      <span>No accepted answers</span>
+    </mat-list-item>
+    <mat-list-item>
+      <mat-icon>favorite_outline</mat-icon>
+      <span>Has bounty</span>
+    </mat-list-item>
+    <mat-list-item>
+      <mat-icon>link</mat-icon>
+      <span>Copy link</span>
+    </mat-list-item>
+  </mat-nav-list>
+</ng-template>

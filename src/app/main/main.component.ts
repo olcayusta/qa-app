@@ -104,4 +104,6 @@ export class MainComponent implements OnInit, AfterViewInit {
     this.sideSheetComponent = SideSheetComponent;
     this.cd.markForCheck();
   }
+
+  installApp() {}
 }

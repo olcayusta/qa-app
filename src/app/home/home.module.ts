@@ -20,6 +20,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatIconModule } from '@angular/material/icon';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
+import { MatListModule } from '@angular/material/list';
 
 function scrollFactory(overlay: Overlay): () => CloseScrollStrategy {
   return () => overlay.scrollStrategies.close();
@@ -47,7 +49,9 @@ function scrollFactory(overlay: Overlay): () => CloseScrollStrategy {
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
-    MatIconModule
+    MatIconModule,
+    MatBottomSheetModule,
+    MatListModule
   ],
   providers: [
     {

@@ -4,7 +4,7 @@ a {
 }
 
 .site-link {
-  font-family: Archivo, sans-serif;
+  // font-family: Roboto, "Helvetica Neue", sans-serif;
   margin-left: 24px;
 }
 
@@ -15,4 +15,10 @@ sup {
   font-weight: 500;
   line-height: 1;
   padding: 0 2px;
+}
+
+@media (max-width: 599px) {
+  .site-link {
+    margin-left: 16px;
+  }
 }
