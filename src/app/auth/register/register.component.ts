@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { RegisterService } from './services/register.service';
 
 @Component({
@@ -9,17 +9,20 @@ import { RegisterService } from './services/register.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RegisterComponent implements OnInit {
-  form: FormGroup;
+  registerForm: FormGroup<{
+    email: FormControl<string | null>;
+    password: FormControl<string | null>;
+    displayName: FormControl<string | null>;
+    picture: FormControl<string | null>;
+  }>;
 
   constructor(private fb: FormBuilder, private registerService: RegisterService) {
-    this.form = fb.group(
+    this.registerForm = this.fb.group(
       {
-        email: [null, [Validators.required, Validators.email]],
-        password: [null, [Validators.required, Validators.minLength(6), Validators.maxLength(16)]],
-        displayName: [null, [Validators.required]],
-        picture: [
-          'https://resources.tidal.com/images/3f5fb645/46b8/44c4/9721/e60ec54c2fa1/320x320.jpg'
-        ]
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(16)]],
+        displayName: ['', [Validators.required]],
+        picture: ['https://resources.tidal.com/images/3f5fb645/46b8/44c4/9721/e60ec54c2fa1/320x320.jpg']
       },
       { updateOn: 'submit' }
     );
@@ -28,8 +31,8 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {}
 
   submit(): void {
-    const { email, password, displayName, picture } = this.form.value;
-    this.registerService.createUser(email, password, displayName, picture).subscribe((user) => {
+    const { email, password, displayName, picture } = this.registerForm.value;
+    this.registerService.createUser(email!, password!, displayName!, picture!).subscribe((user) => {
       console.log('Üye kaydedildi!', user);
     });
   }

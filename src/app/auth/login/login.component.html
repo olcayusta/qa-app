@@ -57,7 +57,7 @@
         <span>veya</span>
       </div>-->
 
-    <form spellcheck='false' class='login-form' [formGroup]='form' (submit)='formSubmitted()'>
+    <form spellcheck='false' class='login-form' [formGroup]='loginForm' (submit)='formSubmitted()'>
       <div class='form-body'>
 
         <!-- E-posta -->
@@ -65,9 +65,9 @@
           <mat-form-field appearance='outline' hideRequiredMarker>
             <mat-label>E-posta</mat-label>
             <input aria-label='E-posta' matInput type='email' formControlName='email' qaAutofocus>
-            <mat-error *ngIf="form.get('email')?.hasError('required')">Bir e-posta adresi girin</mat-error>
-            <mat-error *ngIf="form.get('email')?.hasError('email')">Duzgun email adresi girin!</mat-error>
-            <mat-error *ngIf="form.get('email')?.hasError('emailNotFound')">E-posta adresi bulunamadı</mat-error>
+            <mat-error *ngIf="loginForm.controls.email.hasError('required')">Bir e-posta adresi girin</mat-error>
+            <mat-error *ngIf="loginForm.controls.email.hasError('email')">Duzgun email adresi girin!</mat-error>
+            <mat-error *ngIf="loginForm.controls.email.hasError('emailNotFound')">E-posta adresi bulunamadı</mat-error>
           </mat-form-field>
 
 
@@ -94,7 +94,7 @@
             <app-gf-icon name='visibility' *ngIf='hide'></app-gf-icon>
             <app-gf-icon name='visibility_off' *ngIf='!hide'></app-gf-icon>
           </button>
-          <mat-error *ngIf="form.get('password')?.hasError('required')">Bir şifre girin</mat-error>
+          <mat-error *ngIf="loginForm.controls.password.hasError('required')">Bir şifre girin</mat-error>
         </mat-form-field>
 
 

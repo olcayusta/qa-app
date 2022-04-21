@@ -14,7 +14,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoginComponent implements OnInit {
-  form: FormGroup<{
+  loginForm: FormGroup<{
     email: FormControl<string | null>;
     password: FormControl<string | null>;
   }>;
@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private cd: ChangeDetectorRef
   ) {
-    this.form = this.fb.group(
+    this.loginForm = this.fb.group(
       {
         email: ['', [Validators.required, Validators.email]],
         password: ['123456', [Validators.required, Validators.min(8)]]
@@ -48,10 +48,10 @@ export class LoginComponent implements OnInit {
   }
 
   formSubmitted(): void {
-    if (this.form.valid) {
+    if (this.loginForm.valid) {
       this.submitted = true;
 
-      const { email, password } = this.form.controls;
+      const { email, password } = this.loginForm.controls;
 
       this.authService
         .login(email.value!, password.value!)
@@ -67,7 +67,6 @@ export class LoginComponent implements OnInit {
         )
         .subscribe(async (user: User) => {
           this.submitted = false;
-          // Redirect the user
           await this.router.navigate([this.authService.redirectUrl]);
           //this.saveFavoriteTagsToLocaleStorage();
         });
