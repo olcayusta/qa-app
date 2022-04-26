@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit, TemplateRef, ViewChild } fr
 import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-sheet';
 
 @Component({
-  selector: 'inek-filter',
+  selector: 'id-filter',
   templateUrl: './filter.component.html',
   styleUrls: ['./filter.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -16,6 +16,9 @@ export class FilterComponent implements OnInit {
 
   ngOnInit() {}
 
+  /**
+   * Mobile => Open Bottom Sheet Component
+   */
   openBottomSheet(): void {
     console.log(this.template);
     this.bottomSheet.open(this.template);

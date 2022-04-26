@@ -1,16 +1,10 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  OnInit,
-  ViewChild
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { MatMenu, MatMenuItem } from '@angular/material/menu';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-filter-by',
+  selector: 'id-filter-by',
   templateUrl: './filter-by.component.html',
   styleUrls: ['./filter-by.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

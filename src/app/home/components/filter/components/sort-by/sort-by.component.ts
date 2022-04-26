@@ -11,6 +11,8 @@ import {
 } from '@angular/core';
 import { MatMenu, MatMenuItem } from '@angular/material/menu';
 import { ActivatedRoute } from '@angular/router';
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { MatChipInputEvent } from '@angular/material/chips';
 
 interface Food {
   value: string;
@@ -18,8 +20,12 @@ interface Food {
   disabled?: boolean;
 }
 
+export interface Fruit {
+  name: string;
+}
+
 @Component({
-  selector: 'inek-sort-filter',
+  selector: 'id-sort-by',
   templateUrl: './sort-by.component.html',
   styleUrls: ['./sort-by.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -66,6 +72,30 @@ export class SortByComponent implements OnInit, AfterViewInit {
   ];
 
   selectedFilterIndex!: number;
+
+  addOnBlur = true;
+  readonly separatorKeysCodes = [ENTER, COMMA] as const;
+  fruits: Fruit[] = [{ name: 'Lemon' }, { name: 'Lime' }, { name: 'Apple' }];
+
+  add(event: MatChipInputEvent): void {
+    const value = (event.value || '').trim();
+
+    // Add our fruit
+    if (value) {
+      this.fruits.push({ name: value });
+    }
+
+    // Clear the input value
+    event.chipInput!.clear();
+  }
+
+  remove(fruit: Fruit): void {
+    const index = this.fruits.indexOf(fruit);
+
+    if (index >= 0) {
+      this.fruits.splice(index, 1);
+    }
+  }
 
   constructor(private route: ActivatedRoute) {}
 

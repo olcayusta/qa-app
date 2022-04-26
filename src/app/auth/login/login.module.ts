@@ -10,9 +10,10 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatRippleModule } from '@angular/material/core';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { SharedModule } from '@shared/shared.module';
+import { PasswordFormComponent } from './password-form/password-form.component';
 
 @NgModule({
-  declarations: [LoginComponent],
+  declarations: [LoginComponent, PasswordFormComponent],
   imports: [
     CommonModule,
     LoginRoutingModule,

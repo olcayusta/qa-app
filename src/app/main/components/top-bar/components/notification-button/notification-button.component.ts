@@ -19,7 +19,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
-  selector: 'inek-notification-button',
+  selector: 'id-notification-button',
   templateUrl: './notification-button.component.html',
   styleUrls: ['./notification-button.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -41,7 +41,7 @@ export class NotificationButtonComponent implements OnInit {
 
   ngOnInit(): void {
     this.notificationCount$ = this.notificationService.getUnseenCount().pipe(
-      map(notification => notification.unseenCount),
+      map((notification) => notification.unseenCount),
       shareReplay()
     );
   }
@@ -76,13 +76,6 @@ export class NotificationButtonComponent implements OnInit {
 
 @NgModule({
   declarations: [NotificationButtonComponent],
-  imports: [
-    CommonModule,
-    SharedModule,
-    OverlayModule,
-    MatButtonModule,
-    MatBadgeModule,
-    MatTooltipModule
-  ]
+  imports: [CommonModule, SharedModule, OverlayModule, MatButtonModule, MatBadgeModule, MatTooltipModule]
 })
 class NotificationButtonModule {}

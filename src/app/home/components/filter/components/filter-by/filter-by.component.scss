@@ -16,25 +16,6 @@ button[aria-expanded='true'] {
   }
 }
 
-.filter-info-text {
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
-  margin-right: 8px;
-  white-space: nowrap;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-}
-
-mat-icon {
-  color: rgba(0, 0, 0, 0.6);
-  margin-right: -4px;
-}
-
-.count {
-  color: var(--medium-emphasis-color);
-  margin-left: 4px;
-}
-
 .outlined-menu-button {
   // height: 32px;
   // line-height: 32px;
@@ -42,11 +23,6 @@ mat-icon {
   text-transform: none;
   padding: 0 8px !important;
   letter-spacing: 0;
-}
-
-mat-checkbox {
-  font-size: 14px;
-  line-height: 20px;
 }
 
 ::ng-deep .filter-menu {

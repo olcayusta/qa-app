@@ -12,6 +12,7 @@
 
     mat-icon {
       margin-right: 8px;
+      color: var(--medium-emphasis-color);
     }
   }
 }
@@ -40,21 +41,13 @@ button[aria-expanded='true'] {
 app-gf-icon {
   display: inline-flex;
   margin-right: 8px;
-}
 
-/*mat-icon, svg {
-  color: rgba(0, 0, 0, 0.6);
-  margin-right: -4px;
-}
-
-app-gf-icon {
-  display: inline-flex;
-
-  ::ng-deep svg {
+/*  ::ng-deep svg {
     fill: #6200ee;
     margin-right: -4px;
-  }
-}*/
+  }*/
+}
+
 
 .outlined-menu-button {
   // height: 32px;
@@ -67,14 +60,24 @@ app-gf-icon {
 
 // Material Design Mini Menu
 .inek-menu-item {
-  height: 40px;
-  line-height: 40px;
+/*  height: 32px;
+  line-height: 32px;
   padding-left: 8px;
+  font-size: 14px;
+  font-family: Archivo, sans-serif;*/
+  font-size: 16px;
 }
 
 .inek-menu-item-active {
-  background-color: #bb86fc1f !important;
+  background-color: #6200ee12  !important;
   color: black;
+}
+
+@media (prefers-color-scheme: dark) {
+  .inek-menu-item-active {
+    background-color: #ffffff12 !important;
+    color: #fff;
+  }
 }
 
 .divider-text {

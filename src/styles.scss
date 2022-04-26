@@ -99,6 +99,7 @@ body {
 
 * {
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 svg {
@@ -143,10 +144,10 @@ svg {
   }
 
   &:hover::-webkit-scrollbar-thumb {
-    background-color: #c1c1c1;
+    background-color: var(--scrollbar-thumb-background);
 
     &:hover {
-      background-color: #787878;
+      background-color: var(--thumb-bg-hover);
     }
   }
 
@@ -200,5 +201,27 @@ noscript {
     display: flex;
     width: 200px;
     border-radius: 4px;
+  }
+}
+
+// For Chrome, Safari.
+.mat-menu-panel::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 16px;
+}
+
+.mat-menu-panel::-webkit-scrollbar-thumb {
+  border-radius: 16px;
+  min-height: 56px;
+  border: 4px solid transparent;
+  background-color: transparent;
+  background-clip: content-box;
+}
+
+.mat-menu-panel:hover::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb-background);
+
+  &:hover {
+    background-color: var(--thumb-bg-hover);
   }
 }

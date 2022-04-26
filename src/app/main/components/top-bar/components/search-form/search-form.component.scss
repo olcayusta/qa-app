@@ -33,8 +33,9 @@ mat-icon {
   color: var(--medium-emphasis-color);
 }
 
-::placeholder {
-  // color: var(--medium-emphasis-color);
+input::placeholder, input::-moz-placeholder {
+  color: var(--medium-emphasis-color);
+  opacity: 1;
 }
 
 /**
@@ -44,14 +45,14 @@ mat-icon {
 */
 
 .mat-optgroup .mat-option:not(.mat-option-multiple) {
-  padding-left: 16px !important;
+  padding-left: 52px !important;
 }
 
 ::ng-deep .my-autocomplete {
   padding: 8px 0 0;
   max-height: calc(100vh - 64px) !important;
   background-color: var(--autocomplete-background);
-  // margin-top: 4px;
+  margin-top: 4px;
   border-radius: 8px !important;
 
   .mat-option {
@@ -70,6 +71,7 @@ mat-icon {
     letter-spacing: 1.5px;
     color: var(--medium-emphasis-color);
     text-transform: uppercase;
+    padding-left: 52px;
   }
 }
 

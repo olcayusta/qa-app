@@ -1,48 +1,14 @@
-<!--
-<h1>All Questions</h1>-->
-
-<!--<button mat-button>
-  <mat-icon>tune</mat-icon>
-  <span>FILTRELER</span>
-</button>
-
-<qa-sort-filter></qa-sort-filter>
-<app-filter-by></app-filter-by>
-
-<mat-chip-list>
-  <mat-basic-chip>Unanswered</mat-basic-chip>
-  <mat-basic-chip>No accepted answer</mat-basic-chip>
-</mat-chip-list>
-
-<mat-checkbox color='primary'>Yalnızca, cevaplanmamış soruları göster</mat-checkbox>-->
-
-<!--<div class="container">-->
-<!--  <span class="info-text">Tagged with: </span>-->
-<!--  <mat-checkbox color="primary" [checked]="true">My watched tags</mat-checkbox>-->
-<!--</div>-->
-
-<!--<div class="big-filter">
-  <div class="radio-box">
-    <mat-checkbox>No answers</mat-checkbox>
-    <mat-checkbox>No accepted answer</mat-checkbox>
-    <mat-checkbox>Has bounty</mat-checkbox>
-  </div>
-</div>-->
-
 <div class='host-container'>
   <div class='header'>
-    <h6 class='headline-5'>Top Questions</h6>
-    <div>
-   <!--   <div class='support-text'>I am support text.</div>-->
-      <div>
-        <inek-sort-filter (openFilter)='filterOpened =! filterOpened'></inek-sort-filter>
-        <app-filter-by></app-filter-by>
-      </div>
-      <!--<button (click)='openBottomSheet()'>OPEN BOTTOM</button>-->
+<!--    <h5 class='headline-5'>Senin için önerilenler</h5>-->
+    <div class='header-buttons'>
+      <id-sort-by (openFilter)='filterOpened =! filterOpened'></id-sort-by>
+      <id-filter-by></id-filter-by>
     </div>
   </div>
 </div>
 
+<mat-divider></mat-divider>
 
 <ng-container *ngIf='filterOpened'>
   <div class='filter-container'>
@@ -51,26 +17,6 @@
 </ng-container>
 
 <ng-template #bottomExample>
-  <!--Hello from the bottom sheet!-->
-<!--  <mat-nav-list>
-    <mat-list-item>
-      <mat-icon>visibility</mat-icon>
-      <span>Preview</span>
-    </mat-list-item>
-    <mat-list-item>
-      <mat-icon>share</mat-icon>
-      <span>Share</span>
-    </mat-list-item>
-    <mat-list-item>
-      <mat-icon>favorite_outline</mat-icon>
-      <span>Add to favorites</span>
-    </mat-list-item>
-    <mat-list-item>
-      <mat-icon>link</mat-icon>
-      <span>Copy link</span>
-    </mat-list-item>
-  </mat-nav-list>-->
-
   <mat-nav-list>
     <mat-list-item>
       <mat-icon>visibility</mat-icon>
