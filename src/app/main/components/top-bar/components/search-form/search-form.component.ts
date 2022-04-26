@@ -7,7 +7,7 @@ import { MatAutocompleteSelectedEvent, MatAutocompleteTrigger } from '@angular/m
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'inek-search-form',
+  selector: 'id-search-form',
   templateUrl: './search-form.component.html',
   styleUrls: ['./search-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
