@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { MainComponent } from './main/main.component';
 import { AuthGuard } from '@auth/auth.guard';
 import { LoggedGuard } from '@auth/logged.guard';
+import { UserResolver } from './user/resolvers/user.resolver';
 
 const routes: Routes = [
   {
@@ -45,7 +46,7 @@ const routes: Routes = [
       },
       {
         path: 'user/:userId',
-        loadChildren: () => import('./user/user.module').then((u) => u.UserModule)
+        loadChildren: () => import('./user/user-route').then(({ ROUTES }) => ROUTES)
       },
       {
         path: 'question/:questionId',

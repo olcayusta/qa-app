@@ -1,13 +1,11 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-
-import { UserComponent } from './user.component';
-import { UserResolver } from './resolvers/user.resolver';
+import { Route } from '@angular/router';
 import { UserTitleResolver } from './resolvers/user-title.resolver';
 import { UserQuestionsResolver } from './components/user-questions/resolvers/user-questions.resolver';
 import { UserAnswersResolver } from './components/user-answers/resolvers/user-answers.resolver';
+import { UserComponent } from './user.component';
+import { UserResolver } from './resolvers/user.resolver';
 
-const routes: Routes = [
+export const ROUTES: Route[] = [
   {
     path: '',
     component: UserComponent,
@@ -21,16 +19,20 @@ const routes: Routes = [
         children: [
           {
             path: 'questions',
-            loadComponent: async () =>
-              (await import('./components/user-questions/user-questions.component')).UserQuestionsComponent,
+            loadComponent: () =>
+              import('./components/user-questions/user-questions.component').then(
+                ({ UserQuestionsComponent }) => UserQuestionsComponent
+              ),
             resolve: {
               questions: UserQuestionsResolver
             }
           },
           {
             path: 'answers',
-            loadComponent: async () =>
-              (await import('./components/user-answers/user-answers.component')).UserAnswersComponent,
+            loadComponent: () =>
+              import('./components/user-answers/user-answers.component').then(
+                ({ UserAnswersComponent }) => UserAnswersComponent
+              ),
             resolve: {
               answers: UserAnswersResolver
             }
@@ -40,9 +42,3 @@ const routes: Routes = [
     ]
   }
 ];
-
-@NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
-})
-export class UserRoutingModule {}

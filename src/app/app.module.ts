@@ -7,7 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainComponent } from './main/main.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
-import { StickyDirective } from './main/components/top-bar/directives/sticky.directive';
 import { JwtInterceptor } from '@auth/interceptors/jwt.interceptor';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '@modules/material/material.module';
@@ -25,6 +24,7 @@ import { MaterialIconModule } from './material-icon/material-icon.module';
 import { TitleStrategy } from '@angular/router';
 import { AppTitleStrategy } from './core/app-title.strategy';
 import { HttpErrorInterceptor } from './core/interceptors/http-error.interceptor';
+import { StickyDirective } from './main/components/top-bar/directives/sticky.directive';
 
 @NgModule({
   declarations: [
@@ -32,10 +32,10 @@ import { HttpErrorInterceptor } from './core/interceptors/http-error.interceptor
     MainComponent,
     TopAppBarComponent,
     SearchFormComponent,
-    StickyDirective,
     TopAppBarLogoComponent,
     ProgressBarComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    StickyDirective
   ],
   imports: [
     BrowserModule,
