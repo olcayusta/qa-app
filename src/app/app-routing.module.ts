@@ -4,6 +4,7 @@ import { MainComponent } from './main/main.component';
 import { AuthGuard } from '@auth/auth.guard';
 import { LoggedGuard } from '@auth/logged.guard';
 import { UserResolver } from './user/resolvers/user.resolver';
+import { UserListResolver } from './users/shared/resolvers/user-list.resolver';
 
 const routes: Routes = [
   {
@@ -17,7 +18,12 @@ const routes: Routes = [
       },
       {
         path: 'users',
-        loadChildren: async () => (await import('./users/users.module')).UsersModule
+        // loadChildren: async () => (await import('./users/users.module')).UsersModule,
+        loadComponent: () => import('./users/users.component').then((m) => m.UsersComponent),
+        resolve: {
+          users: UserListResolver
+        },
+        title: 'Kullanıcılar'
       },
       {
         path: 'tags',
@@ -46,7 +52,7 @@ const routes: Routes = [
       },
       {
         path: 'user/:userId',
-        loadChildren: () => import('./user/user-route').then(({ ROUTES }) => ROUTES)
+        loadChildren: () => import('./user/user.routes').then((m) => m.ROUTES)
       },
       {
         path: 'question/:questionId',
