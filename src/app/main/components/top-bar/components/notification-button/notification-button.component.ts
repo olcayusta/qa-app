@@ -1,12 +1,4 @@
-import {
-  Component,
-  OnInit,
-  ChangeDetectionStrategy,
-  Type,
-  ElementRef,
-  ChangeDetectorRef,
-  NgModule
-} from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Type, ElementRef, ChangeDetectorRef } from '@angular/core';
 import { map, shareReplay } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { NotificationService } from '@shared/services/notification.service';
@@ -22,7 +14,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
   selector: 'id-notification-button',
   templateUrl: './notification-button.component.html',
   styleUrls: ['./notification-button.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [CommonModule, SharedModule, OverlayModule, MatButtonModule, MatBadgeModule, MatTooltipModule]
 })
 export class NotificationButtonComponent implements OnInit {
   notificationCount$!: Observable<number>;
@@ -73,9 +67,3 @@ export class NotificationButtonComponent implements OnInit {
     }
   }
 }
-
-@NgModule({
-  declarations: [NotificationButtonComponent],
-  imports: [CommonModule, SharedModule, OverlayModule, MatButtonModule, MatBadgeModule, MatTooltipModule]
-})
-class NotificationButtonModule {}

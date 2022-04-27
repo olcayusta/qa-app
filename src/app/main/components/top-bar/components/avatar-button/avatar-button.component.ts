@@ -1,12 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  ElementRef,
-  NgModule,
-  OnInit,
-  Type
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnInit, Type } from '@angular/core';
 import { OverlayModule, ScrollStrategy, ScrollStrategyOptions } from '@angular/cdk/overlay';
 import { User } from '@shared/models/user.model';
 import { AuthService } from '@auth/auth.service';
@@ -21,7 +13,9 @@ import { Observable } from 'rxjs';
   selector: 'id-avatar-button',
   templateUrl: './avatar-button.component.html',
   styleUrls: ['./avatar-button.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [CommonModule, SharedModule, OverlayModule]
 })
 export class AvatarButtonComponent implements OnInit {
   user!: User;
@@ -79,9 +73,3 @@ export class AvatarButtonComponent implements OnInit {
     }
   }
 }
-
-@NgModule({
-  declarations: [AvatarButtonComponent],
-  imports: [CommonModule, SharedModule, OverlayModule]
-})
-class AvatarButtonmodule {}

@@ -4,6 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { UserComponent } from './user.component';
 import { UserResolver } from './resolvers/user.resolver';
 import { UserTitleResolver } from './resolvers/user-title.resolver';
+import { UserQuestionsResolver } from './components/user-questions/resolvers/user-questions.resolver';
+import { UserAnswersResolver } from './components/user-answers/resolvers/user-answers.resolver';
 
 const routes: Routes = [
   {
@@ -19,15 +21,19 @@ const routes: Routes = [
         children: [
           {
             path: 'questions',
-            loadChildren: () =>
-              import('./components/user-questions/user-questions.module').then(
-                ({ UserQuestionsModule }) => UserQuestionsModule
-              )
+            loadComponent: async () =>
+              (await import('./components/user-questions/user-questions.component')).UserQuestionsComponent,
+            resolve: {
+              questions: UserQuestionsResolver
+            }
           },
           {
             path: 'answers',
-            loadChildren: () =>
-              import('./components/user-answers/user-answers.module').then(({ UserAnswersModule }) => UserAnswersModule)
+            loadComponent: async () =>
+              (await import('./components/user-answers/user-answers.component')).UserAnswersComponent,
+            resolve: {
+              answers: UserAnswersResolver
+            }
           }
         ]
       }

@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, NgModule, OnDestroy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@modules/material/material.module';
@@ -12,7 +12,17 @@ import { MaterialIconModule } from '../../../material-icon/material-icon.module'
   selector: 'inek-nav-drawer',
   templateUrl: './nav-drawer.component.html',
   styleUrls: ['./nav-drawer.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    CommonModule,
+    MaterialModule,
+    SharedModule,
+    RouterModule,
+    MatListModule,
+    MatDialogModule,
+    MaterialIconModule
+  ]
 })
 export class NavDrawerComponent implements OnInit, OnDestroy {
   private pages = [
@@ -54,9 +64,7 @@ export class NavDrawerComponent implements OnInit, OnDestroy {
   }
 
   async openFeedbackDialog() {
-    const { FeedbackDialogComponent } = await import(
-      '@dialogs/feedback-dialog/feedback-dialog.component'
-    );
+    const { FeedbackDialogComponent } = await import('@dialogs/feedback-dialog/feedback-dialog.component');
     this.dialog.open(FeedbackDialogComponent, {
       autoFocus: 'dialog',
       minWidth: 640
@@ -67,7 +75,7 @@ export class NavDrawerComponent implements OnInit, OnDestroy {
     const { WatchedTagListDialogComponent } = await import(
       '../../../dialogs/watched-tag-list-dialog/watched-tag-list-dialog.component'
     );
-    const dialog = this.dialog.open(WatchedTagListDialogComponent, {
+    this.dialog.open(WatchedTagListDialogComponent, {
       minWidth: 512,
       autoFocus: false
     });
@@ -79,17 +87,3 @@ export class NavDrawerComponent implements OnInit, OnDestroy {
     });
   }
 }
-
-@NgModule({
-  declarations: [NavDrawerComponent],
-  imports: [
-    CommonModule,
-    MaterialModule,
-    SharedModule,
-    RouterModule,
-    MatListModule,
-    MatDialogModule,
-    MaterialIconModule
-  ]
-})
-class NavDrawerModule {}
