@@ -1,10 +1,4 @@
-import {
-  Component,
-  OnInit,
-  ChangeDetectionStrategy,
-  OnDestroy,
-  ChangeDetectorRef
-} from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { Question } from '@shared/models/question.model';
 import { BehaviorSubject, first, Observable, Subscription, take } from 'rxjs';
 import { QuestionService } from '@modules/question/services/question.service';
@@ -23,12 +17,7 @@ import { animate, query, stagger, style, transition, trigger } from '@angular/an
       transition(':enter', [
         query('.hero', [
           style({ opacity: 0, transform: 'translateY(-100px)' }),
-          stagger(100, [
-            animate(
-              '400ms cubic-bezier(0.35, 0, 0.25, 1)',
-              style({ opacity: 1, transform: 'none' })
-            )
-          ])
+          stagger(100, [animate('400ms cubic-bezier(0.35, 0, 0.25, 1)', style({ opacity: 1, transform: 'none' }))])
         ])
       ])
     ])
@@ -60,17 +49,13 @@ export class HomeGridListComponent implements OnInit, OnDestroy {
     private filterService: FilterService,
     private route: ActivatedRoute,
     private cdr: ChangeDetectorRef
-  ) {
-  }
+  ) {}
 
   ngOnInit(): void {
     this.recentQuestionsSubscription = this.route.queryParamMap
       .pipe(
         switchMap((paramMap) => {
-          return this.filterService.getQuestionsByFiltered(
-            paramMap.get('sort'),
-            paramMap.get('filter')
-          );
+          return this.filterService.getQuestionsByFiltered(paramMap.get('sort'), paramMap.get('filter'));
         })
       )
       .subscribe((questions) => {

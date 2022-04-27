@@ -3,8 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { MainComponent } from './main/main.component';
 import { AuthGuard } from '@auth/auth.guard';
 import { LoggedGuard } from '@auth/logged.guard';
-import { UserResolver } from './user/resolvers/user.resolver';
-import { UserListResolver } from './users/shared/resolvers/user-list.resolver';
 
 const routes: Routes = [
   {
@@ -18,12 +16,7 @@ const routes: Routes = [
       },
       {
         path: 'users',
-        // loadChildren: async () => (await import('./users/users.module')).UsersModule,
-        loadComponent: () => import('./users/users.component').then((m) => m.UsersComponent),
-        resolve: {
-          users: UserListResolver
-        },
-        title: 'Kullanıcılar'
+        loadChildren: () => import('./users/users.routes').then((m) => m.ROUTES)
       },
       {
         path: 'tags',

@@ -6,6 +6,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { SharedModule } from '@shared/shared.module';
 import { UserListComponent } from './user-list/user-list.component';
+import { UserListItemComponent } from './user-list-item/user-list-item.component';
 
 @Component({
   selector: 'app-users',
@@ -13,7 +14,7 @@ import { UserListComponent } from './user-list/user-list.component';
   styleUrls: ['./users.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [CommonModule, MatDividerModule, MatButtonModule, SharedModule, UserListComponent]
+  imports: [CommonModule, MatDividerModule, MatButtonModule, SharedModule, UserListComponent, UserListItemComponent]
 })
 export class UsersComponent implements OnInit {
   users!: User[];

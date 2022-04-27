@@ -1,11 +1,11 @@
-import { Route } from '@angular/router';
+import { Routes } from '@angular/router';
 import { UserTitleResolver } from './resolvers/user-title.resolver';
 import { UserQuestionsResolver } from './components/user-questions/resolvers/user-questions.resolver';
 import { UserAnswersResolver } from './components/user-answers/resolvers/user-answers.resolver';
 import { UserComponent } from './user.component';
 import { UserResolver } from './resolvers/user.resolver';
 
-export const ROUTES: Route[] = [
+export const ROUTES: Routes = [
   {
     path: '',
     component: UserComponent,
