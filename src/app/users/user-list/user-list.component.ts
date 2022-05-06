@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./user-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [UserListItemComponent, CommonModule]
+  imports: [CommonModule, UserListItemComponent]
 })
 export class UserListComponent implements OnInit {
   users!: User[];

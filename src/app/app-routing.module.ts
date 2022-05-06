@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { MainComponent } from './main/main.component';
 import { AuthGuard } from '@auth/auth.guard';
 import { LoggedGuard } from '@auth/logged.guard';
+import { TagsResolver } from './tags/resolvers/tags.resolver';
+import { listRoutes } from '@modules/list/list.routes';
 
 const routes: Routes = [
   {
@@ -20,7 +22,7 @@ const routes: Routes = [
       },
       {
         path: 'tags',
-        loadChildren: async () => (await import('./tags/tags.module')).TagsModule
+        loadChildren: () => import('./tags/tags.routes').then((m) => m.ROUTES)
       },
       {
         path: 'tag/:tagId',
@@ -28,20 +30,20 @@ const routes: Routes = [
       },
       {
         path: 'search',
-        loadChildren: async () => (await import('./search/search.module')).SearchModule
+        loadChildren: () => import('./search/search.routes').then((mod) => mod.routes)
       },
       {
         path: 'settings',
-        loadChildren: async () => (await import('@modules/settings/settings.module')).SettingsModule,
+        loadChildren: () => import('./modules/settings/settings.routes').then((mod) => mod.ROUTES),
         canLoad: [AuthGuard]
       },
       {
         path: 'list',
-        loadChildren: () => import('@modules/list/list.module').then((value) => value.ListModule)
+        loadChildren: () => import('./modules/list/list.routes').then((mod) => mod.listRoutes)
       },
       {
         path: 'watched_tags',
-        loadChildren: () => import('./watched-tags/watched-tags.module').then((m) => m.WatchedTagsModule)
+        loadChildren: () => import('./watched-tags/watched-tags.routes').then((mod) => mod.ROUTES)
       },
       {
         path: 'user/:userId',
@@ -53,7 +55,7 @@ const routes: Routes = [
       },
       {
         path: 'questions/create',
-        loadChildren: async () => (await import('@modules/create-question/create-question.module')).CreateQuestionModule
+        loadChildren: () => import('./create-question/create-question.routes').then((mod) => mod.routes)
       },
       {
         path: 'edit',
@@ -65,7 +67,7 @@ const routes: Routes = [
       },
       {
         path: 'help',
-        loadChildren: async () => (await import('@modules/help/help.module')).HelpModule
+        loadChildren: () => import('./modules/help/help.routes').then(({ ROUTES }) => ROUTES)
       }
     ]
   },
@@ -81,7 +83,7 @@ const routes: Routes = [
   },
   {
     path: '404',
-    loadChildren: async () => (await import('./modules/page-not-found/page-not-found.module')).PageNotFoundModule
+    loadChildren: () => import('./modules/page-not-found/page-not-found-routes').then((mod) => mod.routes)
   },
   {
     path: '500',
@@ -92,7 +94,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    loadChildren: async () => (await import('./modules/page-not-found/page-not-found.module')).PageNotFoundModule
+    loadChildren: () => import('./modules/page-not-found/page-not-found-routes').then((mod) => mod.routes)
   }
 ];
 

@@ -20,9 +20,9 @@ export class AppComponent implements OnInit {
     const { metaKey, key, shiftKey } = $event;
     if ((metaKey && key === '/') || (shiftKey && key === '?')) {
       const { HotkeyDialogComponent } = await import('@dialogs/hotkey-dialog/hotkey-dialog.component');
-      this.dialog.open(HotkeyDialogComponent, {
+      /*    this.dialog.open(HotkeyDialogComponent, {
         minWidth: 560
-      });
+      });*/
     }
   }
 
@@ -33,8 +33,7 @@ export class AppComponent implements OnInit {
     private snackBar: MatSnackBar,
     private swPush: SwPush,
     private swUpdate: SwUpdate,
-    private zone: NgZone,
-    private dialog: MatDialog
+    private zone: NgZone // private dialog: MatDialog
   ) {
     // THEME FIX
     // const storageKey = localStorage.getItem('theme-preference');

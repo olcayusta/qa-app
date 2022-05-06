@@ -2,13 +2,13 @@
 
   <!--  <h6 class='headline-6'>Soru Sor</h6>-->
 
-  <form autocomplete='off' spellcheck='false' [formGroup]='form' (submit)='submit()'>
+  <form autocomplete='off' spellcheck='false' [formGroup]='questionForm' (submit)='submit()'>
     <div class='form-body'>
 
       <mat-form-field appearance='legacy' floatLabel='never' hideRequiredMarker>
         <mat-label>Başlık</mat-label>
         <input aria-label='Başlık' matInput formControlName='title'>
-        <mat-error *ngIf="form.get('title')?.hasError('required')">Bir başlık girin</mat-error>
+        <mat-error *ngIf="questionForm.get('title')?.hasError('required')">Bir başlık girin</mat-error>
       </mat-form-field>
 
       <div>
@@ -46,14 +46,14 @@
                     placeholder='Include all the information someone would need to answer your question'
                     formControlName='description' cdkTextareaAutosize [cdkAutosizeMinRows]='2'
                     [cdkAutosizeMaxRows]='16'></textarea>
-          <mat-error *ngIf="form.get('description')?.hasError('required')">Bir açıklama girin</mat-error>
+          <mat-error *ngIf="questionForm.get('description')?.hasError('required')">Bir açıklama girin</mat-error>
         </mat-form-field>
       </div>
 
       <div>
         <div class='overline-text'>Önizleme</div>
         <mat-divider></mat-divider>
-        <div [innerHTML]='form.get("description")?.value' class='description-preview'></div>
+        <div [innerHTML]='questionForm.get("description")?.value' class='description-preview'></div>
       </div>
 
       <inek-chips-autocomplete></inek-chips-autocomplete>

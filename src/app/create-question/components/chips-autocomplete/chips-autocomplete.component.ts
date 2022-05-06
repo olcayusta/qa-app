@@ -1,18 +1,23 @@
 import { Component, OnInit, ChangeDetectionStrategy, ViewChild, ElementRef } from '@angular/core';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { FormControl } from '@angular/forms';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { MatAutocomplete, MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+import { MatAutocomplete, MatAutocompleteModule, MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { debounceTime, distinctUntilChanged, map, startWith, switchMap } from 'rxjs/operators';
-import { MatChipInputEvent } from '@angular/material/chips';
-import { TagService } from '../../../tag/services/tag.service';
+import { MatChipInputEvent, MatChipsModule } from '@angular/material/chips';
 import { Tag } from '@shared/models/tag.model';
+import { CommonModule } from '@angular/common';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { TagService } from '@modules/tag/services/tag.service';
 
 @Component({
   selector: 'inek-chips-autocomplete',
   templateUrl: './chips-autocomplete.component.html',
   styleUrls: ['./chips-autocomplete.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [CommonModule, MatAutocompleteModule, MatChipsModule, MatInputModule, MatIconModule, ReactiveFormsModule]
 })
 export class ChipsAutocompleteComponent implements OnInit {
   visible = true;
@@ -31,6 +36,7 @@ export class ChipsAutocompleteComponent implements OnInit {
   constructor(private tagService: TagService) {}
 
   ngOnInit(): void {
+    // @ts-ignore
     this.filteredFruits = this.fruitCtrl.valueChanges.pipe(
       debounceTime(200),
       distinctUntilChanged(),

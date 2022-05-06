@@ -8,7 +8,9 @@ import { MatButtonModule } from '@angular/material/button';
   selector: 'id-profile-picture-dialog',
   templateUrl: './profile-picture-dialog.component.html',
   styleUrls: ['./profile-picture-dialog.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [MatDialogModule, MatButtonModule]
 })
 export class ProfilePictureDialogComponent implements OnInit {
   user!: User;
@@ -19,9 +21,3 @@ export class ProfilePictureDialogComponent implements OnInit {
     this.user = this.authService.userValue;
   }
 }
-
-@NgModule({
-  declarations: [ProfilePictureDialogComponent],
-  imports: [MatDialogModule, MatButtonModule]
-})
-class ProfilePictureDialogModule {}

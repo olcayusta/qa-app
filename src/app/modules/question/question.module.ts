@@ -26,6 +26,7 @@ import { EditorButtonsComponent } from './components/answer-form/components/edit
 import { MaterialIconModule } from '../../material-icon/material-icon.module';
 import { CommentFormComponent } from './components/comment-form/comment-form.component';
 import { AnswerItemCommentListComponent } from './components/answer-list/answer-item/answer-item-comment-list/answer-item-comment-list.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { AnswerItemCommentListComponent } from './components/answer-list/answer-
     MatIconModule,
     MatCardModule,
     MatButtonToggleModule,
-    MaterialIconModule
+    MaterialIconModule,
+    MatDialogModule
   ]
 })
 export class QuestionModule {}

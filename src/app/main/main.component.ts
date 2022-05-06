@@ -13,17 +13,33 @@ import {
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDrawerMode, MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { DOCUMENT } from '@angular/common';
+import { CommonModule, DOCUMENT } from '@angular/common';
 import { SideSheetComponent } from './components/side-sheet/side-sheet.component';
 import { NavDrawerComponent } from './components/nav-drawer/nav-drawer.component';
 import { DrawerService } from './components/nav-drawer/drawer.service';
 import { SocketService } from '@shared/services/socket.service';
+import { MaterialModule } from '@modules/material/material.module';
+import { MatIconModule } from '@angular/material/icon';
+import { TopAppBarComponent } from './components/top-bar/top-app-bar.component';
+import { RouterModule } from '@angular/router';
+import { StickyDirective } from './components/top-bar/directives/sticky.directive';
+import { ExtendedFabDirective } from './directives/extended-fab.directive';
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    CommonModule,
+    MaterialModule,
+    MatIconModule,
+    RouterModule,
+    TopAppBarComponent,
+    StickyDirective,
+    ExtendedFabDirective
+  ]
 })
 export class MainComponent implements OnInit, AfterViewInit {
   mode!: MatDrawerMode;

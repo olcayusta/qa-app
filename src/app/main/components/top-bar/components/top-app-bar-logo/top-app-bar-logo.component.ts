@@ -1,9 +1,12 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'inek-top-app-bar-logo',
+  selector: 'app-top-app-bar-logo',
   templateUrl: './top-app-bar-logo.component.html',
   styleUrls: ['./top-app-bar-logo.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [RouterModule]
 })
 export class TopAppBarLogoComponent {}

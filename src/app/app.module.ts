@@ -4,56 +4,35 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MainComponent } from './main/main.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import { JwtInterceptor } from '@auth/interceptors/jwt.interceptor';
-import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '@modules/material/material.module';
-import { MainLayoutModule } from './main-layout/main-layout.module';
 import { SharedModule } from '@shared/shared.module';
-import { TopAppBarComponent } from './main/components/top-bar/top-app-bar.component';
-import { SearchFormComponent } from './main/components/top-bar/components/search-form/search-form.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '@environments/environment';
-import { TopAppBarLogoComponent } from './main/components/top-bar/components/top-app-bar-logo/top-app-bar-logo.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
-import { MAT_ICON_DEFAULT_OPTIONS, MatIconModule } from '@angular/material/icon';
+import { MAT_ICON_DEFAULT_OPTIONS } from '@angular/material/icon';
 import { WelcomeComponent } from './experimental/welcome/welcome.component';
-import { MaterialIconModule } from './material-icon/material-icon.module';
 import { TitleStrategy } from '@angular/router';
 import { AppTitleStrategy } from './core/app-title.strategy';
 import { HttpErrorInterceptor } from './core/interceptors/http-error.interceptor';
-import { StickyDirective } from './main/components/top-bar/directives/sticky.directive';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    MainComponent,
-    TopAppBarComponent,
-    SearchFormComponent,
-    TopAppBarLogoComponent,
-    ProgressBarComponent,
-    WelcomeComponent,
-    StickyDirective
-  ],
+  declarations: [AppComponent, ProgressBarComponent, WelcomeComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    ReactiveFormsModule,
     SharedModule,
     MaterialModule,
-    MainLayoutModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the app is stable
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
-    }),
-    MatIconModule,
-    MaterialIconModule
+    })
   ],
   providers: [
     {

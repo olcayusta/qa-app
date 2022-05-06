@@ -6,7 +6,7 @@ import { SharedModule } from '@shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { MatListModule } from '@angular/material/list';
 import { DrawerService } from './drawer.service';
-import { MaterialIconModule } from '../../../material-icon/material-icon.module';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'inek-nav-drawer',
@@ -14,15 +14,7 @@ import { MaterialIconModule } from '../../../material-icon/material-icon.module'
   styleUrls: ['./nav-drawer.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [
-    CommonModule,
-    MaterialModule,
-    SharedModule,
-    RouterModule,
-    MatListModule,
-    MatDialogModule,
-    MaterialIconModule
-  ]
+  imports: [CommonModule, MaterialModule, SharedModule, RouterModule, MatListModule, MatDialogModule, MatIconModule]
 })
 export class NavDrawerComponent implements OnInit, OnDestroy {
   private pages = [

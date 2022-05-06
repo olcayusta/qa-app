@@ -1,9 +1,4 @@
-import {
-  Component,
-  OnInit,
-  ChangeDetectionStrategy,
-  NgModule
-} from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '@shared/shared.module';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -14,22 +9,12 @@ import { MatToolbarModule } from '@angular/material/toolbar';
   selector: 'id-side-sheet',
   templateUrl: './side-sheet.component.html',
   styleUrls: ['./side-sheet.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [CommonModule, SharedModule, MatToolbarModule, MatCheckboxModule, MatRadioModule]
 })
 export class SideSheetComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
 }
-
-@NgModule({
-  declarations: [SideSheetComponent],
-  imports: [
-    CommonModule,
-    SharedModule,
-    MatToolbarModule,
-    MatCheckboxModule,
-    MatRadioModule
-  ]
-})
-class SideSheetModule {}

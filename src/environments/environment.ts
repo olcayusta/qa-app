@@ -4,11 +4,11 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://192.168.1.4:9001',
+  apiUrl: 'http://192.168.1.7:9001',
   appTitle: 'QaApp',
   PUBLIC_VAPID_KEY_OF_SERVER: 'BBuui5T3pIWV_ZyyZel8ynOQLlJO5juM6knPoBzg9shZjkmcqaFm0okyCbWOw2pxSSdEo2p9kiSQYn0V8A-GOjE',
-  WS_URL: 'ws://192.168.1.4:9001/notification',
-  SSE_URL: '//192.168.1.4:9001/stream'
+  WS_URL: 'ws://192.168.1.7:9001/notification',
+  SSE_URL: '//192.168.1.7:9001/stream'
 };
 
 /*

@@ -4,7 +4,6 @@ import { LazyImgDirective } from './directives/lazy-img.directive';
 import { HomeQuestionListItemComponent } from './components/home-question-list-item/home-question-list-item.component';
 import { RouterModule } from '@angular/router';
 import { TimeAgoPipe } from './pipes/time-ago.pipe';
-import { HighlightSearchPipe } from '../main/components/top-bar/components/search-form/pipes/highlight-search.pipe';
 import { ImgShadowComponent } from './components/img-shadow/img-shadow.component';
 import { MaterialModule } from '@modules/material/material.module';
 import { GfIconComponent } from '@shared/components/gf-icon/gf-icon.component';
@@ -22,7 +21,6 @@ import { MyDatePipe } from './pipes/my-date.pipe';
     HomeQuestionListItemComponent,
     ImgShadowComponent,
     TimeAgoPipe,
-    HighlightSearchPipe,
     LazyImgDirective,
     GfIconComponent,
     AutofocusDirective,
@@ -39,7 +37,6 @@ import { MyDatePipe } from './pipes/my-date.pipe';
     HomeQuestionListItemComponent,
     GfIconComponent,
     ImgShadowComponent,
-    HighlightSearchPipe,
     TimeAgoPipe,
     LazyImgDirective,
     AutofocusDirective,

@@ -17,13 +17,19 @@ import { NotificationButtonComponent } from './components/notification-button/no
 import { AvatarButtonComponent } from './components/avatar-button/avatar-button.component';
 import { DrawerService } from '../nav-drawer/drawer.service';
 import { map } from 'rxjs/operators';
-import { NavigationStart, Router } from '@angular/router';
+import { NavigationStart, Router, RouterModule } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
+import { TopAppBarLogoComponent } from './components/top-app-bar-logo/top-app-bar-logo.component';
+import { CommonModule } from '@angular/common';
+import { MaterialModule } from '@modules/material/material.module';
 
 @Component({
   selector: 'id-top-app-bar',
   templateUrl: './top-app-bar.component.html',
   styleUrls: ['./top-app-bar.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [CommonModule, MaterialModule, MatIconModule, RouterModule, SearchFormComponent, TopAppBarLogoComponent]
 })
 export class TopAppBarComponent implements OnInit {
   @Output() openSheet = new EventEmitter();

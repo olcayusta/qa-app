@@ -1,16 +1,36 @@
 import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { debounceTime, distinctUntilChanged, filter, switchMap } from 'rxjs/operators';
 import { ISearchResult, SearchService } from '@shared/services/search.service';
-import { MatAutocompleteSelectedEvent, MatAutocompleteTrigger } from '@angular/material/autocomplete';
-import { Router } from '@angular/router';
+import {
+  MatAutocompleteModule,
+  MatAutocompleteSelectedEvent,
+  MatAutocompleteTrigger
+} from '@angular/material/autocomplete';
+import { Router, RouterModule } from '@angular/router';
+import { MatOptionModule } from '@angular/material/core';
+import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
+import { HighlightSearchPipe } from './pipes/highlight-search.pipe';
+import { MaterialModule } from '@modules/material/material.module';
 
 @Component({
   selector: 'id-search-form',
   templateUrl: './search-form.component.html',
   styleUrls: ['./search-form.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    CommonModule,
+    MatOptionModule,
+    MaterialModule,
+    MatAutocompleteModule,
+    MatIconModule,
+    RouterModule,
+    ReactiveFormsModule,
+    HighlightSearchPipe
+  ]
 })
 export class SearchFormComponent implements OnInit {
   searchControl: FormControl<string> = new FormControl<string>('', { initialValueIsDefault: true });

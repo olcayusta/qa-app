@@ -3,12 +3,19 @@ import { User } from '@shared/models/user.model';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { ProfilePictureDialogComponent } from '@modules/settings/components/profile-picture-dialog/profile-picture-dialog.component';
+import { CommonModule } from '@angular/common';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [CommonModule, MatExpansionModule, MatInputModule, MatButtonModule, MatSlideToggleModule]
 })
 export class SettingsComponent implements OnInit {
   user!: User;
