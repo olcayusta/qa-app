@@ -5,6 +5,7 @@ import { AuthGuard } from '@auth/auth.guard';
 import { LoggedGuard } from '@auth/logged.guard';
 import { TagsResolver } from './tags/resolvers/tags.resolver';
 import { listRoutes } from '@modules/list/list.routes';
+import { ROUTES } from './home/home.routes';
 
 const routes: Routes = [
   {
@@ -14,7 +15,7 @@ const routes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        loadChildren: async () => (await import('./home/home.module')).HomeModule
+        loadChildren: () => import('./home/home.routes').then((mod) => mod.ROUTES)
       },
       {
         path: 'users',

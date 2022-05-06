@@ -10,9 +10,11 @@ import {
   EventEmitter
 } from '@angular/core';
 import { MatMenu, MatMenuItem } from '@angular/material/menu';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
+import { MaterialModule } from '@modules/material/material.module';
+import { CommonModule } from '@angular/common';
 
 interface Food {
   value: string;
@@ -28,7 +30,9 @@ export interface Fruit {
   selector: 'id-sort-by',
   templateUrl: './sort-by.component.html',
   styleUrls: ['./sort-by.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [CommonModule, MaterialModule, RouterModule]
 })
 export class SortByComponent implements OnInit, AfterViewInit {
   @ViewChild('menu') menu!: MatMenu;

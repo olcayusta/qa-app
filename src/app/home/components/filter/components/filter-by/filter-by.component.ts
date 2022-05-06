@@ -2,12 +2,16 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewChil
 import { MatMenu, MatMenuItem } from '@angular/material/menu';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { Router } from '@angular/router';
+import { MaterialModule } from '@modules/material/material.module';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'id-filter-by',
   templateUrl: './filter-by.component.html',
   styleUrls: ['./filter-by.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [CommonModule, MaterialModule]
 })
 export class FilterByComponent implements OnInit {
   @ViewChild('filterMenu') filterMenu!: MatMenu;

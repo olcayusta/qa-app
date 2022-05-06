@@ -6,12 +6,18 @@ import { FilterService } from '@shared/services/filter.service';
 import { ActivatedRoute } from '@angular/router';
 import { delay, switchMap } from 'rxjs/operators';
 import { animate, query, stagger, style, transition, trigger } from '@angular/animations';
+import { SharedModule } from '@shared/shared.module';
+import { MaterialModule } from '@modules/material/material.module';
+import { CommonModule } from '@angular/common';
+import { IsVisibleDirective } from '../../directives/is-visible.directive';
 
 @Component({
   selector: 'inek-home-grid-list',
   templateUrl: './home-grid-list.component.html',
   styleUrls: ['./home-grid-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [CommonModule, SharedModule, MaterialModule, IsVisibleDirective],
   animations: [
     trigger('pageAnimations', [
       transition(':enter', [
