@@ -13,13 +13,12 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '@environments/environment';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { MAT_ICON_DEFAULT_OPTIONS } from '@angular/material/icon';
-import { WelcomeComponent } from './experimental/welcome/welcome.component';
 import { TitleStrategy } from '@angular/router';
 import { AppTitleStrategy } from './core/app-title.strategy';
 import { HttpErrorInterceptor } from './core/interceptors/http-error.interceptor';
 
 @NgModule({
-  declarations: [AppComponent, ProgressBarComponent, WelcomeComponent],
+  declarations: [AppComponent, ProgressBarComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
