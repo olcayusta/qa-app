@@ -35,7 +35,7 @@ const routes: Routes = [
       },
       {
         path: 'settings',
-        loadChildren: () => import('./modules/settings/settings.routes').then((mod) => mod.ROUTES),
+        loadChildren: () => import('./settings/settings.routes').then(({ ROUTES }) => ROUTES),
         canLoad: [AuthGuard]
       },
       {
