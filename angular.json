@@ -67,7 +67,7 @@
                 "bundleName": "light"
               }
             ],
-            "sourceMap": true,
+            "sourceMap": false,
             "scripts": [],
             "serviceWorker": true,
             "ngswConfigPath": "ngsw-config.json",

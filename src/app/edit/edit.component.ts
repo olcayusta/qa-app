@@ -1,9 +1,13 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Question } from '@shared/models/question.model';
 import { Observable, tap } from 'rxjs';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RevisionService } from '@shared/services/revision.service';
 import { MarkedService } from '@shared/services/marked.service';
+import { CommonModule } from '@angular/common';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { SharedModule } from '@shared/shared.module';
 
 interface Food {
   value: string;
@@ -14,7 +18,9 @@ interface Food {
   selector: 'app-edit',
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [CommonModule, MatInputModule, MatSelectModule, ReactiveFormsModule, SharedModule]
 })
 export class EditComponent implements OnInit {
   question$!: Observable<Question>;

@@ -2,7 +2,8 @@ import { Directive, ElementRef, EmbeddedViewRef, Input, ViewContainerRef } from 
 import { SiteCodeComponent } from '@shared/components/site-code/site-code.component';
 
 @Directive({
-  selector: '[qaHeroDelay]'
+  selector: '[qaHeroDelay]',
+  standalone: true
 })
 export class HeroDelayDirective {
   div: HTMLDivElement = document.createElement('div');

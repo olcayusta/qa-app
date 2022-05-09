@@ -1,11 +1,15 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { CommonModule } from '@angular/common';
+import { MaterialModule } from '@modules/material/material.module';
 
 @Component({
   selector: 'inek-site-code',
   templateUrl: './site-code.component.html',
   styleUrls: ['./site-code.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [CommonModule, MaterialModule]
 })
 export class SiteCodeComponent {
   text!: HTMLPreElement;

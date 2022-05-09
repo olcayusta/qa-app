@@ -12,14 +12,6 @@ export class TagResolver implements Resolve<Tag> {
   constructor(private tagService: TagService, private router: Router) {}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Tag> {
-    return this.tagService.getTag(route.paramMap.get('tagId')).pipe(
-      catchError((err) => {
-        this.router.navigateByUrl('404', {
-          replaceUrl: true,
-          skipLocationChange: true
-        });
-        return EMPTY;
-      })
-    );
+    return this.tagService.getTag(route.paramMap.get('tagId'));
   }
 }

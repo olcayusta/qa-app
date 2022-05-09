@@ -1,13 +1,13 @@
 import { AfterViewInit, Directive, ElementRef, OnInit, ViewContainerRef } from '@angular/core';
 
 @Directive({
-  selector: '[inekDeepLazy]'
+  selector: '[inekDeepLazy]',
+  standalone: true
 })
 export class DeepLazyDirective implements OnInit, AfterViewInit {
   imgSrc!: string;
 
-  constructor(private elementRef: ElementRef<HTMLDivElement>, private vcr: ViewContainerRef) {
-  }
+  constructor(private elementRef: ElementRef<HTMLDivElement>, private vcr: ViewContainerRef) {}
 
   ngAfterViewInit() {
     this;

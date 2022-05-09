@@ -4,7 +4,8 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   selector: 'inek-editor-buttons',
   templateUrl: './editor-buttons.component.html',
   styleUrls: ['./editor-buttons.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true
 })
 export class EditorButtonsComponent implements OnInit {
   constructor() {}

@@ -1,14 +1,19 @@
 import { ChangeDetectionStrategy, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { AnswerService } from '@shared/services/answer.service';
 import { MarkedService } from '@shared/services/marked.service';
+import { CommonModule } from '@angular/common';
+import { MaterialModule } from '@modules/material/material.module';
+import { EditorButtonsComponent } from '@modules/question/components/answer-form/components/editor-buttons/editor-buttons.component';
 
 @Component({
   selector: 'app-answer-form',
   templateUrl: './answer-form.component.html',
   styleUrls: ['./answer-form.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [CommonModule, MaterialModule, ReactiveFormsModule, EditorButtonsComponent]
 })
 export class AnswerFormComponent implements OnInit, OnDestroy {
   answerControl = new FormControl('Dua lipa is a beautiful singer!', {

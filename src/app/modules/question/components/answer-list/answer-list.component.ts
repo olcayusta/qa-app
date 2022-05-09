@@ -12,8 +12,9 @@ import { AnswerService } from '@shared/services/answer.service';
 import { Observable, tap } from 'rxjs';
 import { Answer } from '@shared/models/answer.model';
 import { ActivatedRoute } from '@angular/router';
-import { ViewportScroller } from '@angular/common';
+import { CommonModule, ViewportScroller } from '@angular/common';
 import { AnswerItemComponent } from '@modules/question/components/answer-list/answer-item/answer-item.component';
+import { MaterialModule } from '@modules/material/material.module';
 
 interface SortItem {
   value: number;
@@ -25,7 +26,9 @@ interface SortItem {
   selector: 'app-answer-list',
   templateUrl: './answer-list.component.html',
   styleUrls: ['./answer-list.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [CommonModule, MaterialModule, AnswerItemComponent]
 })
 export class AnswerListComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input('acceptedAnswerId') acceptedAnswerId?: number;
@@ -53,17 +56,13 @@ export class AnswerListComponent implements OnInit, AfterViewInit, OnDestroy {
 
   selectedIndex = 0;
 
-  constructor(
-    private route: ActivatedRoute,
-    private answerService: AnswerService,
-    private scroll: ViewportScroller
-  ) {}
+  constructor(private route: ActivatedRoute, private answerService: AnswerService, private scroll: ViewportScroller) {}
 
   ngOnInit(): void {
-    const sortBy = localStorage.getItem('sortBy')
+    const sortBy = localStorage.getItem('sortBy');
     if (sortBy) {
       const { value } = JSON.parse(sortBy) as SortItem;
-      console.log(value)
+      console.log(value);
       this.selectedIndex = value;
     }
 

@@ -1,6 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Question } from '@shared/models/question.model';
-import { ListService } from '@modules/list/services/list.service';
 import { Observable } from 'rxjs';
 import { shareReplay } from 'rxjs/operators';
 import { AuthService } from '@auth/auth.service';
@@ -12,6 +11,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
+import { ListService } from './services/list.service';
 
 @Component({
   selector: 'id-list',

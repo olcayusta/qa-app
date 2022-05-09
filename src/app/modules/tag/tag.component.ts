@@ -3,12 +3,17 @@ import { Tag } from '@shared/models/tag.model';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { CommonModule } from '@angular/common';
+import { SharedModule } from '@shared/shared.module';
+import { MatDividerModule } from '@angular/material/divider';
 
 @Component({
   selector: 'app-tag',
   templateUrl: './tag.component.html',
   styleUrls: ['./tag.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [CommonModule, SharedModule, MatDividerModule]
 })
 export class TagComponent implements OnInit {
   tag$!: Observable<Tag>;

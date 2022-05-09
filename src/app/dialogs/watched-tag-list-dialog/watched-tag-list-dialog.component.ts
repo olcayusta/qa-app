@@ -3,6 +3,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'inek-watched-tag-list-dialog',
@@ -10,7 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrls: ['./watched-tag-list-dialog.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [MatDialogModule, MatButtonModule, MatChipsModule, MatIconModule]
+  imports: [CommonModule, MatDialogModule, MatButtonModule, MatChipsModule, MatIconModule]
 })
 export class WatchedTagListDialogComponent implements OnInit {
   constructor() {}

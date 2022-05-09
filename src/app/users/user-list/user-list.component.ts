@@ -18,6 +18,6 @@ export class UserListComponent implements OnInit {
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.users = (<{ users: User[] }>this.route.snapshot.data).users;
+    this.users = this.route.snapshot.data['users'];
   }
 }

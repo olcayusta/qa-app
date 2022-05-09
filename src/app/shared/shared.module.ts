@@ -12,7 +12,6 @@ import { RelativeTimeFormatPipe } from './pipes/relative-time-format.pipe';
 import { QListItemImgShadowComponent } from './components/q-list-item-img-shadow/q-list-item-img-shadow.component';
 import { PopupContainerComponent } from '@shared/components/popup-container/popup-container.component';
 import { HighlightElementDirective } from './directives/highlight-element.directive';
-import { SiteCodeComponent } from './components/site-code/site-code.component';
 import { SelectedTagPipe } from './pipes/selected-tag.pipe';
 import { MyDatePipe } from './pipes/my-date.pipe';
 
@@ -24,15 +23,12 @@ import { MyDatePipe } from './pipes/my-date.pipe';
     LazyImgDirective,
     GfIconComponent,
     AutofocusDirective,
-    RelativeTimeFormatPipe,
     QListItemImgShadowComponent,
     PopupContainerComponent,
-    HighlightElementDirective,
-    SiteCodeComponent,
     SelectedTagPipe,
     MyDatePipe
   ],
-  imports: [CommonModule, RouterModule, MaterialModule],
+  imports: [CommonModule, RouterModule, MaterialModule, RelativeTimeFormatPipe, HighlightElementDirective],
   exports: [
     HomeQuestionListItemComponent,
     GfIconComponent,
@@ -42,8 +38,8 @@ import { MyDatePipe } from './pipes/my-date.pipe';
     AutofocusDirective,
     PopupContainerComponent,
     HighlightElementDirective,
-    RelativeTimeFormatPipe,
-    MyDatePipe
+    MyDatePipe,
+    RelativeTimeFormatPipe
   ]
 })
 export class SharedModule {}

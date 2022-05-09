@@ -13,14 +13,10 @@ import { UserListComponent } from './user-list/user-list.component';
   styleUrls: ['./users.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [UserListComponent, CommonModule, MatDividerModule, MatButtonModule, SharedModule]
+  imports: [CommonModule, UserListComponent, MatDividerModule, MatButtonModule, SharedModule]
 })
 export class UsersComponent implements OnInit {
-  users!: User[];
+  constructor() {}
 
-  constructor(private route: ActivatedRoute) {}
-
-  ngOnInit(): void {
-    this.users = this.route.snapshot.data['users'];
-  }
+  ngOnInit(): void {}
 }

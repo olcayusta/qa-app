@@ -3,12 +3,18 @@ import { Comment } from '@shared/models/comment.model';
 import { CommentService } from '@shared/services/comment.service';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { CommonModule } from '@angular/common';
+import { MaterialModule } from '@modules/material/material.module';
+import { CommentListItemComponent } from '@modules/question/components/comment-list/comment-list-item/comment-list-item.component';
+import { CommentFormComponent } from '@modules/question/components/comment-form/comment-form.component';
 
 @Component({
   selector: 'app-comment-list',
   templateUrl: './comment-list.component.html',
   styleUrls: ['./comment-list.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [CommonModule, MaterialModule, CommentListItemComponent, CommentFormComponent]
 })
 export class CommentListComponent implements OnInit {
   comments$!: Observable<Comment[]>;

@@ -4,8 +4,8 @@ import { MainComponent } from './main/main.component';
 import { AuthGuard } from '@auth/auth.guard';
 import { LoggedGuard } from '@auth/logged.guard';
 import { TagsResolver } from './tags/resolvers/tags.resolver';
-import { listRoutes } from '@modules/list/list.routes';
 import { ROUTES } from './home/home.routes';
+import { UsersRoutes } from './users/users.routes';
 
 const routes: Routes = [
   {
@@ -19,7 +19,7 @@ const routes: Routes = [
       },
       {
         path: 'users',
-        loadChildren: () => import('./users/users.routes').then((m) => m.ROUTES)
+        loadChildren: () => import('./users/users.routes').then((m) => m.UsersRoutes)
       },
       {
         path: 'tags',
@@ -27,7 +27,7 @@ const routes: Routes = [
       },
       {
         path: 'tag/:tagId',
-        loadChildren: async () => (await import('@modules/tag/tag.module')).TagModule
+        loadChildren: () => import('./modules/tag/tag.routes').then((m) => m.routes)
       },
       {
         path: 'search',
@@ -40,7 +40,7 @@ const routes: Routes = [
       },
       {
         path: 'list',
-        loadChildren: () => import('./modules/list/list.routes').then((mod) => mod.listRoutes)
+        loadChildren: () => import('./list/list.routes').then((mod) => mod.listRoutes)
       },
       {
         path: 'watched_tags',
@@ -52,7 +52,7 @@ const routes: Routes = [
       },
       {
         path: 'question/:questionId',
-        loadChildren: async () => (await import('@modules/question/question.module')).QuestionModule
+        loadChildren: () => import('./modules/question/question.routes').then((mod) => mod.routes)
       },
       {
         path: 'questions/create',
@@ -60,15 +60,15 @@ const routes: Routes = [
       },
       {
         path: 'edit',
-        loadChildren: async () => (await import('@modules/edit/edit.module')).EditModule
+        loadChildren: () => import('./edit/edit.routes').then((value) => value.routes)
       },
       {
         path: 'favorites',
-        loadChildren: async () => (await import('@modules/favorites/favorites.module')).FavoritesModule
+        loadChildren: () => import('./favorites/favorites.routes').then((mod) => mod.routes)
       },
       {
         path: 'help',
-        loadChildren: () => import('./modules/help/help.routes').then(({ ROUTES }) => ROUTES)
+        loadChildren: () => import('./help/help.routes').then(({ ROUTES }) => ROUTES)
       }
     ]
   },
