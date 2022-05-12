@@ -6,7 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'id-tag-list-item',
+  selector: 'app-tag-list-item',
   templateUrl: './tag-list-item.component.html',
   styleUrls: ['./tag-list-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
