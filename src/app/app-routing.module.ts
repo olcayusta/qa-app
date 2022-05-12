@@ -3,9 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { MainComponent } from './main/main.component';
 import { AuthGuard } from '@auth/auth.guard';
 import { LoggedGuard } from '@auth/logged.guard';
-import { TagsResolver } from './tags/resolvers/tags.resolver';
-import { ROUTES } from './home/home.routes';
-import { UsersRoutes } from './users/users.routes';
 
 const routes: Routes = [
   {
