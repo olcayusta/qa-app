@@ -10,6 +10,7 @@ import { tagsRoutes } from './tags/tags.routes';
 import { usersRoutes } from './users/users.routes';
 import { homeRoutes } from './home/home.routes';
 import { createQuestionRoutes } from './create-question/create-question.routes';
+import { pageNotFoundRoutes } from './page-not-found/page-not-found-routes';
 
 export const APP_ROUTES: Routes = [
   {
@@ -80,25 +81,29 @@ export const APP_ROUTES: Routes = [
   },
   {
     path: 'login',
-    loadChildren: async () => (await import('./auth/login/login.module')).LoginModule,
+    loadChildren: () => import('./auth/login/login.routes').then(({ loginRoutes }) => loginRoutes),
     canLoad: [LoggedGuard]
   },
   {
     path: 'register',
-    loadChildren: async () => (await import('./auth/register/register.module')).RegisterModule,
+    loadChildren: () => import('./auth/register/register.routes').then(({ registerRoutes }) => registerRoutes),
     canLoad: [LoggedGuard]
   },
   {
     path: '404',
-    loadChildren: () => import('./page-not-found/page-not-found-routes').then((mod) => mod.routes)
+    loadChildren: () =>
+      import('./page-not-found/page-not-found-routes').then(({ pageNotFoundRoutes }) => pageNotFoundRoutes)
   },
   {
     path: '500',
     loadChildren: () =>
-      import('./modules/page-internal-server-error/page-internal-server-error.routes').then((mod) => mod.ROUTES)
+      import('./modules/page-internal-server-error/page-internal-server-error.routes').then(
+        ({ pageInternalServerErrorRoutes }) => pageInternalServerErrorRoutes
+      )
   },
   {
     path: '**',
-    loadChildren: () => import('./page-not-found/page-not-found-routes').then((mod) => mod.routes)
+    loadChildren: () =>
+      import('./page-not-found/page-not-found-routes').then(({ pageNotFoundRoutes }) => pageNotFoundRoutes)
   }
 ];
