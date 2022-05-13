@@ -2,12 +2,16 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Event, NavigationCancel, NavigationError, ResolveEnd, ResolveStart, Router } from '@angular/router';
 import { SpinnerService } from '@shared/services/spinner.service';
+import { CommonModule } from '@angular/common';
+import { MaterialModule } from '@modules/material/material.module';
 
 @Component({
   selector: 'inek-progress-bar',
   templateUrl: './progress-bar.component.html',
   styleUrls: ['./progress-bar.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [CommonModule, MaterialModule]
 })
 export class ProgressBarComponent implements OnInit {
   spinner$!: Observable<boolean>;

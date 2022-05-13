@@ -1,10 +1,9 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes } from '@angular/router';
 import { MainComponent } from './main/main.component';
 import { AuthGuard } from '@auth/auth.guard';
 import { LoggedGuard } from '@auth/logged.guard';
 
-const routes: Routes = [
+export const APP_ROUTES: Routes = [
   {
     path: '',
     component: MainComponent,
@@ -93,15 +92,3 @@ const routes: Routes = [
     loadChildren: () => import('./modules/page-not-found/page-not-found-routes').then((mod) => mod.routes)
   }
 ];
-
-@NgModule({
-  imports: [
-    RouterModule.forRoot(routes, {
-      urlUpdateStrategy: 'eager',
-      anchorScrolling: 'enabled',
-      scrollPositionRestoration: 'enabled'
-    })
-  ],
-  exports: [RouterModule]
-})
-export class AppRoutingModule {}

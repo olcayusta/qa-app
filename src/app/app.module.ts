@@ -11,14 +11,13 @@ import { MaterialModule } from '@modules/material/material.module';
 import { SharedModule } from '@shared/shared.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '@environments/environment';
-import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { MAT_ICON_DEFAULT_OPTIONS } from '@angular/material/icon';
 import { TitleStrategy } from '@angular/router';
 import { AppTitleStrategy } from './core/app-title.strategy';
 import { HttpErrorInterceptor } from './core/interceptors/http-error.interceptor';
 
 @NgModule({
-  declarations: [AppComponent, ProgressBarComponent],
+  declarations: [],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -59,6 +58,6 @@ import { HttpErrorInterceptor } from './core/interceptors/http-error.interceptor
       useClass: AppTitleStrategy
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: []
 })
 export class AppModule {}

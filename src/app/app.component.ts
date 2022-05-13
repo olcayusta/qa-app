@@ -3,16 +3,22 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { SwPush, SwUpdate, VersionReadyEvent } from '@angular/service-worker';
 import { PushNotificationService } from '@shared/services/push-notification.service';
 import { environment } from '@environments/environment';
-import { DOCUMENT } from '@angular/common';
+import { CommonModule, DOCUMENT } from '@angular/common';
 import { filter, map } from 'rxjs/operators';
 import { BroadcastChannelService } from '@shared/services/broadcast-channel.service';
 import { MatDialog } from '@angular/material/dialog';
+import { RouterModule } from '@angular/router';
+import { SharedModule } from '@shared/shared.module';
+import { MaterialModule } from '@modules/material/material.module';
+import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [CommonModule, RouterModule, SharedModule, MaterialModule, ProgressBarComponent]
 })
 export class AppComponent implements OnInit {
   @HostListener('document:keydown', ['$event'])
