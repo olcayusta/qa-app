@@ -1,6 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Answer } from '@shared/models/answer.model';
-import { UserService } from '../../services/user.service';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '@shared/shared.module';
@@ -16,7 +15,7 @@ import { SharedModule } from '@shared/shared.module';
 export class UserAnswersComponent implements OnInit {
   answers!: Answer[];
 
-  constructor(private userService: UserService, private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.answers = this.route.snapshot.data['answers'];

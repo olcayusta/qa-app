@@ -1,5 +1,4 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { UserService } from '../../services/user.service';
 import { Question } from '@shared/models/question.model';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -15,7 +14,7 @@ import { CommonModule } from '@angular/common';
 export class UserQuestionsComponent implements OnInit {
   questions!: Question[];
 
-  constructor(private userService: UserService, private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     // const userId = Number(this.route.snapshot.parent!.parent!.paramMap.get('userId'));

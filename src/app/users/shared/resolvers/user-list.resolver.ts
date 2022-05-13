@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Resolve, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
+import { Resolve } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from '@shared/models/user.model';
 import { UsersService } from '../services/users.service';
@@ -10,7 +10,7 @@ import { UsersService } from '../services/users.service';
 export class UserListResolver implements Resolve<User[]> {
   constructor(private usersService: UsersService) {}
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<User[]> {
+  resolve(): Observable<User[]> {
     return this.usersService.getAllUsers();
   }
 }
