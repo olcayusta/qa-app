@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Resolve, RouterStateSnapshot, ActivatedRouteSnapshot, Router } from '@angular/router';
+import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 import { TagService } from '../services/tag.service';
 import { Tag } from '@shared/models/tag.model';
@@ -8,9 +8,9 @@ import { Tag } from '@shared/models/tag.model';
   providedIn: 'root'
 })
 export class TagResolver implements Resolve<Tag> {
-  constructor(private tagService: TagService, private router: Router) {}
+  constructor(private tagService: TagService) {}
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Tag> {
+  resolve(route: ActivatedRouteSnapshot): Observable<Tag> {
     return this.tagService.getTag(route.paramMap.get('tagId'));
   }
 }
