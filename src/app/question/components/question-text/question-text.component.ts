@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeroDelayDirective } from '@modules/question/directives/hero-delay.directive';
 import { HighlightElementDirective } from '@shared/directives/highlight-element.directive';
+import { HeroDelayDirective } from '../../directives/hero-delay.directive';
 
 @Component({
   selector: 'inek-question-text',

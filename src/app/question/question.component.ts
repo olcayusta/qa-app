@@ -37,18 +37,18 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { MaterialIconModule } from '../../material-icon/material-icon.module';
-import { AnswerListComponent } from '@modules/question/components/answer-list/answer-list.component';
-import { AnswerFormComponent } from '@modules/question/components/answer-form/answer-form.component';
-import { CommentListComponent } from '@modules/question/components/comment-list/comment-list.component';
-import { AnswerItemComponent } from '@modules/question/components/answer-list/answer-item/answer-item.component';
-import { QuestionTextComponent } from '@modules/question/components/question-text/question-text.component';
-import { HeroDelayDirective } from '@modules/question/directives/hero-delay.directive';
-import { CommentListItemComponent } from '@modules/question/components/comment-list/comment-list-item/comment-list-item.component';
-import { DeepLazyDirective } from '@modules/question/directives/deep-lazy.directive';
-import { EditorButtonsComponent } from '@modules/question/components/answer-form/components/editor-buttons/editor-buttons.component';
-import { CommentFormComponent } from '@modules/question/components/comment-form/comment-form.component';
-import { AnswerItemCommentListComponent } from '@modules/question/components/answer-list/answer-item/answer-item-comment-list/answer-item-comment-list.component';
+import { MaterialIconModule } from '../material-icon/material-icon.module';
+import { AnswerListComponent } from './components/answer-list/answer-list.component';
+import { AnswerFormComponent } from './components/answer-form/answer-form.component';
+import { CommentListComponent } from './components/comment-list/comment-list.component';
+import { AnswerItemComponent } from './components/answer-list/answer-item/answer-item.component';
+import { QuestionTextComponent } from './components/question-text/question-text.component';
+import { HeroDelayDirective } from './directives/hero-delay.directive';
+import { CommentListItemComponent } from './components/comment-list/comment-list-item/comment-list-item.component';
+import { DeepLazyDirective } from './directives/deep-lazy.directive';
+import { EditorButtonsComponent } from './components/answer-form/components/editor-buttons/editor-buttons.component';
+import { CommentFormComponent } from './components/comment-form/comment-form.component';
+import { AnswerItemCommentListComponent } from './components/answer-list/answer-item/answer-item-comment-list/answer-item-comment-list.component';
 
 @Component({
   selector: 'app-question',

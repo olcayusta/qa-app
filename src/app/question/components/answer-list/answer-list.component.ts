@@ -13,8 +13,8 @@ import { Observable, tap } from 'rxjs';
 import { Answer } from '@shared/models/answer.model';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule, ViewportScroller } from '@angular/common';
-import { AnswerItemComponent } from '@modules/question/components/answer-list/answer-item/answer-item.component';
 import { MaterialModule } from '@modules/material/material.module';
+import { AnswerItemComponent } from './answer-item/answer-item.component';
 
 interface SortItem {
   value: number;

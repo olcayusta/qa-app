@@ -2,8 +2,8 @@ import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core
 import { Observable } from 'rxjs';
 import { Comment } from '@shared/models/comment.model';
 import { CommentService } from '@shared/services/comment.service';
-import { CommentListItemComponent } from '@modules/question/components/comment-list/comment-list-item/comment-list-item.component';
 import { CommonModule } from '@angular/common';
+import { CommentListItemComponent } from '../../../comment-list/comment-list-item/comment-list-item.component';
 
 @Component({
   selector: 'inek-answer-item-comment-list',

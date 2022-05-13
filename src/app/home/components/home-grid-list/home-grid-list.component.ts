@@ -1,7 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { Question } from '@shared/models/question.model';
 import { BehaviorSubject, first, Observable, Subscription, take } from 'rxjs';
-import { QuestionService } from '@modules/question/services/question.service';
 import { FilterService } from '@shared/services/filter.service';
 import { ActivatedRoute } from '@angular/router';
 import { delay, switchMap } from 'rxjs/operators';
@@ -10,6 +9,7 @@ import { SharedModule } from '@shared/shared.module';
 import { MaterialModule } from '@modules/material/material.module';
 import { CommonModule } from '@angular/common';
 import { IsVisibleDirective } from '../../directives/is-visible.directive';
+import { QuestionService } from '../../../question/services/question.service';
 
 @Component({
   selector: 'inek-home-grid-list',

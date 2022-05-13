@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { TagsComponent } from './tags.component';
 import { TagsResolver } from './resolvers/tags.resolver';
 
-export const ROUTES: Routes = [
+export const tagsRoutes: Routes = [
   {
     path: '',
     component: TagsComponent,

@@ -5,7 +5,7 @@ import { UserAnswersResolver } from './components/user-answers/resolvers/user-an
 import { UserComponent } from './user.component';
 import { UserResolver } from './resolvers/user.resolver';
 
-export const ROUTES: Routes = [
+export const userRoutes: Routes = [
   {
     path: '',
     component: UserComponent,

@@ -1,4 +1,10 @@
 import { Routes } from '@angular/router';
 import { FavoritesComponent } from './favorites.component';
 
-export const routes: Routes = [{ path: '', component: FavoritesComponent, title: 'Favori sorular' }];
+export const favoritesRoutes: Routes = [
+  {
+    path: '',
+    component: FavoritesComponent,
+    title: 'Favori sorular'
+  }
+];

@@ -10,7 +10,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MaterialModule } from '@modules/material/material.module';
 import { SharedModule } from '@shared/shared.module';
 import { MaterialIconModule } from '../material-icon/material-icon.module';
-import { QuestionService } from '@modules/question/services/question.service';
+import { QuestionService } from '../question/services/question.service';
 
 @Component({
   selector: 'inek-create-question',
@@ -62,7 +62,7 @@ export class CreateQuestionComponent implements OnInit {
   submit(): void {
     const { title, description } = this.questionForm.controls;
     const tags = this.chipComponent.tags;
-    this.questionService.saveQuestion(title.value!, description.value!, tags).subscribe((value) => {
+    this.questionService.saveQuestion(title.value!, description.value!, tags).subscribe((value: any) => {
       console.log(value);
     });
   }

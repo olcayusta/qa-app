@@ -5,7 +5,7 @@ import { AnswerService } from '@shared/services/answer.service';
 import { MarkedService } from '@shared/services/marked.service';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@modules/material/material.module';
-import { EditorButtonsComponent } from '@modules/question/components/answer-form/components/editor-buttons/editor-buttons.component';
+import { EditorButtonsComponent } from './components/editor-buttons/editor-buttons.component';
 
 @Component({
   selector: 'app-answer-form',

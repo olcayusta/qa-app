@@ -5,8 +5,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@modules/material/material.module';
-import { CommentListItemComponent } from '@modules/question/components/comment-list/comment-list-item/comment-list-item.component';
-import { CommentFormComponent } from '@modules/question/components/comment-form/comment-form.component';
+import { CommentListItemComponent } from './comment-list-item/comment-list-item.component';
+import { CommentFormComponent } from '../comment-form/comment-form.component';
 
 @Component({
   selector: 'app-comment-list',

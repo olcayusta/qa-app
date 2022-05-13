@@ -1,10 +1,9 @@
 import { Routes } from '@angular/router';
-
 import { QuestionComponent } from './question.component';
 import { QuestionResolver } from './resolvers/question.resolver';
-import { QuestionTitleResolver } from '@modules/question/resolvers/question-title.resolver';
+import { QuestionTitleResolver } from './resolvers/question-title.resolver';
 
-export const routes: Routes = [
+export const questionRoutes: Routes = [
   {
     path: '',
     resolve: {
