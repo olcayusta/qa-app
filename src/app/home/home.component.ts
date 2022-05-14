@@ -5,18 +5,7 @@ import { Subscription } from 'rxjs';
 import { CloseScrollStrategy, Overlay } from '@angular/cdk/overlay';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '@shared/shared.module';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MAT_MENU_SCROLL_STRATEGY, MatMenuModule } from '@angular/material/menu';
-import { MatButtonModule } from '@angular/material/button';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatChipsModule } from '@angular/material/chips';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatIconModule } from '@angular/material/icon';
-import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
-import { MatListModule } from '@angular/material/list';
-import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MAT_MENU_SCROLL_STRATEGY } from '@angular/material/menu';
 import { BannerComponent } from './components/banner/banner.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { SortByComponent } from './components/filter/components/sort-by/sort-by.component';
@@ -37,18 +26,6 @@ function scrollFactory(overlay: Overlay): () => CloseScrollStrategy {
   imports: [
     CommonModule,
     SharedModule,
-    MatProgressSpinnerModule,
-    MatMenuModule,
-    MatButtonModule,
-    MatDividerModule,
-    MatChipsModule,
-    MatInputModule,
-    MatSelectModule,
-    MatTooltipModule,
-    MatIconModule,
-    MatBottomSheetModule,
-    MatListModule,
-    MatCheckboxModule,
     BannerComponent,
     FilterComponent,
     SortByComponent,

@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'id-avatar-button',
+  selector: 'app-avatar-button',
   templateUrl: './avatar-button.component.html',
   styleUrls: ['./avatar-button.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

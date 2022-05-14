@@ -16,7 +16,7 @@ import { HighlightSearchPipe } from './pipes/highlight-search.pipe';
 import { MaterialModule } from '@modules/material/material.module';
 
 @Component({
-  selector: 'id-search-form',
+  selector: 'app-search-form',
   templateUrl: './search-form.component.html',
   styleUrls: ['./search-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
