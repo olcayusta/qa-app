@@ -12,7 +12,7 @@ import { homeRoutes } from './home/home.routes';
 import { createQuestionRoutes } from './create-question/create-question.routes';
 import { pageNotFoundRoutes } from './page-not-found/page-not-found-routes';
 
-export const APP_ROUTES: Routes = [
+export const appRoutes: Routes = [
   {
     path: '',
     component: MainComponent,

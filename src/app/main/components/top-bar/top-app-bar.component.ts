@@ -24,7 +24,7 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@modules/material/material.module';
 
 @Component({
-  selector: 'id-top-app-bar',
+  selector: 'app-top-app-bar',
   templateUrl: './top-app-bar.component.html',
   styleUrls: ['./top-app-bar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

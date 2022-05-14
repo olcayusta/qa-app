@@ -11,7 +11,7 @@ import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import { MAT_ICON_DEFAULT_OPTIONS } from '@angular/material/icon';
 import { RouterModule, TitleStrategy } from '@angular/router';
 import { AppTitleStrategy } from './app/core/app-title.strategy';
-import { APP_ROUTES } from './app/app.routes';
+import { appRoutes } from './app/app.routes';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 if (environment.production) {
@@ -23,7 +23,7 @@ bootstrapApplication(AppComponent, {
     importProvidersFrom(
       BrowserAnimationsModule,
       HttpClientModule,
-      RouterModule.forRoot(APP_ROUTES, {
+      RouterModule.forRoot(appRoutes, {
         urlUpdateStrategy: 'eager',
         anchorScrolling: 'enabled',
         scrollPositionRestoration: 'enabled'

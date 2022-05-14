@@ -4,7 +4,7 @@ import { fromEvent, Subscription, throttleTime } from 'rxjs';
 import { distinctUntilChanged, map, pairwise, startWith } from 'rxjs/operators';
 
 @Directive({
-  selector: '[inekSticky]',
+  selector: '[appSticky]',
   standalone: true
 })
 export class StickyDirective implements AfterViewInit, OnDestroy {
