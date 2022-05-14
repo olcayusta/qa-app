@@ -15,10 +15,9 @@ import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/l
 import { SearchFormComponent } from './components/search-form/search-form.component';
 import { NotificationButtonComponent } from './components/notification-button/notification-button.component';
 import { AvatarButtonComponent } from './components/avatar-button/avatar-button.component';
-import { DrawerService } from '../nav-drawer/drawer.service';
+import { DrawerService } from '../../services/drawer.service';
 import { map } from 'rxjs/operators';
-import { NavigationStart, Router, RouterModule } from '@angular/router';
-import { MatIconModule } from '@angular/material/icon';
+import { Event, NavigationStart, Router, RouterModule } from '@angular/router';
 import { TopAppBarLogoComponent } from './components/top-app-bar-logo/top-app-bar-logo.component';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@modules/material/material.module';
@@ -29,7 +28,7 @@ import { MaterialModule } from '@modules/material/material.module';
   styleUrls: ['./top-app-bar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [CommonModule, MaterialModule, MatIconModule, RouterModule, SearchFormComponent, TopAppBarLogoComponent]
+  imports: [CommonModule, MaterialModule, RouterModule, SearchFormComponent, TopAppBarLogoComponent]
 })
 export class TopAppBarComponent implements OnInit {
   @Output() openSheet = new EventEmitter();
@@ -38,6 +37,8 @@ export class TopAppBarComponent implements OnInit {
   user!: User;
 
   isHandset$!: Observable<boolean>;
+
+  isWeb$!: Observable<boolean>;
 
   componentsLoaded = false;
 
@@ -64,31 +65,51 @@ export class TopAppBarComponent implements OnInit {
       ]);
 
       this.avatarButtonOutlet = AvatarButtonComponent;
-      this.notificationButtonOutlet = NotificationButtonComponent;
+      // this.notificationButtonOutlet = NotificationButtonComponent;
+
+      await this.loadNotificationButtonComponent();
+
       this.componentsLoaded = true;
       this.cdr.markForCheck();
 
       // alert('Bileşenler yüklendi.');
     }
 
-    /*    this.breakpointObserver.observe(Breakpoints.Handset).subscribe(({matches}) => {
+    /**
+     * Load components if breakpoint is wider than handset.
+     */
+    this.breakpointObserver.observe(Breakpoints.Web).subscribe(async ({ matches }) => {
       if (matches) {
-
+        await this.loadSearchFormComponent();
       }
-    })*/
-
-    /*    const { SearchFormComponent } = await import('./components/search-form/search-form.component');
-    this.searchFormComponentOutlet = SearchFormComponent;
-    this.cdr.detectChanges();*/
+    });
 
     this.isHandset$ = this.breakpointObserver.observe(Breakpoints.Handset).pipe(map(({ matches }) => matches));
 
-    this.router.events.subscribe((value) => {
+    this.isWeb$ = this.breakpointObserver.observe(Breakpoints.Web).pipe(map(({ matches }) => matches));
+
+    this.router.events.subscribe((value: Event) => {
       if (value instanceof NavigationStart) {
         if (value.url.includes('question')) {
         }
       }
     });
+  }
+
+  async loadNotificationButtonComponent() {
+    const { NotificationButtonComponent } = await import(
+      './components/notification-button/notification-button.component'
+    );
+    this.notificationButtonOutlet = NotificationButtonComponent;
+  }
+
+  /**
+   * Search Form Bileşenini desktop ise yükle...
+   */
+  async loadSearchFormComponent() {
+    const { SearchFormComponent } = await import('./components/search-form/search-form.component');
+    this.searchFormComponentOutlet = SearchFormComponent;
+    this.cdr.markForCheck();
   }
 
   onMenuBtnClickedOpenSidenav() {

@@ -97,7 +97,7 @@ export const appRoutes: Routes = [
   {
     path: '500',
     loadChildren: () =>
-      import('./modules/page-internal-server-error/page-internal-server-error.routes').then(
+      import('./page-internal-server-error/page-internal-server-error.routes').then(
         ({ pageInternalServerErrorRoutes }) => pageInternalServerErrorRoutes
       )
   },

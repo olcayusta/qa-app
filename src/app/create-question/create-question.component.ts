@@ -3,10 +3,6 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } 
 import { DomSanitizer } from '@angular/platform-browser';
 import { ChipsAutocompleteComponent } from './components/chips-autocomplete/chips-autocomplete.component';
 import { CommonModule, DOCUMENT } from '@angular/common';
-import { MatInputModule } from '@angular/material/input';
-import { MatIconModule } from '@angular/material/icon';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatDividerModule } from '@angular/material/divider';
 import { MaterialModule } from '@modules/material/material.module';
 import { SharedModule } from '@shared/shared.module';
 import { MaterialIconModule } from '../material-icon/material-icon.module';
@@ -20,11 +16,7 @@ import { QuestionService } from '../question/services/question.service';
   standalone: true,
   imports: [
     CommonModule,
-    MatInputModule,
     ReactiveFormsModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatDividerModule,
     MaterialModule,
     SharedModule,
     MaterialIconModule,

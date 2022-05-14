@@ -5,30 +5,17 @@ import { shareReplay } from 'rxjs/operators';
 import { AuthService } from '@auth/auth.service';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '@shared/shared.module';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatBadgeModule } from '@angular/material/badge';
-import { MatChipsModule } from '@angular/material/chips';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
 import { ListService } from './services/list.service';
+import { MaterialModule } from '@modules/material/material.module';
 
 @Component({
-  selector: 'id-list',
+  selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [
-    CommonModule,
-    SharedModule,
-    MatDividerModule,
-    MatBadgeModule,
-    MatChipsModule,
-    MatIconModule,
-    MatButtonModule,
-    RouterModule
-  ]
+  imports: [CommonModule, SharedModule, MaterialModule, RouterModule]
 })
 export class ListComponent implements OnInit {
   questions$!: Observable<Question[]>;

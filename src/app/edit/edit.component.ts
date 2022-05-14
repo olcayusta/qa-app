@@ -5,9 +5,8 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { RevisionService } from '@shared/services/revision.service';
 import { MarkedService } from '@shared/services/marked.service';
 import { CommonModule } from '@angular/common';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
 import { SharedModule } from '@shared/shared.module';
+import { MaterialModule } from '@modules/material/material.module';
 
 interface Food {
   value: string;
@@ -20,7 +19,7 @@ interface Food {
   styleUrls: ['./edit.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [CommonModule, MatInputModule, MatSelectModule, ReactiveFormsModule, SharedModule]
+  imports: [CommonModule, ReactiveFormsModule, SharedModule, MaterialModule]
 })
 export class EditComponent implements OnInit {
   question$!: Observable<Question>;

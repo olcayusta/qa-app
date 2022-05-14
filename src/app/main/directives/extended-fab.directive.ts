@@ -3,7 +3,7 @@ import { fromEvent } from 'rxjs';
 import { distinctUntilChanged, map, pairwise, startWith } from 'rxjs/operators';
 
 @Directive({
-  selector: '[inekExtendedFab]',
+  selector: '[appExtendedFab]',
   standalone: true
 })
 export class ExtendedFabDirective implements AfterViewInit {

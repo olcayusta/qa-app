@@ -16,10 +16,9 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { SideSheetComponent } from './components/side-sheet/side-sheet.component';
 import { NavDrawerComponent } from './components/nav-drawer/nav-drawer.component';
-import { DrawerService } from './components/nav-drawer/drawer.service';
+import { DrawerService } from './services/drawer.service';
 import { SocketService } from '@shared/services/socket.service';
 import { MaterialModule } from '@modules/material/material.module';
-import { MatIconModule } from '@angular/material/icon';
 import { TopAppBarComponent } from './components/top-bar/top-app-bar.component';
 import { RouterModule } from '@angular/router';
 import { StickyDirective } from './components/top-bar/directives/sticky.directive';
@@ -31,15 +30,7 @@ import { ExtendedFabDirective } from './directives/extended-fab.directive';
   styleUrls: ['./main.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [
-    CommonModule,
-    MaterialModule,
-    MatIconModule,
-    RouterModule,
-    TopAppBarComponent,
-    StickyDirective,
-    ExtendedFabDirective
-  ]
+  imports: [CommonModule, MaterialModule, RouterModule, TopAppBarComponent, StickyDirective, ExtendedFabDirective]
 })
 export class MainComponent implements OnInit, AfterViewInit {
   mode!: MatDrawerMode;

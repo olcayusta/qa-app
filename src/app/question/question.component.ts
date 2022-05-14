@@ -26,17 +26,8 @@ import { FlagDialogComponent } from '@dialogs/flag-dialog/flag-dialog.component'
 import { SocketService } from '@shared/services/socket.service';
 import { VoteService } from '@shared/services/vote.service';
 import { FavoriteService } from 'src/app/favorites/services/favorite.service';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatDividerModule } from '@angular/material/divider';
 import { SharedModule } from '@shared/shared.module';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatIconModule } from '@angular/material/icon';
-import { MatCardModule } from '@angular/material/card';
-import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MaterialIconModule } from '../material-icon/material-icon.module';
 import { AnswerListComponent } from './components/answer-list/answer-list.component';
 import { AnswerFormComponent } from './components/answer-form/answer-form.component';
@@ -49,6 +40,7 @@ import { DeepLazyDirective } from './directives/deep-lazy.directive';
 import { EditorButtonsComponent } from './components/answer-form/components/editor-buttons/editor-buttons.component';
 import { CommentFormComponent } from './components/comment-form/comment-form.component';
 import { AnswerItemCommentListComponent } from './components/answer-list/answer-item/answer-item-comment-list/answer-item-comment-list.component';
+import { MaterialModule } from '@modules/material/material.module';
 
 @Component({
   selector: 'app-question',
@@ -58,20 +50,10 @@ import { AnswerItemCommentListComponent } from './components/answer-list/answer-
   standalone: true,
   imports: [
     CommonModule,
-    MatInputModule,
-    MatButtonModule,
     ReactiveFormsModule,
     FormsModule,
-    MatDividerModule,
     SharedModule,
-    MatTooltipModule,
-    MatMenuModule,
-    MatProgressSpinnerModule,
-    MatIconModule,
-    MatCardModule,
-    MatButtonToggleModule,
     MaterialIconModule,
-    MatDialogModule,
     AnswerListComponent,
     AnswerFormComponent,
     CommentListComponent,
@@ -83,7 +65,8 @@ import { AnswerItemCommentListComponent } from './components/answer-list/answer-
     EditorButtonsComponent,
     CommentFormComponent,
     AnswerItemCommentListComponent,
-    RouterModule
+    RouterModule,
+    MaterialModule
   ]
 })
 export class QuestionComponent implements OnInit, OnDestroy {

@@ -9,9 +9,7 @@ import {
   MatAutocompleteTrigger
 } from '@angular/material/autocomplete';
 import { Router, RouterModule } from '@angular/router';
-import { MatOptionModule } from '@angular/material/core';
 import { CommonModule } from '@angular/common';
-import { MatIconModule } from '@angular/material/icon';
 import { HighlightSearchPipe } from './pipes/highlight-search.pipe';
 import { MaterialModule } from '@modules/material/material.module';
 
@@ -21,16 +19,7 @@ import { MaterialModule } from '@modules/material/material.module';
   styleUrls: ['./search-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [
-    CommonModule,
-    MatOptionModule,
-    MaterialModule,
-    MatAutocompleteModule,
-    MatIconModule,
-    RouterModule,
-    ReactiveFormsModule,
-    HighlightSearchPipe
-  ]
+  imports: [CommonModule, MaterialModule, MatAutocompleteModule, RouterModule, ReactiveFormsModule, HighlightSearchPipe]
 })
 export class SearchFormComponent implements OnInit {
   searchControl: FormControl<string> = new FormControl<string>('', { initialValueIsDefault: true });
@@ -109,20 +98,3 @@ export class SearchFormComponent implements OnInit {
     });
   }
 }
-
-/*
-@NgModule({
-  declarations: [SearchFormComponent],
-  imports: [
-    MatAutocompleteModule,
-    MatIconModule,
-    MatButtonModule,
-    RouterModule,
-    ReactiveFormsModule,
-    CommonModule,
-    SharedModule
-  ],
-  exports: [SearchFormComponent]
-})
-export class SearchFormModule {}
-*/

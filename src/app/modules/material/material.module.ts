@@ -15,6 +15,10 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatListModule } from '@angular/material/list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatBadgeModule } from '@angular/material/badge';
 
 @NgModule({
   exports: [
@@ -33,7 +37,11 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatSelectModule,
     MatBottomSheetModule,
     MatListModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatCardModule,
+    MatDialogModule,
+    MatButtonToggleModule,
+    MatBadgeModule
   ]
 })
 export class MaterialModule {}
