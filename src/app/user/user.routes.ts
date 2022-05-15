@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
-import { UserTitleResolver } from './resolvers/user-title.resolver';
-import { UserQuestionsResolver } from './components/user-questions/resolvers/user-questions.resolver';
-import { UserAnswersResolver } from './components/user-answers/resolvers/user-answers.resolver';
 import { UserComponent } from './user.component';
-import { UserResolver } from './resolvers/user.resolver';
+import { UserResolver } from './shared/resolvers/user.resolver';
+import { UserTitleResolver } from './shared/resolvers/user-title.resolver';
+import { UserQuestionsResolver } from './user-questions/resolvers/user-questions.resolver';
+import { UserAnswersResolver } from './user-answers/resolvers/user-answers.resolver';
 
 export const userRoutes: Routes = [
   {
@@ -20,7 +20,7 @@ export const userRoutes: Routes = [
           {
             path: 'questions',
             loadComponent: () =>
-              import('./components/user-questions/user-questions.component').then(
+              import('./user-questions/user-questions.component').then(
                 ({ UserQuestionsComponent }) => UserQuestionsComponent
               ),
             resolve: {
@@ -30,9 +30,7 @@ export const userRoutes: Routes = [
           {
             path: 'answers',
             loadComponent: () =>
-              import('./components/user-answers/user-answers.component').then(
-                ({ UserAnswersComponent }) => UserAnswersComponent
-              ),
+              import('./user-answers/user-answers.component').then(({ UserAnswersComponent }) => UserAnswersComponent),
             resolve: {
               answers: UserAnswersResolver
             }

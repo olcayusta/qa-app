@@ -3,7 +3,6 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { CommentService } from '@shared/services/comment.service';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@modules/material/material.module';
-import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'inek-comment-form',
@@ -11,7 +10,7 @@ import { MatInputModule } from '@angular/material/input';
   styleUrls: ['./comment-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, MaterialModule, MatInputModule]
+  imports: [CommonModule, ReactiveFormsModule, MaterialModule]
 })
 export class CommentFormComponent implements OnInit {
   commentControl: FormControl = new FormControl('');
