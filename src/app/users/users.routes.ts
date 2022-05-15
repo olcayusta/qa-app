@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { UsersComponent } from './users.component';
-import { UserListResolver } from './shared/resolvers/user-list.resolver';
+import { UserListResolver } from './user-list/user-list.resolver';
 
 export const usersRoutes: Routes = [
   {
