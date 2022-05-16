@@ -2,7 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { DrawerService } from '../../services/drawer.service';
+import { DrawerService } from '../services/drawer.service';
 import { MatListModule } from '@angular/material/list';
 import { SharedModule } from '@shared/shared.module';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -16,13 +16,13 @@ import { MatButtonModule } from '@angular/material/button';
   imports: [
     CommonModule,
     RouterModule,
+    SharedModule,
     MatToolbarModule,
     MatButtonModule,
     MatListModule,
     MatIconModule,
     MatDividerModule,
-    MatDialogModule,
-    SharedModule
+    MatDialogModule
   ],
   templateUrl: './nav-drawer.component.html',
   styleUrls: ['./nav-drawer.component.scss'],
@@ -77,7 +77,7 @@ export class NavDrawerComponent implements OnInit, OnDestroy {
 
   async openWatchedTagsDialog() {
     const { WatchedTagListDialogComponent } = await import(
-      '../../../dialogs/watched-tag-list-dialog/watched-tag-list-dialog.component'
+      '@dialogs/watched-tag-list-dialog/watched-tag-list-dialog.component'
     );
     this.dialog.open(WatchedTagListDialogComponent, {
       minWidth: 512,

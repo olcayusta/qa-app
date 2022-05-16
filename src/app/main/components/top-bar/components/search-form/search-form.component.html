@@ -1,8 +1,11 @@
 <form id='search-form' (submit)='formSubmit($event)'>
   <div class='search-form' matAutocompleteOrigin #origin='matAutocompleteOrigin'>
     <button mat-icon-button aria-label='Ara' matTooltip='Ara'>
-      <mat-icon>search</mat-icon>
+      <app-gf-icon name='search'></app-gf-icon>
     </button>
+<!--    <button mat-icon-button aria-label='Ara' matTooltip='Ara'>
+      <app-search-icon></app-search-icon>
+    </button>-->
     <input aria-label='Ara' autocomplete='off' spellcheck='false' placeholder='Ara'
            #autocompleteTrigger="matAutocompleteTrigger"
            [formControl]='searchControl'

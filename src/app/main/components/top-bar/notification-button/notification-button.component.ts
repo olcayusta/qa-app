@@ -13,7 +13,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 @Component({
   selector: 'app-notification-button',
   standalone: true,
-  imports: [CommonModule, SharedModule, OverlayModule, MatButtonModule, MatBadgeModule, MatTooltipModule],
+  imports: [CommonModule, OverlayModule, MatButtonModule, MatBadgeModule, MatTooltipModule, SharedModule],
   templateUrl: './notification-button.component.html',
   styleUrls: ['./notification-button.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

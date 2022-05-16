@@ -2,7 +2,7 @@
   <div class='mat-toolbar__start'>
     <button mat-icon-button aria-label='Open navigation drawer' (click)='onMenuBtnClickedOpenSidenav()'
             class='menu-button'>
-      <mat-icon>menu</mat-icon>
+      <app-gf-icon name='menu'></app-gf-icon>
     </button>
     <app-top-app-bar-logo></app-top-app-bar-logo>
   </div>
@@ -27,7 +27,7 @@
         <ng-container *ngIf='!(isHandset$ | async)'>
           <!-- Filter Button -->
           <button mat-icon-button (click)='openSheet.emit()'>
-            <mat-icon>tune</mat-icon>
+            <app-gf-icon name='tune'></app-gf-icon>
           </button>
 
           <!-- Notification Button -->
@@ -40,7 +40,7 @@
         <ng-container *ngIf='(isHandset$ | async)'>
           <!-- Search Button -->
           <a mat-icon-button routerLink='/search'>
-            <mat-icon>search</mat-icon>
+            <app-gf-icon name='search'></app-gf-icon>
           </a>
 
           <!-- Notification Button -->
@@ -72,18 +72,18 @@
 <ng-template #signIn>
   <ng-container *ngIf='isHandset$ | async'>
     <a mat-icon-button routerLink='/search'>
-      <mat-icon>search</mat-icon>
+      <app-gf-icon name='search'></app-gf-icon>
     </a>
 
     <a mat-icon-button routerLink='/login'>
-      <mat-icon>account_circle</mat-icon>
+      <app-gf-icon name='account_circle'></app-gf-icon>
     </a>
   </ng-container>
 
   <ng-container *ngIf='!(isHandset$ | async)'>
     <!-- More Menu Button -->
     <button mat-icon-button [matMenuTriggerFor]='moreMenu' matTooltip='Ayarlar'>
-      <mat-icon>more_vert</mat-icon>
+      <app-gf-icon name='more_vert'></app-gf-icon>
     </button>
 
     <!-- Sign In Text Button Link -->

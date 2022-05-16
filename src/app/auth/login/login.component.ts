@@ -11,12 +11,10 @@ import { MatInputModule } from '@angular/material/input';
 import { PasswordFormComponent } from '@auth/login/password-form/password-form.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { SharedModule } from '@shared/shared.module';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [
     CommonModule,
@@ -25,8 +23,12 @@ import { SharedModule } from '@shared/shared.module';
     PasswordFormComponent,
     MatInputModule,
     MatProgressBarModule,
+    MatButtonModule,
     SharedModule
-  ]
+  ],
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup<{

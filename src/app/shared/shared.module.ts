@@ -9,41 +9,35 @@ import { GfIconComponent } from '@shared/components/gf-icon/gf-icon.component';
 import { AutofocusDirective } from './directives/autofocus.directive';
 import { RelativeTimeFormatPipe } from './pipes/relative-time-format.pipe';
 import { QListItemImgShadowComponent } from './components/q-list-item-img-shadow/q-list-item-img-shadow.component';
-import { PopupContainerComponent } from '@shared/components/popup-container/popup-container.component';
 import { HighlightElementDirective } from './directives/highlight-element.directive';
 import { SelectedTagPipe } from './pipes/selected-tag.pipe';
 import { MyDatePipe } from './pipes/my-date.pipe';
+import { PopupContainerComponent } from '@shared/components/popup-container/popup-container.component';
 
 @NgModule({
-  declarations: [
-    TimeAgoPipe,
-    LazyImgDirective,
-    GfIconComponent,
-    AutofocusDirective,
-    QListItemImgShadowComponent,
-    PopupContainerComponent,
-    SelectedTagPipe
-  ],
+  declarations: [TimeAgoPipe, LazyImgDirective, AutofocusDirective, QListItemImgShadowComponent, SelectedTagPipe],
   imports: [
     CommonModule,
     RouterModule,
-    RelativeTimeFormatPipe,
     HighlightElementDirective,
     MyDatePipe,
+    HomeQuestionListItemComponent,
+    RelativeTimeFormatPipe,
+    PopupContainerComponent,
     ImgShadowComponent,
-    HomeQuestionListItemComponent
+    GfIconComponent
   ],
   exports: [
     HomeQuestionListItemComponent,
-    GfIconComponent,
-    ImgShadowComponent,
     TimeAgoPipe,
     LazyImgDirective,
     AutofocusDirective,
-    PopupContainerComponent,
     HighlightElementDirective,
     MyDatePipe,
-    RelativeTimeFormatPipe
+    RelativeTimeFormatPipe,
+    PopupContainerComponent,
+    ImgShadowComponent,
+    GfIconComponent
   ]
 })
 export class SharedModule {}

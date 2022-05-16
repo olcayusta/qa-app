@@ -4,15 +4,15 @@ import { User } from '@shared/models/user.model';
 import { AuthService } from '@auth/auth.service';
 import { UserProfilePopupComponent } from '@shared/components/user-profile-popup/user-profile-popup.component';
 import { CommonModule } from '@angular/common';
-import { SharedModule } from '@shared/shared.module';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { SharedModule } from '@shared/shared.module';
 
 @Component({
   selector: 'app-avatar-button',
   standalone: true,
-  imports: [CommonModule, SharedModule, OverlayModule],
+  imports: [CommonModule, OverlayModule, SharedModule],
   templateUrl: './avatar-button.component.html',
   styleUrls: ['./avatar-button.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

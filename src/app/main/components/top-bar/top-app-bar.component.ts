@@ -13,17 +13,18 @@ import { Observable } from 'rxjs';
 import { StateService } from '@shared/services/state.service';
 import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
 import { SearchFormComponent } from './components/search-form/search-form.component';
-import { NotificationButtonComponent } from './components/notification-button/notification-button.component';
-import { AvatarButtonComponent } from './components/avatar-button/avatar-button.component';
+import { NotificationButtonComponent } from './notification-button/notification-button.component';
+import { AvatarButtonComponent } from './avatar-button/avatar-button.component';
 import { DrawerService } from '../../services/drawer.service';
 import { map } from 'rxjs/operators';
 import { Event, NavigationStart, Router, RouterModule } from '@angular/router';
-import { TopAppBarLogoComponent } from './components/top-app-bar-logo/top-app-bar-logo.component';
+import { TopAppBarLogoComponent } from './top-app-bar-logo/top-app-bar-logo.component';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
+import { SharedModule } from '@shared/shared.module';
 
 @Component({
   selector: 'app-top-app-bar',
@@ -36,7 +37,8 @@ import { MatButtonModule } from '@angular/material/button';
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
+    SharedModule
   ],
   templateUrl: './top-app-bar.component.html',
   styleUrls: ['./top-app-bar.component.scss'],
@@ -72,8 +74,8 @@ export class TopAppBarComponent implements OnInit {
 
     if (this.authService.userValue) {
       const [{ NotificationButtonComponent }, { AvatarButtonComponent }] = await Promise.all([
-        await import('./components/notification-button/notification-button.component'),
-        await import('./components/avatar-button/avatar-button.component')
+        await import('./notification-button/notification-button.component'),
+        await import('./avatar-button/avatar-button.component')
       ]);
 
       this.avatarButtonOutlet = AvatarButtonComponent;
@@ -109,9 +111,7 @@ export class TopAppBarComponent implements OnInit {
   }
 
   async loadNotificationButtonComponent() {
-    const { NotificationButtonComponent } = await import(
-      './components/notification-button/notification-button.component'
-    );
+    const { NotificationButtonComponent } = await import('./notification-button/notification-button.component');
     this.notificationButtonOutlet = NotificationButtonComponent;
   }
 

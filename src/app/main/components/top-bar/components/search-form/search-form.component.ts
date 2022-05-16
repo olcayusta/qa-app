@@ -13,18 +13,21 @@ import { CommonModule } from '@angular/common';
 import { HighlightSearchPipe } from './pipes/highlight-search.pipe';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { SharedModule } from '@shared/shared.module';
+import { SearchIconComponent } from '@shared/icons/search-icon/search-icon.component';
 
 @Component({
   selector: 'app-search-form',
   standalone: true,
   imports: [
     CommonModule,
-    MatAutocompleteModule,
     RouterModule,
     ReactiveFormsModule,
     HighlightSearchPipe,
     MatButtonModule,
-    MatIconModule
+    MatAutocompleteModule,
+    SharedModule,
+    SearchIconComponent
   ],
   templateUrl: './search-form.component.html',
   styleUrls: ['./search-form.component.scss'],

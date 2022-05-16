@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-popup-container',
+  standalone: true,
   templateUrl: './popup-container.component.html',
   styleUrls: ['./popup-container.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

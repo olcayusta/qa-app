@@ -15,7 +15,7 @@ import { pageNotFoundRoutes } from './page-not-found/page-not-found-routes';
 export const appRoutes: Routes = [
   {
     path: '',
-    component: MainComponent,
+    loadComponent: () => import('./main/main.component').then((m) => m.MainComponent),
     children: [
       {
         path: '',

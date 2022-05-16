@@ -1,18 +1,18 @@
 import { ChangeDetectionStrategy, Component, HostListener, Inject, NgZone, OnInit } from '@angular/core';
-import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { SwPush, SwUpdate, VersionReadyEvent } from '@angular/service-worker';
-import { PushNotificationService } from '@shared/services/push-notification.service';
-import { environment } from '@environments/environment';
-import { DOCUMENT } from '@angular/common';
-import { filter, map } from 'rxjs/operators';
-import { BroadcastChannelService } from '@shared/services/broadcast-channel.service';
 import { RouterModule } from '@angular/router';
+import { PushNotificationService } from '@shared/services/push-notification.service';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { filter, map } from 'rxjs/operators';
+import { DOCUMENT } from '@angular/common';
+import { BroadcastChannelService } from '@shared/services/broadcast-channel.service';
+import { environment } from '@environments/environment';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [ProgressBarComponent, RouterModule, MatSnackBarModule],
+  imports: [RouterModule, ProgressBarComponent, MatSnackBarModule],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
