@@ -1,16 +1,24 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
+import { Tag } from '@shared/models/tag.model';
+import { TagListItemComponent } from '../tag-list-item/tag-list-item.component';
 
 @Component({
-  selector: 'id-tag-list',
+  selector: 'app-tag-list',
   templateUrl: './tag-list.component.html',
   styleUrls: ['./tag-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [CommonModule]
+  imports: [CommonModule, TagListItemComponent]
 })
 export class TagListComponent implements OnInit {
-  constructor() {}
+  tags!: Tag[];
 
-  ngOnInit(): void {}
+  constructor(private route: ActivatedRoute) {}
+
+  ngOnInit(): void {
+    const { tags } = this.route.snapshot.data as { tags: Tag[] };
+    this.tags = tags;
+  }
 }

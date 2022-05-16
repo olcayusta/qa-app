@@ -8,11 +8,11 @@ import { animate, query, stagger, style, transition, trigger } from '@angular/an
 import { SharedModule } from '@shared/shared.module';
 import { MaterialModule } from '@modules/material/material.module';
 import { CommonModule } from '@angular/common';
-import { IsVisibleDirective } from '../../directives/is-visible.directive';
-import { QuestionService } from '../../../question/services/question.service';
+import { IsVisibleDirective } from '../directives/is-visible.directive';
+import { QuestionService } from '../../question/services/question.service';
 
 @Component({
-  selector: 'inek-home-grid-list',
+  selector: 'app-home-grid-list',
   templateUrl: './home-grid-list.component.html',
   styleUrls: ['./home-grid-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
 import { UserComponent } from './user.component';
-import { UserResolver } from './shared/resolvers/user.resolver';
+import { UserResolver } from './user.resolver';
 import { UserTitleResolver } from './shared/resolvers/user-title.resolver';
-import { UserQuestionsResolver } from './user-questions/resolvers/user-questions.resolver';
-import { UserAnswersResolver } from './user-answers/resolvers/user-answers.resolver';
+import { UserQuestionsResolver } from './user-questions/user-questions.resolver';
+import { UserAnswersResolver } from './user-answers/user-answers.resolver';
 
 export const userRoutes: Routes = [
   {

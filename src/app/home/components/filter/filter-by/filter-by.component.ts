@@ -6,7 +6,7 @@ import { MaterialModule } from '@modules/material/material.module';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'id-filter-by',
+  selector: 'app-filter-by',
   templateUrl: './filter-by.component.html',
   styleUrls: ['./filter-by.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

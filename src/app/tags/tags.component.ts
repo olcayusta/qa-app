@@ -7,7 +7,6 @@ import { filter, switchMap } from 'rxjs/operators';
 
 import { CommonModule } from '@angular/common';
 import { TagListComponent } from './tag-list/tag-list.component';
-import { TagListItemComponent } from './tag-list-item/tag-list-item.component';
 import { MaterialModule } from '@modules/material/material.module';
 
 @Component({
@@ -16,7 +15,7 @@ import { MaterialModule } from '@modules/material/material.module';
   styleUrls: ['./tags.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [CommonModule, TagListComponent, TagListItemComponent, MaterialModule, ReactiveFormsModule]
+  imports: [CommonModule, TagListComponent, MaterialModule, ReactiveFormsModule]
 })
 export class TagsComponent implements OnInit {
   tags!: Tag[];
@@ -34,7 +33,5 @@ export class TagsComponent implements OnInit {
       .subscribe((tags) => {
         console.log(tags);
       });
-    const { tags } = this.route.snapshot.data as { tags: Tag[] };
-    this.tags = tags;
   }
 }

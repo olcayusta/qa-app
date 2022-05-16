@@ -65,9 +65,9 @@ export class TopAppBarComponent implements OnInit {
       ]);
 
       this.avatarButtonOutlet = AvatarButtonComponent;
-      // this.notificationButtonOutlet = NotificationButtonComponent;
+      this.notificationButtonOutlet = NotificationButtonComponent;
 
-      await this.loadNotificationButtonComponent();
+      // await this.loadNotificationButtonComponent();
 
       this.componentsLoaded = true;
       this.cdr.markForCheck();

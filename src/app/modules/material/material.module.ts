@@ -20,6 +20,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatRippleModule } from '@angular/material/core';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   exports: [
@@ -43,7 +44,8 @@ import { MatRippleModule } from '@angular/material/core';
     MatDialogModule,
     MatButtonToggleModule,
     MatBadgeModule,
-    MatRippleModule
+    MatRippleModule,
+    MatTabsModule
   ]
 })
 export class MaterialModule {}

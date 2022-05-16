@@ -25,7 +25,7 @@ import { CommonModule, DOCUMENT } from '@angular/common';
 import { FlagDialogComponent } from '@dialogs/flag-dialog/flag-dialog.component';
 import { SocketService } from '@shared/services/socket.service';
 import { VoteService } from '@shared/services/vote.service';
-import { FavoriteService } from 'src/app/favorites/services/favorite.service';
+import { FavoriteService } from 'src/app/favorites/favorite.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '@shared/shared.module';
 import { MaterialIconModule } from '../material-icon/material-icon.module';

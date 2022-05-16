@@ -4,8 +4,7 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatTabsModule } from '@angular/material/tabs';
 import { SharedModule } from '@shared/shared.module';
-import { MatIconModule } from '@angular/material/icon';
-import { MatRippleModule } from '@angular/material/core';
+import { MaterialModule } from '@modules/material/material.module';
 
 @Component({
   selector: 'app-user',
@@ -13,7 +12,7 @@ import { MatRippleModule } from '@angular/material/core';
   styleUrls: ['./user.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [CommonModule, RouterModule, MatTabsModule, SharedModule, MatIconModule, MatRippleModule]
+  imports: [CommonModule, RouterModule, MaterialModule, SharedModule]
 })
 export class UserComponent implements OnInit {
   user!: User;

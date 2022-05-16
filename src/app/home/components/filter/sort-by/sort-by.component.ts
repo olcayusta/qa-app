@@ -27,7 +27,7 @@ export interface Fruit {
 }
 
 @Component({
-  selector: 'id-sort-by',
+  selector: 'app-sort-by',
   templateUrl: './sort-by.component.html',
   styleUrls: ['./sort-by.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

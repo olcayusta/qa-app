@@ -2,12 +2,12 @@ import { ChangeDetectionStrategy, Component, OnInit, TemplateRef, ViewChild } fr
 import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-sheet';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { FilterByComponent } from './components/filter-by/filter-by.component';
-import { SortByComponent } from './components/sort-by/sort-by.component';
+import { FilterByComponent } from './filter-by/filter-by.component';
+import { SortByComponent } from './sort-by/sort-by.component';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'id-filter',
+  selector: 'app-filter',
   templateUrl: './filter.component.html',
   styleUrls: ['./filter.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

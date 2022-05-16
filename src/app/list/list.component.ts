@@ -6,7 +6,7 @@ import { AuthService } from '@auth/auth.service';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '@shared/shared.module';
 import { RouterModule } from '@angular/router';
-import { ListService } from './services/list.service';
+import { ListService } from './list.service';
 import { MaterialModule } from '@modules/material/material.module';
 
 @Component({
