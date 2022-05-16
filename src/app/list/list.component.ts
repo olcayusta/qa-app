@@ -4,10 +4,10 @@ import { Observable } from 'rxjs';
 import { shareReplay } from 'rxjs/operators';
 import { AuthService } from '@auth/auth.service';
 import { CommonModule } from '@angular/common';
-import { SharedModule } from '@shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { ListService } from './list.service';
 import { MaterialModule } from '@modules/material/material.module';
+import { RelativeTimeFormatPipe } from '@shared/pipes/relative-time-format.pipe';
 
 @Component({
   selector: 'app-list',
@@ -15,10 +15,11 @@ import { MaterialModule } from '@modules/material/material.module';
   styleUrls: ['./list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [CommonModule, SharedModule, MaterialModule, RouterModule]
+  imports: [CommonModule, MaterialModule, RouterModule, RelativeTimeFormatPipe]
 })
 export class ListComponent implements OnInit {
   questions$!: Observable<Question[]>;
+
   isLoggedIn$!: Observable<boolean>;
 
   constructor(private listService: ListService, private authService: AuthService) {}

@@ -3,7 +3,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-  selector: 'inek-session-warning-dialog',
+  selector: 'app-session-warning-dialog',
   templateUrl: './session-warning-dialog.component.html',
   styleUrls: ['./session-warning-dialog.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

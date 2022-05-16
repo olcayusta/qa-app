@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { SettingsComponent } from './settings.component';
-import { SettingsResolver } from './resolvers/settings.resolver';
+import { SettingsResolver } from './settings.resolver';
 
 export const settingsRoutes: Routes = [
   {

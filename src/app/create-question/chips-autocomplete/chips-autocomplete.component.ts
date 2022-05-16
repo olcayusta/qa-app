@@ -9,7 +9,7 @@ import { Tag } from '@shared/models/tag.model';
 import { CommonModule } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
-import { TagService } from '../../../tag/services/tag.service';
+import { TagService } from '../../tag/tag.service';
 
 @Component({
   selector: 'inek-chips-autocomplete',

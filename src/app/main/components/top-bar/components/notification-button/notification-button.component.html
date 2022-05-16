@@ -13,9 +13,9 @@
   [cdkConnectedOverlayScrollStrategy]='scrollStrategy'
   [cdkConnectedOverlayOpen]='popupOpened'
   (overlayOutsideClick)='closePopupOnOutsideClicked($event)'>
-  <inek-popup-container (close)='popupOpened = false'>
+  <app-popup-container (close)='popupOpened = false'>
     <ng-container *ngComponentOutlet='componentType'></ng-container>
-  </inek-popup-container>
+  </app-popup-container>
 </ng-template>
 
 

@@ -4,7 +4,6 @@ import { ActivatedRoute } from '@angular/router';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { TagsService } from './services/tags.service';
 import { filter, switchMap } from 'rxjs/operators';
-
 import { CommonModule } from '@angular/common';
 import { TagListComponent } from './tag-list/tag-list.component';
 import { MaterialModule } from '@modules/material/material.module';

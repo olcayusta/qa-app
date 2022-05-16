@@ -8,7 +8,7 @@ import { MatListModule } from '@angular/material/list';
 import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'inek-user-profile-popup',
+  selector: 'app-user-profile-popup',
   templateUrl: './user-profile-popup.component.html',
   styleUrls: ['./user-profile-popup.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

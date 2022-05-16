@@ -26,9 +26,7 @@ export class SettingsComponent implements OnInit {
   }
 
   async openProfilePictureDialog() {
-    const { ProfilePictureDialogComponent } = await import(
-      './components/profile-picture-dialog/profile-picture-dialog.component'
-    );
+    const { ProfilePictureDialogComponent } = await import('./profile-picture-dialog/profile-picture-dialog.component');
     this.dialog.open(ProfilePictureDialogComponent, {
       autoFocus: false,
       minWidth: 560

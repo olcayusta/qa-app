@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { TagsComponent } from './tags.component';
-import { TagsResolver } from './resolvers/tags.resolver';
+import { TagsResolver } from './tags.resolver';
 
 export const tagsRoutes: Routes = [
   {

@@ -31,12 +31,7 @@ input.custom-autofill {
   }
 }
 
-.page-center {
-
-}
-
 .buttons {
-  // text-align: center;
   margin: 16px 0;
 }
 
@@ -44,11 +39,6 @@ input.custom-autofill {
   flex: 1;
   // height: 48px;
   letter-spacing: 1.25px;
-
-  svg {
-    // margin-right: 12px;
-
-  }
 }
 
 .login-form-container {
@@ -60,6 +50,34 @@ input.custom-autofill {
   // background-color: var(--card-background);
   border-radius: 12px;
   background-color: transparent;
+
+  mat-progress-bar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+  }
+
+  .or-bracket {
+    height: 1px;
+    background: #c6c6c6;
+    margin-top: 48px;
+    position: relative;
+
+    span {
+      position: absolute;
+      left: 40%;
+      background: #fff;
+      top: -8px;
+      padding: 0 24px;
+      /* font-style: italic; */
+      color: rgba(0, 0, 0, 0.6);
+      font-size: 16px;
+      /* text-transform: uppercase; */
+      /* letter-spacing: 1.5px; */
+      font-weight: 500;
+    }
+  }
 }
 
 @media (min-width: 512px) {
@@ -67,17 +85,6 @@ input.custom-autofill {
     width: 550px;
     border: 1px solid var(--border-color);
   }
-}
-
-mat-progress-bar {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-}
-
-.login-form {
-
 }
 
 .form-body {
@@ -213,26 +220,7 @@ button[mat-stroked-button] {
   }
 }
 
-.or-bracket {
-  height: 1px;
-  background: #c6c6c6;
-  margin-top: 48px;
-  position: relative;
 
-  span {
-    position: absolute;
-    left: 40%;
-    background: #fff;
-    top: -8px;
-    padding: 0 24px;
-    /* font-style: italic; */
-    color: rgba(0, 0, 0, 0.6);
-    font-size: 16px;
-    /* text-transform: uppercase; */
-    /* letter-spacing: 1.5px; */
-    font-weight: 500;
-  }
-}
 
 /*
 input:-webkit-autofill {

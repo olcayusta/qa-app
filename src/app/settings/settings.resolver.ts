@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Resolve } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from '@shared/models/user.model';
-import { SettingsService } from '../services/settings.service';
+import { SettingsService } from './settings.service';
 
 @Injectable({
   providedIn: 'root'

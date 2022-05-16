@@ -1,18 +1,10 @@
-import {
-  Component,
-  OnInit,
-  ChangeDetectionStrategy,
-  Input,
-  Output,
-  EventEmitter,
-  OnDestroy
-} from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'inek-popup-container',
+  selector: 'app-popup-container',
   templateUrl: './popup-container.component.html',
   styleUrls: ['./popup-container.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

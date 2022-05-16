@@ -5,7 +5,7 @@ import { SharedModule } from '@shared/shared.module';
 import { MatDialogModule } from '@angular/material/dialog';
 
 @Component({
-  selector: 'inek-flag-dialog',
+  selector: 'app-flag-dialog',
   templateUrl: './flag-dialog.component.html',
   styleUrls: ['./flag-dialog.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { User } from '@shared/models/user.model';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { MatTabsModule } from '@angular/material/tabs';
 import { SharedModule } from '@shared/shared.module';
 import { MaterialModule } from '@modules/material/material.module';
 

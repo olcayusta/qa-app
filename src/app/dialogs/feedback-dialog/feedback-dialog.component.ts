@@ -6,7 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 
 @Component({
-  selector: 'inek-feedback-dialog',
+  selector: 'app-feedback-dialog',
   templateUrl: './feedback-dialog.component.html',
   styleUrls: ['./feedback-dialog.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

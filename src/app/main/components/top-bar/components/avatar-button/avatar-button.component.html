@@ -14,9 +14,9 @@
   [cdkConnectedOverlayOpen]='popupOpened'
   (overlayOutsideClick)='closePopupOnOutsideClicked($event)'>
   <!--  <qa-popup-container popupContainerTitle="avatar" [outlet]="ironDropdownOutlet"></qa-popup-container>-->
-  <inek-popup-container (close)='popupOpened = false'>
+  <app-popup-container (close)='popupOpened = false'>
     <ng-container *ngComponentOutlet='componentType'></ng-container>
-  </inek-popup-container>
+  </app-popup-container>
 </ng-template>
 
 

@@ -21,7 +21,7 @@
             <span>{{question.answer?.user?.displayName}}</span>
           </a>
           <span class='bracket'>—</span>
-          <span>{{question.answer.creationTime | timeAgo}} yanıtladı</span>
+          <span>{{question.answer.creationTime | relativeTimeFormat}} yanıtladı</span>
         </ng-container>
       </div>
 
@@ -33,7 +33,7 @@
 <ng-template #notLogged>
   <div class="browse-results-renderer">
     <div class="promo-image">
-      <app-gf-icon name="question_answer"></app-gf-icon>
+      <mat-icon>question_answer</mat-icon>
     </div>
     <div class="promo-title headline-5">
       Favori videolarınızın keyfini çıkarın

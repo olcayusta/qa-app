@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
-import { ChipsAutocompleteComponent } from './components/chips-autocomplete/chips-autocomplete.component';
+import { ChipsAutocompleteComponent } from './chips-autocomplete/chips-autocomplete.component';
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { MaterialModule } from '@modules/material/material.module';
 import { SharedModule } from '@shared/shared.module';
@@ -9,7 +9,7 @@ import { MaterialIconModule } from '../material-icon/material-icon.module';
 import { QuestionService } from '../question/services/question.service';
 
 @Component({
-  selector: 'inek-create-question',
+  selector: 'app-create-question',
   templateUrl: './create-question.component.html',
   styleUrls: ['./create-question.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

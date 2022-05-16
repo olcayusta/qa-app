@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatListModule } from '@angular/material/list';
-import { MatIconModule } from '@angular/material/icon';
+import { MaterialModule } from '@modules/material/material.module';
 
 @Component({
   selector: 'app-help',
@@ -9,7 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrls: ['./help.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [CommonModule, MatListModule, MatIconModule]
+  imports: [CommonModule, MaterialModule]
 })
 export class HelpComponent implements OnInit {
   folders = [

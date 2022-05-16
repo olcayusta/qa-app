@@ -6,7 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'inek-watched-tag-list-dialog',
+  selector: 'app-watched-tag-list-dialog',
   templateUrl: './watched-tag-list-dialog.component.html',
   styleUrls: ['./watched-tag-list-dialog.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
