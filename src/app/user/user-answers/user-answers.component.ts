@@ -2,7 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Answer } from '@shared/models/answer.model';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { SharedModule } from '@shared/shared.module';
+import { RelativeTimeFormatPipe } from '@shared/pipes/relative-time-format.pipe';
 
 @Component({
   selector: 'app-user-answers',
@@ -10,7 +10,7 @@ import { SharedModule } from '@shared/shared.module';
   styleUrls: ['./user-answers.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [CommonModule, SharedModule, RouterModule]
+  imports: [CommonModule, RouterModule, RelativeTimeFormatPipe]
 })
 export class UserAnswersComponent implements OnInit {
   answers!: Answer[];

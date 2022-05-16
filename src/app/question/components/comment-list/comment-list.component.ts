@@ -4,9 +4,10 @@ import { CommentService } from '@shared/services/comment.service';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
-import { MaterialModule } from '@modules/material/material.module';
 import { CommentListItemComponent } from './comment-list-item/comment-list-item.component';
 import { CommentFormComponent } from '../comment-form/comment-form.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatDividerModule } from '@angular/material/divider';
 
 @Component({
   selector: 'app-comment-list',
@@ -14,7 +15,7 @@ import { CommentFormComponent } from '../comment-form/comment-form.component';
   styleUrls: ['./comment-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [CommonModule, MaterialModule, CommentListItemComponent, CommentFormComponent]
+  imports: [CommonModule, CommentListItemComponent, CommentFormComponent, MatProgressSpinnerModule, MatDividerModule]
 })
 export class CommentListComponent implements OnInit {
   comments$!: Observable<Comment[]>;

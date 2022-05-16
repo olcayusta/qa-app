@@ -1,5 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, NgModule } from '@angular/core';
-import { MaterialModule } from '@modules/material/material.module';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 
@@ -7,7 +6,9 @@ import { MatDialogModule } from '@angular/material/dialog';
   selector: 'app-share-dialog',
   templateUrl: './share-dialog.component.html',
   styleUrls: ['./share-dialog.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [MatInputModule, MatDialogModule]
 })
 export class ShareDialogComponent implements OnInit {
   url!: string;
@@ -17,14 +18,4 @@ export class ShareDialogComponent implements OnInit {
   ngOnInit(): void {
     this.url = window.location.href;
   }
-}
-
-@NgModule({
-  declarations: [ShareDialogComponent],
-  imports: [MaterialModule, MatInputModule, MatDialogModule]
-})
-class ShareDialogModule {
-  /*  public static components = {
-      ShareDialogComponent
-    }*/
 }

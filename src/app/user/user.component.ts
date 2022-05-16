@@ -2,16 +2,27 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { User } from '@shared/models/user.model';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { SharedModule } from '@shared/shared.module';
-import { MaterialModule } from '@modules/material/material.module';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatIconModule } from '@angular/material/icon';
+import { RelativeTimeFormatPipe } from '@shared/pipes/relative-time-format.pipe';
+import { MyDatePipe } from '@shared/pipes/my-date.pipe';
+import { ImgShadowComponent } from '@shared/components/img-shadow/img-shadow.component';
 
 @Component({
   selector: 'app-user',
+  standalone: true,
+  imports: [
+    CommonModule,
+    RouterModule,
+    MatIconModule,
+    MatTabsModule,
+    MyDatePipe,
+    RelativeTimeFormatPipe,
+    ImgShadowComponent
+  ],
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [CommonModule, RouterModule, MaterialModule, SharedModule]
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UserComponent implements OnInit {
   user!: User;

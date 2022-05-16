@@ -27,32 +27,30 @@ import { SocketService } from '@shared/services/socket.service';
 import { VoteService } from '@shared/services/vote.service';
 import { FavoriteService } from 'src/app/favorites/favorite.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SharedModule } from '@shared/shared.module';
 import { MaterialIconModule } from '../material-icon/material-icon.module';
 import { AnswerListComponent } from './components/answer-list/answer-list.component';
 import { AnswerFormComponent } from './components/answer-form/answer-form.component';
 import { CommentListComponent } from './components/comment-list/comment-list.component';
 import { AnswerItemComponent } from './components/answer-list/answer-item/answer-item.component';
-import { QuestionTextComponent } from './components/question-text/question-text.component';
+import { QuestionTextComponent } from './question-text/question-text.component';
 import { HeroDelayDirective } from './directives/hero-delay.directive';
 import { CommentListItemComponent } from './components/comment-list/comment-list-item/comment-list-item.component';
 import { DeepLazyDirective } from './directives/deep-lazy.directive';
 import { EditorButtonsComponent } from './components/answer-form/components/editor-buttons/editor-buttons.component';
 import { CommentFormComponent } from './components/comment-form/comment-form.component';
 import { AnswerItemCommentListComponent } from './components/answer-list/answer-item/answer-item-comment-list/answer-item-comment-list.component';
-import { MaterialModule } from '@modules/material/material.module';
+import { MatCardModule } from '@angular/material/card';
+import { ImgShadowComponent } from '@shared/components/img-shadow/img-shadow.component';
+import { RelativeTimeFormatPipe } from '@shared/pipes/relative-time-format.pipe';
 
 @Component({
   selector: 'app-question',
-  templateUrl: './question.component.html',
-  styleUrls: ['./question.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [
     CommonModule,
+    RouterModule,
     ReactiveFormsModule,
     FormsModule,
-    SharedModule,
     MaterialIconModule,
     AnswerListComponent,
     AnswerFormComponent,
@@ -65,9 +63,14 @@ import { MaterialModule } from '@modules/material/material.module';
     EditorButtonsComponent,
     CommentFormComponent,
     AnswerItemCommentListComponent,
-    RouterModule,
-    MaterialModule
-  ]
+    ImgShadowComponent,
+    RelativeTimeFormatPipe,
+    MatCardModule,
+    MatDialogModule
+  ],
+  templateUrl: './question.component.html',
+  styleUrls: ['./question.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class QuestionComponent implements OnInit, OnDestroy {
   question$!: Observable<Question>;

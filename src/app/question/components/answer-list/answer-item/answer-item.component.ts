@@ -3,10 +3,11 @@ import { Answer } from '@shared/models/answer.model';
 import { AnswerService } from '@shared/services/answer.service';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MaterialModule } from '@modules/material/material.module';
 import { SharedModule } from '@shared/shared.module';
 import { AnswerItemCommentListComponent } from './answer-item-comment-list/answer-item-comment-list.component';
 import { HeroDelayDirective } from '../../../directives/hero-delay.directive';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-answer-item',
@@ -14,7 +15,14 @@ import { HeroDelayDirective } from '../../../directives/hero-delay.directive';
   styleUrls: ['./answer-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [AnswerItemCommentListComponent, HeroDelayDirective, SharedModule, MaterialModule, RouterModule]
+  imports: [
+    AnswerItemCommentListComponent,
+    HeroDelayDirective,
+    SharedModule,
+    RouterModule,
+    MatButtonModule,
+    MatIconModule
+  ]
 })
 export class AnswerItemComponent {
   @Input() answer!: Answer;

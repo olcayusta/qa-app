@@ -4,7 +4,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @Component({
-  selector: 'qa-account-notifications',
+  selector: 'app-account-notifications',
   templateUrl: './account-notifications.component.html',
   styleUrls: ['./account-notifications.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

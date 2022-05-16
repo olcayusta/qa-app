@@ -5,11 +5,11 @@ import { FilterService } from '@shared/services/filter.service';
 import { ActivatedRoute } from '@angular/router';
 import { delay, switchMap } from 'rxjs/operators';
 import { animate, query, stagger, style, transition, trigger } from '@angular/animations';
-import { SharedModule } from '@shared/shared.module';
-import { MaterialModule } from '@modules/material/material.module';
 import { CommonModule } from '@angular/common';
 import { IsVisibleDirective } from '../directives/is-visible.directive';
 import { QuestionService } from '../../question/services/question.service';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { HomeQuestionListItemComponent } from '@shared/components/home-question-list-item/home-question-list-item.component';
 
 @Component({
   selector: 'app-home-grid-list',
@@ -17,7 +17,7 @@ import { QuestionService } from '../../question/services/question.service';
   styleUrls: ['./home-grid-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [CommonModule, SharedModule, MaterialModule, IsVisibleDirective],
+  imports: [CommonModule, MatProgressSpinnerModule, HomeQuestionListItemComponent, IsVisibleDirective],
   animations: [
     trigger('pageAnimations', [
       transition(':enter', [

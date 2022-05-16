@@ -1,18 +1,32 @@
 import { Component, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
-import { MaterialModule } from '@modules/material/material.module';
-import { SharedModule } from '@shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { DrawerService } from '../../services/drawer.service';
+import { MatListModule } from '@angular/material/list';
+import { SharedModule } from '@shared/shared.module';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-  selector: 'inek-nav-drawer',
+  selector: 'app-nav-drawer',
   templateUrl: './nav-drawer.component.html',
   styleUrls: ['./nav-drawer.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [CommonModule, MaterialModule, SharedModule, RouterModule]
+  imports: [
+    CommonModule,
+    RouterModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatListModule,
+    MatIconModule,
+    MatDividerModule,
+    MatDialogModule,
+    SharedModule
+  ]
 })
 export class NavDrawerComponent implements OnInit, OnDestroy {
   private pages = [

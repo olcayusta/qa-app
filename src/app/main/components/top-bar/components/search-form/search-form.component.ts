@@ -11,7 +11,8 @@ import {
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HighlightSearchPipe } from './pipes/highlight-search.pipe';
-import { MaterialModule } from '@modules/material/material.module';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-search-form',
@@ -19,7 +20,15 @@ import { MaterialModule } from '@modules/material/material.module';
   styleUrls: ['./search-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [CommonModule, MaterialModule, MatAutocompleteModule, RouterModule, ReactiveFormsModule, HighlightSearchPipe]
+  imports: [
+    CommonModule,
+    MatAutocompleteModule,
+    RouterModule,
+    ReactiveFormsModule,
+    HighlightSearchPipe,
+    MatButtonModule,
+    MatIconModule
+  ]
 })
 export class SearchFormComponent implements OnInit {
   searchControl: FormControl<string> = new FormControl<string>('', { initialValueIsDefault: true });

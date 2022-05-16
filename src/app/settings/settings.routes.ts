@@ -6,6 +6,8 @@ export const settingsRoutes: Routes = [
   {
     path: '',
     component: SettingsComponent,
-    resolve: { user: SettingsResolver }
+    resolve: {
+      user: SettingsResolver
+    }
   }
 ];

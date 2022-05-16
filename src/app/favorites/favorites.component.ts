@@ -3,7 +3,6 @@ import { Observable } from 'rxjs';
 import { Question } from '@shared/models/question.model';
 import { FavoriteService } from './favorite.service';
 import { CommonModule } from '@angular/common';
-import { MaterialModule } from '@modules/material/material.module';
 
 @Component({
   selector: 'app-favorites',
@@ -11,7 +10,7 @@ import { MaterialModule } from '@modules/material/material.module';
   styleUrls: ['./favorites.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [CommonModule, MaterialModule]
+  imports: [CommonModule]
 })
 export class FavoritesComponent implements OnInit {
   questions$!: Observable<Question[]>;

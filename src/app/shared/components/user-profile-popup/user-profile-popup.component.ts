@@ -2,7 +2,6 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { User } from '@shared/models/user.model';
 import { AuthService } from '@auth/auth.service';
 import { SocketService } from '@shared/services/socket.service';
-import { MaterialModule } from '@modules/material/material.module';
 import { SharedModule } from '@shared/shared.module';
 import { MatListModule } from '@angular/material/list';
 import { RouterModule } from '@angular/router';
@@ -13,7 +12,7 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./user-profile-popup.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [MaterialModule, RouterModule, SharedModule, MatListModule]
+  imports: [RouterModule, SharedModule, MatListModule]
 })
 export class UserProfilePopupComponent implements OnInit {
   user!: User;

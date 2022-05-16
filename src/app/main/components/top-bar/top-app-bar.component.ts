@@ -20,7 +20,10 @@ import { map } from 'rxjs/operators';
 import { Event, NavigationStart, Router, RouterModule } from '@angular/router';
 import { TopAppBarLogoComponent } from './components/top-app-bar-logo/top-app-bar-logo.component';
 import { CommonModule } from '@angular/common';
-import { MaterialModule } from '@modules/material/material.module';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-top-app-bar',
@@ -28,7 +31,16 @@ import { MaterialModule } from '@modules/material/material.module';
   styleUrls: ['./top-app-bar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [CommonModule, MaterialModule, RouterModule, SearchFormComponent, TopAppBarLogoComponent]
+  imports: [
+    CommonModule,
+    RouterModule,
+    SearchFormComponent,
+    TopAppBarLogoComponent,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    MatMenuModule
+  ]
 })
 export class TopAppBarComponent implements OnInit {
   @Output() openSheet = new EventEmitter();

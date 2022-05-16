@@ -1,7 +1,7 @@
 <ng-container *ngIf='comments$ | async as comments; else loading'>
   <mat-divider></mat-divider>
   <div class='comment-list'>
-    <inek-comment-list-item *ngFor='let comment of comments' [comment]='comment'></inek-comment-list-item>
+    <app-comment-list-item *ngFor='let comment of comments' [comment]='comment'></app-comment-list-item>
   </div>
 </ng-container>
 
@@ -11,5 +11,5 @@
   </div>
 </ng-template>
 
-<inek-comment-form></inek-comment-form>
+<app-comment-form></app-comment-form>
 

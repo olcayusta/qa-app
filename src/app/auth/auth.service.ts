@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpContext } from '@angular/common/http';
-import { environment } from '@environments/environment';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { User } from '@shared/models/user.model';
-import { tap } from 'rxjs/operators';
+import { HttpClient, HttpContext } from '@angular/common/http';
 import { BYPASS_ERROR } from '../core/interceptors/http-error.interceptor';
+import { environment } from '@environments/environment';
 
 @Injectable({
   providedIn: 'root'

@@ -5,7 +5,6 @@ import { HomeQuestionListItemComponent } from './components/home-question-list-i
 import { RouterModule } from '@angular/router';
 import { TimeAgoPipe } from './pipes/time-ago.pipe';
 import { ImgShadowComponent } from './components/img-shadow/img-shadow.component';
-import { MaterialModule } from '@modules/material/material.module';
 import { GfIconComponent } from '@shared/components/gf-icon/gf-icon.component';
 import { AutofocusDirective } from './directives/autofocus.directive';
 import { RelativeTimeFormatPipe } from './pipes/relative-time-format.pipe';
@@ -17,18 +16,23 @@ import { MyDatePipe } from './pipes/my-date.pipe';
 
 @NgModule({
   declarations: [
-    HomeQuestionListItemComponent,
-    ImgShadowComponent,
     TimeAgoPipe,
     LazyImgDirective,
     GfIconComponent,
     AutofocusDirective,
     QListItemImgShadowComponent,
     PopupContainerComponent,
-    SelectedTagPipe,
-    MyDatePipe
+    SelectedTagPipe
   ],
-  imports: [CommonModule, RouterModule, MaterialModule, RelativeTimeFormatPipe, HighlightElementDirective],
+  imports: [
+    CommonModule,
+    RouterModule,
+    RelativeTimeFormatPipe,
+    HighlightElementDirective,
+    MyDatePipe,
+    ImgShadowComponent,
+    HomeQuestionListItemComponent
+  ],
   exports: [
     HomeQuestionListItemComponent,
     GfIconComponent,

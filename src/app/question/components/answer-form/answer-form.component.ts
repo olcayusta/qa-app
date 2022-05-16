@@ -4,8 +4,10 @@ import { ActivatedRoute } from '@angular/router';
 import { AnswerService } from '@shared/services/answer.service';
 import { MarkedService } from '@shared/services/marked.service';
 import { CommonModule } from '@angular/common';
-import { MaterialModule } from '@modules/material/material.module';
 import { EditorButtonsComponent } from './components/editor-buttons/editor-buttons.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-answer-form',
@@ -13,7 +15,7 @@ import { EditorButtonsComponent } from './components/editor-buttons/editor-butto
   styleUrls: ['./answer-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [CommonModule, MaterialModule, ReactiveFormsModule, EditorButtonsComponent]
+  imports: [CommonModule, ReactiveFormsModule, EditorButtonsComponent, MatButtonModule, MatInputModule, MatIconModule]
 })
 export class AnswerFormComponent implements OnInit, OnDestroy {
   answerControl = new FormControl('Dua lipa is a beautiful singer!', {

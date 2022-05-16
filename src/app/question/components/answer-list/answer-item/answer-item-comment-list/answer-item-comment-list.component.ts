@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 import { CommentListItemComponent } from '../../../comment-list/comment-list-item/comment-list-item.component';
 
 @Component({
-  selector: 'inek-answer-item-comment-list',
+  selector: 'app-answer-item-comment-list',
   templateUrl: './answer-item-comment-list.component.html',
   styleUrls: ['./answer-item-comment-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -1,27 +1,19 @@
 import { ChangeDetectionStrategy, Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { DomSanitizer } from '@angular/platform-browser';
-import { ChipsAutocompleteComponent } from './chips-autocomplete/chips-autocomplete.component';
 import { CommonModule, DOCUMENT } from '@angular/common';
-import { MaterialModule } from '@modules/material/material.module';
-import { SharedModule } from '@shared/shared.module';
-import { MaterialIconModule } from '../material-icon/material-icon.module';
+import { ChipsAutocompleteComponent } from './chips-autocomplete/chips-autocomplete.component';
+import { DomSanitizer } from '@angular/platform-browser';
+import { MatInputModule } from '@angular/material/input';
+import { MatDividerModule } from '@angular/material/divider';
 import { QuestionService } from '../question/services/question.service';
 
 @Component({
   selector: 'app-create-question',
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule, ChipsAutocompleteComponent, MatInputModule, MatDividerModule],
   templateUrl: './create-question.component.html',
   styleUrls: ['./create-question.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    MaterialModule,
-    SharedModule,
-    MaterialIconModule,
-    ChipsAutocompleteComponent
-  ]
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CreateQuestionComponent implements OnInit {
   questionForm: FormGroup<{

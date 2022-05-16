@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MaterialModule } from '@modules/material/material.module';
+import { MatListModule } from '@angular/material/list';
 
 @Component({
   selector: 'app-help',
@@ -8,7 +8,7 @@ import { MaterialModule } from '@modules/material/material.module';
   styleUrls: ['./help.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [CommonModule, MaterialModule]
+  imports: [CommonModule, MatListModule]
 })
 export class HelpComponent implements OnInit {
   folders = [

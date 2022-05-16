@@ -3,15 +3,15 @@ import { Observable } from 'rxjs';
 import { Event, NavigationCancel, NavigationError, ResolveEnd, ResolveStart, Router } from '@angular/router';
 import { SpinnerService } from '@shared/services/spinner.service';
 import { CommonModule } from '@angular/common';
-import { MaterialModule } from '@modules/material/material.module';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @Component({
   selector: 'app-progress-bar',
+  standalone: true,
+  imports: [CommonModule, MatProgressBarModule],
   templateUrl: './progress-bar.component.html',
   styleUrls: ['./progress-bar.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [CommonModule, MaterialModule]
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProgressBarComponent implements OnInit {
   spinner$!: Observable<boolean>;

@@ -4,7 +4,8 @@ import { ChangeDetectionStrategy, Component, ElementRef, HostBinding, Input } fr
   selector: 'inek-img-shadow',
   templateUrl: './img-shadow.component.html',
   styleUrls: ['./img-shadow.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true
 })
 export class ImgShadowComponent {
   @Input() src!: string;

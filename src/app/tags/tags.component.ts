@@ -6,7 +6,7 @@ import { TagsService } from './services/tags.service';
 import { filter, switchMap } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
 import { TagListComponent } from './tag-list/tag-list.component';
-import { MaterialModule } from '@modules/material/material.module';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-tags',
@@ -14,7 +14,7 @@ import { MaterialModule } from '@modules/material/material.module';
   styleUrls: ['./tags.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [CommonModule, TagListComponent, MaterialModule, ReactiveFormsModule]
+  imports: [CommonModule, TagListComponent, ReactiveFormsModule, MatInputModule]
 })
 export class TagsComponent implements OnInit {
   tags!: Tag[];

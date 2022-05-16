@@ -4,7 +4,6 @@ import { SocketService } from '@shared/services/socket.service';
 import { Subscription } from 'rxjs';
 import { CloseScrollStrategy, Overlay } from '@angular/cdk/overlay';
 import { CommonModule } from '@angular/common';
-import { SharedModule } from '@shared/shared.module';
 import { MAT_MENU_SCROLL_STRATEGY } from '@angular/material/menu';
 import { BannerComponent } from './banner/banner.component';
 import { FilterComponent } from './components/filter/filter.component';
@@ -12,6 +11,7 @@ import { SortByComponent } from './components/filter/sort-by/sort-by.component';
 import { FilterByComponent } from './components/filter/filter-by/filter-by.component';
 import { HomeGridListComponent } from './home-grid-list/home-grid-list.component';
 import { IsVisibleDirective } from './directives/is-visible.directive';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 
 function scrollFactory(overlay: Overlay): () => CloseScrollStrategy {
   return () => overlay.scrollStrategies.close();
@@ -25,13 +25,13 @@ function scrollFactory(overlay: Overlay): () => CloseScrollStrategy {
   standalone: true,
   imports: [
     CommonModule,
-    SharedModule,
     BannerComponent,
     FilterComponent,
     SortByComponent,
     FilterByComponent,
     HomeGridListComponent,
-    IsVisibleDirective
+    IsVisibleDirective,
+    MatBottomSheetModule
   ],
   providers: [
     {

@@ -8,9 +8,9 @@ import { User } from '@shared/models/user.model';
 import { HttpErrorResponse } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
-import { SharedModule } from '@shared/shared.module';
 import { PasswordFormComponent } from '@auth/login/password-form/password-form.component';
-import { MaterialModule } from '@modules/material/material.module';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { SharedModule } from '@shared/shared.module';
 
 @Component({
   selector: 'app-login',
@@ -20,12 +20,12 @@ import { MaterialModule } from '@modules/material/material.module';
   standalone: true,
   imports: [
     CommonModule,
-    MatInputModule,
     ReactiveFormsModule,
-    MaterialModule,
-    SharedModule,
     LoginComponent,
-    PasswordFormComponent
+    PasswordFormComponent,
+    MatInputModule,
+    MatProgressBarModule,
+    SharedModule
   ]
 })
 export class LoginComponent implements OnInit {

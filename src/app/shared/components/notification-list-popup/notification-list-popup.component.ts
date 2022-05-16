@@ -6,7 +6,6 @@ import { CommonModule } from '@angular/common';
 import { MatListModule } from '@angular/material/list';
 import { SharedModule } from '@shared/shared.module';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MaterialModule } from '@modules/material/material.module';
 
 @Component({
   selector: 'app-notification-list-popup',
@@ -14,7 +13,7 @@ import { MaterialModule } from '@modules/material/material.module';
   styleUrls: ['./notification-list-popup.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [CommonModule, MaterialModule, SharedModule, MatProgressSpinnerModule, MatListModule]
+  imports: [CommonModule, SharedModule, MatProgressSpinnerModule, MatListModule]
 })
 export class NotificationListPopupComponent implements OnInit {
   notifications$!: Observable<Notification[]>;

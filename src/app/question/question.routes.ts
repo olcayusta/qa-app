@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { QuestionComponent } from './question.component';
-import { QuestionResolver } from './resolvers/question.resolver';
-import { QuestionTitleResolver } from './resolvers/question-title.resolver';
+import { QuestionResolver } from './question.resolver';
+import { QuestionTitleResolver } from './question-title.resolver';
 
 export const questionRoutes: Routes = [
   {

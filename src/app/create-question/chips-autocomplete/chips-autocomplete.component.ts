@@ -12,12 +12,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { TagService } from '../../tag/tag.service';
 
 @Component({
-  selector: 'inek-chips-autocomplete',
+  selector: 'app-chips-autocomplete',
+  standalone: true,
+  imports: [CommonModule, MatAutocompleteModule, MatChipsModule, MatInputModule, MatIconModule, ReactiveFormsModule],
   templateUrl: './chips-autocomplete.component.html',
   styleUrls: ['./chips-autocomplete.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [CommonModule, MatAutocompleteModule, MatChipsModule, MatInputModule, MatIconModule, ReactiveFormsModule]
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ChipsAutocompleteComponent implements OnInit {
   visible = true;

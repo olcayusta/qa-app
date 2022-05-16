@@ -1,8 +1,8 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { User } from '@shared/models/user.model';
 import { RouterModule } from '@angular/router';
-import { SharedModule } from '@shared/shared.module';
-import { MaterialModule } from '@modules/material/material.module';
+import { MatButtonModule } from '@angular/material/button';
+import { ImgShadowComponent } from '@shared/components/img-shadow/img-shadow.component';
 
 @Component({
   selector: 'app-user-list-item',
@@ -10,7 +10,7 @@ import { MaterialModule } from '@modules/material/material.module';
   styleUrls: ['./user-list-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [RouterModule, MaterialModule, SharedModule]
+  imports: [RouterModule, MatButtonModule, ImgShadowComponent]
 })
 export class UserListItemComponent {
   @Input() user!: User;

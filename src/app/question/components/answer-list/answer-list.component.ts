@@ -13,8 +13,9 @@ import { Observable, tap } from 'rxjs';
 import { Answer } from '@shared/models/answer.model';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule, ViewportScroller } from '@angular/common';
-import { MaterialModule } from '@modules/material/material.module';
 import { AnswerItemComponent } from './answer-item/answer-item.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
 
 interface SortItem {
   value: number;
@@ -28,7 +29,7 @@ interface SortItem {
   styleUrls: ['./answer-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [CommonModule, MaterialModule, AnswerItemComponent]
+  imports: [CommonModule, AnswerItemComponent, MatMenuModule, MatIconModule]
 })
 export class AnswerListComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input('acceptedAnswerId') acceptedAnswerId?: number;

@@ -6,8 +6,9 @@ import { AuthService } from '@auth/auth.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ListService } from './list.service';
-import { MaterialModule } from '@modules/material/material.module';
 import { RelativeTimeFormatPipe } from '@shared/pipes/relative-time-format.pipe';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
 
 @Component({
   selector: 'app-list',
@@ -15,7 +16,7 @@ import { RelativeTimeFormatPipe } from '@shared/pipes/relative-time-format.pipe'
   styleUrls: ['./list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [CommonModule, MaterialModule, RouterModule, RelativeTimeFormatPipe]
+  imports: [CommonModule, RouterModule, RelativeTimeFormatPipe, MatIconModule, MatDividerModule]
 })
 export class ListComponent implements OnInit {
   questions$!: Observable<Question[]>;
