@@ -11,11 +11,11 @@ import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-avatar-button',
+  standalone: true,
+  imports: [CommonModule, SharedModule, OverlayModule],
   templateUrl: './avatar-button.component.html',
   styleUrls: ['./avatar-button.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [CommonModule, SharedModule, OverlayModule]
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AvatarButtonComponent implements OnInit {
   user!: User;

@@ -1,17 +1,17 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
-import { MatIconModule } from '@angular/material/icon';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-watched-tag-list-dialog',
+  standalone: true,
+  imports: [CommonModule, MatDialogModule, MatButtonModule, MatChipsModule, MatIconModule],
   templateUrl: './watched-tag-list-dialog.component.html',
   styleUrls: ['./watched-tag-list-dialog.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [CommonModule, MatDialogModule, MatButtonModule, MatChipsModule, MatIconModule]
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WatchedTagListDialogComponent implements OnInit {
   constructor() {}

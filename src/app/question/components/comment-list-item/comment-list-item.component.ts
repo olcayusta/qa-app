@@ -7,11 +7,11 @@ import { ImgShadowComponent } from '@shared/components/img-shadow/img-shadow.com
 
 @Component({
   selector: 'app-comment-list-item',
+  standalone: true,
+  imports: [RouterModule, MatDividerModule, RelativeTimeFormatPipe, ImgShadowComponent],
   templateUrl: './comment-list-item.component.html',
   styleUrls: ['./comment-list-item.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [RouterModule, MatDividerModule, RelativeTimeFormatPipe, ImgShadowComponent]
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CommentListItemComponent implements OnInit {
   @Input() comment!: Comment;

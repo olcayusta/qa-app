@@ -14,11 +14,11 @@ interface Food {
 
 @Component({
   selector: 'app-edit',
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule, MatSelectModule],
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, MatSelectModule]
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EditComponent implements OnInit {
   question$!: Observable<Question>;

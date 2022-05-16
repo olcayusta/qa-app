@@ -4,18 +4,18 @@ import { ActivatedRoute } from '@angular/router';
 import { AnswerService } from '@shared/services/answer.service';
 import { MarkedService } from '@shared/services/marked.service';
 import { CommonModule } from '@angular/common';
-import { EditorButtonsComponent } from './components/editor-buttons/editor-buttons.component';
+import { EditorButtonsComponent } from './editor-buttons/editor-buttons.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-answer-form',
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule, EditorButtonsComponent, MatButtonModule, MatInputModule, MatIconModule],
   templateUrl: './answer-form.component.html',
   styleUrls: ['./answer-form.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, EditorButtonsComponent, MatButtonModule, MatInputModule, MatIconModule]
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AnswerFormComponent implements OnInit, OnDestroy {
   answerControl = new FormControl('Dua lipa is a beautiful singer!', {

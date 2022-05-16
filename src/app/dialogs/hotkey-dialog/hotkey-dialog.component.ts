@@ -5,11 +5,11 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-hotkey-dialog',
+  standalone: true,
+  imports: [CommonModule, MatDialogModule, MatButtonModule],
   templateUrl: './hotkey-dialog.component.html',
   styleUrls: ['./hotkey-dialog.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [CommonModule, MatDialogModule, MatButtonModule]
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HotkeyDialogComponent implements OnInit {
   constructor() {}

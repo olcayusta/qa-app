@@ -6,11 +6,11 @@ import { ImgShadowComponent } from '@shared/components/img-shadow/img-shadow.com
 
 @Component({
   selector: 'app-user-list-item',
+  standalone: true,
+  imports: [RouterModule, MatButtonModule, ImgShadowComponent],
   templateUrl: './user-list-item.component.html',
   styleUrls: ['./user-list-item.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [RouterModule, MatButtonModule, ImgShadowComponent]
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UserListItemComponent {
   @Input() user!: User;

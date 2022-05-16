@@ -6,11 +6,11 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'inek-watched-tags',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './watched-tags.component.html',
   styleUrls: ['./watched-tags.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [CommonModule]
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WatchedTagsComponent implements OnInit {
   tags$!: Observable<Tag[]>;

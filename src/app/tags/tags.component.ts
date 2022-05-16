@@ -10,11 +10,11 @@ import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-tags',
+  standalone: true,
+  imports: [CommonModule, TagListComponent, ReactiveFormsModule, MatInputModule],
   templateUrl: './tags.component.html',
   styleUrls: ['./tags.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [CommonModule, TagListComponent, ReactiveFormsModule, MatInputModule]
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TagsComponent implements OnInit {
   tags!: Tag[];

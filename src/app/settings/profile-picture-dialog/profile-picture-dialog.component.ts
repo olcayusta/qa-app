@@ -6,11 +6,11 @@ import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-profile-picture-dialog',
+  standalone: true,
+  imports: [MatDialogModule, MatButtonModule],
   templateUrl: './profile-picture-dialog.component.html',
   styleUrls: ['./profile-picture-dialog.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [MatDialogModule, MatButtonModule]
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProfilePictureDialogComponent implements OnInit {
   user!: User;

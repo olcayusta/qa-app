@@ -7,11 +7,11 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-site-code',
+  standalone: true,
+  imports: [CommonModule, MatButtonModule, MatIconModule, MatTooltipModule],
   templateUrl: './site-code.component.html',
   styleUrls: ['./site-code.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [CommonModule, MatButtonModule, MatIconModule, MatTooltipModule]
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SiteCodeComponent {
   text!: HTMLPreElement;

@@ -12,11 +12,11 @@ import { MatDividerModule } from '@angular/material/divider';
 
 @Component({
   selector: 'app-list',
+  standalone: true,
+  imports: [CommonModule, RouterModule, RelativeTimeFormatPipe, MatIconModule, MatDividerModule],
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [CommonModule, RouterModule, RelativeTimeFormatPipe, MatIconModule, MatDividerModule]
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ListComponent implements OnInit {
   questions$!: Observable<Question[]>;

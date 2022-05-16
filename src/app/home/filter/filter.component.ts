@@ -2,17 +2,17 @@ import { ChangeDetectionStrategy, Component, OnInit, TemplateRef, ViewChild } fr
 import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-sheet';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { FilterByComponent } from './filter-by/filter-by.component';
-import { SortByComponent } from './sort-by/sort-by.component';
+import { FilterByComponent } from '../filter-by/filter-by.component';
+import { SortByComponent } from '../sort-by/sort-by.component';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-filter',
+  standalone: true,
+  imports: [CommonModule, MatIconModule, MatListModule, FilterByComponent, SortByComponent],
   templateUrl: './filter.component.html',
   styleUrls: ['./filter.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [CommonModule, MatIconModule, MatListModule, FilterByComponent, SortByComponent]
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FilterComponent implements OnInit {
   filterOpened = false;

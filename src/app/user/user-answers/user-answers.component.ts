@@ -6,11 +6,11 @@ import { RelativeTimeFormatPipe } from '@shared/pipes/relative-time-format.pipe'
 
 @Component({
   selector: 'app-user-answers',
+  standalone: true,
+  imports: [CommonModule, RouterModule, RelativeTimeFormatPipe],
   templateUrl: './user-answers.component.html',
   styleUrls: ['./user-answers.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [CommonModule, RouterModule, RelativeTimeFormatPipe]
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UserAnswersComponent implements OnInit {
   answers!: Answer[];

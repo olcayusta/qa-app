@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { Comment } from '@shared/models/comment.model';
 import { CommentService } from '@shared/services/comment.service';
 import { CommonModule } from '@angular/common';
-import { CommentListItemComponent } from '../../../comment-list/comment-list-item/comment-list-item.component';
+import { CommentListItemComponent } from '../../../comment-list-item/comment-list-item.component';
 
 @Component({
   selector: 'app-answer-item-comment-list',

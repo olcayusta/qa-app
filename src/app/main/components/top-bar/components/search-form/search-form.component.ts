@@ -16,9 +16,6 @@ import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-search-form',
-  templateUrl: './search-form.component.html',
-  styleUrls: ['./search-form.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [
     CommonModule,
@@ -28,7 +25,10 @@ import { MatButtonModule } from '@angular/material/button';
     HighlightSearchPipe,
     MatButtonModule,
     MatIconModule
-  ]
+  ],
+  templateUrl: './search-form.component.html',
+  styleUrls: ['./search-form.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SearchFormComponent implements OnInit {
   searchControl: FormControl<string> = new FormControl<string>('', { initialValueIsDefault: true });

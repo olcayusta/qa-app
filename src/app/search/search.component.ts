@@ -4,11 +4,11 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-search',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [CommonModule]
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SearchComponent implements OnInit {
   searchQuery!: any;

@@ -10,11 +10,11 @@ import { RelativeTimeFormatPipe } from '@shared/pipes/relative-time-format.pipe'
 
 @Component({
   selector: 'app-home-question-list-item',
+  standalone: true,
+  imports: [CommonModule, RouterModule, MatChipsModule, MatDividerModule, ImgShadowComponent, RelativeTimeFormatPipe],
   templateUrl: './home-question-list-item.component.html',
   styleUrls: ['./home-question-list-item.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [CommonModule, RouterModule, MatChipsModule, MatDividerModule, ImgShadowComponent, RelativeTimeFormatPipe]
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeQuestionListItemComponent implements OnInit {
   @Input() question!: Question;

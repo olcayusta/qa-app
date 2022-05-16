@@ -27,9 +27,6 @@ import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-top-app-bar',
-  templateUrl: './top-app-bar.component.html',
-  styleUrls: ['./top-app-bar.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [
     CommonModule,
@@ -40,7 +37,10 @@ import { MatButtonModule } from '@angular/material/button';
     MatButtonModule,
     MatIconModule,
     MatMenuModule
-  ]
+  ],
+  templateUrl: './top-app-bar.component.html',
+  styleUrls: ['./top-app-bar.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TopAppBarComponent implements OnInit {
   @Output() openSheet = new EventEmitter();

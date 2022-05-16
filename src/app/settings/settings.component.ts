@@ -10,11 +10,11 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @Component({
   selector: 'app-settings',
+  standalone: true,
+  imports: [CommonModule, MatExpansionModule, MatInputModule, MatButtonModule, MatSlideToggleModule, MatDialogModule],
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [CommonModule, MatExpansionModule, MatInputModule, MatButtonModule, MatSlideToggleModule, MatDialogModule]
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SettingsComponent implements OnInit {
   user!: User;

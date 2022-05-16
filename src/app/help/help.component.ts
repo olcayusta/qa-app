@@ -4,11 +4,11 @@ import { MatListModule } from '@angular/material/list';
 
 @Component({
   selector: 'app-help',
+  standalone: true,
+  imports: [CommonModule, MatListModule],
   templateUrl: './help.component.html',
   styleUrls: ['./help.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [CommonModule, MatListModule]
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HelpComponent implements OnInit {
   folders = [
@@ -27,6 +27,7 @@ export class HelpComponent implements OnInit {
       updated: 'Bugün'
     }
   ];
+
   constructor() {}
 
   ngOnInit(): void {}

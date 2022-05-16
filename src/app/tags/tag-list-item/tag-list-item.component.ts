@@ -5,11 +5,11 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-tag-list-item',
+  standalone: true,
+  imports: [CommonModule, MatIconModule],
   templateUrl: './tag-list-item.component.html',
   styleUrls: ['./tag-list-item.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [CommonModule, MatIconModule]
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TagListItemComponent implements OnInit {
   @Input() tag!: Tag;

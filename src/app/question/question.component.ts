@@ -34,9 +34,9 @@ import { CommentListComponent } from './components/comment-list/comment-list.com
 import { AnswerItemComponent } from './components/answer-list/answer-item/answer-item.component';
 import { QuestionTextComponent } from './question-text/question-text.component';
 import { HeroDelayDirective } from './directives/hero-delay.directive';
-import { CommentListItemComponent } from './components/comment-list/comment-list-item/comment-list-item.component';
+import { CommentListItemComponent } from './components/comment-list-item/comment-list-item.component';
 import { DeepLazyDirective } from './directives/deep-lazy.directive';
-import { EditorButtonsComponent } from './components/answer-form/components/editor-buttons/editor-buttons.component';
+import { EditorButtonsComponent } from './components/answer-form/editor-buttons/editor-buttons.component';
 import { CommentFormComponent } from './components/comment-form/comment-form.component';
 import { AnswerItemCommentListComponent } from './components/answer-list/answer-item/answer-item-comment-list/answer-item-comment-list.component';
 import { MatCardModule } from '@angular/material/card';

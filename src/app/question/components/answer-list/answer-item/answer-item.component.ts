@@ -11,9 +11,6 @@ import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-answer-item',
-  templateUrl: './answer-item.component.html',
-  styleUrls: ['./answer-item.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [
     AnswerItemCommentListComponent,
@@ -22,7 +19,10 @@ import { MatIconModule } from '@angular/material/icon';
     RouterModule,
     MatButtonModule,
     MatIconModule
-  ]
+  ],
+  templateUrl: './answer-item.component.html',
+  styleUrls: ['./answer-item.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AnswerItemComponent {
   @Input() answer!: Answer;

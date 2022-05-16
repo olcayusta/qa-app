@@ -9,11 +9,11 @@ import { MatDividerModule } from '@angular/material/divider';
 
 @Component({
   selector: 'app-tag',
+  standalone: true,
+  imports: [CommonModule, SharedModule, MatDividerModule],
   templateUrl: './tag.component.html',
   styleUrls: ['./tag.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [CommonModule, SharedModule, MatDividerModule]
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TagComponent implements OnInit {
   tag$!: Observable<Tag>;

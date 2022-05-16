@@ -13,11 +13,11 @@ import { HomeQuestionListItemComponent } from '@shared/components/home-question-
 
 @Component({
   selector: 'app-home-grid-list',
+  standalone: true,
+  imports: [CommonModule, MatProgressSpinnerModule, HomeQuestionListItemComponent, IsVisibleDirective],
   templateUrl: './home-grid-list.component.html',
   styleUrls: ['./home-grid-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [CommonModule, MatProgressSpinnerModule, HomeQuestionListItemComponent, IsVisibleDirective],
   animations: [
     trigger('pageAnimations', [
       transition(':enter', [

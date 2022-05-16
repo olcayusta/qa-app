@@ -1,19 +1,19 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { NotificationService } from '@shared/services/notification.service';
-import { Notification } from '@shared/models/notification.model';
-import { Observable } from 'rxjs';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { SharedModule } from '@shared/shared.module';
 import { CommonModule } from '@angular/common';
 import { MatListModule } from '@angular/material/list';
-import { SharedModule } from '@shared/shared.module';
+import { NotificationService } from '@shared/services/notification.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { Observable } from 'rxjs';
+import { Notification } from '@shared/models/notification.model';
 
 @Component({
   selector: 'app-notification-list-popup',
+  standalone: true,
+  imports: [CommonModule, SharedModule, MatProgressSpinnerModule, MatListModule],
   templateUrl: './notification-list-popup.component.html',
   styleUrls: ['./notification-list-popup.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [CommonModule, SharedModule, MatProgressSpinnerModule, MatListModule]
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NotificationListPopupComponent implements OnInit {
   notifications$!: Observable<Notification[]>;

@@ -5,11 +5,11 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-user-questions',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './user-questions.component.html',
   styleUrls: ['./user-questions.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [CommonModule]
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UserQuestionsComponent implements OnInit {
   questions!: Question[];

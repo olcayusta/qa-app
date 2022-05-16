@@ -5,11 +5,11 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @Component({
   selector: 'app-account-notifications',
+  standalone: true,
+  imports: [CommonModule, MatExpansionModule, MatSlideToggleModule],
   templateUrl: './account-notifications.component.html',
   styleUrls: ['./account-notifications.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [CommonModule, MatExpansionModule, MatSlideToggleModule]
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AccountNotificationsComponent implements OnInit {
   constructor() {}

@@ -11,11 +11,11 @@ import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 
 @Component({
   selector: 'app-root',
+  standalone: true,
+  imports: [ProgressBarComponent, RouterModule, MatSnackBarModule],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [ProgressBarComponent, RouterModule, MatSnackBarModule]
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements OnInit {
   @HostListener('document:keydown', ['$event'])

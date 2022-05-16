@@ -12,9 +12,6 @@ import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-nav-drawer',
-  templateUrl: './nav-drawer.component.html',
-  styleUrls: ['./nav-drawer.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [
     CommonModule,
@@ -26,7 +23,10 @@ import { MatButtonModule } from '@angular/material/button';
     MatDividerModule,
     MatDialogModule,
     SharedModule
-  ]
+  ],
+  templateUrl: './nav-drawer.component.html',
+  styleUrls: ['./nav-drawer.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NavDrawerComponent implements OnInit, OnDestroy {
   private pages = [

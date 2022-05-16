@@ -25,11 +25,11 @@ interface SortItem {
 
 @Component({
   selector: 'app-answer-list',
+  standalone: true,
+  imports: [CommonModule, AnswerItemComponent, MatMenuModule, MatIconModule],
   templateUrl: './answer-list.component.html',
   styleUrls: ['./answer-list.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [CommonModule, AnswerItemComponent, MatMenuModule, MatIconModule]
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AnswerListComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input('acceptedAnswerId') acceptedAnswerId?: number;

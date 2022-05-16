@@ -6,11 +6,11 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-user-list',
+  standalone: true,
+  imports: [CommonModule, UserListItemComponent],
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [CommonModule, UserListItemComponent]
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UserListComponent implements OnInit {
   users!: User[];

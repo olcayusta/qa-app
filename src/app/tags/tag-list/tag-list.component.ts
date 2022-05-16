@@ -6,11 +6,11 @@ import { TagListItemComponent } from '../tag-list-item/tag-list-item.component';
 
 @Component({
   selector: 'app-tag-list',
+  standalone: true,
+  imports: [CommonModule, TagListItemComponent],
   templateUrl: './tag-list.component.html',
   styleUrls: ['./tag-list.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [CommonModule, TagListItemComponent]
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TagListComponent implements OnInit {
   tags!: Tag[];

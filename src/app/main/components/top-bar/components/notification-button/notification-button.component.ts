@@ -12,11 +12,11 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-notification-button',
+  standalone: true,
+  imports: [CommonModule, SharedModule, OverlayModule, MatButtonModule, MatBadgeModule, MatTooltipModule],
   templateUrl: './notification-button.component.html',
   styleUrls: ['./notification-button.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [CommonModule, SharedModule, OverlayModule, MatButtonModule, MatBadgeModule, MatTooltipModule]
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NotificationButtonComponent implements OnInit {
   notificationCount$!: Observable<number>;

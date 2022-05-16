@@ -7,11 +7,11 @@ import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-comment-form',
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule, MatButtonModule, MatInputModule],
   templateUrl: './comment-form.component.html',
   styleUrls: ['./comment-form.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, MatButtonModule, MatInputModule]
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CommentFormComponent implements OnInit {
   commentControl: FormControl = new FormControl('');

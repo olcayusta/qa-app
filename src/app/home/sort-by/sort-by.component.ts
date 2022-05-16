@@ -29,11 +29,11 @@ export interface Fruit {
 
 @Component({
   selector: 'app-sort-by',
+  standalone: true,
+  imports: [CommonModule, RouterModule, MatMenuModule, MatButtonModule, MatIconModule],
   templateUrl: './sort-by.component.html',
   styleUrls: ['./sort-by.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [CommonModule, RouterModule, MatMenuModule, MatButtonModule, MatIconModule]
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SortByComponent implements OnInit, AfterViewInit {
   @ViewChild('menu') menu!: MatMenu;

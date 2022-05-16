@@ -6,12 +6,12 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 @Component({
-  selector: 'id-side-sheet',
+  selector: 'app-side-sheet',
+  standalone: true,
+  imports: [CommonModule, SharedModule, MatToolbarModule, MatCheckboxModule, MatRadioModule],
   templateUrl: './side-sheet.component.html',
   styleUrls: ['./side-sheet.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [CommonModule, SharedModule, MatToolbarModule, MatCheckboxModule, MatRadioModule]
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SideSheetComponent implements OnInit {
   constructor() {}

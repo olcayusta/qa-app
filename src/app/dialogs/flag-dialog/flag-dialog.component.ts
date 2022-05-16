@@ -5,11 +5,11 @@ import { MatDialogModule } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-flag-dialog',
+  standalone: true,
+  imports: [CommonModule, SharedModule, MatDialogModule],
   templateUrl: './flag-dialog.component.html',
   styleUrls: ['./flag-dialog.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [CommonModule, SharedModule, MatDialogModule]
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FlagDialogComponent implements OnInit {
   constructor() {}

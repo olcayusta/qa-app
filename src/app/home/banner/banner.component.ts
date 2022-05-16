@@ -5,11 +5,11 @@ import { MatDividerModule } from '@angular/material/divider';
 
 @Component({
   selector: 'app-banner',
+  standalone: true,
+  imports: [MatDividerModule],
   templateUrl: './banner.component.html',
   styleUrls: ['./banner.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [MatDividerModule]
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BannerComponent implements OnInit {
   online$!: Observable<boolean>;

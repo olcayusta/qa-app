@@ -8,11 +8,11 @@ import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-user-profile-popup',
+  standalone: true,
+  imports: [RouterModule, SharedModule, MatListModule],
   templateUrl: './user-profile-popup.component.html',
   styleUrls: ['./user-profile-popup.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [RouterModule, SharedModule, MatListModule]
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UserProfilePopupComponent implements OnInit {
   user!: User;
