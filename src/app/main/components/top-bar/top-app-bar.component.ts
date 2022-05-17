@@ -25,6 +25,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { SharedModule } from '@shared/shared.module';
+import { DarkModeIconComponent } from '@shared/icons/dark-mode-icon/dark-mode-icon.component';
+import { HelpIconComponent } from '@shared/icons/help-icon/help-icon.component';
 
 @Component({
   selector: 'app-top-app-bar',
@@ -36,9 +38,10 @@ import { SharedModule } from '@shared/shared.module';
     TopAppBarLogoComponent,
     MatToolbarModule,
     MatButtonModule,
-    MatIconModule,
     MatMenuModule,
-    SharedModule
+    SharedModule,
+    DarkModeIconComponent,
+    HelpIconComponent
   ],
   templateUrl: './top-app-bar.component.html',
   styleUrls: ['./top-app-bar.component.scss'],
@@ -74,19 +77,15 @@ export class TopAppBarComponent implements OnInit {
 
     if (this.authService.userValue) {
       const [{ NotificationButtonComponent }, { AvatarButtonComponent }] = await Promise.all([
-        await import('./notification-button/notification-button.component'),
-        await import('./avatar-button/avatar-button.component')
+        this.loadNotificationButtonComponent(),
+        this.loadAvatarButtonComponent()
       ]);
 
       this.avatarButtonOutlet = AvatarButtonComponent;
       this.notificationButtonOutlet = NotificationButtonComponent;
 
-      // await this.loadNotificationButtonComponent();
-
       this.componentsLoaded = true;
       this.cdr.markForCheck();
-
-      // alert('Bileşenler yüklendi.');
     }
 
     /**
@@ -110,9 +109,12 @@ export class TopAppBarComponent implements OnInit {
     });
   }
 
+  async loadAvatarButtonComponent() {
+    return await import('./avatar-button/avatar-button.component');
+  }
+
   async loadNotificationButtonComponent() {
-    const { NotificationButtonComponent } = await import('./notification-button/notification-button.component');
-    this.notificationButtonOutlet = NotificationButtonComponent;
+    return await import('./notification-button/notification-button.component');
   }
 
   /**

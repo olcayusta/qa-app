@@ -6,9 +6,9 @@ import { DrawerService } from '../services/drawer.service';
 import { MatListModule } from '@angular/material/list';
 import { SharedModule } from '@shared/shared.module';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
+import { ForumIconComponent } from '@shared/icons/forum-icon/forum-icon.component';
 
 @Component({
   selector: 'app-nav-drawer',
@@ -20,9 +20,9 @@ import { MatButtonModule } from '@angular/material/button';
     MatToolbarModule,
     MatButtonModule,
     MatListModule,
-    MatIconModule,
     MatDividerModule,
-    MatDialogModule
+    MatDialogModule,
+    ForumIconComponent
   ],
   templateUrl: './nav-drawer.component.html',
   styleUrls: ['./nav-drawer.component.scss'],

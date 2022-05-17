@@ -22,8 +22,8 @@ import { TopAppBarComponent } from './components/top-bar/top-app-bar.component';
 import { RouterModule } from '@angular/router';
 import { StickyDirective } from './components/top-bar/directives/sticky.directive';
 import { ExtendedFabDirective } from './directives/extended-fab.directive';
-import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { SharedModule } from '@shared/shared.module';
 
 @Component({
   selector: 'app-main',
@@ -36,7 +36,7 @@ import { MatButtonModule } from '@angular/material/button';
     ExtendedFabDirective,
     MatSidenavModule,
     MatButtonModule,
-    MatIconModule
+    SharedModule
   ],
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss'],

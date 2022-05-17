@@ -225,3 +225,20 @@ noscript {
     background-color: var(--thumb-bg-hover);
   }
 }
+
+
+.material-symbols-outlined {
+  color: var(--medium-emphasis-color);
+  font-variation-settings: 'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+.material-symbols-outlined.active {
+  font-variation-settings: 'FILL' 1,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+

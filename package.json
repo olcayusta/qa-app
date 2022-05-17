@@ -23,7 +23,7 @@
     "@angular/service-worker": "^14.0.0-rc.0",
     "highlight.js": "^11.5.1",
     "js-cookie": "^3.0.1",
-    "marked": "^4.0.15",
+    "marked": "^4.0.16",
     "rxjs": "^7.5.5",
     "timeago.js": "^4.0.2",
     "tslib": "^2.4.0",

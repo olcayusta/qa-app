@@ -27,6 +27,12 @@ mat-toolbar mat-icon {
   overflow: hidden;
 }
 
+/*
+.material-symbols-outlined {
+  margin-right: 32px;
+}
+*/
+
 .mat-list-item mat-icon {
   display: none;
   margin-right: 32px;
@@ -40,6 +46,8 @@ mat-toolbar mat-icon {
     fill: #6200ee;
   }
 }
+
+
 
 .mat-list-item span {
   // margin-left: 12px;

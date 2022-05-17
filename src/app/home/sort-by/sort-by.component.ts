@@ -14,8 +14,8 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { CommonModule } from '@angular/common';
-import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { SharedModule } from '@shared/shared.module';
 
 interface Food {
   value: string;
@@ -30,7 +30,7 @@ export interface Fruit {
 @Component({
   selector: 'app-sort-by',
   standalone: true,
-  imports: [CommonModule, RouterModule, MatMenuModule, MatButtonModule, MatIconModule],
+  imports: [CommonModule, RouterModule, SharedModule, MatMenuModule, MatButtonModule],
   templateUrl: './sort-by.component.html',
   styleUrls: ['./sort-by.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

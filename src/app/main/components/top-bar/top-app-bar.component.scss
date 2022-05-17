@@ -129,3 +129,10 @@ a[mat-stroked-button] {
   display: none;
 }
 
+.mat-menu {
+
+  app-gf-icon {
+    display: inline-flex;
+    margin-right: 8px;
+  }
+}

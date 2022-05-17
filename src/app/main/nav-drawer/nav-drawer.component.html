@@ -6,13 +6,14 @@
 
 <div class='scroll-container thin-scrollbar'>
   <mat-nav-list>
-    <a mat-list-item routerLinkActive='active' routerLink='/' [routerLinkActiveOptions]='{exact: true}'
+    <a mat-list-item routerLinkActive='active' #rla='routerLinkActive' routerLink='/'
+       [routerLinkActiveOptions]='{exact: true}'
        (click)='onClicked()' title='Ana sayfa'>
       <app-gf-icon name='home'></app-gf-icon>
-      Ana sayfa
+      <span>Ana sayfa</span>
     </a>
     <a mat-list-item routerLinkActive='active' routerLink='/list' (click)='onClicked()'>
-      <app-gf-icon name='question_answer'></app-gf-icon>
+      <app-gf-icon name='forum'></app-gf-icon>
       <span>Sorularım</span>
     </a>
     <a mat-list-item routerLinkActive='active' routerLink='/favorites' (click)='onClicked()'>

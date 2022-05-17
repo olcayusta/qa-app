@@ -3,11 +3,20 @@ import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, 
 import { CommonModule } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-feedback-dialog',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, MatInputModule, MatDialogModule, FormsModule, MatDialogModule],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MatInputModule,
+    MatDialogModule,
+    MatDialogModule,
+    MatButtonModule
+  ],
   templateUrl: './feedback-dialog.component.html',
   styleUrls: ['./feedback-dialog.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

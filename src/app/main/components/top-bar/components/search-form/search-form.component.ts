@@ -26,8 +26,7 @@ import { SearchIconComponent } from '@shared/icons/search-icon/search-icon.compo
     HighlightSearchPipe,
     MatButtonModule,
     MatAutocompleteModule,
-    SharedModule,
-    SearchIconComponent
+    SharedModule
   ],
   templateUrl: './search-form.component.html',
   styleUrls: ['./search-form.component.scss'],
