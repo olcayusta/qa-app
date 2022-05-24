@@ -20,7 +20,6 @@ import { map } from 'rxjs/operators';
 import { Event, NavigationStart, Router, RouterModule } from '@angular/router';
 import { TopAppBarLogoComponent } from './top-app-bar-logo/top-app-bar-logo.component';
 import { CommonModule } from '@angular/common';
-import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';

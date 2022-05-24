@@ -204,6 +204,10 @@ noscript {
   }
 }
 
+.mat-menu-panel {
+  border-radius: 8px !important;
+}
+
 // For Chrome, Safari.
 .mat-menu-panel::-webkit-scrollbar {
   -webkit-appearance: none;

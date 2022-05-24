@@ -14,7 +14,6 @@
 
   <!-- Sort By -->
   <button mat-button class='menu-button' [matMenuTriggerFor]='sortMenu' matTooltip='Yorumları sırala'>
-
     <app-gf-icon name='sort'></app-gf-icon>
     <span>Sıralama ölçütü</span>
   </button>
@@ -88,7 +87,7 @@
       *ngFor='let filter of filters; let index = index'
       (click)='filterMenuItemClicked(index)'
     >
-      <app-gf-icon name='check'></app-gf-icon>
+      <app-gf-icon name='check' *ngIf='filter.checked'></app-gf-icon>
       {{ filter.viewValue }}
     </button>
     <span class='divider-text'>ÖZEL FİLTRELER</span>

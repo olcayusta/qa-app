@@ -123,7 +123,7 @@ export class SortByComponent implements OnInit, AfterViewInit {
   }
 
   filterMenuItemClicked(index: number) {
-    this.filters[index].checked = true;
+    this.filters[index].checked = !this.filters[index].checked;
     this.selectedFilterIndex = index;
   }
 }

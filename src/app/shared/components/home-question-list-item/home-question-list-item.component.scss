@@ -16,6 +16,19 @@
   display: flex;
   gap: 16px;
 
+  .avatar-link {
+    // height: 40px;
+  }
+
+  .author-image-renderer {
+    width: 40px;
+    height: 40px;
+  }
+
+  &__right {
+    flex-grow: 1;
+  }
+
   &__footer {
     display: flex;
     align-items: center;
@@ -31,21 +44,8 @@
     }
   }
 
-
 }
 
-.avatar-link {
-  // height: 40px;
-}
-
-.author-image-renderer {
-  width: 40px;
-  height: 40px;
-}
-
-.item-right {
-  flex-grow: 1;
-}
 
 .bountie {
   font-size: 12px;

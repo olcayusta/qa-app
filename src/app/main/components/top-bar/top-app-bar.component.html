@@ -25,6 +25,7 @@
 
       <ng-container *ngIf='componentsLoaded; else componentNotLoaded'>
         <ng-container *ngIf='!(isHandset$ | async)'>
+
           <!-- Filter Button -->
           <button mat-icon-button (click)='openSheet.emit()'>
             <app-gf-icon name='tune'></app-gf-icon>

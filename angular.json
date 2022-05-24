@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "qa-app-v1": {
+    "qa-app": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -43,7 +43,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/qa-app-v1",
+            "outputPath": "dist/qa-app",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -110,10 +110,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "qa-app-v1:build:production"
+              "browserTarget": "qa-app:build:production"
             },
             "development": {
-              "browserTarget": "qa-app-v1:build:development"
+              "browserTarget": "qa-app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -121,7 +121,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "qa-app-v1:build"
+            "browserTarget": "qa-app:build"
           }
         }
       }
