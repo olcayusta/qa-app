@@ -5,22 +5,21 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "source-map-explorer": "source-map-explorer dist/qa-app-v1/**/*.js"
+    "watch": "ng build --watch --configuration development"
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^14.0.0-rc.0",
-    "@angular/cdk": "^14.0.0-rc.0",
-    "@angular/common": "^14.0.0-rc.0",
-    "@angular/compiler": "^14.0.0-rc.0",
-    "@angular/core": "^14.0.0-rc.0",
-    "@angular/forms": "^14.0.0-rc.0",
-    "@angular/material": "^14.0.0-rc.0",
-    "@angular/platform-browser": "^14.0.0-rc.0",
-    "@angular/platform-browser-dynamic": "^14.0.0-rc.0",
-    "@angular/router": "^14.0.0-rc.0",
-    "@angular/service-worker": "^14.0.0-rc.0",
+    "@angular/animations": "^14.0.0-rc.2",
+    "@angular/cdk": "^14.0.0-rc.1",
+    "@angular/common": "^14.0.0-rc.2",
+    "@angular/compiler": "^14.0.0-rc.2",
+    "@angular/core": "^14.0.0-rc.2",
+    "@angular/forms": "^14.0.0-rc.2",
+    "@angular/material": "^14.0.0-rc.1",
+    "@angular/platform-browser": "^14.0.0-rc.2",
+    "@angular/platform-browser-dynamic": "^14.0.0-rc.2",
+    "@angular/router": "^14.0.0-rc.2",
+    "@angular/service-worker": "^14.0.0-rc.2",
     "highlight.js": "^11.5.1",
     "js-cookie": "^3.0.1",
     "marked": "^4.0.16",
@@ -30,12 +29,11 @@
     "zone.js": "^0.11.5"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^14.0.0-rc.0",
-    "@angular/cli": "^14.0.0-rc.0",
-    "@angular/compiler-cli": "^14.0.0-rc.0",
+    "@angular-devkit/build-angular": "^14.0.0-rc.2",
+    "@angular/cli": "^14.0.0-rc.2",
+    "@angular/compiler-cli": "^14.0.0-rc.2",
     "@types/marked": "^4.0.3",
     "prettier": "^2.6.2",
-    "source-map-explorer": "^2.5.2",
     "typescript": "^4.7.2"
   }
 }

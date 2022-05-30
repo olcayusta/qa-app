@@ -4,7 +4,6 @@ import { LoginComponent } from '@auth/login/login.component';
 export const loginRoutes: Routes = [
   {
     path: '',
-    component: LoginComponent,
-    title: 'QaApp'
+    component: LoginComponent
   }
 ];
