@@ -23,7 +23,8 @@ export class ListComponent implements OnInit {
 
   isLoggedIn$!: Observable<boolean>;
 
-  constructor(private listService: ListService, private authService: AuthService) {}
+  constructor(private listService: ListService, private authService: AuthService) {
+  }
 
   ngOnInit(): void {
     this.isLoggedIn$ = this.authService.isLoggedIn$;

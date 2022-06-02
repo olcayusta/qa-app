@@ -8,7 +8,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ListService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
   getMyQuestions(): Observable<Question[]> {
     return this.http.get<Question[]>(`${environment.apiUrl}/me/list`);

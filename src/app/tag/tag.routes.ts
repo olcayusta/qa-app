@@ -6,7 +6,9 @@ import { TagTitleResolver } from './resolvers/tag-title.resolver';
 export const tagRoutes: Routes = [
   {
     path: '',
-    resolve: { tag: TagResolver },
+    resolve: {
+      tag: TagResolver
+    },
     children: [
       {
         path: '',

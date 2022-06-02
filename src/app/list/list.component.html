@@ -1,4 +1,4 @@
-<ng-container *ngIf="isLoggedIn$ | async; else notLogged">
+<ng-container *ngIf='isLoggedIn$ | async; else notLogged'>
   <header>
     <h2 class='headline-2'>Sorularım</h2>
   </header>
@@ -31,18 +31,18 @@
 </ng-container>
 
 <ng-template #notLogged>
-  <div class="browse-results-renderer">
-    <div class="promo-image">
+  <div class='browse-results-renderer'>
+    <div class='promo-image'>
       <mat-icon>question_answer</mat-icon>
     </div>
-    <div class="promo-title headline-5">
+    <div class='promo-title headline-5'>
       Favori videolarınızın keyfini çıkarın
     </div>
-    <div class="promo-subtitle">
+    <div class='promo-subtitle'>
       Beğendiğiniz veya kaydettiğiniz videolara erişmek için oturum açın
     </div>
     <div>
-      <a routerLink="/login" mat-stroked-button color="primary">
+      <a routerLink='/login' mat-stroked-button color='primary'>
         OTURUM AÇ
       </a>
     </div>
