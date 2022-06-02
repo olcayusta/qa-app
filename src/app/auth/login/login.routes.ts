@@ -4,6 +4,7 @@ import { LoginComponent } from '@auth/login/login.component';
 export const loginRoutes: Routes = [
   {
     path: '',
-    component: LoginComponent
+    component: LoginComponent,
+    title: 'Oturum aç'
   }
 ];
