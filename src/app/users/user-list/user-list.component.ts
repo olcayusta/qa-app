@@ -1,8 +1,9 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { User } from '@shared/models/user.model';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { UserListItemComponent } from '../user-list-item/user-list-item.component';
+import { User } from '@shared/models/user.model';
 import { CommonModule } from '@angular/common';
+import { UserListItemComponent } from '../user-list-item/user-list-item.component';
+
 
 @Component({
   selector: 'app-user-list',
