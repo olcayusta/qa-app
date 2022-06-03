@@ -1,3 +1,8 @@
+@use '@angular/material' as mat;
+@use 'themes/deep-purple-light' as light-theme;
+
+$my-palette: light-theme.$deep-purple-palette;
+
 .mat-simple-snackbar {
   font-size: 14px;
   line-height: 20px;
@@ -184,11 +189,12 @@ Error fix
 .mat-tab-link {
   min-width: 90px !important;
   opacity: 1 !important;
-  color: var(--medium-emphasis-color) !important;
+  color: var(--medium-emphasis-color);
 }
 
 .mat-tab-label-active {
-  color: var(--mdc-theme-primary) !important;
+  color: var(--mdc-theme-primary);
+  // color: mat.get-color-from-palette($my-palette, 500) !important;
   // color: mat.get-color-from-palette(standardized.$deep-purple-color-palette,  500);
   // color: standardized.$mat-tab-label-active;
 }
