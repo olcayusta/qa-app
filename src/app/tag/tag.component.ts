@@ -19,7 +19,7 @@ export class TagComponent implements OnInit {
   tag$!: Observable<Tag>;
 
   constructor(private route: ActivatedRoute) {}
-
+  
   ngOnInit(): void {
     this.tag$ = this.route.data.pipe(map(({ tag }) => tag));
   }

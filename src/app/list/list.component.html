@@ -18,7 +18,7 @@
         <ng-container *ngIf='question.answer'>
           <!--<img src="{{question.answer.user.picture}}" alt="{{question.answer.user.displayName}}">-->
           <a routerLink='/user/{{question.answer.user.id}}'>
-            <span>{{question.answer?.user?.displayName}}</span>
+            <span>{{question.answer.user.displayName}}</span>
           </a>
           <span class='bracket'>—</span>
           <span>{{question.answer.creationTime | relativeTimeFormat}} yanıtladı</span>

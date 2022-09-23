@@ -10,9 +10,10 @@ export class HeroDelayDirective {
 
   constructor(private elementRef: ElementRef<HTMLElement>, private viewContainerRef: ViewContainerRef) {}
 
+
   @Input()
-  // @ts-ignore
-  set qaHeroDelay(value: string): void {
+
+  set qaHeroDelay(value: string) {
     this.div.innerHTML = value;
 
     Array.from(this.div.children).forEach((el) => {
