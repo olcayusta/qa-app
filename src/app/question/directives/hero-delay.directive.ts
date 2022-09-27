@@ -1,4 +1,4 @@
-import { Directive, ElementRef, EmbeddedViewRef, Input, ViewContainerRef } from '@angular/core';
+import { Directive, ElementRef, EmbeddedViewRef, inject, Input, ViewContainerRef } from '@angular/core';
 import { SiteCodeComponent } from '@shared/components/site-code/site-code.component';
 
 @Directive({
@@ -8,11 +8,10 @@ import { SiteCodeComponent } from '@shared/components/site-code/site-code.compon
 export class HeroDelayDirective {
   div: HTMLDivElement = document.createElement('div');
 
-  constructor(private elementRef: ElementRef<HTMLElement>, private viewContainerRef: ViewContainerRef) {}
-
+  private elementRef: HTMLElement = inject(ElementRef).nativeElement;
+  private viewContainerRef = inject(ViewContainerRef);
 
   @Input()
-
   set qaHeroDelay(value: string) {
     this.div.innerHTML = value;
 
@@ -41,7 +40,7 @@ export class HeroDelayDirective {
     // this.elementRef.nativeElement.replaceWith(this.div);
     // @ts-ignore
 
-    this.elementRef.nativeElement.appendChild(this.div);
+    this.elementRef.appendChild(this.div);
 
     // @ts-ignore
     // this.elementRef.nativeElement.parentNode.appendChild(this.div);
