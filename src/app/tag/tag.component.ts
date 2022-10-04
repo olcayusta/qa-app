@@ -1,16 +1,16 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
 import { Tag } from '@shared/models/tag.model';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { CommonModule } from '@angular/common';
+import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import { SharedModule } from '@shared/shared.module';
 import { MatDividerModule } from '@angular/material/divider';
 
 @Component({
   selector: 'app-tag',
   standalone: true,
-  imports: [CommonModule, SharedModule, MatDividerModule],
+  imports: [NgIf, AsyncPipe, NgFor, SharedModule, MatDividerModule],
   templateUrl: './tag.component.html',
   styleUrls: ['./tag.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -18,8 +18,8 @@ import { MatDividerModule } from '@angular/material/divider';
 export class TagComponent implements OnInit {
   tag$!: Observable<Tag>;
 
-  constructor(private route: ActivatedRoute) {}
-  
+  private route = inject(ActivatedRoute);
+
   ngOnInit(): void {
     this.tag$ = this.route.data.pipe(map(({ tag }) => tag));
   }

@@ -3,7 +3,7 @@ import { TagResolver } from './tag.resolver';
 import { TagComponent } from './tag.component';
 import { TagTitleResolver } from './resolvers/tag-title.resolver';
 
-export const tagRoutes: Routes = [
+export const TAG_ROUTES: Routes = [
   {
     path: '',
     resolve: {

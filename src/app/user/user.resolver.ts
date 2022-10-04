@@ -8,7 +8,8 @@ import { User } from '@shared/models/user.model';
   providedIn: 'root'
 })
 export class UserResolver implements Resolve<User> {
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService) {
+  }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<User> {
     const userId = Number(route.paramMap.get('userId'));

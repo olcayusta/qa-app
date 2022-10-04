@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Question } from '@shared/models/question.model';
 import { Observable } from 'rxjs';
@@ -8,7 +8,7 @@ import { environment } from '@environments/environment';
   providedIn: 'root'
 })
 export class FavoriteService {
-  constructor(private http: HttpClient) {}
+  private http = inject(HttpClient);
 
   addToFavorite(questionId: number): Observable<Question> {
     return this.http.post<Question>(`${environment.apiUrl}/bookmarks`, {

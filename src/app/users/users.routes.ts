@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { UsersComponent } from './users.component';
 import { UserListResolver } from './user-list/user-list.resolver';
 
-export const usersRoutes: Routes = [
+export const USERS_ROUTES: Routes = [
   {
     path: '',
     component: UsersComponent,
@@ -12,3 +12,4 @@ export const usersRoutes: Routes = [
     title: 'Kullanıcılar'
   }
 ];
+

@@ -3,7 +3,6 @@ import { StateService } from '@shared/services/state.service';
 import { SocketService } from '@shared/services/socket.service';
 import { Subscription } from 'rxjs';
 import { CloseScrollStrategy, Overlay } from '@angular/cdk/overlay';
-import { CommonModule } from '@angular/common';
 import { MAT_MENU_SCROLL_STRATEGY } from '@angular/material/menu';
 import { BannerComponent } from './banner/banner.component';
 import { FilterComponent } from './filter/filter.component';
@@ -21,7 +20,6 @@ function scrollFactory(overlay: Overlay): () => CloseScrollStrategy {
   selector: 'app-home',
   standalone: true,
   imports: [
-    CommonModule,
     BannerComponent,
     FilterComponent,
     SortByComponent,
@@ -44,7 +42,11 @@ function scrollFactory(overlay: Overlay): () => CloseScrollStrategy {
 export class HomeComponent implements OnInit, OnDestroy {
   subscription!: Subscription;
 
-  constructor(private socketService: SocketService, private stateService: StateService) {}
+  constructor(
+    private socketService: SocketService,
+    private stateService: StateService
+  ) {
+  }
 
   ngOnInit(): void {
     this.subscription = this.socketService.watch('watch', 'home').subscribe((value) => {

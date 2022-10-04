@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { ListComponent } from './list.component';
 
-export const listRoutes: Routes = [
+export const LIST_ROUTES: Routes = [
   {
     path: '',
     component: ListComponent

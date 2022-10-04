@@ -1,11 +1,12 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgForOf, NgIf } from '@angular/common';
 import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-help',
   standalone: true,
-  imports: [CommonModule, MatListModule],
+  imports: [MatListModule, NgForOf, MatIconModule, NgIf],
   templateUrl: './help.component.html',
   styleUrls: ['./help.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -28,7 +29,9 @@ export class HelpComponent implements OnInit {
     }
   ];
 
-  constructor() {}
+  constructor() {
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 }

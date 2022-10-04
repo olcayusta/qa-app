@@ -1,8 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  ElementRef,
-  Inject,
+  ElementRef, inject,
   OnDestroy,
   OnInit,
   TemplateRef,
@@ -10,7 +9,7 @@ import {
   ViewContainerRef
 } from '@angular/core';
 import { Question } from '@shared/models/question.model';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterLinkWithHref } from '@angular/router';
 import { AnswerService } from '@shared/services/answer.service';
 import { StateService } from '@shared/services/state.service';
 import { Observable, Subscription, tap } from 'rxjs';
@@ -21,7 +20,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Overlay, OverlayRef, ScrollStrategyOptions } from '@angular/cdk/overlay';
 import { AuthService } from '@auth/auth.service';
 import { TemplatePortal } from '@angular/cdk/portal';
-import { CommonModule, DOCUMENT } from '@angular/common';
+import { AsyncPipe, DOCUMENT, NgIf } from '@angular/common';
 import { FlagDialogComponent } from '@dialogs/flag-dialog/flag-dialog.component';
 import { SocketService } from '@shared/services/socket.service';
 import { VoteService } from '@shared/services/vote.service';
@@ -47,8 +46,6 @@ import { RelativeTimeFormatPipe } from '@shared/pipes/relative-time-format.pipe'
   selector: 'app-question',
   standalone: true,
   imports: [
-    CommonModule,
-    RouterModule,
     ReactiveFormsModule,
     FormsModule,
     MaterialIconModule,
@@ -66,7 +63,10 @@ import { RelativeTimeFormatPipe } from '@shared/pipes/relative-time-format.pipe'
     ImgShadowComponent,
     RelativeTimeFormatPipe,
     MatCardModule,
-    MatDialogModule
+    MatDialogModule,
+    AsyncPipe,
+    NgIf,
+    RouterLinkWithHref
   ],
   templateUrl: './question.component.html',
   styleUrls: ['./question.component.scss'],
@@ -86,8 +86,9 @@ export class QuestionComponent implements OnInit, OnDestroy {
 
   subA!: Subscription;
 
+  private document = inject(DOCUMENT);
+
   constructor(
-    @Inject(DOCUMENT) private document: Document,
     private route: ActivatedRoute,
     private answerService: AnswerService,
     private stateService: StateService,

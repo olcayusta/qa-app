@@ -8,7 +8,8 @@ import { UserService } from '../shared/services/user.service';
   providedIn: 'root'
 })
 export class UserQuestionsResolver implements Resolve<Question[]> {
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService) {
+  }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Question[]> {
     // const userId = Number(route.paramMap.get('userId'));

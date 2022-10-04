@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Question } from '@shared/models/question.model';
@@ -8,7 +8,7 @@ import { environment } from '@environments/environment';
   providedIn: 'root'
 })
 export class QuestionService {
-  constructor(private http: HttpClient) {}
+  private http = inject(HttpClient);
 
   getAllQuestions(): Observable<Question[]> {
     return this.http.get<Question[]>(`${environment.apiUrl}/questions`);

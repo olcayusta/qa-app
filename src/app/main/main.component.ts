@@ -2,13 +2,12 @@ import {
   Component,
   OnInit,
   ChangeDetectionStrategy,
-  Inject,
   ViewChild,
   AfterViewInit,
   Renderer2,
   Type,
   ChangeDetectorRef,
-  ViewContainerRef
+  ViewContainerRef, inject
 } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDrawerMode, MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
@@ -54,15 +53,24 @@ export class MainComponent implements OnInit, AfterViewInit {
   navDrawerComponent!: Type<NavDrawerComponent>;
   sideSheetComponent!: Type<SideSheetComponent>;
 
+  private document = inject(DOCUMENT);
+
+/*  private renderer = inject(Renderer2);
+  private cd = inject(ChangeDetectorRef);
+  private snackBar = inject(MatSnackBar);
+  private breakpointObserver = inject(BreakpointObserver);
+  private drawerService = inject(DrawerService);
+  private socketService = inject(SocketService);*/
+
   constructor(
-    @Inject(DOCUMENT) private document: Document,
     private snackBar: MatSnackBar,
     private breakpointObserver: BreakpointObserver,
     private renderer: Renderer2,
     private cd: ChangeDetectorRef,
     private drawerService: DrawerService,
     private socketService: SocketService
-  ) {}
+  ) {
+  }
 
   ngAfterViewInit() {
     this.drawerService.setSidenav(this.navSidenav);
@@ -125,5 +133,6 @@ export class MainComponent implements OnInit, AfterViewInit {
     this.cd.markForCheck();
   }
 
-  installApp() {}
+  installApp() {
+  }
 }

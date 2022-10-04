@@ -8,7 +8,8 @@ import { TagsService } from './services/tags.service';
   providedIn: 'root'
 })
 export class TagsResolver implements Resolve<Tag[]> {
-  constructor(private tagsService: TagsService) {}
+  constructor(private tagsService: TagsService) {
+  }
 
   resolve(): Observable<Tag[]> {
     return this.tagsService.getAllTags();

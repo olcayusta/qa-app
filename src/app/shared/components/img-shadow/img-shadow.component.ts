@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, HostBinding, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, HostBinding, inject, Input } from '@angular/core';
 
 @Component({
   selector: 'inek-img-shadow',
@@ -15,7 +15,7 @@ export class ImgShadowComponent {
   @HostBinding('style.width.px') @Input() width: number = 40;
   @HostBinding('style.height.px') @Input() height: number = 40;
 
-  constructor(private elementRef: ElementRef<HTMLImageElement>) {}
+  private elementRef = inject(ElementRef);
 
   /**
    * Host component set attribute loaded if image is loaded

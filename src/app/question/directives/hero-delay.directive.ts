@@ -6,16 +6,17 @@ import { SiteCodeComponent } from '@shared/components/site-code/site-code.compon
   standalone: true
 })
 export class HeroDelayDirective {
-  div: HTMLDivElement = document.createElement('div');
+  fakeDiv: HTMLDivElement = document.createElement('div');
 
-  private elementRef: HTMLElement = inject(ElementRef).nativeElement;
   private viewContainerRef = inject(ViewContainerRef);
+  private elementRef: HTMLElement = inject(ElementRef).nativeElement;
 
   @Input()
   set qaHeroDelay(value: string) {
-    this.div.innerHTML = value;
+    console.log('triggered.')
+    this.fakeDiv.innerHTML = value;
 
-    Array.from(this.div.children).forEach((el) => {
+    Array.from(this.fakeDiv.children).forEach((el) => {
       if (el.nodeName === 'PRE') {
         // FIXME (Fragment ile cevaba scroll edilince, PRE etiketi margin-padding algilanmiyor.)
         // this.viewContainerRef.clear();
@@ -37,12 +38,12 @@ export class HeroDelayDirective {
         el.replaceWith(rootNodes[0]);
       }
     });
-    // this.elementRef.nativeElement.replaceWith(this.div);
+    // this.elementRef.nativeElement.replaceWith(this.fakeDiv);
     // @ts-ignore
 
-    this.elementRef.appendChild(this.div);
+    this.elementRef.appendChild(this.fakeDiv);
 
     // @ts-ignore
-    // this.elementRef.nativeElement.parentNode.appendChild(this.div);
+    // this.elementRef.nativeElement.parentNode.appendChild(this.fakeDiv);
   }
 }

@@ -3,12 +3,12 @@ import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-shee
 import { MatListModule } from '@angular/material/list';
 import { FilterByComponent } from '../filter-by/filter-by.component';
 import { SortByComponent } from '../sort-by/sort-by.component';
-import { CommonModule } from '@angular/common';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-filter',
   standalone: true,
-  imports: [CommonModule, MatListModule, FilterByComponent, SortByComponent],
+  imports: [MatListModule, FilterByComponent, SortByComponent, NgIf],
   templateUrl: './filter.component.html',
   styleUrls: ['./filter.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -18,9 +18,11 @@ export class FilterComponent implements OnInit {
 
   @ViewChild('bottomExample') template!: TemplateRef<any>;
 
-  constructor(private bottomSheet: MatBottomSheet) {}
+  constructor(private bottomSheet: MatBottomSheet) {
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   /**
    * Mobile => Open Bottom Sheet Component

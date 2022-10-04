@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { User } from '@shared/models/user.model';
 import { HttpClient, HttpContext } from '@angular/common/http';
@@ -18,7 +18,9 @@ export class AuthService {
   // store the URL so we can redirect after logging in
   redirectUrl = '/';
 
-  constructor(private http: HttpClient) {
+  private http = inject(HttpClient);
+
+  constructor() {
     const user = this.getToken('user') as User;
     const loggedIn = !!user;
 

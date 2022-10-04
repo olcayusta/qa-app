@@ -6,7 +6,7 @@ import {
   AfterViewInit,
   ViewChildren,
   QueryList,
-  OnDestroy
+  OnDestroy, inject
 } from '@angular/core';
 import { AnswerService } from '@shared/services/answer.service';
 import { Observable, tap } from 'rxjs';
@@ -57,7 +57,9 @@ export class AnswerListComponent implements OnInit, AfterViewInit, OnDestroy {
 
   selectedIndex = 0;
 
-  constructor(private route: ActivatedRoute, private answerService: AnswerService, private scroll: ViewportScroller) {}
+  private route = inject(ActivatedRoute);
+  private scroll = inject(ViewportScroller);
+  private answerService = inject(AnswerService);
 
   ngOnInit(): void {
     const sortBy = localStorage.getItem('sortBy');

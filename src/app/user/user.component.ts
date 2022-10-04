@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { User } from '@shared/models/user.model';
-import { ActivatedRoute, RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { ActivatedRoute, RouterLinkActive, RouterLinkWithHref, RouterOutlet } from '@angular/router';
+import { NgForOf } from '@angular/common';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatIconModule } from '@angular/material/icon';
 import { RelativeTimeFormatPipe } from '@shared/pipes/relative-time-format.pipe';
@@ -12,13 +12,15 @@ import { ImgShadowComponent } from '@shared/components/img-shadow/img-shadow.com
   selector: 'app-user',
   standalone: true,
   imports: [
-    CommonModule,
-    RouterModule,
     MatIconModule,
     MatTabsModule,
     MyDatePipe,
     RelativeTimeFormatPipe,
-    ImgShadowComponent
+    ImgShadowComponent,
+    RouterOutlet,
+    NgForOf,
+    RouterLinkActive,
+    RouterLinkWithHref
   ],
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss'],
@@ -50,10 +52,9 @@ export class UserComponent implements OnInit {
     }
   ];
 
-  constructor(private route: ActivatedRoute) {}
+  snapshotData = inject(ActivatedRoute).snapshot.data as { user: User };
 
   ngOnInit(): void {
-    const { user } = this.route.snapshot.data as { user: User };
-    this.user = user;
+    this.user = this.snapshotData.user;
   }
 }

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
@@ -13,14 +13,22 @@ import { SharedModule } from '@shared/shared.module';
   styleUrls: ['./site-code.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SiteCodeComponent {
+export class SiteCodeComponent implements OnInit {
   text!: HTMLPreElement;
   language: string = '';
+  @Input() HTMLPreText!: HTMLPreElement;
+  @Input() helloWorld!: number;
 
-  constructor(private snackBar: MatSnackBar) {}
+  constructor(private snackBar: MatSnackBar) {
+
+  }
 
   async copyCodeToClipboard() {
     await navigator.clipboard.writeText(this.text.textContent!);
     this.snackBar.open('Kod panoya kopyalandı');
+  }
+
+  ngOnInit() {
+    // console.log(this.HTMLPreText)
   }
 }

@@ -5,7 +5,7 @@ import { UserTitleResolver } from './shared/resolvers/user-title.resolver';
 import { UserQuestionsResolver } from './user-questions/user-questions.resolver';
 import { UserAnswersResolver } from './user-answers/user-answers.resolver';
 
-export const userRoutes: Routes = [
+export const USER_ROUTES: Routes = [
   {
     path: '',
     component: UserComponent,
@@ -20,9 +20,7 @@ export const userRoutes: Routes = [
           {
             path: 'questions',
             loadComponent: () =>
-              import('./user-questions/user-questions.component').then(
-                ({ UserQuestionsComponent }) => UserQuestionsComponent
-              ),
+              import('./user-questions/user-questions.component').then(c => c.UserQuestionsComponent),
             resolve: {
               questions: UserQuestionsResolver
             }
@@ -30,7 +28,7 @@ export const userRoutes: Routes = [
           {
             path: 'answers',
             loadComponent: () =>
-              import('./user-answers/user-answers.component').then(({ UserAnswersComponent }) => UserAnswersComponent),
+              import('./user-answers/user-answers.component').then(c => c.UserAnswersComponent),
             resolve: {
               answers: UserAnswersResolver
             }

@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { NgIf } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
@@ -9,13 +9,13 @@ import { MatButtonModule } from '@angular/material/button';
   selector: 'app-feedback-dialog',
   standalone: true,
   imports: [
-    CommonModule,
     ReactiveFormsModule,
     FormsModule,
     MatInputModule,
     MatDialogModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    NgIf
   ],
   templateUrl: './feedback-dialog.component.html',
   styleUrls: ['./feedback-dialog.component.scss'],
@@ -33,7 +33,8 @@ export class FeedbackDialogComponent implements OnInit {
     this.feedbackForm = this.fb.group({ feedbackText: [null, Validators.required] }, { updateOn: 'submit' });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   sendFeedback($event: SubmitEvent) {
     console.log('Form submitted!');

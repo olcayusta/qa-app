@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '@environments/environment';
 import { Tag } from '@shared/models/tag.model';
@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 export class TagService {
   apiUrl = `${environment.apiUrl}/tags`;
 
-  constructor(private http: HttpClient) {}
+  private http = inject(HttpClient);
 
   getTag(tagId: string | null): Observable<Tag> {
     return this.http.get<Tag>(`${environment.apiUrl}/tags/${tagId}`);
