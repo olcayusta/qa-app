@@ -3,7 +3,7 @@ import { QuestionComponent } from './question.component';
 import { QuestionResolver } from './question.resolver';
 import { QuestionTitleResolver } from './question-title.resolver';
 
-export const questionRoutes: Routes = [
+export const QUESTION_ROUTES: Routes = [
   {
     path: '',
     resolve: {

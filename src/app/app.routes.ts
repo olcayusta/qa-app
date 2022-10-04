@@ -58,7 +58,7 @@ export const appRoutes: Routes = [
       },
       {
         path: 'question/:questionId',
-        loadChildren: () => import('./question/question.routes').then(({ questionRoutes }) => questionRoutes)
+        loadChildren: () => import('./question/question.routes').then(c => c.QUESTION_ROUTES)
       },
       {
         path: 'questions/create',
