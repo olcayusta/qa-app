@@ -1,4 +1,4 @@
-import { enableProdMode, importProvidersFrom } from '@angular/core';
+import { importProvidersFrom } from '@angular/core';
 
 import { environment } from '@environments/environment';
 import { bootstrapApplication } from '@angular/platform-browser';
@@ -14,9 +14,6 @@ import { AppTitleStrategy } from './app/core/app-title.strategy';
 import { appRoutes } from './app/app.routes';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-if (environment.production) {
-  enableProdMode();
-}
 
 bootstrapApplication(AppComponent, {
   providers: [
