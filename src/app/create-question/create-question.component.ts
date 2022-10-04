@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { CommonModule, DOCUMENT } from '@angular/common';
+import { DOCUMENT, NgIf } from '@angular/common';
 import { ChipsAutocompleteComponent } from './chips-autocomplete/chips-autocomplete.component';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatInputModule } from '@angular/material/input';
@@ -10,7 +10,7 @@ import { QuestionService } from '../question/services/question.service';
 @Component({
   selector: 'app-create-question',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, ChipsAutocompleteComponent, MatInputModule, MatDividerModule],
+  imports: [ReactiveFormsModule, ChipsAutocompleteComponent, MatInputModule, MatDividerModule, NgIf],
   templateUrl: './create-question.component.html',
   styleUrls: ['./create-question.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

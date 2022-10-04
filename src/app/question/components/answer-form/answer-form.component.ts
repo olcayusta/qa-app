@@ -3,16 +3,17 @@ import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { AnswerService } from '@shared/services/answer.service';
 import { MarkedService } from '@shared/services/marked.service';
-import { CommonModule } from '@angular/common';
+import { AsyncPipe, CommonModule, NgIf } from '@angular/common';
 import { EditorButtonsComponent } from './editor-buttons/editor-buttons.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-answer-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, EditorButtonsComponent, MatButtonModule, MatInputModule, MatIconModule],
+  imports: [ReactiveFormsModule, EditorButtonsComponent, MatButtonModule, MatInputModule, MatIconModule, AsyncPipe, NgIf, MatTooltipModule],
   templateUrl: './answer-form.component.html',
   styleUrls: ['./answer-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

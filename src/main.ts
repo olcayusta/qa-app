@@ -14,7 +14,6 @@ import { AppTitleStrategy } from './app/core/app-title.strategy';
 import { appRoutes } from './app/app.routes';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-
 bootstrapApplication(AppComponent, {
   providers: [
     importProvidersFrom(

@@ -9,7 +9,7 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, MatButtonModule, MatInputModule],
+  imports: [ReactiveFormsModule, MatButtonModule, MatInputModule],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -40,7 +40,8 @@ export class RegisterComponent implements OnInit {
     );
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   submit(): void {
     const { email, password, displayName, picture } = this.registerForm.value;

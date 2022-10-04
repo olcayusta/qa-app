@@ -6,7 +6,7 @@ import { HeroDelayDirective } from '../directives/hero-delay.directive';
 @Component({
   selector: 'inek-question-text',
   standalone: true,
-  imports: [CommonModule, HeroDelayDirective, HighlightElementDirective],
+  imports: [HeroDelayDirective, HighlightElementDirective],
   templateUrl: './question-text.component.html',
   styleUrls: ['./question-text.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

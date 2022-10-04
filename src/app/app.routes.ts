@@ -70,18 +70,18 @@ export const appRoutes: Routes = [
       },
       {
         path: 'help',
-        loadChildren: () => import('./help/help.routes').then(({ helpRoutes }) => helpRoutes)
+        loadChildren: () => import('./help/help.routes').then(c => c.HELP_ROUTES)
       }
     ]
   },
   {
     path: 'login',
-    loadChildren: () => import('./auth/login/login.routes').then(({ loginRoutes }) => loginRoutes),
+    loadChildren: () => import('./auth/login/login.routes').then(c => c.LOGIN_ROUTES),
     canLoad: [LoggedGuard]
   },
   {
     path: 'register',
-    loadChildren: () => import('./auth/register/register.routes').then(({ registerRoutes }) => registerRoutes),
+    loadChildren: () => import('./auth/register/register.routes').then(c => c.REGISTER_ROUTES),
     canLoad: [LoggedGuard]
   },
   {

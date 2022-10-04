@@ -12,10 +12,12 @@ import { AnswerService } from '@shared/services/answer.service';
 import { Observable, tap } from 'rxjs';
 import { Answer } from '@shared/models/answer.model';
 import { ActivatedRoute } from '@angular/router';
-import { CommonModule, ViewportScroller } from '@angular/common';
+import { AsyncPipe, CommonModule, NgForOf, NgIf, ViewportScroller } from '@angular/common';
 import { AnswerItemComponent } from './answer-item/answer-item.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 interface SortItem {
   value: number;
@@ -26,7 +28,7 @@ interface SortItem {
 @Component({
   selector: 'app-answer-list',
   standalone: true,
-  imports: [CommonModule, AnswerItemComponent, MatMenuModule, MatIconModule],
+  imports: [AnswerItemComponent, MatMenuModule, MatIconModule, MatButtonModule, MatTooltipModule, AsyncPipe, NgIf, NgForOf],
   templateUrl: './answer-list.component.html',
   styleUrls: ['./answer-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

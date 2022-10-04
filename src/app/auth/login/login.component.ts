@@ -6,7 +6,7 @@ import { catchError } from 'rxjs/operators';
 import { EMPTY } from 'rxjs';
 import { User } from '@shared/models/user.model';
 import { HttpErrorResponse } from '@angular/common/http';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgIf } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
 import { PasswordFormComponent } from '@auth/login/password-form/password-form.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
@@ -17,14 +17,14 @@ import { MatButtonModule } from '@angular/material/button';
   selector: 'app-login',
   standalone: true,
   imports: [
-    CommonModule,
     ReactiveFormsModule,
     LoginComponent,
     PasswordFormComponent,
     MatInputModule,
     MatProgressBarModule,
     MatButtonModule,
-    SharedModule
+    SharedModule,
+    NgIf
   ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],

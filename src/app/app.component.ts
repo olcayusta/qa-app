@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component, HostListener, Inject, NgZone, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, inject, Inject, NgZone, OnInit } from '@angular/core';
 import { SwPush, SwUpdate, VersionReadyEvent } from '@angular/service-worker';
-import { RouterModule } from '@angular/router';
+import { RouterModule, RouterOutlet } from '@angular/router';
 import { PushNotificationService } from '@shared/services/push-notification.service';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
@@ -12,7 +12,7 @@ import { environment } from '@environments/environment';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterModule, ProgressBarComponent, MatSnackBarModule],
+  imports: [ProgressBarComponent, MatSnackBarModule, RouterOutlet],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -29,8 +29,9 @@ export class AppComponent implements OnInit {
     }
   }
 
+  private document = inject(DOCUMENT);
+
   constructor(
-    @Inject(DOCUMENT) private document: Document,
     private pushService: PushNotificationService,
     private broadcastChannel: BroadcastChannelService,
     private snackBar: MatSnackBar,
