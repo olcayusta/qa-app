@@ -5,7 +5,7 @@ import { LoggedGuard } from '@auth/logged.guard';
 export const appRoutes: Routes = [
   {
     path: '',
-    loadComponent: () => import('./main/main.component').then((m) => m.MainComponent),
+    loadComponent: () => import('./main/main.component').then(c => c.MainComponent),
     children: [
       {
         path: '',
@@ -51,16 +51,15 @@ export const appRoutes: Routes = [
       },
       {
         path: 'questions/create',
-        loadChildren: () =>
-          import('./create-question/create-question.routes').then(c => c.CREATE_QUESTION_ROUTES)
+        loadChildren: () => import('./create-question/create-question.routes').then(c => c.CREATE_QUESTION_ROUTES)
       },
       {
         path: 'edit',
-        loadChildren: () => import('./edit/edit.routes').then(({ editRoutes }) => editRoutes)
+        loadChildren: () => import('./edit/edit.routes').then(c => c.EDIT_ROUTES)
       },
       {
         path: 'favorites',
-        loadChildren: () => import('./favorites/favorites.routes').then(({ favoritesRoutes }) => favoritesRoutes)
+        loadChildren: () => import('./favorites/favorites.routes').then(c => c.FAVORITES_ROUTES)
       },
       {
         path: 'help',
@@ -80,17 +79,14 @@ export const appRoutes: Routes = [
   },
   {
     path: '404',
-    loadChildren: () =>
-      import('./page-not-found/page-not-found-routes').then(c => c.PAGE_NOT_FOUND_ROUTES)
+    loadChildren: () => import('./page-not-found/page-not-found-routes').then(c => c.PAGE_NOT_FOUND_ROUTES)
   },
   {
     path: '500',
-    loadChildren: () =>
-      import('./page-internal-server-error/page-internal-server-error.routes').then(c => c.PAGE_INTERNAL_SERVER_ERROR_ROUTES)
+    loadChildren: () => import('./page-internal-server-error/page-internal-server-error.routes').then(c => c.PAGE_INTERNAL_SERVER_ERROR_ROUTES)
   },
   {
     path: '**',
-    loadChildren: () =>
-      import('./page-not-found/page-not-found-routes').then(c => c.PAGE_NOT_FOUND_ROUTES)
+    loadChildren: () => import('./page-not-found/page-not-found-routes').then(c => c.PAGE_NOT_FOUND_ROUTES)
   }
 ];

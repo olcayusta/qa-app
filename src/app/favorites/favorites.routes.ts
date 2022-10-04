@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { FavoritesComponent } from './favorites.component';
 
-export const favoritesRoutes: Routes = [
+export const FAVORITES_ROUTES: Routes = [
   {
     path: '',
     component: FavoritesComponent,

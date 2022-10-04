@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { EditComponent } from './edit.component';
 
-export const editRoutes: Routes = [
+export const EDIT_ROUTES: Routes = [
   {
     path: '',
     component: EditComponent,
