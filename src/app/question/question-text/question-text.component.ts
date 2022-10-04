@@ -1,5 +1,4 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { HighlightElementDirective } from '@shared/directives/highlight-element.directive';
 import { HeroDelayDirective } from '../directives/hero-delay.directive';
 

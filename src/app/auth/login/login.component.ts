@@ -6,7 +6,7 @@ import { catchError } from 'rxjs/operators';
 import { EMPTY } from 'rxjs';
 import { User } from '@shared/models/user.model';
 import { HttpErrorResponse } from '@angular/common/http';
-import { CommonModule, NgIf } from '@angular/common';
+import { NgIf } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
 import { PasswordFormComponent } from '@auth/login/password-form/password-form.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';

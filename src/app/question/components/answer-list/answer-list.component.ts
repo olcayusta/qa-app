@@ -12,7 +12,7 @@ import { AnswerService } from '@shared/services/answer.service';
 import { Observable, tap } from 'rxjs';
 import { Answer } from '@shared/models/answer.model';
 import { ActivatedRoute } from '@angular/router';
-import { AsyncPipe, CommonModule, NgForOf, NgIf, ViewportScroller } from '@angular/common';
+import { AsyncPipe, NgForOf, NgIf, ViewportScroller } from '@angular/common';
 import { AnswerItemComponent } from './answer-item/answer-item.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';

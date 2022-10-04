@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component, HostListener, inject, Inject, NgZone, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, inject, NgZone, OnInit } from '@angular/core';
 import { SwPush, SwUpdate, VersionReadyEvent } from '@angular/service-worker';
-import { RouterModule, RouterOutlet } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import { PushNotificationService } from '@shared/services/push-notification.service';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';

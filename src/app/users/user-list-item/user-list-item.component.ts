@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { User } from '@shared/models/user.model';
-import { RouterLinkWithHref, RouterModule } from '@angular/router';
+import { RouterLinkWithHref } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { ImgShadowComponent } from '@shared/components/img-shadow/img-shadow.component';
 
