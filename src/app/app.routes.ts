@@ -1,12 +1,6 @@
 import { Routes } from '@angular/router';
 import { AuthGuard } from '@auth/auth.guard';
 import { LoggedGuard } from '@auth/logged.guard';
-import { settingsRoutes } from './settings/settings.routes';
-import { searchRoutes } from './search/search.routes';
-import { tagsRoutes } from './tags/tags.routes';
-import { homeRoutes } from './home/home.routes';
-import { createQuestionRoutes } from './create-question/create-question.routes';
-import { pageNotFoundRoutes } from './page-not-found/page-not-found-routes';
 
 export const appRoutes: Routes = [
   {
@@ -16,7 +10,7 @@ export const appRoutes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        loadChildren: () => import('./home/home.routes').then(({ homeRoutes }) => homeRoutes)
+        loadChildren: () => import('./home/home.routes').then(c => c.HOME_ROUTES)
       },
       {
         path: 'users',
@@ -24,7 +18,7 @@ export const appRoutes: Routes = [
       },
       {
         path: 'tags',
-        loadChildren: () => import('./tags/tags.routes').then(({ tagsRoutes }) => tagsRoutes)
+        loadChildren: () => import('./tags/tags.routes').then(c => c.TAGS_ROUTES)
       },
       {
         path: 'tag/:tagId',
@@ -32,11 +26,11 @@ export const appRoutes: Routes = [
       },
       {
         path: 'search',
-        loadChildren: () => import('./search/search.routes').then(({ searchRoutes }) => searchRoutes)
+        loadChildren: () => import('./search/search.routes').then(c => c.SEARCH_ROUTES)
       },
       {
         path: 'settings',
-        loadChildren: () => import('./settings/settings.routes').then(({ settingsRoutes }) => settingsRoutes),
+        loadChildren: () => import('./settings/settings.routes').then(c => c.SETTINGS_ROUTES),
         canLoad: [AuthGuard]
       },
       {
@@ -58,7 +52,7 @@ export const appRoutes: Routes = [
       {
         path: 'questions/create',
         loadChildren: () =>
-          import('./create-question/create-question.routes').then(({ createQuestionRoutes }) => createQuestionRoutes)
+          import('./create-question/create-question.routes').then(c => c.CREATE_QUESTION_ROUTES)
       },
       {
         path: 'edit',
@@ -87,18 +81,16 @@ export const appRoutes: Routes = [
   {
     path: '404',
     loadChildren: () =>
-      import('./page-not-found/page-not-found-routes').then(({ pageNotFoundRoutes }) => pageNotFoundRoutes)
+      import('./page-not-found/page-not-found-routes').then(c => c.PAGE_NOT_FOUND_ROUTES)
   },
   {
     path: '500',
     loadChildren: () =>
-      import('./page-internal-server-error/page-internal-server-error.routes').then(
-        ({ pageInternalServerErrorRoutes }) => pageInternalServerErrorRoutes
-      )
+      import('./page-internal-server-error/page-internal-server-error.routes').then(c => c.PAGE_INTERNAL_SERVER_ERROR_ROUTES)
   },
   {
     path: '**',
     loadChildren: () =>
-      import('./page-not-found/page-not-found-routes').then(({ pageNotFoundRoutes }) => pageNotFoundRoutes)
+      import('./page-not-found/page-not-found-routes').then(c => c.PAGE_NOT_FOUND_ROUTES)
   }
 ];

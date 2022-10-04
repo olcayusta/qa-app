@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found.component';
 
-export const pageNotFoundRoutes: Routes = [
+export const PAGE_NOT_FOUND_ROUTES: Routes = [
   {
     path: '',
     component: PageNotFoundComponent,

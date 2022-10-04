@@ -10,7 +10,6 @@ export class DeepLazyDirective implements OnInit, AfterViewInit {
   constructor(private elementRef: ElementRef<HTMLDivElement>, private vcr: ViewContainerRef) {}
 
   ngAfterViewInit() {
-    this;
     if (this.elementRef.nativeElement.querySelector('img')) {
       // @ts-ignore
       this.elementRef.nativeElement.querySelector('img').src = '';
