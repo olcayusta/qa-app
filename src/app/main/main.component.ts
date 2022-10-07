@@ -41,7 +41,7 @@ import { SharedModule } from '@shared/shared.module';
   styleUrls: ['./main.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MainComponent implements OnInit, AfterViewInit {
+export default class MainComponent implements OnInit, AfterViewInit {
   mode!: MatDrawerMode;
   isSmallScreen!: boolean;
 

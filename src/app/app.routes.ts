@@ -5,7 +5,7 @@ import { LoggedGuard } from '@auth/logged.guard';
 export const APP_ROUTES: Routes = [
   {
     path: '',
-    loadComponent: () => import('./main/main.component').then(c => c.MainComponent),
+    loadComponent: () => import('./main/main.component'),
     children: [
       {
         path: '',
@@ -51,7 +51,7 @@ export const APP_ROUTES: Routes = [
       },
       {
         path: 'questions/create',
-        loadChildren: () => import('./create-question/create-question.routes').then(c => c.CREATE_QUESTION_ROUTES)
+        loadChildren: () => import('./create-question/create-question.routes')
       },
       {
         path: 'edit',
