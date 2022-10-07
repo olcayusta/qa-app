@@ -4,12 +4,12 @@ import { AuthService } from '@auth/auth.service';
 import { SocketService } from '@shared/services/socket.service';
 import { SharedModule } from '@shared/shared.module';
 import { MatListModule } from '@angular/material/list';
-import { RouterModule } from '@angular/router';
+import { RouterLinkWithHref } from '@angular/router';
 
 @Component({
   selector: 'app-user-profile-popup',
   standalone: true,
-  imports: [RouterModule, SharedModule, MatListModule],
+  imports: [SharedModule, MatListModule, RouterLinkWithHref],
   templateUrl: './user-profile-popup.component.html',
   styleUrls: ['./user-profile-popup.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

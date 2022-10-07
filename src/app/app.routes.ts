@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { AuthGuard } from '@auth/auth.guard';
 import { LoggedGuard } from '@auth/logged.guard';
 
-export const appRoutes: Routes = [
+export const APP_ROUTES: Routes = [
   {
     path: '',
     loadComponent: () => import('./main/main.component').then(c => c.MainComponent),

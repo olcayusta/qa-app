@@ -9,21 +9,26 @@ import { JwtInterceptor } from '@auth/interceptors/jwt.interceptor';
 import { HttpErrorInterceptor } from './app/core/interceptors/http-error.interceptor';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import { MAT_ICON_DEFAULT_OPTIONS } from '@angular/material/icon';
-import { RouterModule, TitleStrategy } from '@angular/router';
+import { provideRouter, TitleStrategy, withInMemoryScrolling, withRouterConfig } from '@angular/router';
 import { AppTitleStrategy } from './app/core/app-title.strategy';
-import { appRoutes } from './app/app.routes';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { APP_ROUTES } from './app/app.routes';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 bootstrapApplication(AppComponent, {
   providers: [
-    importProvidersFrom(
-      BrowserAnimationsModule,
-      HttpClientModule,
-      RouterModule.forRoot(appRoutes, {
-        urlUpdateStrategy: 'eager',
+    provideAnimations(),
+    provideRouter(
+      APP_ROUTES,
+      withRouterConfig({
+        urlUpdateStrategy: 'eager'
+      }),
+      withInMemoryScrolling({
         anchorScrolling: 'enabled',
         scrollPositionRestoration: 'enabled'
-      }),
+      })
+    ),
+    importProvidersFrom(
+      HttpClientModule,
       ServiceWorkerModule.register('ngsw-worker.js', {
         enabled: environment.production,
         registrationStrategy: 'registerWhenStable:30000'
