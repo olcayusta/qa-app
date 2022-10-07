@@ -74,7 +74,7 @@ $dark-theme: mat.define-dark-theme((
 
 @include mat.all-component-themes($dark-theme);
 
-@import "~highlight.js/scss/github-dark-dimmed";
+@import "highlight.js/scss/github-dark-dimmed";
 
 svg {
   fill: rgba(255, 255, 255, 0.6);

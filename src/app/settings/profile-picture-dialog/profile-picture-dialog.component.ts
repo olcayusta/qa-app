@@ -15,7 +15,8 @@ import { MatButtonModule } from '@angular/material/button';
 export class ProfilePictureDialogComponent implements OnInit {
   user!: User;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService) {
+  }
 
   ngOnInit(): void {
     this.user = this.authService.userValue;

@@ -12,7 +12,7 @@ import { NgForOf } from '@angular/common';
   styleUrls: ['./user-answers.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class UserAnswersComponent implements OnInit {
+export default class UserAnswersComponent implements OnInit {
   answers!: Answer[];
   data = inject(ActivatedRoute).snapshot.data;
 

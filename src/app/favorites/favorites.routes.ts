@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
 import { FavoritesComponent } from './favorites.component';
 
-export const FAVORITES_ROUTES: Routes = [
+export default [
   {
     path: '',
     component: FavoritesComponent,
     title: 'Favori sorular'
   }
-];
+] as Routes;

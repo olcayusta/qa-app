@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { SettingsComponent } from './settings.component';
 import { SettingsResolver } from './settings.resolver';
 
-export const SETTINGS_ROUTES: Routes = [
+export default [
   {
     path: '',
     component: SettingsComponent,
@@ -10,4 +10,4 @@ export const SETTINGS_ROUTES: Routes = [
       user: SettingsResolver
     }
   }
-];
+] as Routes;

@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
 import { RegisterComponent } from './register.component';
 
-export const REGISTER_ROUTES: Routes = [
+export default [
   {
     path: '',
     component: RegisterComponent,
     title: 'Kayıt Ol'
   }
-];
+] as Routes;

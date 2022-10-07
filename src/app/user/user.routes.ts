@@ -5,7 +5,7 @@ import { UserTitleResolver } from './shared/resolvers/user-title.resolver';
 import { UserQuestionsResolver } from './user-questions/user-questions.resolver';
 import { UserAnswersResolver } from './user-answers/user-answers.resolver';
 
-export const USER_ROUTES: Routes = [
+export default [
   {
     path: '',
     component: UserComponent,
@@ -19,16 +19,14 @@ export const USER_ROUTES: Routes = [
         children: [
           {
             path: 'questions',
-            loadComponent: () =>
-              import('./user-questions/user-questions.component').then(c => c.UserQuestionsComponent),
+            loadComponent: () => import('./user-questions/user-questions.component'),
             resolve: {
               questions: UserQuestionsResolver
             }
           },
           {
             path: 'answers',
-            loadComponent: () =>
-              import('./user-answers/user-answers.component').then(c => c.UserAnswersComponent),
+            loadComponent: () => import('./user-answers/user-answers.component'),
             resolve: {
               answers: UserAnswersResolver
             }
@@ -37,4 +35,4 @@ export const USER_ROUTES: Routes = [
       }
     ]
   }
-];
+] as Routes;

@@ -10,44 +10,44 @@ export const APP_ROUTES: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        loadChildren: () => import('./home/home.routes').then(c => c.HOME_ROUTES)
+        loadChildren: () => import('./home/home.routes')
       },
       {
         path: 'users',
-        loadChildren: () => import('./users/users.routes').then(c => c.USERS_ROUTES)
+        loadChildren: () => import('./users/users.routes')
       },
       {
         path: 'tags',
-        loadChildren: () => import('./tags/tags.routes').then(c => c.TAGS_ROUTES)
+        loadChildren: () => import('./tags/tags.routes')
       },
       {
         path: 'tag/:tagId',
-        loadChildren: () => import('./tag/tag.routes').then(c => c.TAG_ROUTES)
+        loadChildren: () => import('./tag/tag.routes')
       },
       {
         path: 'search',
-        loadChildren: () => import('./search/search.routes').then(c => c.SEARCH_ROUTES)
+        loadChildren: () => import('./search/search.routes')
       },
       {
         path: 'settings',
-        loadChildren: () => import('./settings/settings.routes').then(c => c.SETTINGS_ROUTES),
+        loadChildren: () => import('./settings/settings.routes'),
         canLoad: [AuthGuard]
       },
       {
         path: 'list',
-        loadChildren: () => import('./list/list.routes').then(c => c.LIST_ROUTES)
+        loadChildren: () => import('./list/list.routes')
       },
       {
         path: 'watched_tags',
-        loadChildren: () => import('./watched-tags/watched-tags.routes').then(c => c.WATCHED_TAG_ROUTES)
+        loadChildren: () => import('./watched-tags/watched-tags.routes')
       },
       {
         path: 'user/:userId',
-        loadChildren: () => import('./user/user.routes').then(c => c.USER_ROUTES)
+        loadChildren: () => import('./user/user.routes')
       },
       {
         path: 'question/:questionId',
-        loadChildren: () => import('./question/question.routes').then(c => c.QUESTION_ROUTES)
+        loadChildren: () => import('./question/question.routes')
       },
       {
         path: 'questions/create',
@@ -55,38 +55,38 @@ export const APP_ROUTES: Routes = [
       },
       {
         path: 'edit',
-        loadChildren: () => import('./edit/edit.routes').then(c => c.EDIT_ROUTES)
+        loadChildren: () => import('./edit/edit.routes')
       },
       {
         path: 'favorites',
-        loadChildren: () => import('./favorites/favorites.routes').then(c => c.FAVORITES_ROUTES)
+        loadChildren: () => import('./favorites/favorites.routes')
       },
       {
         path: 'help',
-        loadChildren: () => import('./help/help.routes').then(c => c.HELP_ROUTES)
+        loadChildren: () => import('./help/help.routes')
       }
     ]
   },
   {
     path: 'login',
-    loadChildren: () => import('./auth/login/login.routes').then(c => c.LOGIN_ROUTES),
+    loadChildren: () => import('./auth/login/login.routes'),
     canLoad: [LoggedGuard]
   },
   {
     path: 'register',
-    loadChildren: () => import('./auth/register/register.routes').then(c => c.REGISTER_ROUTES),
+    loadChildren: () => import('./auth/register/register.routes'),
     canLoad: [LoggedGuard]
   },
   {
     path: '404',
-    loadChildren: () => import('./page-not-found/page-not-found-routes').then(c => c.PAGE_NOT_FOUND_ROUTES)
+    loadChildren: () => import('./page-not-found/page-not-found-routes')
   },
   {
     path: '500',
-    loadChildren: () => import('./page-internal-server-error/page-internal-server-error.routes').then(c => c.PAGE_INTERNAL_SERVER_ERROR_ROUTES)
+    loadChildren: () => import('./page-internal-server-error/page-internal-server-error.routes')
   },
   {
     path: '**',
-    loadChildren: () => import('./page-not-found/page-not-found-routes').then(c => c.PAGE_NOT_FOUND_ROUTES)
+    loadChildren: () => import('./page-not-found/page-not-found-routes')
   }
 ];

@@ -19,7 +19,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 export class SettingsComponent implements OnInit {
   user!: User;
 
-  constructor(private route: ActivatedRoute, private dialog: MatDialog) {}
+  constructor(private route: ActivatedRoute, private dialog: MatDialog) {
+  }
 
   ngOnInit(): void {
     this.user = this.route.snapshot.data['user'];

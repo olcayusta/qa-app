@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
 import { EditComponent } from './edit.component';
 
-export const EDIT_ROUTES: Routes = [
+export default [
   {
     path: '',
     component: EditComponent,
     title: 'Düzenle'
   }
-];
+] as Routes;

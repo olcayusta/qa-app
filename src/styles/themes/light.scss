@@ -95,7 +95,7 @@ $secondary-gray-theme: mat.define-light-theme((
 /**
   Highlight.js
  */
-@import "~highlight.js/scss/github";
+@import "highlight.js/scss/github";
 
 svg {
   fill: var(--medium-emphasis-color);
