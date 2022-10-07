@@ -12,13 +12,13 @@ import {
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDrawerMode, MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { CommonModule, DOCUMENT } from '@angular/common';
+import { DOCUMENT, NgComponentOutlet } from '@angular/common';
 import { SideSheetComponent } from './side-sheet/side-sheet.component';
 import { NavDrawerComponent } from './nav-drawer/nav-drawer.component';
 import { DrawerService } from './services/drawer.service';
 import { SocketService } from '@shared/services/socket.service';
 import { TopAppBarComponent } from './components/top-bar/top-app-bar.component';
-import { RouterModule } from '@angular/router';
+import { RouterModule, RouterOutlet } from '@angular/router';
 import { StickyDirective } from './components/top-bar/directives/sticky.directive';
 import { ExtendedFabDirective } from './directives/extended-fab.directive';
 import { MatButtonModule } from '@angular/material/button';
@@ -28,14 +28,14 @@ import { SharedModule } from '@shared/shared.module';
   selector: 'app-main',
   standalone: true,
   imports: [
-    CommonModule,
-    RouterModule,
     TopAppBarComponent,
     StickyDirective,
     ExtendedFabDirective,
     MatSidenavModule,
     MatButtonModule,
-    SharedModule
+    SharedModule,
+    NgComponentOutlet,
+    RouterOutlet
   ],
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss'],
@@ -55,12 +55,12 @@ export default class MainComponent implements OnInit, AfterViewInit {
 
   private document = inject(DOCUMENT);
 
-/*  private renderer = inject(Renderer2);
-  private cd = inject(ChangeDetectorRef);
-  private snackBar = inject(MatSnackBar);
-  private breakpointObserver = inject(BreakpointObserver);
-  private drawerService = inject(DrawerService);
-  private socketService = inject(SocketService);*/
+  /*  private renderer = inject(Renderer2);
+    private cd = inject(ChangeDetectorRef);
+    private snackBar = inject(MatSnackBar);
+    private breakpointObserver = inject(BreakpointObserver);
+    private drawerService = inject(DrawerService);
+    private socketService = inject(SocketService);*/
 
   constructor(
     private snackBar: MatSnackBar,

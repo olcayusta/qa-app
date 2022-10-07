@@ -10,12 +10,13 @@ import {
   EventEmitter
 } from '@angular/core';
 import { MatMenu, MatMenuItem, MatMenuModule } from '@angular/material/menu';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterLinkWithHref, RouterModule } from '@angular/router';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
-import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { SharedModule } from '@shared/shared.module';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { NgForOf, NgIf } from '@angular/common';
 
 interface Food {
   value: string;
@@ -30,7 +31,7 @@ export interface Fruit {
 @Component({
   selector: 'app-sort-by',
   standalone: true,
-  imports: [CommonModule, RouterModule, SharedModule, MatMenuModule, MatButtonModule],
+  imports: [SharedModule, MatMenuModule, MatButtonModule, MatTooltipModule, RouterLinkWithHref, NgForOf, NgIf],
   templateUrl: './sort-by.component.html',
   styleUrls: ['./sort-by.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

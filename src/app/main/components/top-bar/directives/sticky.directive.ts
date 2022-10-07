@@ -15,7 +15,8 @@ export class StickyDirective implements AfterViewInit, OnDestroy {
     private renderer: Renderer2,
     private elementRef: ElementRef<HTMLElement>,
     private breakpointObserver: BreakpointObserver
-  ) {}
+  ) {
+  }
 
   ngAfterViewInit() {
     const isSmallScreen = this.breakpointObserver.isMatched('(max-width: 599px)');

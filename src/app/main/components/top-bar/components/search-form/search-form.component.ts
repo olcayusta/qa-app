@@ -8,25 +8,29 @@ import {
   MatAutocompleteSelectedEvent,
   MatAutocompleteTrigger
 } from '@angular/material/autocomplete';
-import { Router, RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { Router, RouterLinkWithHref, RouterModule } from '@angular/router';
+import { AsyncPipe, CommonModule, NgForOf, NgIf } from '@angular/common';
 import { HighlightSearchPipe } from './pipes/highlight-search.pipe';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { SharedModule } from '@shared/shared.module';
 import { SearchIconComponent } from '@shared/icons/search-icon/search-icon.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-search-form',
   standalone: true,
   imports: [
-    CommonModule,
-    RouterModule,
     ReactiveFormsModule,
     HighlightSearchPipe,
     MatButtonModule,
     MatAutocompleteModule,
-    SharedModule
+    SharedModule,
+    MatTooltipModule,
+    AsyncPipe,
+    NgForOf,
+    NgIf,
+    RouterLinkWithHref
   ],
   templateUrl: './search-form.component.html',
   styleUrls: ['./search-form.component.scss'],

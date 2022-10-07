@@ -10,6 +10,6 @@ export class SettingsService {
   constructor(private http: HttpClient) {}
 
   getAccountSettings() {
-    return this.http.get<User>(`${environment.apiUrl}/me`);
+    return this.http.get<User>(`${environment.API_URL}/me`);
   }
 }

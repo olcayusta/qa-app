@@ -4,9 +4,11 @@ import { AfterViewInit, Directive, ElementRef, OnInit } from '@angular/core';
   selector: '[qaAutofocus]'
 })
 export class AutofocusDirective implements AfterViewInit, OnInit {
-  constructor(private el: ElementRef<HTMLInputElement>) {}
+  constructor(private el: ElementRef<HTMLInputElement>) {
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   ngAfterViewInit() {
     setTimeout(() => {

@@ -1,20 +1,16 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { Tag } from '@shared/models/tag.model';
 import { MatIconModule } from '@angular/material/icon';
-import { CommonModule } from '@angular/common';
+import { NgClass, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-tag-list-item',
   standalone: true,
-  imports: [CommonModule, MatIconModule],
+  imports: [MatIconModule, NgClass, NgIf],
   templateUrl: './tag-list-item.component.html',
   styleUrls: ['./tag-list-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TagListItemComponent implements OnInit {
+export class TagListItemComponent {
   @Input() tag!: Tag;
-
-  constructor() {}
-
-  ngOnInit(): void {}
 }

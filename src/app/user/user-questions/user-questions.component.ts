@@ -16,12 +16,11 @@ import { NgForOf } from '@angular/common';
 export default class UserQuestionsComponent implements OnInit {
   questions!: Question[];
 
-  data = inject(ActivatedRoute).snapshot.data;
+  data = inject(ActivatedRoute).snapshot.data['questions'];
 
   ngOnInit(): void {
     // const userId = Number(this.route.snapshot.parent!.parent!.paramMap.get('userId'));
-    this.questions = this.data['questions'];
-    console.log(this.questions);
+    this.questions = this.data;
     // this.questions = this.userService.getUserQuestions(userId);
   }
 }

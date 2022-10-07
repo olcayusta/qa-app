@@ -13,7 +13,6 @@ import { MatButtonModule } from '@angular/material/button';
     FormsModule,
     MatInputModule,
     MatDialogModule,
-    MatDialogModule,
     MatButtonModule,
     NgIf
   ],

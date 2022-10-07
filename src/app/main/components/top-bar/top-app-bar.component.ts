@@ -17,22 +17,21 @@ import { NotificationButtonComponent } from './notification-button/notification-
 import { AvatarButtonComponent } from './avatar-button/avatar-button.component';
 import { DrawerService } from '../../services/drawer.service';
 import { map } from 'rxjs/operators';
-import { Event, NavigationStart, Router, RouterModule } from '@angular/router';
+import { Event, NavigationStart, Router } from '@angular/router';
 import { TopAppBarLogoComponent } from './top-app-bar-logo/top-app-bar-logo.component';
-import { CommonModule } from '@angular/common';
+import { AsyncPipe, NgComponentOutlet, NgIf } from '@angular/common';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { SharedModule } from '@shared/shared.module';
 import { DarkModeIconComponent } from '@shared/icons/dark-mode-icon/dark-mode-icon.component';
 import { HelpIconComponent } from '@shared/icons/help-icon/help-icon.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-top-app-bar',
   standalone: true,
   imports: [
-    CommonModule,
-    RouterModule,
     SearchFormComponent,
     TopAppBarLogoComponent,
     MatToolbarModule,
@@ -40,7 +39,11 @@ import { HelpIconComponent } from '@shared/icons/help-icon/help-icon.component';
     MatMenuModule,
     SharedModule,
     DarkModeIconComponent,
-    HelpIconComponent
+    HelpIconComponent,
+    NgComponentOutlet,
+    NgIf,
+    AsyncPipe,
+    MatTooltipModule
   ],
   templateUrl: './top-app-bar.component.html',
   styleUrls: ['./top-app-bar.component.scss'],

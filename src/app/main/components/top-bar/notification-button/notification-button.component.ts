@@ -4,16 +4,16 @@ import { Observable } from 'rxjs';
 import { NotificationService } from '@shared/services/notification.service';
 import { OverlayModule, ScrollStrategy, ScrollStrategyOptions } from '@angular/cdk/overlay';
 import { NotificationListPopupComponent } from '@shared/components/notification-list-popup/notification-list-popup.component';
-import { CommonModule } from '@angular/common';
 import { SharedModule } from '@shared/shared.module';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { AsyncPipe, NgComponentOutlet } from '@angular/common';
 
 @Component({
   selector: 'app-notification-button',
   standalone: true,
-  imports: [CommonModule, OverlayModule, MatButtonModule, MatBadgeModule, MatTooltipModule, SharedModule],
+  imports: [OverlayModule, MatButtonModule, MatBadgeModule, MatTooltipModule, SharedModule, AsyncPipe, NgComponentOutlet],
   templateUrl: './notification-button.component.html',
   styleUrls: ['./notification-button.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

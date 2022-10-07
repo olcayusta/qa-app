@@ -4,8 +4,9 @@ import { Observable, tap } from 'rxjs';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RevisionService } from '@shared/services/revision.service';
 import { MarkedService } from '@shared/services/marked.service';
-import { CommonModule } from '@angular/common';
 import { MatSelectModule } from '@angular/material/select';
+import { AsyncPipe, NgForOf, NgIf } from '@angular/common';
+import { MatInputModule } from '@angular/material/input';
 
 interface Food {
   value: string;
@@ -15,7 +16,7 @@ interface Food {
 @Component({
   selector: 'app-edit',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, MatSelectModule],
+  imports: [ReactiveFormsModule, MatSelectModule, NgIf, NgForOf, MatInputModule, AsyncPipe],
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

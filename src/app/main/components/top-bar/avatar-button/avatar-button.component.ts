@@ -3,16 +3,16 @@ import { OverlayModule, ScrollStrategy, ScrollStrategyOptions } from '@angular/c
 import { User } from '@shared/models/user.model';
 import { AuthService } from '@auth/auth.service';
 import { UserProfilePopupComponent } from '@shared/components/user-profile-popup/user-profile-popup.component';
-import { CommonModule } from '@angular/common';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { SharedModule } from '@shared/shared.module';
+import { NgComponentOutlet } from '@angular/common';
 
 @Component({
   selector: 'app-avatar-button',
   standalone: true,
-  imports: [CommonModule, OverlayModule, SharedModule],
+  imports: [OverlayModule, SharedModule, NgComponentOutlet],
   templateUrl: './avatar-button.component.html',
   styleUrls: ['./avatar-button.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -32,7 +32,8 @@ export class AvatarButtonComponent implements OnInit {
     private elementRef: ElementRef,
     private cd: ChangeDetectorRef,
     private bo: BreakpointObserver
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.user = this.authService.userValue;
@@ -58,7 +59,7 @@ export class AvatarButtonComponent implements OnInit {
   async loadComponent(): Promise<void> {
     const { UserProfilePopupComponent } = await import(
       '@shared/components/user-profile-popup/user-profile-popup.component'
-    );
+      );
 
     this.componentType = UserProfilePopupComponent;
   }

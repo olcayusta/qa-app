@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterLinkActive, RouterLinkWithHref, RouterModule } from '@angular/router';
 import { DrawerService } from '../services/drawer.service';
 import { MatListModule } from '@angular/material/list';
 import { SharedModule } from '@shared/shared.module';
@@ -14,15 +14,15 @@ import { ForumIconComponent } from '@shared/icons/forum-icon/forum-icon.componen
   selector: 'app-nav-drawer',
   standalone: true,
   imports: [
-    CommonModule,
-    RouterModule,
     SharedModule,
     MatToolbarModule,
     MatButtonModule,
     MatListModule,
     MatDividerModule,
     MatDialogModule,
-    ForumIconComponent
+    ForumIconComponent,
+    RouterLinkActive,
+    RouterLinkWithHref
   ],
   templateUrl: './nav-drawer.component.html',
   styleUrls: ['./nav-drawer.component.scss'],
@@ -35,13 +35,15 @@ export class NavDrawerComponent implements OnInit, OnDestroy {
     { label: 'Etiketler', link: '/tags' }
   ];
 
-  constructor(private dialog: MatDialog, private drawerService: DrawerService) {}
+  constructor(private dialog: MatDialog, private drawerService: DrawerService) {
+  }
 
   ngOnDestroy() {
     console.log('NavDrawer destroyed!');
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   async openSettingsDialog() {
     this.drawerService.toggle();
@@ -78,7 +80,7 @@ export class NavDrawerComponent implements OnInit, OnDestroy {
   async openWatchedTagsDialog() {
     const { WatchedTagListDialogComponent } = await import(
       '@dialogs/watched-tag-list-dialog/watched-tag-list-dialog.component'
-    );
+      );
     this.dialog.open(WatchedTagListDialogComponent, {
       minWidth: 512,
       autoFocus: false

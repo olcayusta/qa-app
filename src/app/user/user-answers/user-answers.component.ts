@@ -14,9 +14,10 @@ import { NgForOf } from '@angular/common';
 })
 export default class UserAnswersComponent implements OnInit {
   answers!: Answer[];
-  data = inject(ActivatedRoute).snapshot.data;
+
+  data = inject(ActivatedRoute).snapshot.data['answers'];
 
   ngOnInit(): void {
-    this.answers = this.data['answers'];
+    this.answers = this.data;
   }
 }

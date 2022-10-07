@@ -33,7 +33,8 @@ hljs.configure({
   standalone: true
 })
 export class HighlightElementDirective implements AfterViewInit {
-  constructor(private elementRef: ElementRef<HTMLElement>) {}
+  constructor(private elementRef: ElementRef<HTMLElement>) {
+  }
 
   ngAfterViewInit() {
     this.elementRef.nativeElement.querySelectorAll('pre').forEach(async (block: HTMLElement) => {
