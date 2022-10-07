@@ -1,19 +1,13 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { UserListComponent } from './user-list/user-list.component';
 
 @Component({
   selector: 'app-users',
   standalone: true,
-  imports: [CommonModule, UserListComponent],
+  imports: [UserListComponent],
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class UsersComponent implements OnInit {
-  constructor() {
-  }
-
-  ngOnInit(): void {
-  }
+export class UsersComponent {
 }

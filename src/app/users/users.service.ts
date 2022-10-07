@@ -5,12 +5,12 @@ import { environment } from '@environments/environment';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class UsersService {
   private http = inject(HttpClient);
 
   getAllUsers(): Observable<User[]> {
-    return this.http.get<User[]>(`${environment.apiUrl}/users`);
+    return this.http.get<User[]>(`${environment.API_URL}/users`);
   }
 }
