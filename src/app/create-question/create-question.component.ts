@@ -6,11 +6,12 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MatInputModule } from '@angular/material/input';
 import { MatDividerModule } from '@angular/material/divider';
 import { QuestionService } from '../question/services/question.service';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-create-question',
   standalone: true,
-  imports: [ReactiveFormsModule, ChipsAutocompleteComponent, MatInputModule, MatDividerModule, NgIf],
+  imports: [ReactiveFormsModule, ChipsAutocompleteComponent, MatInputModule, MatDividerModule, NgIf, MatButtonModule],
   templateUrl: './create-question.component.html',
   styleUrls: ['./create-question.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -22,7 +23,6 @@ export class CreateQuestionComponent implements OnInit {
   }>;
 
   // description!: string;
-
   worker!: Worker;
 
   @ViewChild(ChipsAutocompleteComponent)

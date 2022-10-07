@@ -5,7 +5,7 @@
   <form autocomplete='off' spellcheck='false' [formGroup]='questionForm' (submit)='submit()'>
     <div class='form-body'>
 
-      <mat-form-field appearance='legacy' floatLabel='never' hideRequiredMarker>
+      <mat-form-field hideRequiredMarker>
         <mat-label>Başlık</mat-label>
         <input aria-label='Başlık' matInput formControlName='title'>
         <mat-error *ngIf="questionForm.get('title')?.hasError('required')">Bir başlık girin</mat-error>

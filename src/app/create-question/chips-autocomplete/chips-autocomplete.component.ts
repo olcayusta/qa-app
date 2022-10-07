@@ -4,17 +4,17 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { MatAutocomplete, MatAutocompleteModule, MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { debounceTime, distinctUntilChanged, map, startWith, switchMap } from 'rxjs/operators';
-import { MatChipInputEvent, MatChipsModule } from '@angular/material/chips';
 import { Tag } from '@shared/models/tag.model';
-import { CommonModule } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { TagService } from '../../tag/tag.service';
+import { AsyncPipe, NgForOf, NgIf } from '@angular/common';
+import { MatChipInputEvent, MatChipsModule } from '@angular/material/chips';
 
 @Component({
   selector: 'app-chips-autocomplete',
   standalone: true,
-  imports: [CommonModule, MatAutocompleteModule, MatChipsModule, MatInputModule, MatIconModule, ReactiveFormsModule],
+  imports: [MatAutocompleteModule, MatInputModule, MatIconModule, ReactiveFormsModule, AsyncPipe, NgForOf, NgIf, MatChipsModule],
   templateUrl: './chips-autocomplete.component.html',
   styleUrls: ['./chips-autocomplete.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

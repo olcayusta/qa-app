@@ -6,12 +6,12 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatDividerModule } from '@angular/material/divider';
 import { ImgShadowComponent } from '@shared/components/img-shadow/img-shadow.component';
 import { RelativeTimeFormatPipe } from '@shared/pipes/relative-time-format.pipe';
-import { NgIf } from '@angular/common';
+import { NgForOf, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-home-question-list-item',
   standalone: true,
-  imports: [RouterModule, MatChipsModule, MatDividerModule, ImgShadowComponent, RelativeTimeFormatPipe, NgIf],
+  imports: [RouterModule, MatChipsModule, MatDividerModule, ImgShadowComponent, RelativeTimeFormatPipe, NgIf, NgForOf],
   templateUrl: './home-question-list-item.component.html',
   styleUrls: ['./home-question-list-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

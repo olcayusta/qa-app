@@ -11,8 +11,8 @@ import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import { MAT_ICON_DEFAULT_OPTIONS } from '@angular/material/icon';
 import { provideRouter, TitleStrategy, withInMemoryScrolling, withRouterConfig } from '@angular/router';
 import { AppTitleStrategy } from './app/core/app-title.strategy';
+import { provideAnimations, BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { APP_ROUTES } from './app/app.routes';
-import { provideAnimations } from '@angular/platform-browser/animations';
 
 bootstrapApplication(AppComponent, {
   providers: [

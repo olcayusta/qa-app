@@ -2,11 +2,11 @@ import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/cor
 import { User } from '@shared/models/user.model';
 import { ActivatedRoute, RouterLinkActive, RouterLinkWithHref, RouterOutlet } from '@angular/router';
 import { NgForOf } from '@angular/common';
-import { MatTabsModule } from '@angular/material/tabs';
-import { MatIconModule } from '@angular/material/icon';
 import { RelativeTimeFormatPipe } from '@shared/pipes/relative-time-format.pipe';
 import { MyDatePipe } from '@shared/pipes/my-date.pipe';
 import { ImgShadowComponent } from '@shared/components/img-shadow/img-shadow.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @Component({
   selector: 'app-user',
