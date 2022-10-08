@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, HostListener, inject, NgZone, OnIni
 import { SwPush, SwUpdate, VersionReadyEvent } from '@angular/service-worker';
 import { RouterOutlet } from '@angular/router';
 import { PushNotificationService } from '@shared/services/push-notification.service';
-import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
+import { ProgressBarComponent } from '@components/progress-bar/progress-bar.component';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { filter, map } from 'rxjs/operators';
 import { DOCUMENT } from '@angular/common';
