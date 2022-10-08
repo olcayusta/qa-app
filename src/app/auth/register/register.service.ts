@@ -11,7 +11,7 @@ export class RegisterService {
   private http = inject(HttpClient);
 
   createUser(email: string, password: string, displayName: string, picture: string): Observable<User> {
-    return this.http.post<User>(`${environment.apiUrl}/users`, {
+    return this.http.post<User>(`${environment.API_URL}/users`, {
       email,
       password,
       displayName,

@@ -79,14 +79,14 @@ export const APP_ROUTES: Routes = [
   },
   {
     path: '404',
-    loadChildren: () => import('./page-not-found/page-not-found-routes')
+    loadChildren: () => import('./pages/page-not-found/page-not-found-routes')
   },
   {
     path: '500',
-    loadChildren: () => import('./page-internal-server-error/page-internal-server-error.routes')
+    loadChildren: () => import('./pages/page-internal-server-error/page-internal-server-error.routes')
   },
   {
     path: '**',
-    loadChildren: () => import('./page-not-found/page-not-found-routes')
+    loadChildren: () => import('./pages/page-not-found/page-not-found-routes')
   }
 ];
