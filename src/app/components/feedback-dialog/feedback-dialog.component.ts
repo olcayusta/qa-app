@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgIf } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
@@ -20,7 +20,7 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrls: ['./feedback-dialog.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FeedbackDialogComponent implements OnInit {
+export class FeedbackDialogComponent {
   feedbackForm!: FormGroup;
 
   formControl = new FormControl(null, {
@@ -32,9 +32,6 @@ export class FeedbackDialogComponent implements OnInit {
     this.feedbackForm = this.fb.group({
       feedbackText: [null, Validators.required]
     }, { updateOn: 'submit' });
-  }
-
-  ngOnInit() {
   }
 
   sendFeedback($event: SubmitEvent) {

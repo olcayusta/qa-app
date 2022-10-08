@@ -55,15 +55,15 @@ export const APP_ROUTES: Routes = [
       },
       {
         path: 'edit',
-        loadChildren: () => import('./edit/edit.routes')
+        loadChildren: () => import('./components/edit/edit.routes')
       },
       {
         path: 'favorites',
-        loadChildren: () => import('./favorites/favorites.routes')
+        loadChildren: () => import('./components/favorites/favorites.routes')
       },
       {
         path: 'help',
-        loadChildren: () => import('./help/help.routes')
+        loadChildren: () => import('./components/help/help.routes')
       }
     ]
   },

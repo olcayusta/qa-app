@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
   async ismetakey($event: KeyboardEvent) {
     const { metaKey, key, shiftKey } = $event;
     if ((metaKey && key === '/') || (shiftKey && key === '?')) {
-      const { HotkeyDialogComponent } = await import('@dialogs/hotkey-dialog/hotkey-dialog.component');
+      const { HotkeyDialogComponent } = await import('@components/hotkey-dialog/hotkey-dialog.component');
       /*    this.dialog.open(HotkeyDialogComponent, {
         minWidth: 560
       });*/

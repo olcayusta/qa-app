@@ -1,7 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { CommonModule } from '@angular/common';
-import { RouterLinkActive, RouterLinkWithHref, RouterModule } from '@angular/router';
+import { RouterLinkActive, RouterLinkWithHref } from '@angular/router';
 import { DrawerService } from '../services/drawer.service';
 import { MatListModule } from '@angular/material/list';
 import { SharedModule } from '@shared/shared.module';
@@ -70,7 +69,7 @@ export class NavDrawerComponent implements OnInit, OnDestroy {
   }
 
   async openFeedbackDialog() {
-    const { FeedbackDialogComponent } = await import('@dialogs/feedback-dialog/feedback-dialog.component');
+    const { FeedbackDialogComponent } = await import('@components/feedback-dialog/feedback-dialog.component');
     this.dialog.open(FeedbackDialogComponent, {
       autoFocus: 'dialog',
       minWidth: 640
@@ -78,9 +77,7 @@ export class NavDrawerComponent implements OnInit, OnDestroy {
   }
 
   async openWatchedTagsDialog() {
-    const { WatchedTagListDialogComponent } = await import(
-      '@dialogs/watched-tag-list-dialog/watched-tag-list-dialog.component'
-      );
+    const { WatchedTagListDialogComponent } = await import('@components/watched-tag-list-dialog/watched-tag-list-dialog.component');
     this.dialog.open(WatchedTagListDialogComponent, {
       minWidth: 512,
       autoFocus: false

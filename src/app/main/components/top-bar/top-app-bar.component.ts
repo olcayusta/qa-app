@@ -17,7 +17,7 @@ import { NotificationButtonComponent } from './notification-button/notification-
 import { AvatarButtonComponent } from './avatar-button/avatar-button.component';
 import { DrawerService } from '../../services/drawer.service';
 import { map } from 'rxjs/operators';
-import { Event, NavigationStart, Router } from '@angular/router';
+import { Event, NavigationStart, Router, RouterLinkWithHref } from '@angular/router';
 import { TopAppBarLogoComponent } from './top-app-bar-logo/top-app-bar-logo.component';
 import { AsyncPipe, NgComponentOutlet, NgIf } from '@angular/common';
 import { MatMenuModule } from '@angular/material/menu';
@@ -43,7 +43,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     NgComponentOutlet,
     NgIf,
     AsyncPipe,
-    MatTooltipModule
+    MatTooltipModule,
+    RouterLinkWithHref
   ],
   templateUrl: './top-app-bar.component.html',
   styleUrls: ['./top-app-bar.component.scss'],

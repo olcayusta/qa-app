@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { NgForOf, NgIf } from '@angular/common';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
@@ -11,7 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrls: ['./help.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HelpComponent implements OnInit {
+export class HelpComponent {
   folders = [
     {
       name: 'Oyunlar',
@@ -28,10 +28,4 @@ export class HelpComponent implements OnInit {
       updated: 'Bugün'
     }
   ];
-
-  constructor() {
-  }
-
-  ngOnInit(): void {
-  }
 }

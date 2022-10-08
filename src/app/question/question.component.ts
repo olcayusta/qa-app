@@ -21,10 +21,10 @@ import { Overlay, OverlayRef, ScrollStrategyOptions } from '@angular/cdk/overlay
 import { AuthService } from '@auth/auth.service';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { AsyncPipe, DOCUMENT, NgIf } from '@angular/common';
-import { FlagDialogComponent } from '@dialogs/flag-dialog/flag-dialog.component';
+import { FlagDialogComponent } from '@dialogs/../components/flag-dialog/flag-dialog.component';
 import { SocketService } from '@shared/services/socket.service';
 import { VoteService } from '@shared/services/vote.service';
-import { FavoriteService } from 'src/app/favorites/favorite.service';
+import { FavoriteService } from 'src/app/components/favorites/favorite.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialIconModule } from '../material-icon/material-icon.module';
 import { AnswerListComponent } from './components/answer-list/answer-list.component';
@@ -37,7 +37,9 @@ import { CommentListItemComponent } from './components/comment-list-item/comment
 import { DeepLazyDirective } from './directives/deep-lazy.directive';
 import { EditorButtonsComponent } from './components/answer-form/editor-buttons/editor-buttons.component';
 import { CommentFormComponent } from './components/comment-form/comment-form.component';
-import { AnswerItemCommentListComponent } from './components/answer-list/answer-item/answer-item-comment-list/answer-item-comment-list.component';
+import {
+  AnswerItemCommentListComponent
+} from './components/answer-list/answer-item/answer-item-comment-list/answer-item-comment-list.component';
 import { MatCardModule } from '@angular/material/card';
 import { ImgShadowComponent } from '@shared/components/img-shadow/img-shadow.component';
 import { RelativeTimeFormatPipe } from '@shared/pipes/relative-time-format.pipe';
@@ -101,7 +103,8 @@ export class QuestionComponent implements OnInit, OnDestroy {
     private vcr: ViewContainerRef,
     private socketService: SocketService,
     private voteService: VoteService
-  ) {}
+  ) {
+  }
 
   initializeSchema() {
     this.document.body.setAttribute('itemscope', '');
@@ -188,7 +191,8 @@ export class QuestionComponent implements OnInit, OnDestroy {
   /**
    * Like question event
    */
-  likeQuestion() {}
+  likeQuestion() {
+  }
 
   /**
    * Open login dialog
@@ -198,7 +202,7 @@ export class QuestionComponent implements OnInit, OnDestroy {
   }
 
   async openFlagDialog() {
-    const { FlagDialogComponent } = await import('@dialogs/flag-dialog/flag-dialog.component');
+    const { FlagDialogComponent } = await import('@dialogs/../components/flag-dialog/flag-dialog.component');
     this.dialog.open(FlagDialogComponent, {
       autoFocus: false,
       minWidth: 560
