@@ -11,29 +11,23 @@ export class QuestionService {
   private http = inject(HttpClient);
 
   getAllQuestions(): Observable<Question[]> {
-    return this.http.get<Question[]>(`${environment.apiUrl}/questions`);
+    return this.http.get<Question[]>(`${environment.API_URL}/questions`);
   }
 
   getActiveQuestions(): Observable<Question[]> {
-    return this.http.get<Question[]>(`${environment.apiUrl}/questions/active`);
+    return this.http.get<Question[]>(`${environment.API_URL}/questions/active`);
   }
 
   getUnansweredQuestions(): Observable<Question[]> {
-    return this.http.get<Question[]>(
-      `${environment.apiUrl}/questions/unanswered`
-    );
+    return this.http.get<Question[]>(`${environment.API_URL}/questions/unanswered`);
   }
 
   getQuestion(questionId: number): Observable<Question> {
-    return this.http.get<Question>(
-      `${environment.apiUrl}/questions/${questionId}`
-    );
+    return this.http.get<Question>(`${environment.API_URL}/questions/${questionId}`);
   }
 
   getMoreQuestions(offset: number = 0): Observable<Question[]> {
-    return this.http.get<Question[]>(
-      `${environment.apiUrl}/questions/loadmore/${offset}`
-    );
+    return this.http.get<Question[]>(`${environment.API_URL}/questions/loadmore/${offset}`);
   }
 
   getFeedContent(page: number = 0): Observable<Question[]> {
@@ -42,7 +36,7 @@ export class QuestionService {
       .set('page', page)
       .set('sort_by', 'hotness_score')
       .set('sort_direction', 'desc');
-    return this.http.get<Question[]>(`${environment.apiUrl}/home`, {
+    return this.http.get<Question[]>(`${environment.API_URL}/home`, {
       params
     });
   }
@@ -52,7 +46,7 @@ export class QuestionService {
     content: string,
     tags: number[]
   ): Observable<Question> {
-    return this.http.post<Question>(`${environment.apiUrl}/questions`, {
+    return this.http.post<Question>(`${environment.API_URL}/questions`, {
       title,
       content,
       tags

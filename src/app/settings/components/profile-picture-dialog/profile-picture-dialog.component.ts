@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
 import { AuthService } from '@auth/auth.service';
 import { User } from '@shared/models/user.model';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -15,8 +15,7 @@ import { MatButtonModule } from '@angular/material/button';
 export class ProfilePictureDialogComponent implements OnInit {
   user!: User;
 
-  constructor(private authService: AuthService) {
-  }
+  private authService = inject(AuthService);
 
   ngOnInit(): void {
     this.user = this.authService.userValue;

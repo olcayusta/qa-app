@@ -7,8 +7,6 @@ import { Question } from '@shared/models/question.model';
   providedIn: 'root'
 })
 export class QuestionTitleResolver implements Resolve<string> {
-  constructor() {
-  }
 
   resolve(route: ActivatedRouteSnapshot): Observable<string> {
     const { question } = route.parent?.data as { question: Question };

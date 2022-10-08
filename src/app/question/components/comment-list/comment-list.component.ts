@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
 import { Comment } from '@shared/models/comment.model';
 import { CommentService } from '@shared/services/comment.service';
 import { ActivatedRoute } from '@angular/router';
@@ -20,10 +20,11 @@ import { AsyncPipe, NgForOf, NgIf } from '@angular/common';
 export class CommentListComponent implements OnInit {
   comments$!: Observable<Comment[]>;
 
-  constructor(private route: ActivatedRoute, private commentService: CommentService) {}
+  private activatedRoute = inject(ActivatedRoute);
+  private commentService = inject(CommentService);
 
   ngOnInit(): void {
-    const questionId = this.route.snapshot.paramMap.get('questionId');
+    const questionId = this.activatedRoute.snapshot.paramMap.get('questionId');
     this.comments$ = this.commentService.getComments(Number(questionId));
   }
 }

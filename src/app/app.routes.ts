@@ -35,7 +35,7 @@ export const APP_ROUTES: Routes = [
       },
       {
         path: 'list',
-        loadChildren: () => import('./list/list.routes')
+        loadChildren: () => import('./pages/list/list.routes')
       },
       {
         path: 'watched_tags',
@@ -55,15 +55,15 @@ export const APP_ROUTES: Routes = [
       },
       {
         path: 'edit',
-        loadChildren: () => import('./components/edit/edit.routes')
+        loadChildren: () => import('./pages/edit/edit.routes')
       },
       {
         path: 'favorites',
-        loadChildren: () => import('./components/favorites/favorites.routes')
+        loadChildren: () => import('./pages/favorites/favorites.routes')
       },
       {
         path: 'help',
-        loadChildren: () => import('./components/help/help.routes')
+        loadChildren: () => import('./pages/help/help.routes')
       }
     ]
   },

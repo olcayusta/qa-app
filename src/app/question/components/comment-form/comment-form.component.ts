@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { CommentService } from '@shared/services/comment.service';
 import { MatInputModule } from '@angular/material/input';
@@ -15,8 +15,7 @@ import { MatButtonModule } from '@angular/material/button';
 export class CommentFormComponent implements OnInit {
   commentControl: FormControl = new FormControl('');
 
-  constructor(private commentService: CommentService) {
-  }
+  private commentService = inject(CommentService);
 
   ngOnInit(): void {
   }

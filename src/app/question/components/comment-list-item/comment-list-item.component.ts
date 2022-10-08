@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { Comment } from '@shared/models/comment.model';
 import { MatDividerModule } from '@angular/material/divider';
 import { RelativeTimeFormatPipe } from '@shared/pipes/relative-time-format.pipe';
@@ -13,10 +13,6 @@ import { RouterLinkWithHref } from '@angular/router';
   styleUrls: ['./comment-list-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CommentListItemComponent implements OnInit {
+export class CommentListItemComponent {
   @Input() comment!: Comment;
-
-  constructor() {}
-
-  ngOnInit(): void {}
 }

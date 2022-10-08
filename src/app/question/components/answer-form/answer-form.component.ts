@@ -66,7 +66,8 @@ export class AnswerFormComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private answerService: AnswerService,
     private markedService: MarkedService
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     if (!this.markedService.isAlive) {

@@ -12,7 +12,4 @@ import { HeroDelayDirective } from '../directives/hero-delay.directive';
 })
 export class QuestionTextComponent {
   @Input() content!: string;
-
-  constructor() {
-  }
 }
