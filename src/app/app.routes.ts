@@ -35,7 +35,7 @@ export const APP_ROUTES: Routes = [
       },
       {
         path: 'list',
-        loadChildren: () => import('./pages/list/list.routes')
+        loadChildren: () => import('./list/list.routes')
       },
       {
         path: 'watched_tags',
@@ -55,15 +55,15 @@ export const APP_ROUTES: Routes = [
       },
       {
         path: 'edit',
-        loadChildren: () => import('./pages/edit/edit.routes')
+        loadChildren: () => import('./edit/edit.routes')
       },
       {
         path: 'favorites',
-        loadChildren: () => import('./pages/favorites/favorites.routes')
+        loadChildren: () => import('./favorites/favorites.routes')
       },
       {
         path: 'help',
-        loadChildren: () => import('./pages/help/help.routes')
+        loadChildren: () => import('./help/help.routes')
       }
     ]
   },
@@ -79,14 +79,14 @@ export const APP_ROUTES: Routes = [
   },
   {
     path: '404',
-    loadChildren: () => import('./pages/page-not-found/page-not-found-routes')
+    loadChildren: () => import('./page-not-found/page-not-found-routes')
   },
   {
     path: '500',
-    loadChildren: () => import('./pages/page-internal-server-error/page-internal-server-error.routes')
+    loadChildren: () => import('./page-internal-server-error/page-internal-server-error.routes')
   },
   {
     path: '**',
-    loadChildren: () => import('./pages/page-not-found/page-not-found-routes')
+    loadChildren: () => import('./page-not-found/page-not-found-routes')
   }
 ];

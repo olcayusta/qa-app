@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
 import { Tag } from '@shared/models/tag.model';
 import { ActivatedRoute } from '@angular/router';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
@@ -20,8 +20,8 @@ export class TagsComponent implements OnInit {
 
   searchControl = new FormControl<string>('');
 
-  constructor(private route: ActivatedRoute, private tagsService: TagsService) {
-  }
+  private activatedRoute = inject(ActivatedRoute);
+  private tagsService = inject(TagsService);
 
   ngOnInit(): void {
     this.searchControl.valueChanges

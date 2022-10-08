@@ -11,12 +11,12 @@ export class TagsService {
   private http = inject(HttpClient);
 
   getAllTags(): Observable<Tag[]> {
-    return this.http.get<Tag[]>(`${environment.apiUrl}/tags`);
+    return this.http.get<Tag[]>(`${environment.API_URL}/tags`);
   }
 
   getAllTagsBySearchTerm(searchTerm: string) {
     const params = new HttpParams().set('q', searchTerm);
-    return this.http.get<Tag[]>(`${environment.apiUrl}/tags`, {
+    return this.http.get<Tag[]>(`${environment.API_URL}/tags`, {
       params
     });
   }

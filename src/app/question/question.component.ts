@@ -24,7 +24,7 @@ import { AsyncPipe, DOCUMENT, NgIf } from '@angular/common';
 import { FlagDialogComponent } from '@dialogs/../components/flag-dialog/flag-dialog.component';
 import { SocketService } from '@shared/services/socket.service';
 import { VoteService } from '@shared/services/vote.service';
-import { FavoriteService } from 'src/app/pages/favorites/favorite.service';
+import { FavoriteService } from 'src/app/favorites/favorite.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialIconModule } from '../material-icon/material-icon.module';
 import { AnswerListComponent } from './components/answer-list/answer-list.component';

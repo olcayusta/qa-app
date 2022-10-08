@@ -8,15 +8,15 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class TagService {
-  apiUrl = `${environment.apiUrl}/tags`;
+  API_URL = `${environment.API_URL}/tags`;
 
   private http = inject(HttpClient);
 
   getTag(tagId: string | null): Observable<Tag> {
-    return this.http.get<Tag>(`${environment.apiUrl}/tags/${tagId}`);
+    return this.http.get<Tag>(`${this.API_URL}/tags/${tagId}`);
   }
 
   searchTag(searchTerm: string): Observable<Tag[]> {
-    return this.http.get<Tag[]>(`${this.apiUrl}/search/${searchTerm}`);
+    return this.http.get<Tag[]>(`${this.API_URL}/search/${searchTerm}`);
   }
 }

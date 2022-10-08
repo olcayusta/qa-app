@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Tag } from '@shared/models/tag.model';
 import { TagListItemComponent } from '../tag-list-item/tag-list-item.component';
@@ -15,11 +15,10 @@ import { NgForOf } from '@angular/common';
 export class TagListComponent implements OnInit {
   tags!: Tag[];
 
-  constructor(private route: ActivatedRoute) {
-  }
+  private activatedRoute = inject(ActivatedRoute);
 
   ngOnInit(): void {
-    const { tags } = this.route.snapshot.data as { tags: Tag[] };
+    const { tags } = this.activatedRoute.snapshot.data as { tags: Tag[] };
     this.tags = tags;
   }
 }

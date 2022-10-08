@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 import { TagService } from './tag.service';
@@ -8,7 +8,7 @@ import { Tag } from '@shared/models/tag.model';
   providedIn: 'root'
 })
 export class TagResolver implements Resolve<Tag> {
-  constructor(private tagService: TagService) {}
+  private tagService = inject(TagService);
 
   resolve(route: ActivatedRouteSnapshot): Observable<Tag> {
     return this.tagService.getTag(route.paramMap.get('tagId'));
