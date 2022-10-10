@@ -40,4 +40,5 @@ import { PopupContainerComponent } from '@shared/components/popup-container/popu
     GfIconComponent
   ]
 })
-export class SharedModule {}
+export class SharedModule {
+}
