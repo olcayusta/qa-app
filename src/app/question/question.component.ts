@@ -23,7 +23,7 @@ import { TemplatePortal } from '@angular/cdk/portal';
 import { AsyncPipe, DOCUMENT, NgIf } from '@angular/common';
 import { SocketService } from '@shared/services/socket.service';
 import { VoteService } from '@shared/services/vote.service';
-import { FavoriteService } from 'src/app/favorites/favorite.service';
+import { FavoriteService } from 'src/app/routes/favorites/favorite.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialIconModule } from '../material-icon/material-icon.module';
 import { AnswerListComponent } from './components/answer-list/answer-list.component';
