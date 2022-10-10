@@ -35,7 +35,7 @@ export const APP_ROUTES: Routes = [
       },
       {
         path: 'list',
-        loadChildren: () => import('./list/list.routes')
+        loadChildren: () => import('./routes/list/list.routes')
       },
       {
         path: 'watched_tags',
