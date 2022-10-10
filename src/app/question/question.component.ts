@@ -24,21 +24,14 @@ import { AsyncPipe, DOCUMENT, NgIf } from '@angular/common';
 import { SocketService } from '@shared/services/socket.service';
 import { VoteService } from '@shared/services/vote.service';
 import { FavoriteService } from 'src/app/routes/favorites/favorite.service';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MaterialIconModule } from '../material-icon/material-icon.module';
+import { ReactiveFormsModule } from '@angular/forms';
 import { AnswerListComponent } from './components/answer-list/answer-list.component';
 import { AnswerFormComponent } from './components/answer-form/answer-form.component';
 import { CommentListComponent } from './components/comment-list/comment-list.component';
-import { AnswerItemComponent } from './components/answer-list/answer-item/answer-item.component';
 import { QuestionTextComponent } from './components/question-text/question-text.component';
-import { HeroDelayDirective } from './directives/hero-delay.directive';
 import { CommentListItemComponent } from './components/comment-list-item/comment-list-item.component';
-import { DeepLazyDirective } from './directives/deep-lazy.directive';
 import { EditorButtonsComponent } from './components/answer-form/editor-buttons/editor-buttons.component';
 import { CommentFormComponent } from './components/comment-form/comment-form.component';
-import {
-  AnswerItemCommentListComponent
-} from './components/answer-list/answer-item/answer-item-comment-list/answer-item-comment-list.component';
 import { MatCardModule } from '@angular/material/card';
 import { ImgShadowComponent } from '@shared/components/img-shadow/img-shadow.component';
 import { RelativeTimeFormatPipe } from '@shared/pipes/relative-time-format.pipe';
@@ -48,19 +41,13 @@ import { RelativeTimeFormatPipe } from '@shared/pipes/relative-time-format.pipe'
   standalone: true,
   imports: [
     ReactiveFormsModule,
-    FormsModule,
-    MaterialIconModule,
     AnswerListComponent,
     AnswerFormComponent,
     CommentListComponent,
-    AnswerItemComponent,
     QuestionTextComponent,
-    HeroDelayDirective,
     CommentListItemComponent,
-    DeepLazyDirective,
     EditorButtonsComponent,
     CommentFormComponent,
-    AnswerItemCommentListComponent,
     ImgShadowComponent,
     RelativeTimeFormatPipe,
     MatCardModule,

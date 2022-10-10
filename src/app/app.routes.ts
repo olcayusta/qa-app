@@ -39,7 +39,7 @@ export const APP_ROUTES: Routes = [
       },
       {
         path: 'watched_tags',
-        loadChildren: () => import('./watched-tags/watched-tags.routes')
+        loadChildren: () => import('./routes/watched-tags/watched-tags.routes')
       },
       {
         path: 'user/:userId',
