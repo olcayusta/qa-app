@@ -24,14 +24,11 @@ import { AsyncPipe, DOCUMENT, NgIf } from '@angular/common';
 import { SocketService } from '@shared/services/socket.service';
 import { VoteService } from '@shared/services/vote.service';
 import { FavoriteService } from 'src/app/routes/favorites/favorite.service';
-import { ReactiveFormsModule } from '@angular/forms';
 import { AnswerListComponent } from './components/answer-list/answer-list.component';
 import { AnswerFormComponent } from './components/answer-form/answer-form.component';
 import { CommentListComponent } from './components/comment-list/comment-list.component';
 import { QuestionTextComponent } from './components/question-text/question-text.component';
-import { CommentListItemComponent } from './components/comment-list-item/comment-list-item.component';
 import { EditorButtonsComponent } from './components/answer-form/editor-buttons/editor-buttons.component';
-import { CommentFormComponent } from './components/comment-form/comment-form.component';
 import { MatCardModule } from '@angular/material/card';
 import { ImgShadowComponent } from '@shared/components/img-shadow/img-shadow.component';
 import { RelativeTimeFormatPipe } from '@shared/pipes/relative-time-format.pipe';
@@ -40,14 +37,11 @@ import { RelativeTimeFormatPipe } from '@shared/pipes/relative-time-format.pipe'
   selector: 'app-question',
   standalone: true,
   imports: [
-    ReactiveFormsModule,
     AnswerListComponent,
     AnswerFormComponent,
     CommentListComponent,
     QuestionTextComponent,
-    CommentListItemComponent,
     EditorButtonsComponent,
-    CommentFormComponent,
     ImgShadowComponent,
     RelativeTimeFormatPipe,
     MatCardModule,
