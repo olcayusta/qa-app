@@ -1,13 +1,13 @@
 import { MatMenu, MatMenuItem, MatMenuModule } from '@angular/material/menu';
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { MatCheckboxChange } from '@angular/material/checkbox';
-import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { NgForOf } from '@angular/common';
 
 @Component({
   selector: 'app-filter-by',
   standalone: true,
-  imports: [CommonModule, MatMenuModule],
+  imports: [MatMenuModule, NgForOf],
   templateUrl: './filter-by.component.html',
   styleUrls: ['./filter-by.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -38,9 +38,11 @@ export class FilterByComponent implements OnInit {
   // any
   checkedLength: any;
 
-  constructor(public cdr: ChangeDetectorRef, private router: Router) {}
+  constructor(public cdr: ChangeDetectorRef, private router: Router) {
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   onLanguageMenuItemClicked(menuItem: MatMenuItem, index: number): void {
     this.filterMenu._allItems.toArray().forEach((value) => {
