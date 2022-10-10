@@ -4,13 +4,13 @@ import { ActivatedRoute } from '@angular/router';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { TagsService } from './services/tags.service';
 import { filter, switchMap } from 'rxjs/operators';
-import { TagListComponent } from './tag-list/tag-list.component';
 import { MatInputModule } from '@angular/material/input';
+import { TagListComponent } from './components/tag-list/tag-list.component';
 
 @Component({
   selector: 'app-tags',
   standalone: true,
-  imports: [TagListComponent, ReactiveFormsModule, MatInputModule],
+  imports: [ReactiveFormsModule, MatInputModule, TagListComponent],
   templateUrl: './tags.component.html',
   styleUrls: ['./tags.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

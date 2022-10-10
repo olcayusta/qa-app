@@ -10,7 +10,9 @@ import { Observable } from 'rxjs';
 export class TagService {
   API_URL = `${environment.API_URL}/tags`;
 
-  private http = inject(HttpClient);
+
+  constructor(private http: HttpClient) {
+  }
 
   getTag(tagId: string | null): Observable<Tag> {
     return this.http.get<Tag>(`${this.API_URL}/tags/${tagId}`);

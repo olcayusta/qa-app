@@ -18,9 +18,10 @@ import { MatDividerModule } from '@angular/material/divider';
 export class TagComponent implements OnInit {
   tag$!: Observable<Tag>;
 
-  data = inject(ActivatedRoute).data;
+  constructor(private activatedRoute: ActivatedRoute) {
+  }
 
   ngOnInit(): void {
-    this.tag$ = this.data.pipe(map(({ tag }) => tag));
+    this.tag$ = this.activatedRoute.data.pipe(map(({ tag }) => tag));
   }
 }
