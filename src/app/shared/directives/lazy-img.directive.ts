@@ -16,9 +16,11 @@ export class LazyImgDirective implements OnInit, OnDestroy, AfterViewInit {
 
   intersectionObserver!: IntersectionObserver;
 
-  constructor(private elementRef: ElementRef<HTMLImageElement>) {}
+  constructor(private elementRef: ElementRef<HTMLImageElement>) {
+  }
 
-  ngAfterViewInit() {}
+  ngAfterViewInit() {
+  }
 
   init() {
     const { nativeElement } = this.elementRef;

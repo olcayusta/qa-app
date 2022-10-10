@@ -18,7 +18,7 @@ import { NavDrawerComponent } from './nav-drawer/nav-drawer.component';
 import { DrawerService } from './services/drawer.service';
 import { SocketService } from '@shared/services/socket.service';
 import { TopAppBarComponent } from './components/top-bar/top-app-bar.component';
-import { RouterOutlet } from '@angular/router';
+import { RouterLinkWithHref, RouterOutlet } from '@angular/router';
 import { StickyDirective } from './components/top-bar/directives/sticky.directive';
 import { ExtendedFabDirective } from './directives/extended-fab.directive';
 import { MatButtonModule } from '@angular/material/button';
@@ -35,7 +35,8 @@ import { GfIconComponent } from '@shared/components/gf-icon/gf-icon.component';
     MatButtonModule,
     NgComponentOutlet,
     RouterOutlet,
-    GfIconComponent
+    GfIconComponent,
+    RouterLinkWithHref
   ],
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss'],

@@ -7,7 +7,8 @@ import { distinctUntilChanged, map, pairwise, startWith } from 'rxjs/operators';
   standalone: true
 })
 export class ExtendedFabDirective implements AfterViewInit {
-  constructor(private elementRef: ElementRef, private renderer: Renderer2) {}
+  constructor(private elementRef: ElementRef, private renderer: Renderer2) {
+  }
 
   ngAfterViewInit() {
     this.hideFabOnScrollDown();
