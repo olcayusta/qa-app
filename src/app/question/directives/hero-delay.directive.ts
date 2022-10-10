@@ -1,5 +1,5 @@
 import { Directive, ElementRef, EmbeddedViewRef, inject, Input, ViewContainerRef } from '@angular/core';
-import { SiteCodeComponent } from '@shared/components/site-code/site-code.component';
+import { SiteCodeComponent } from '@components/site-code/site-code.component';
 
 @Directive({
   selector: '[qaHeroDelay]',

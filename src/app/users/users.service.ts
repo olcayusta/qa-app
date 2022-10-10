@@ -8,7 +8,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UsersService {
-  private http = inject(HttpClient);
+
+  constructor(private http: HttpClient) {
+  }
 
   getAllUsers(): Observable<User[]> {
     return this.http.get<User[]>(`${environment.API_URL}/users`);

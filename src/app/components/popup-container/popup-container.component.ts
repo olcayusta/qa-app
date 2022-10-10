@@ -18,7 +18,8 @@ export class PopupContainerComponent implements OnInit, OnDestroy {
 
   subscription!: Subscription;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+  }
 
   ngOnInit(): void {
     this.subscription = this.router.events

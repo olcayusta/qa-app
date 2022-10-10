@@ -2,7 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/cor
 import { Tag } from '@shared/models/tag.model';
 import { ActivatedRoute } from '@angular/router';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { TagsService } from './services/tags.service';
+import { TagsService } from './tags.service';
 import { filter, switchMap } from 'rxjs/operators';
 import { MatInputModule } from '@angular/material/input';
 import { TagListComponent } from './components/tag-list/tag-list.component';

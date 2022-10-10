@@ -5,16 +5,16 @@ import { FilterService } from '@shared/services/filter.service';
 import { ActivatedRoute } from '@angular/router';
 import { delay, switchMap } from 'rxjs/operators';
 import { animate, query, stagger, style, transition, trigger } from '@angular/animations';
-import { CommonModule } from '@angular/common';
 import { IsVisibleDirective } from '../directives/is-visible.directive';
-import { QuestionService } from '../../question/services/question.service';
+import { QuestionService } from '../../question/question.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { HomeQuestionListItemComponent } from '@shared/components/home-question-list-item/home-question-list-item.component';
+import { NgForOf, NgIf } from '@angular/common';
+import { HomeQuestionListItemComponent } from '@components/home-question-list-item/home-question-list-item.component';
 
 @Component({
   selector: 'app-home-grid-list',
   standalone: true,
-  imports: [CommonModule, MatProgressSpinnerModule, HomeQuestionListItemComponent, IsVisibleDirective],
+  imports: [MatProgressSpinnerModule, HomeQuestionListItemComponent, IsVisibleDirective, NgForOf, NgIf],
   templateUrl: './home-grid-list.component.html',
   styleUrls: ['./home-grid-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

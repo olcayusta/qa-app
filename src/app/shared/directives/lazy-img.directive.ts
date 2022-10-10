@@ -2,13 +2,13 @@ import {
   AfterViewInit,
   Directive,
   ElementRef,
-  HostBinding,
   OnDestroy,
   OnInit
 } from '@angular/core';
 
 @Directive({
-  selector: '[inekLazyImg]'
+  selector: '[inekLazyImg]',
+  standalone: true
 })
 export class LazyImgDirective implements OnInit, OnDestroy, AfterViewInit {
   // @HostBinding('attr.src') src = null;

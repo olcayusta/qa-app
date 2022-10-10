@@ -12,25 +12,25 @@ export class AnswerService {
   }
 
   getAnswers(questionId: number): Observable<Answer[]> {
-    return this.http.get<Answer[]>(`${environment.apiUrl}/questions/${questionId}/answers`);
+    return this.http.get<Answer[]>(`${environment.API_URL}/questions/${questionId}/answers`);
   }
 
   getAnswersBySort(questionId: number, sortBy: string): Observable<Answer[]> {
     const params = new HttpParams().set('sort_by', sortBy);
-    return this.http.get<Answer[]>(`${environment.apiUrl}/questions/${questionId}/answers`, {
+    return this.http.get<Answer[]>(`${environment.API_URL}/questions/${questionId}/answers`, {
       params
     });
   }
 
   create(questionId: number, content: string): Observable<Answer> {
-    return this.http.post<Answer>(`${environment.apiUrl}/answers`, {
+    return this.http.post<Answer>(`${environment.API_URL}/answers`, {
       questionId,
       content
     });
   }
 
   acceptAnswer(answerId: number, questionId: number): Observable<Answer> {
-    return this.http.put<Answer>(`${environment.apiUrl}/answers/${answerId}/accept`, {
+    return this.http.put<Answer>(`${environment.API_URL}/answers/${answerId}/accept`, {
       questionId
     });
   }

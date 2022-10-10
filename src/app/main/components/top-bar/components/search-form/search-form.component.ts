@@ -13,9 +13,9 @@ import { AsyncPipe, CommonModule, NgForOf, NgIf } from '@angular/common';
 import { HighlightSearchPipe } from './pipes/highlight-search.pipe';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { SharedModule } from '@shared/shared.module';
 import { SearchIconComponent } from '@shared/icons/search-icon/search-icon.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { GfIconComponent } from '@shared/components/gf-icon/gf-icon.component';
 
 @Component({
   selector: 'app-search-form',
@@ -25,12 +25,12 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     HighlightSearchPipe,
     MatButtonModule,
     MatAutocompleteModule,
-    SharedModule,
     MatTooltipModule,
     AsyncPipe,
     NgForOf,
     NgIf,
-    RouterLinkWithHref
+    RouterLinkWithHref,
+    GfIconComponent
   ],
   templateUrl: './search-form.component.html',
   styleUrls: ['./search-form.component.scss'],

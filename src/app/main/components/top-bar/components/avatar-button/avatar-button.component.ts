@@ -2,17 +2,19 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnIn
 import { OverlayModule, ScrollStrategy, ScrollStrategyOptions } from '@angular/cdk/overlay';
 import { User } from '@shared/models/user.model';
 import { AuthService } from '@auth/auth.service';
-import { UserProfilePopupComponent } from '@shared/components/user-profile-popup/user-profile-popup.component';
+
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { SharedModule } from '@shared/shared.module';
 import { NgComponentOutlet } from '@angular/common';
+import { ImgShadowComponent } from '@shared/components/img-shadow/img-shadow.component';
+import { PopupContainerComponent } from '@components/popup-container/popup-container.component';
+import { UserProfilePopupComponent } from '@popups/user-profile-popup/user-profile-popup.component';
 
 @Component({
   selector: 'app-avatar-button',
   standalone: true,
-  imports: [OverlayModule, SharedModule, NgComponentOutlet],
+  imports: [OverlayModule, NgComponentOutlet, ImgShadowComponent, PopupContainerComponent],
   templateUrl: './avatar-button.component.html',
   styleUrls: ['./avatar-button.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -57,10 +59,7 @@ export class AvatarButtonComponent implements OnInit {
    * Loads the user profile popup component.
    */
   async loadComponent(): Promise<void> {
-    const { UserProfilePopupComponent } = await import(
-      '@shared/components/user-profile-popup/user-profile-popup.component'
-      );
-
+    const { UserProfilePopupComponent } = await import('@popups/user-profile-popup/user-profile-popup.component');
     this.componentType = UserProfilePopupComponent;
   }
 

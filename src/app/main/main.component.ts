@@ -18,11 +18,11 @@ import { NavDrawerComponent } from './nav-drawer/nav-drawer.component';
 import { DrawerService } from './services/drawer.service';
 import { SocketService } from '@shared/services/socket.service';
 import { TopAppBarComponent } from './components/top-bar/top-app-bar.component';
-import { RouterModule, RouterOutlet } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import { StickyDirective } from './components/top-bar/directives/sticky.directive';
 import { ExtendedFabDirective } from './directives/extended-fab.directive';
 import { MatButtonModule } from '@angular/material/button';
-import { SharedModule } from '@shared/shared.module';
+import { GfIconComponent } from '@shared/components/gf-icon/gf-icon.component';
 
 @Component({
   selector: 'app-main',
@@ -33,9 +33,9 @@ import { SharedModule } from '@shared/shared.module';
     ExtendedFabDirective,
     MatSidenavModule,
     MatButtonModule,
-    SharedModule,
     NgComponentOutlet,
-    RouterOutlet
+    RouterOutlet,
+    GfIconComponent
   ],
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss'],

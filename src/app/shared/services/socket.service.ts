@@ -30,7 +30,8 @@ export class SocketService {
     protocol: <string>localStorage.getItem('token')
   });
 
-  constructor() {}
+  constructor() {
+  }
 
   reconnect() {
     this.subject.pipe(

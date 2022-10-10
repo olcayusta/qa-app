@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgSwitch, NgSwitchCase } from '@angular/common';
 
 @Component({
   selector: 'app-gf-icon',
   standalone: true,
-  imports: [CommonModule],
+  imports: [NgSwitch, NgSwitchCase],
   templateUrl: `./gf-icon.component.html`,
   styleUrls: ['./gf-icon.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

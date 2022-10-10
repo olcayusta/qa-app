@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LazyImgDirective } from './directives/lazy-img.directive';
-import { HomeQuestionListItemComponent } from './components/home-question-list-item/home-question-list-item.component';
+import { HomeQuestionListItemComponent } from '../components/home-question-list-item/home-question-list-item.component';
 import { RouterModule } from '@angular/router';
 import { TimeAgoPipe } from './pipes/time-ago.pipe';
 import { ImgShadowComponent } from './components/img-shadow/img-shadow.component';
@@ -12,7 +12,7 @@ import { QListItemImgShadowComponent } from './components/q-list-item-img-shadow
 import { HighlightElementDirective } from './directives/highlight-element.directive';
 import { SelectedTagPipe } from './pipes/selected-tag.pipe';
 import { MyDatePipe } from './pipes/my-date.pipe';
-import { PopupContainerComponent } from '@shared/components/popup-container/popup-container.component';
+import { PopupContainerComponent } from '@shared/../components/popup-container/popup-container.component';
 
 @NgModule({
   declarations: [TimeAgoPipe, LazyImgDirective, AutofocusDirective, QListItemImgShadowComponent, SelectedTagPipe],

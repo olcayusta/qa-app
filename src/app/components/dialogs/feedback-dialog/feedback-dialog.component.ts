@@ -28,10 +28,12 @@ export class FeedbackDialogComponent {
     validators: [Validators.required]
   });
 
-  constructor(private fb: FormBuilder) {
-    this.feedbackForm = this.fb.group({
+  constructor(private formBuilder: FormBuilder) {
+    this.feedbackForm = this.formBuilder.group({
       feedbackText: [null, Validators.required]
-    }, { updateOn: 'submit' });
+    }, {
+      updateOn: 'submit'
+    });
   }
 
   sendFeedback($event: SubmitEvent) {

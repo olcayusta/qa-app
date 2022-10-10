@@ -3,17 +3,16 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { RouterLinkActive, RouterLinkWithHref } from '@angular/router';
 import { DrawerService } from '../services/drawer.service';
 import { MatListModule } from '@angular/material/list';
-import { SharedModule } from '@shared/shared.module';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { ForumIconComponent } from '@shared/icons/forum-icon/forum-icon.component';
+import { GfIconComponent } from '@shared/components/gf-icon/gf-icon.component';
 
 @Component({
   selector: 'app-nav-drawer',
   standalone: true,
   imports: [
-    SharedModule,
     MatToolbarModule,
     MatButtonModule,
     MatListModule,
@@ -21,7 +20,8 @@ import { ForumIconComponent } from '@shared/icons/forum-icon/forum-icon.componen
     MatDialogModule,
     ForumIconComponent,
     RouterLinkActive,
-    RouterLinkWithHref
+    RouterLinkWithHref,
+    GfIconComponent
   ],
   templateUrl: './nav-drawer.component.html',
   styleUrls: ['./nav-drawer.component.scss'],

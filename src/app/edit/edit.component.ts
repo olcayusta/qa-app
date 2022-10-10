@@ -32,8 +32,12 @@ export class EditComponent implements OnInit {
     { value: 'tacos-2', viewValue: 'Tacos' }
   ];
 
-  constructor(private fb: FormBuilder, private revisionService: RevisionService, private markedService: MarkedService) {
-    this.form = this.fb.group({
+  constructor(
+    private formBuilder: FormBuilder,
+    private revisionService: RevisionService,
+    private markedService: MarkedService
+  ) {
+    this.form = this.formBuilder.group({
       revisions: [null],
       title: [null, Validators.required],
       text: [null, Validators.required],

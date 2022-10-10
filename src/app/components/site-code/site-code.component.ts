@@ -3,12 +3,12 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { NgIf } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { SharedModule } from '@shared/shared.module';
+import { GfIconComponent } from '@shared/components/gf-icon/gf-icon.component';
 
 @Component({
   selector: 'app-site-code',
   standalone: true,
-  imports: [SharedModule, MatButtonModule, MatTooltipModule, NgIf],
+  imports: [MatButtonModule, MatTooltipModule, NgIf, GfIconComponent],
   templateUrl: './site-code.component.html',
   styleUrls: ['./site-code.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

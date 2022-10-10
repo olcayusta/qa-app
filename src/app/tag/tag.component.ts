@@ -4,13 +4,15 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AsyncPipe, NgForOf, NgIf } from '@angular/common';
-import { SharedModule } from '@shared/shared.module';
 import { MatDividerModule } from '@angular/material/divider';
+import {
+  HomeQuestionListItemComponent
+} from '@shared/../components/home-question-list-item/home-question-list-item.component';
 
 @Component({
   selector: 'app-tag',
   standalone: true,
-  imports: [NgIf, AsyncPipe, SharedModule, MatDividerModule, NgForOf],
+  imports: [NgIf, AsyncPipe, MatDividerModule, NgForOf, HomeQuestionListItemComponent],
   templateUrl: './tag.component.html',
   styleUrls: ['./tag.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

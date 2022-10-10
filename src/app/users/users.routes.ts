@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { UsersComponent } from './users.component';
-import { UserListResolver } from './user-list/user-list.resolver';
+import { UserListResolver } from './components/user-list/user-list.resolver';
 
 export default [
   {

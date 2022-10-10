@@ -9,7 +9,8 @@ export class IsVisibleDirective implements AfterViewInit, OnDestroy {
 
   observer!: IntersectionObserver;
 
-  constructor(private elementRef: ElementRef<HTMLDivElement>) {}
+  constructor(private elementRef: ElementRef<HTMLDivElement>) {
+  }
 
   /**
    * Create an intersection observer and emit an event when the element is visible

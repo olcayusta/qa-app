@@ -3,17 +3,19 @@ import { map, shareReplay } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { NotificationService } from '@shared/services/notification.service';
 import { OverlayModule, ScrollStrategy, ScrollStrategyOptions } from '@angular/cdk/overlay';
-import { NotificationListPopupComponent } from '@shared/components/notification-list-popup/notification-list-popup.component';
-import { SharedModule } from '@shared/shared.module';
+
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { AsyncPipe, NgComponentOutlet } from '@angular/common';
+import { GfIconComponent } from '@shared/components/gf-icon/gf-icon.component';
+import { PopupContainerComponent } from '@components/popup-container/popup-container.component';
+import { NotificationListPopupComponent } from '@popups/notification-list-popup/notification-list-popup.component';
 
 @Component({
   selector: 'app-notification-button',
   standalone: true,
-  imports: [OverlayModule, MatButtonModule, MatBadgeModule, MatTooltipModule, SharedModule, AsyncPipe, NgComponentOutlet],
+  imports: [OverlayModule, MatButtonModule, MatBadgeModule, MatTooltipModule, AsyncPipe, NgComponentOutlet, GfIconComponent, PopupContainerComponent],
   templateUrl: './notification-button.component.html',
   styleUrls: ['./notification-button.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -31,7 +33,8 @@ export class NotificationButtonComponent implements OnInit {
     private sso: ScrollStrategyOptions,
     private elementRef: ElementRef,
     private cd: ChangeDetectorRef
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.notificationCount$ = this.notificationService.getUnseenCount().pipe(
@@ -51,9 +54,7 @@ export class NotificationButtonComponent implements OnInit {
   }
 
   async loadComponent() {
-    const { NotificationListPopupComponent } = await import(
-      '@shared/components/notification-list-popup/notification-list-popup.component'
-    );
+    const { NotificationListPopupComponent } = await import('@popups/notification-list-popup/notification-list-popup.component');
     this.componentType = NotificationListPopupComponent;
   }
 

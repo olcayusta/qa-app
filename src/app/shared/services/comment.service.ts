@@ -8,14 +8,15 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CommentService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
   getComments(questionId: number): Observable<Comment[]> {
-    return this.http.get<Comment[]>(`${environment.apiUrl}/questions/${questionId}/comments`);
+    return this.http.get<Comment[]>(`${environment.API_URL}/questions/${questionId}/comments`);
   }
 
   getAnswerComments(answerId: number): Observable<Comment[]> {
-    return this.http.get<Comment[]>(`${environment.apiUrl}/answers/${answerId}/comments`);
+    return this.http.get<Comment[]>(`${environment.API_URL}/answers/${answerId}/comments`);
   }
 
   addComment(content: string, questionId: number): Observable<Comment> {

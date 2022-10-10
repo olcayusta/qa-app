@@ -13,20 +13,20 @@ import { Observable } from 'rxjs';
 import { StateService } from '@shared/services/state.service';
 import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
 import { SearchFormComponent } from './components/search-form/search-form.component';
-import { NotificationButtonComponent } from './notification-button/notification-button.component';
-import { AvatarButtonComponent } from './avatar-button/avatar-button.component';
+import { NotificationButtonComponent } from './components/notification-button/notification-button.component';
+import { AvatarButtonComponent } from './components/avatar-button/avatar-button.component';
 import { DrawerService } from '../../services/drawer.service';
 import { map } from 'rxjs/operators';
 import { Event, NavigationStart, Router, RouterLinkWithHref } from '@angular/router';
-import { TopAppBarLogoComponent } from './top-app-bar-logo/top-app-bar-logo.component';
+import { TopAppBarLogoComponent } from './components/top-app-bar-logo/top-app-bar-logo.component';
 import { AsyncPipe, NgComponentOutlet, NgIf } from '@angular/common';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
-import { SharedModule } from '@shared/shared.module';
 import { DarkModeIconComponent } from '@shared/icons/dark-mode-icon/dark-mode-icon.component';
 import { HelpIconComponent } from '@shared/icons/help-icon/help-icon.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { GfIconComponent } from '@shared/components/gf-icon/gf-icon.component';
 
 @Component({
   selector: 'app-top-app-bar',
@@ -37,14 +37,14 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatToolbarModule,
     MatButtonModule,
     MatMenuModule,
-    SharedModule,
     DarkModeIconComponent,
     HelpIconComponent,
     NgComponentOutlet,
     NgIf,
     AsyncPipe,
     MatTooltipModule,
-    RouterLinkWithHref
+    RouterLinkWithHref,
+    GfIconComponent
   ],
   templateUrl: './top-app-bar.component.html',
   styleUrls: ['./top-app-bar.component.scss'],
@@ -113,11 +113,11 @@ export class TopAppBarComponent implements OnInit {
   }
 
   async loadAvatarButtonComponent() {
-    return await import('./avatar-button/avatar-button.component');
+    return await import('./components/avatar-button/avatar-button.component');
   }
 
   async loadNotificationButtonComponent() {
-    return await import('./notification-button/notification-button.component');
+    return await import('./components/notification-button/notification-button.component');
   }
 
   /**

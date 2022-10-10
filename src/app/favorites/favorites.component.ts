@@ -18,7 +18,8 @@ import { AsyncPipe, NgForOf } from '@angular/common';
 export class FavoritesComponent implements OnInit {
   questions$!: Observable<Question[]>;
 
-  constructor(private favoriteService: FavoriteService) {}
+  constructor(private favoriteService: FavoriteService) {
+  }
 
   ngOnInit(): void {
     this.questions$ = this.favoriteService.getFavoriteQuestions();

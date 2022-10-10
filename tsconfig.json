@@ -10,7 +10,8 @@
       "@icons/*": ["src/app/shared/modules/material-icon/*"],
       "@components/*": ["src/app/components/*"],
       "@modules/*": ["src/app/modules/*"],
-      "@dialogs/*": ["src/app/dialogs/*"]
+      "@dialogs/*": ["src/app/components/dialogs/*"],
+      "@popups/*": ["src/app/components/popups/*"]
     },
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",

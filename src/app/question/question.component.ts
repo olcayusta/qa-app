@@ -15,13 +15,12 @@ import { StateService } from '@shared/services/state.service';
 import { Observable, Subscription, tap } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { ShareDialogComponent } from '@shared/components/share-dialog/share-dialog.component';
+import { ShareDialogComponent } from '@shared/../components/dialogs/share-dialog/share-dialog.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Overlay, OverlayRef, ScrollStrategyOptions } from '@angular/cdk/overlay';
 import { AuthService } from '@auth/auth.service';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { AsyncPipe, DOCUMENT, NgIf } from '@angular/common';
-import { FlagDialogComponent } from '@dialogs/../components/flag-dialog/flag-dialog.component';
 import { SocketService } from '@shared/services/socket.service';
 import { VoteService } from '@shared/services/vote.service';
 import { FavoriteService } from 'src/app/favorites/favorite.service';
@@ -31,7 +30,7 @@ import { AnswerListComponent } from './components/answer-list/answer-list.compon
 import { AnswerFormComponent } from './components/answer-form/answer-form.component';
 import { CommentListComponent } from './components/comment-list/comment-list.component';
 import { AnswerItemComponent } from './components/answer-list/answer-item/answer-item.component';
-import { QuestionTextComponent } from './question-text/question-text.component';
+import { QuestionTextComponent } from './components/question-text/question-text.component';
 import { HeroDelayDirective } from './directives/hero-delay.directive';
 import { CommentListItemComponent } from './components/comment-list-item/comment-list-item.component';
 import { DeepLazyDirective } from './directives/deep-lazy.directive';
@@ -150,7 +149,7 @@ export class QuestionComponent implements OnInit, OnDestroy {
   }
 
   async openShareDialog() {
-    const { ShareDialogComponent } = await import('@shared/components/share-dialog/share-dialog.component');
+    const { ShareDialogComponent } = await import('@shared/../components/dialogs/share-dialog/share-dialog.component');
     this.dialog
       .open(ShareDialogComponent, {
         minWidth: 360,
@@ -202,7 +201,7 @@ export class QuestionComponent implements OnInit, OnDestroy {
   }
 
   async openFlagDialog() {
-    const { FlagDialogComponent } = await import('@dialogs/../components/flag-dialog/flag-dialog.component');
+    const { FlagDialogComponent } = await import('@components/dialogs/flag-dialog/flag-dialog.component')
     this.dialog.open(FlagDialogComponent, {
       autoFocus: false,
       minWidth: 560

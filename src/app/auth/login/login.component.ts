@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterLinkWithHref } from '@angular/router';
 import { catchError } from 'rxjs/operators';
 import { EMPTY } from 'rxjs';
 import { User } from '@shared/models/user.model';
@@ -10,8 +10,8 @@ import { NgIf } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
 import { PasswordFormComponent } from '@auth/login/password-form/password-form.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { SharedModule } from '@shared/shared.module';
 import { MatButtonModule } from '@angular/material/button';
+import { GfIconComponent } from '@shared/components/gf-icon/gf-icon.component';
 
 @Component({
   selector: 'app-login',
@@ -23,8 +23,9 @@ import { MatButtonModule } from '@angular/material/button';
     MatInputModule,
     MatProgressBarModule,
     MatButtonModule,
-    SharedModule,
-    NgIf
+    NgIf,
+    RouterLinkWithHref,
+    GfIconComponent
   ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],

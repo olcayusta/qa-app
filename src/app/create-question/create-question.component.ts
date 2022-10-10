@@ -5,7 +5,7 @@ import { ChipsAutocompleteComponent } from './chips-autocomplete/chips-autocompl
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatInputModule } from '@angular/material/input';
 import { MatDividerModule } from '@angular/material/divider';
-import { QuestionService } from '../question/services/question.service';
+import { QuestionService } from '../question/question.service';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({

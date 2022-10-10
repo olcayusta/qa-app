@@ -1,10 +1,14 @@
 import { ChangeDetectionStrategy, Component, ElementRef, HostBinding, inject, Input } from '@angular/core';
+import { LazyImgDirective } from '@shared/directives/lazy-img.directive';
 
 @Component({
   selector: 'inek-img-shadow',
   standalone: true,
   templateUrl: './img-shadow.component.html',
   styleUrls: ['./img-shadow.component.scss'],
+  imports: [
+    LazyImgDirective
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ImgShadowComponent {

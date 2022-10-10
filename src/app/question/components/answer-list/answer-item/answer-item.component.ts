@@ -3,11 +3,13 @@ import { Answer } from '@shared/models/answer.model';
 import { AnswerService } from '@shared/services/answer.service';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { SharedModule } from '@shared/shared.module';
 import { AnswerItemCommentListComponent } from './answer-item-comment-list/answer-item-comment-list.component';
 import { HeroDelayDirective } from '../../../directives/hero-delay.directive';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { ImgShadowComponent } from '@shared/components/img-shadow/img-shadow.component';
+import { HighlightElementDirective } from '@shared/directives/highlight-element.directive';
+import { RelativeTimeFormatPipe } from '@shared/pipes/relative-time-format.pipe';
 
 @Component({
   selector: 'app-answer-item',
@@ -15,10 +17,12 @@ import { MatIconModule } from '@angular/material/icon';
   imports: [
     AnswerItemCommentListComponent,
     HeroDelayDirective,
-    SharedModule,
     RouterModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    ImgShadowComponent,
+    HighlightElementDirective,
+    RelativeTimeFormatPipe
   ],
   templateUrl: './answer-item.component.html',
   styleUrls: ['./answer-item.component.scss'],
