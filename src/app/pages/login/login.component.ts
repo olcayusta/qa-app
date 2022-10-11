@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { AuthService } from '../auth.service';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, UntypedFormGroup, Validators } from '@angular/forms';
+import { AuthService } from '@auth/auth.service';
 import { Router, RouterLinkWithHref } from '@angular/router';
 import { catchError } from 'rxjs/operators';
 import { EMPTY } from 'rxjs';
@@ -8,7 +8,7 @@ import { User } from '@models/user.model';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NgIf } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
-import { PasswordFormComponent } from '@auth/login/password-form/password-form.component';
+import { PasswordFormComponent } from './password-form/password-form.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatButtonModule } from '@angular/material/button';
 import { GfIconComponent } from '@components/gf-icon/gf-icon.component';
@@ -43,13 +43,13 @@ export class LoginComponent implements OnInit {
   userInfoAvailable = false;
 
   constructor(
-    private fb: FormBuilder,
+    private formBuilder: FormBuilder,
     private authService: AuthService,
     // private tagService: TagService,
     private router: Router,
     private cd: ChangeDetectorRef
   ) {
-    this.loginForm = this.fb.group(
+    this.loginForm = this.formBuilder.group(
       {
         email: ['', [Validators.required, Validators.email]],
         password: ['123456', [Validators.required, Validators.min(8)]]

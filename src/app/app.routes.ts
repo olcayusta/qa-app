@@ -69,12 +69,12 @@ export const APP_ROUTES: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () => import('./auth/login/login.routes'),
+    loadChildren: () => import('./pages/login/login.routes'),
     canLoad: [LoggedGuard]
   },
   {
     path: 'register',
-    loadChildren: () => import('./auth/register/register.routes'),
+    loadChildren: () => import('./pages/register/register.routes'),
     canLoad: [LoggedGuard]
   },
   {

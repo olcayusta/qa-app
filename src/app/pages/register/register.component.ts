@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
-import { RegisterService } from '@auth/register/register.service';
+import { RegisterService } from './register.service';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 
 @Component({
@@ -15,7 +15,7 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
   providers: [
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
-      useValue: { appearance: 'standard' }
+      useValue: { appearance: 'outline' }
     }
   ]
 })
@@ -35,7 +35,9 @@ export class RegisterComponent implements OnInit {
         displayName: ['', [Validators.required]],
         picture: ['https://resources.tidal.com/images/3f5fb645/46b8/44c4/9721/e60ec54c2fa1/320x320.jpg']
       },
-      { updateOn: 'submit' }
+      {
+        updateOn: 'submit'
+      }
     );
   }
 
@@ -44,8 +46,9 @@ export class RegisterComponent implements OnInit {
 
   submit(): void {
     const { email, password, displayName, picture } = this.registerForm.value;
+
     this.registerService.createUser(email!, password!, displayName!, picture!).subscribe((user) => {
-      console.log('Üye kaydedildi!', user);
+      alert('Kullanıcı başarıyla kaydedildi.');
     });
   }
 }
