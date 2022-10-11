@@ -63,7 +63,7 @@ export const APP_ROUTES: Routes = [
       },
       {
         path: 'help',
-        loadChildren: () => import('./routes/help/help.routes')
+        loadChildren: () => import('./pages/help/help.routes')
       }
     ]
   },
@@ -79,14 +79,14 @@ export const APP_ROUTES: Routes = [
   },
   {
     path: '404',
-    loadChildren: () => import('./routes/page-not-found/page-not-found-routes')
+    loadChildren: () => import('./pages/page-not-found/page-not-found-routes')
   },
   {
     path: '500',
-    loadChildren: () => import('./routes/page-internal-server-error/page-internal-server-error.routes')
+    loadChildren: () => import('./pages/page-internal-server-error/page-internal-server-error.routes')
   },
   {
     path: '**',
-    loadChildren: () => import('./routes/page-not-found/page-not-found-routes')
+    loadChildren: () => import('./pages/page-not-found/page-not-found-routes')
   }
 ];
