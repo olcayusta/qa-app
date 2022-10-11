@@ -15,7 +15,7 @@ import { StateService } from '@shared/services/state.service';
 import { Observable, Subscription, tap } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { ShareDialogComponent } from '@shared/../components/dialogs/share-dialog/share-dialog.component';
+import { ShareDialogComponent } from '@dialogs/share-dialog/share-dialog.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Overlay, OverlayRef, ScrollStrategyOptions } from '@angular/cdk/overlay';
 import { AuthService } from '@auth/auth.service';
@@ -30,7 +30,7 @@ import { CommentListComponent } from './components/comment-list/comment-list.com
 import { QuestionTextComponent } from './components/question-text/question-text.component';
 import { EditorButtonsComponent } from './components/answer-form/editor-buttons/editor-buttons.component';
 import { MatCardModule } from '@angular/material/card';
-import { ImgShadowComponent } from '@shared/../components/img-shadow/img-shadow.component';
+import { ImgShadowComponent } from '@components/img-shadow/img-shadow.component';
 import { RelativeTimeFormatPipe } from '@shared/pipes/relative-time-format.pipe';
 import { MatButtonModule } from '@angular/material/button';
 
@@ -184,7 +184,7 @@ export class QuestionComponent implements OnInit, OnDestroy {
   }
 
   async openFlagDialog() {
-    const { FlagDialogComponent } = await import('@components/dialogs/flag-dialog/flag-dialog.component')
+    const { FlagDialogComponent } = await import('@dialogs/flag-dialog/flag-dialog.component')
     this.dialog.open(FlagDialogComponent, {
       autoFocus: false,
       minWidth: 560

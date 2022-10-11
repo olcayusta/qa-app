@@ -7,7 +7,7 @@ import { AsyncPipe, NgForOf, NgIf } from '@angular/common';
 import { MatDividerModule } from '@angular/material/divider';
 import {
   HomeQuestionListItemComponent
-} from '@shared/../components/home-question-list-item/home-question-list-item.component';
+} from '@components/home-question-list-item/home-question-list-item.component';
 
 @Component({
   selector: 'app-tag',

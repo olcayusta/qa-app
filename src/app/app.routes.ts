@@ -10,27 +10,27 @@ export const APP_ROUTES: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        loadChildren: () => import('./home/home.routes')
+        loadChildren: () => import('./routes/home/home.routes')
       },
       {
         path: 'users',
-        loadChildren: () => import('./users/users.routes')
+        loadChildren: () => import('./routes/users/users.routes')
       },
       {
         path: 'tags',
-        loadChildren: () => import('./tags/tags.routes')
+        loadChildren: () => import('./routes/tags/tags.routes')
       },
       {
         path: 'tag/:tagId',
-        loadChildren: () => import('./tag/tag.routes')
+        loadChildren: () => import('./routes/tag/tag.routes')
       },
       {
         path: 'search',
-        loadChildren: () => import('./search/search.routes')
+        loadChildren: () => import('./routes/search/search.routes')
       },
       {
         path: 'settings',
-        loadChildren: () => import('./settings/settings.routes'),
+        loadChildren: () => import('./routes/settings/settings.routes'),
         canLoad: [AuthGuard]
       },
       {
@@ -47,11 +47,11 @@ export const APP_ROUTES: Routes = [
       },
       {
         path: 'question/:questionId',
-        loadChildren: () => import('./question/question.routes')
+        loadChildren: () => import('./routes/question/question.routes')
       },
       {
         path: 'questions/create',
-        loadChildren: () => import('./create-question/create-question.routes')
+        loadChildren: () => import('./routes/create-question/create-question.routes')
       },
       {
         path: 'edit',
