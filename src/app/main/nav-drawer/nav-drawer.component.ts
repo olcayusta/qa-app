@@ -6,7 +6,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
-import { GfIconComponent } from '@shared/components/gf-icon/gf-icon.component';
+import { GfIconComponent } from '@components/gf-icon/gf-icon.component';
 
 @Component({
   selector: 'app-nav-drawer',

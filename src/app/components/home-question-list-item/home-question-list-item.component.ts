@@ -3,10 +3,10 @@ import { Question } from '@shared/models/question.model';
 import { Tag } from '@shared/models/tag.model';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatDividerModule } from '@angular/material/divider';
-import { ImgShadowComponent } from '@shared/components/img-shadow/img-shadow.component';
 import { RelativeTimeFormatPipe } from '@shared/pipes/relative-time-format.pipe';
 import { NgForOf, NgIf } from '@angular/common';
 import { RouterLinkWithHref } from '@angular/router';
+import { ImgShadowComponent } from '@components/img-shadow/img-shadow.component';
 
 @Component({
   selector: 'app-home-question-list-item',

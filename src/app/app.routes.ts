@@ -43,7 +43,7 @@ export const APP_ROUTES: Routes = [
       },
       {
         path: 'user/:userId',
-        loadChildren: () => import('./user/user.routes')
+        loadChildren: () => import('./routes/user/user.routes')
       },
       {
         path: 'question/:questionId',

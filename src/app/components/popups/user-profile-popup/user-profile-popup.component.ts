@@ -4,7 +4,7 @@ import { AuthService } from '@auth/auth.service';
 import { SocketService } from '@shared/services/socket.service';
 import { MatListModule } from '@angular/material/list';
 import { RouterLinkWithHref } from '@angular/router';
-import { GfIconComponent } from '@shared/components/gf-icon/gf-icon.component';
+import { GfIconComponent } from '@components/gf-icon/gf-icon.component';
 
 @Component({
   selector: 'app-user-profile-popup',

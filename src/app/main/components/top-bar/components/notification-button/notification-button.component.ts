@@ -8,9 +8,9 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { AsyncPipe, NgComponentOutlet } from '@angular/common';
-import { GfIconComponent } from '@shared/components/gf-icon/gf-icon.component';
 import { PopupContainerComponent } from '@components/popup-container/popup-container.component';
 import { NotificationListPopupComponent } from '@popups/notification-list-popup/notification-list-popup.component';
+import { GfIconComponent } from '@components/gf-icon/gf-icon.component';
 
 @Component({
   selector: 'app-notification-button',

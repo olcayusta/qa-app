@@ -7,9 +7,9 @@ import { AnswerItemCommentListComponent } from './answer-item-comment-list/answe
 import { HeroDelayDirective } from '../../../directives/hero-delay.directive';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { ImgShadowComponent } from '@shared/components/img-shadow/img-shadow.component';
 import { HighlightElementDirective } from '@shared/directives/highlight-element.directive';
 import { RelativeTimeFormatPipe } from '@shared/pipes/relative-time-format.pipe';
+import { ImgShadowComponent } from '@components/img-shadow/img-shadow.component';
 
 @Component({
   selector: 'app-answer-item',

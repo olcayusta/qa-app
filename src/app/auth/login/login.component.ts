@@ -11,7 +11,7 @@ import { MatInputModule } from '@angular/material/input';
 import { PasswordFormComponent } from '@auth/login/password-form/password-form.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatButtonModule } from '@angular/material/button';
-import { GfIconComponent } from '@shared/components/gf-icon/gf-icon.component';
+import { GfIconComponent } from '@components/gf-icon/gf-icon.component';
 
 @Component({
   selector: 'app-login',

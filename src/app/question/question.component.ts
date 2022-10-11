@@ -30,7 +30,7 @@ import { CommentListComponent } from './components/comment-list/comment-list.com
 import { QuestionTextComponent } from './components/question-text/question-text.component';
 import { EditorButtonsComponent } from './components/answer-form/editor-buttons/editor-buttons.component';
 import { MatCardModule } from '@angular/material/card';
-import { ImgShadowComponent } from '@shared/components/img-shadow/img-shadow.component';
+import { ImgShadowComponent } from '@shared/../components/img-shadow/img-shadow.component';
 import { RelativeTimeFormatPipe } from '@shared/pipes/relative-time-format.pipe';
 import { MatButtonModule } from '@angular/material/button';
 

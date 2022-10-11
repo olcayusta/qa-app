@@ -16,7 +16,7 @@ import { MatChipInputEvent } from '@angular/material/chips';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgForOf, NgIf } from '@angular/common';
-import { GfIconComponent } from '@shared/components/gf-icon/gf-icon.component';
+import { GfIconComponent } from '@components/gf-icon/gf-icon.component';
 
 interface Food {
   value: string;

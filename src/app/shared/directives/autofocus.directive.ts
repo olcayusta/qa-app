@@ -1,7 +1,8 @@
 import { AfterViewInit, Directive, ElementRef, OnInit } from '@angular/core';
 
 @Directive({
-  selector: '[qaAutofocus]'
+  selector: '[qaAutofocus]',
+  standalone: true
 })
 export class AutofocusDirective implements AfterViewInit, OnInit {
   constructor(private el: ElementRef<HTMLInputElement>) {

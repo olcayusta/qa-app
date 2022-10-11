@@ -3,7 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { NgIf } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { GfIconComponent } from '@shared/components/gf-icon/gf-icon.component';
+import { GfIconComponent } from '@components/gf-icon/gf-icon.component';
 
 @Component({
   selector: 'app-site-code',

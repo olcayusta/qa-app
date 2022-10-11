@@ -24,7 +24,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { GfIconComponent } from '@shared/components/gf-icon/gf-icon.component';
+import { GfIconComponent } from '@components/gf-icon/gf-icon.component';
 
 @Component({
   selector: 'app-top-app-bar',
@@ -69,7 +69,8 @@ export class TopAppBarComponent implements OnInit {
     private cdr: ChangeDetectorRef,
     private drawerService: DrawerService,
     private router: Router
-  ) {}
+  ) {
+  }
 
   async ngOnInit(): Promise<void> {
     this.isLoggedIn$ = this.authService.isLoggedIn$;

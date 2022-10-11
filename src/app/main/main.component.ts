@@ -22,7 +22,7 @@ import { RouterLinkWithHref, RouterOutlet } from '@angular/router';
 import { StickyDirective } from './components/top-bar/directives/sticky.directive';
 import { ExtendedFabDirective } from './directives/extended-fab.directive';
 import { MatButtonModule } from '@angular/material/button';
-import { GfIconComponent } from '@shared/components/gf-icon/gf-icon.component';
+import { GfIconComponent } from '@shared/../components/gf-icon/gf-icon.component';
 
 @Component({
   selector: 'app-main',
