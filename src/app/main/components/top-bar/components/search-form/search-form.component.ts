@@ -8,12 +8,10 @@ import {
   MatAutocompleteSelectedEvent,
   MatAutocompleteTrigger
 } from '@angular/material/autocomplete';
-import { Router, RouterLinkWithHref, RouterModule } from '@angular/router';
-import { AsyncPipe, CommonModule, NgForOf, NgIf } from '@angular/common';
+import { Router, RouterLinkWithHref } from '@angular/router';
+import { AsyncPipe, NgForOf, NgIf } from '@angular/common';
 import { HighlightSearchPipe } from './pipes/highlight-search.pipe';
-import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { SearchIconComponent } from '@shared/icons/search-icon/search-icon.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { GfIconComponent } from '@shared/components/gf-icon/gf-icon.component';
 
@@ -43,7 +41,8 @@ export class SearchFormComponent implements OnInit {
   @ViewChild('autocompleteTrigger', { read: MatAutocompleteTrigger })
   autoComplete!: MatAutocompleteTrigger;
 
-  constructor(private searchService: SearchService, private router: Router) {}
+  constructor(private searchService: SearchService, private router: Router) {
+  }
 
   ngOnInit(): void {
     this.filteredResults$ = this.searchControl.valueChanges.pipe(

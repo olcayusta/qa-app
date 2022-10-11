@@ -6,7 +6,6 @@ import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
-import { ForumIconComponent } from '@shared/icons/forum-icon/forum-icon.component';
 import { GfIconComponent } from '@shared/components/gf-icon/gf-icon.component';
 
 @Component({
@@ -18,7 +17,6 @@ import { GfIconComponent } from '@shared/components/gf-icon/gf-icon.component';
     MatListModule,
     MatDividerModule,
     MatDialogModule,
-    ForumIconComponent,
     RouterLinkActive,
     RouterLinkWithHref,
     GfIconComponent

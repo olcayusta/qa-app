@@ -23,8 +23,6 @@ import { AsyncPipe, NgComponentOutlet, NgIf } from '@angular/common';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
-import { DarkModeIconComponent } from '@shared/icons/dark-mode-icon/dark-mode-icon.component';
-import { HelpIconComponent } from '@shared/icons/help-icon/help-icon.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { GfIconComponent } from '@shared/components/gf-icon/gf-icon.component';
 
@@ -37,8 +35,6 @@ import { GfIconComponent } from '@shared/components/gf-icon/gf-icon.component';
     MatToolbarModule,
     MatButtonModule,
     MatMenuModule,
-    DarkModeIconComponent,
-    HelpIconComponent,
     NgComponentOutlet,
     NgIf,
     AsyncPipe,

@@ -32,6 +32,7 @@ import { EditorButtonsComponent } from './components/answer-form/editor-buttons/
 import { MatCardModule } from '@angular/material/card';
 import { ImgShadowComponent } from '@shared/components/img-shadow/img-shadow.component';
 import { RelativeTimeFormatPipe } from '@shared/pipes/relative-time-format.pipe';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-question',
@@ -48,7 +49,8 @@ import { RelativeTimeFormatPipe } from '@shared/pipes/relative-time-format.pipe'
     MatDialogModule,
     AsyncPipe,
     NgIf,
-    RouterLinkWithHref
+    RouterLinkWithHref,
+    MatButtonModule
   ],
   templateUrl: './question.component.html',
   styleUrls: ['./question.component.scss'],
@@ -130,7 +132,7 @@ export class QuestionComponent implements OnInit, OnDestroy {
   }
 
   async openShareDialog() {
-    const { ShareDialogComponent } = await import('@shared/../components/dialogs/share-dialog/share-dialog.component');
+    const { ShareDialogComponent } = await import('@dialogs/share-dialog/share-dialog.component');
     this.dialog
       .open(ShareDialogComponent, {
         minWidth: 360,
