@@ -22,11 +22,11 @@ export const APP_ROUTES: Routes = [
       },
       {
         path: 'tag/:tagId',
-        loadChildren: () => import('./routes/tag/tag.routes')
+        loadChildren: () => import('./pages/tag/tag.routes')
       },
       {
         path: 'search',
-        loadChildren: () => import('./routes/search/search.routes')
+        loadChildren: () => import('./pages/search/search.routes')
       },
       {
         path: 'settings',
@@ -35,7 +35,7 @@ export const APP_ROUTES: Routes = [
       },
       {
         path: 'list',
-        loadChildren: () => import('./routes/list/list.routes')
+        loadChildren: () => import('./pages/list/list.routes')
       },
       {
         path: 'watched_tags',
@@ -55,11 +55,11 @@ export const APP_ROUTES: Routes = [
       },
       {
         path: 'edit',
-        loadChildren: () => import('./routes/edit/edit.routes')
+        loadChildren: () => import('./pages/edit/edit.routes')
       },
       {
         path: 'favorites',
-        loadChildren: () => import('./routes/favorites/favorites.routes')
+        loadChildren: () => import('./pages/favorites/favorites.routes')
       },
       {
         path: 'help',

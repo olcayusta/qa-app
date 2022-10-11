@@ -1,13 +1,12 @@
 <div class='popup-page one-dp'>
   <header>
-
-    <img class='popup-page__avatar' src='{{user.picture}}' alt=''>
-
+    <img class='popup-page__avatar' src='{{user.picture}}' alt='{{user.displayName}}'>
     <div>
       <div class='title'>{{user.displayName}}</div>
       <div class='subtitle'>{{user.email}}</div>
     </div>
   </header>
+
   <section>
     <mat-nav-list>
       <a mat-list-item routerLink='/settings'>

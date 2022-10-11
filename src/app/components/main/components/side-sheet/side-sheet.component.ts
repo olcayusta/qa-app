@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -11,10 +11,5 @@ import { MatToolbarModule } from '@angular/material/toolbar';
   styleUrls: ['./side-sheet.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SideSheetComponent implements OnInit {
-  constructor() {
-  }
-
-  ngOnInit(): void {
-  }
+export class SideSheetComponent {
 }

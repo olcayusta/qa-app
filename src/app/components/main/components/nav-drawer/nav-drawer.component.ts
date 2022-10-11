@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { RouterLinkActive, RouterLinkWithHref } from '@angular/router';
-import { DrawerService } from '../services/drawer.service';
+import { DrawerService } from '../../services/drawer.service';
 import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDividerModule } from '@angular/material/divider';

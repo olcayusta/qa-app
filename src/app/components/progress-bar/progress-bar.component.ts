@@ -1,9 +1,9 @@
-import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Event, NavigationCancel, NavigationError, ResolveEnd, ResolveStart, Router } from '@angular/router';
 import { AsyncPipe, NgIf } from '@angular/common';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { ProgressBarService } from '../../services/progress-bar.service';
+import { ProgressBarService } from './progress-bar.service';
 
 @Component({
   selector: 'app-progress-bar',
@@ -16,8 +16,8 @@ import { ProgressBarService } from '../../services/progress-bar.service';
 export class ProgressBarComponent implements OnInit {
   spinner$!: Observable<boolean>;
 
-  private router = inject(Router);
-  private progressBarService = inject(ProgressBarService);
+  constructor(private router: Router, private progressBarService: ProgressBarService) {
+  }
 
   ngOnInit(): void {
     this.router.events.subscribe((event: Event) => {

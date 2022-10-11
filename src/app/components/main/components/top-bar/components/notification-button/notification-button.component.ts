@@ -1,4 +1,12 @@
-import { Component, OnInit, ChangeDetectionStrategy, Type, ElementRef, ChangeDetectorRef } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  Type,
+  ElementRef,
+  ChangeDetectorRef,
+  Injectable
+} from '@angular/core';
 import { map, shareReplay } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { NotificationService } from '@shared/services/notification.service';
@@ -9,8 +17,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { AsyncPipe, NgComponentOutlet } from '@angular/common';
 import { PopupContainerComponent } from '@components/popup-container/popup-container.component';
-import { NotificationListPopupComponent } from '@popups/notification-list-popup/notification-list-popup.component';
 import { GfIconComponent } from '@components/gf-icon/gf-icon.component';
+import { NotificationListPopupComponent } from '@popups/notification-list-popup/notification-list-popup.component';
+
+@Injectable()
+export class Greeter {
+  suffix = '!';
+}
 
 @Component({
   selector: 'app-notification-button',
@@ -26,13 +39,13 @@ export class NotificationButtonComponent implements OnInit {
   popupOpened = false;
 
   scrollStrategy: ScrollStrategy = this.sso.block();
-  componentType!: Type<NotificationListPopupComponent>;
+  NotificationListPopupComponent!: Type<NotificationListPopupComponent>;
 
   constructor(
     private notificationService: NotificationService,
     private sso: ScrollStrategyOptions,
     private elementRef: ElementRef,
-    private cd: ChangeDetectorRef
+    private cdr: ChangeDetectorRef
   ) {
   }
 
@@ -49,13 +62,13 @@ export class NotificationButtonComponent implements OnInit {
     } else {
       await this.loadComponent();
       this.popupOpened = true;
-      this.cd.markForCheck();
+      this.cdr.markForCheck();
     }
   }
 
   async loadComponent() {
-    const { NotificationListPopupComponent } = await import('@popups/notification-list-popup/notification-list-popup.component');
-    this.componentType = NotificationListPopupComponent;
+    const { NotificationListPopupComponent } = await import('@popups/notification-list-popup/notification-list-popup.component')
+    this.NotificationListPopupComponent = NotificationListPopupComponent;
   }
 
   /**

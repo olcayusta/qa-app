@@ -15,7 +15,7 @@
   (overlayOutsideClick)='closePopupOnOutsideClicked($event)'>
   <!--  <qa-popup-container popupContainerTitle="avatar" [outlet]="ironDropdownOutlet"></qa-popup-container>-->
   <app-popup-container (close)='popupOpened = false'>
-    <ng-container *ngComponentOutlet='componentType'></ng-container>
+    <ng-container *ngComponentOutlet='UserProfilePopupComponent'></ng-container>
   </app-popup-container>
 </ng-template>
 

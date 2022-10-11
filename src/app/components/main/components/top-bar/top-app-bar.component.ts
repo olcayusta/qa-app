@@ -25,6 +25,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { GfIconComponent } from '@components/gf-icon/gf-icon.component';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatIconModule } from '@angular/material/icon';
+import { IconComponent } from '@components/icon/icon.component';
 
 @Component({
   selector: 'app-top-app-bar',
@@ -40,7 +43,10 @@ import { GfIconComponent } from '@components/gf-icon/gf-icon.component';
     AsyncPipe,
     MatTooltipModule,
     RouterLinkWithHref,
-    GfIconComponent
+    GfIconComponent,
+    MatBadgeModule,
+    MatIconModule,
+    IconComponent
   ],
   templateUrl: './top-app-bar.component.html',
   styleUrls: ['./top-app-bar.component.scss'],

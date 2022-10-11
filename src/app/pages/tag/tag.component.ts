@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Tag } from '@models/tag.model';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';

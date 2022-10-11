@@ -22,7 +22,7 @@ import { ImgShadowComponent } from '@components/img-shadow/img-shadow.component'
 export class AvatarButtonComponent implements OnInit {
   user!: User;
   popupOpened = false;
-  componentType!: Type<UserProfilePopupComponent>;
+  UserProfilePopupComponent!: Type<UserProfilePopupComponent>;
   scrollStrategy: ScrollStrategy = this.sso.block();
   isHandset$!: Observable<boolean>;
 
@@ -30,14 +30,14 @@ export class AvatarButtonComponent implements OnInit {
     private sso: ScrollStrategyOptions,
     private authService: AuthService,
     private elementRef: ElementRef,
-    private cd: ChangeDetectorRef,
-    private bo: BreakpointObserver
+    private cdr: ChangeDetectorRef,
+    private breakpointObserver: BreakpointObserver
   ) {
   }
 
   ngOnInit(): void {
     this.user = this.authService.userValue;
-    this.isHandset$ = this.bo.observe(Breakpoints.Handset).pipe(map(({ matches }) => matches));
+    this.isHandset$ = this.breakpointObserver.observe(Breakpoints.Handset).pipe(map(({ matches }) => matches));
   }
 
   /**
@@ -49,7 +49,7 @@ export class AvatarButtonComponent implements OnInit {
     } else {
       await this.loadComponent();
       this.popupOpened = true;
-      this.cd.markForCheck();
+      this.cdr.markForCheck();
     }
   }
 
@@ -58,7 +58,7 @@ export class AvatarButtonComponent implements OnInit {
    */
   async loadComponent(): Promise<void> {
     const { UserProfilePopupComponent } = await import('@popups/user-profile-popup/user-profile-popup.component');
-    this.componentType = UserProfilePopupComponent;
+    this.UserProfilePopupComponent = UserProfilePopupComponent;
   }
 
   /**

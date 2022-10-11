@@ -13,8 +13,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDrawerMode, MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { DOCUMENT, NgComponentOutlet } from '@angular/common';
-import { SideSheetComponent } from './side-sheet/side-sheet.component';
-import { NavDrawerComponent } from './nav-drawer/nav-drawer.component';
+import { SideSheetComponent } from './components/side-sheet/side-sheet.component';
+import { NavDrawerComponent } from './components/nav-drawer/nav-drawer.component';
 import { DrawerService } from './services/drawer.service';
 import { SocketService } from '@shared/services/socket.service';
 import { TopAppBarComponent } from './components/top-bar/top-app-bar.component';
@@ -51,8 +51,8 @@ export default class MainComponent implements OnInit, AfterViewInit {
   @ViewChild('navDrawerComponentRef', { read: ViewContainerRef })
   navDrawerComponentRef!: ViewContainerRef;
 
-  navDrawerComponent!: Type<NavDrawerComponent>;
-  sideSheetComponent!: Type<SideSheetComponent>;
+  NavDrawerComponent!: Type<NavDrawerComponent>;
+  SideSheetComponent!: Type<SideSheetComponent>;
 
   private document = inject(DOCUMENT);
 
@@ -92,12 +92,12 @@ export default class MainComponent implements OnInit, AfterViewInit {
     });
   }
 
-  hideScrollBar() {
-    this.renderer.setStyle(this.document.body, 'overflow', 'hidden');
-  }
-
   showScrollBar() {
     this.renderer.setStyle(this.document.body, 'overflow', '');
+  }
+
+  hideScrollBar() {
+    this.renderer.setStyle(this.document.body, 'overflow', 'hidden');
   }
 
   async sidenavOpenedStart() {
@@ -113,8 +113,8 @@ export default class MainComponent implements OnInit, AfterViewInit {
    * Loads the nav drawer component
    */
   async loadNavDrawerComponent() {
-    const { NavDrawerComponent } = await import('./nav-drawer/nav-drawer.component');
-    this.navDrawerComponent = NavDrawerComponent;
+    const { NavDrawerComponent } = await import('./components/nav-drawer/nav-drawer.component');
+    this.NavDrawerComponent = NavDrawerComponent;
     this.cd.markForCheck();
   }
 
@@ -129,8 +129,8 @@ export default class MainComponent implements OnInit, AfterViewInit {
   }
 
   async loadSidenavSheetComponent() {
-    const { SideSheetComponent } = await import('./side-sheet/side-sheet.component');
-    this.sideSheetComponent = SideSheetComponent;
+    const { SideSheetComponent } = await import('./components/side-sheet/side-sheet.component');
+    this.SideSheetComponent = SideSheetComponent;
     this.cd.markForCheck();
   }
 
