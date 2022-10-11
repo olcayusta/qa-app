@@ -1,13 +1,14 @@
 import { Routes } from '@angular/router';
 import { UsersComponent } from './users.component';
-import { UserListResolver } from './components/user-list/user-list.resolver';
+import { inject } from '@angular/core';
+import { UsersService } from './users.service';
 
 export default [
   {
     path: '',
     component: UsersComponent,
     resolve: {
-      users: UserListResolver
+      users: () => inject(UsersService).getAllUsers()
     },
     title: 'Kullanıcılar'
   }

@@ -14,12 +14,4 @@ import { NgForOf } from '@angular/common';
 })
 export class UserListComponent {
   users: User[] = inject(ActivatedRoute).snapshot.data['users'];
-
-/*  users!: User[];
-
-  data = inject(ActivatedRoute).snapshot.data['users'];
-
-  ngOnInit(): void {
-    this.users = this.data;
-  }*/
 }

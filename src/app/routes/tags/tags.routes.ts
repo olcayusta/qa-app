@@ -1,13 +1,14 @@
 import { Routes } from '@angular/router';
 import { TagsComponent } from './tags.component';
-import { TagsResolver } from './tags.resolver';
+import { inject } from '@angular/core';
+import { TagsService } from './tags.service';
 
 export default [
   {
     path: '',
     component: TagsComponent,
     resolve: {
-      tags: TagsResolver
+      tags: () => inject(TagsService).getAllTags()
     },
     title: 'Etiketler'
   }

@@ -24,7 +24,7 @@ interface Food {
 export class EditComponent implements OnInit {
   question$!: Observable<Question>;
 
-  form!: FormGroup;
+  editForm!: FormGroup;
 
   foods: Food[] = [
     { value: 'steak-0', viewValue: 'Steak' },
@@ -37,7 +37,7 @@ export class EditComponent implements OnInit {
     private revisionService: RevisionService,
     private markedService: MarkedService
   ) {
-    this.form = this.formBuilder.group({
+    this.editForm = this.formBuilder.group({
       revisions: [null],
       title: [null, Validators.required],
       text: [null, Validators.required],
@@ -48,11 +48,11 @@ export class EditComponent implements OnInit {
   ngOnInit(): void {
     this.question$ = this.revisionService.getQuestion(125).pipe(
       tap(({ title, content, revisions }: Question) => {
-        this.form.get('title')?.patchValue(title);
-        this.form.get('text')?.patchValue(content);
-        this.form.get('revisions')?.patchValue(revisions);
+        this.editForm.get('title')?.patchValue(title);
+        this.editForm.get('text')?.patchValue(content);
+        this.editForm.get('revisions')?.patchValue(revisions);
 
-        const formText = this.form.get('text')?.value;
+        const formText = this.editForm.get('text')?.value;
 
         this.markedService.markedWorker.postMessage(formText);
         this.markedService.getMessages().subscribe((value) => {

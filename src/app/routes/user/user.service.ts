@@ -3,22 +3,25 @@ import { User } from '@models/user.model';
 import { Question } from '@models/question.model';
 import { Answer } from '@models/answer.model';
 import { Observable } from 'rxjs';
-import { environment } from '@environments/environment';
-import { http } from '@functions';
+import { API_URL } from '@environments';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+  constructor(private http: HttpClient) {
+  }
+
   getUser(userId: number): Observable<User> {
-    return http.get<User>(`${environment.API_URL}/users/${userId}`);
+    return this.http.get<User>(`${API_URL}/users/${userId}`);
   }
 
   getUserQuestions(userId: number): Observable<Question[]> {
-    return http.get<Question[]>(`${environment.API_URL}/users/${userId}/questions`);
+    return this.http.get<Question[]>(`${API_URL}/users/${userId}/questions`);
   }
 
   getUserAnswers(userId: number): Observable<Answer[]> {
-    return http.get<Answer[]>(`${environment.API_URL}/users/${userId}/answers`);
+    return this.http.get<Answer[]>(`${API_URL}/users/${userId}/answers`);
   }
 }

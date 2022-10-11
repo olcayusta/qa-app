@@ -5,6 +5,7 @@
     "paths": {
       "@shared/*": ["src/app/shared/*"],
       "@material/*": ["src/app/material/*"],
+      "@environments": ["src/environments"],
       "@environments/*": ["src/environments/*"],
       "@auth/*": ["src/app/auth/*"],
       "@icons/*": ["src/app/shared/modules/material-icon/*"],
