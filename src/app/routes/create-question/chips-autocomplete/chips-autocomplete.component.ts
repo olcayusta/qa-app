@@ -4,7 +4,7 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { MatAutocomplete, MatAutocompleteModule, MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { debounceTime, distinctUntilChanged, map, startWith, switchMap } from 'rxjs/operators';
-import { Tag } from '@shared/models/tag.model';
+import { Tag } from '@models/tag.model';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { TagService } from '../../tag/tag.service';

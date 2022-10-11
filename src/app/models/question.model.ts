@@ -1,6 +1,6 @@
 import { User } from './user.model';
 import { Tag } from './tag.model';
-import { Answer } from '@shared/models/answer.model';
+import { Answer } from '@models/answer.model';
 
 export interface Question {
   id: number;

@@ -1,8 +1,8 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { User } from '@shared/models/user.model';
-import { Question } from '@shared/models/question.model';
-import { Answer } from '@shared/models/answer.model';
+import { User } from '@models/user.model';
+import { Question } from '@models/question.model';
+import { Answer } from '@models/answer.model';
 import { Observable } from 'rxjs';
 import { environment } from '@environments/environment';
 

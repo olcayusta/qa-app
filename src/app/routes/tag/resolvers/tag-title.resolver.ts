@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { Tag } from '@shared/models/tag.model';
+import { Tag } from '@models/tag.model';
 
 @Injectable({
   providedIn: 'root'

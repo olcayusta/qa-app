@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
-import { Answer } from '@shared/models/answer.model';
+import { Answer } from '@models/answer.model';
 import { ActivatedRoute, RouterLinkWithHref } from '@angular/router';
 import { RelativeTimeFormatPipe } from '@shared/pipes/relative-time-format.pipe';
 import { NgForOf } from '@angular/common';

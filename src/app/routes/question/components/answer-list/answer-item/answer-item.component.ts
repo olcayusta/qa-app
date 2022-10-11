@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
-import { Answer } from '@shared/models/answer.model';
+import { Answer } from '@models/answer.model';
 import { AnswerService } from '@shared/services/answer.service';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';

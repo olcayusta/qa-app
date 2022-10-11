@@ -2,7 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { Resolve, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 import { QuestionService } from './question.service';
-import { Question } from '@shared/models/question.model';
+import { Question } from '@models/question.model';
 
 @Injectable({
   providedIn: 'root'

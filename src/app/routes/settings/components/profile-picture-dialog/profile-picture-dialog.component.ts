@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
 import { AuthService } from '@auth/auth.service';
-import { User } from '@shared/models/user.model';
+import { User } from '@models/user.model';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 

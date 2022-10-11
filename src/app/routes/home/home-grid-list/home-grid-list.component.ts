@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, OnDestroy, ChangeDetectorRef } from '@angular/core';
-import { Question } from '@shared/models/question.model';
+import { Question } from '@models/question.model';
 import { BehaviorSubject, first, Observable, Subscription, take } from 'rxjs';
 import { FilterService } from '@shared/services/filter.service';
 import { ActivatedRoute } from '@angular/router';

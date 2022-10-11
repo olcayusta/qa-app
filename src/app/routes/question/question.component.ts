@@ -8,7 +8,7 @@ import {
   ViewChild,
   ViewContainerRef
 } from '@angular/core';
-import { Question } from '@shared/models/question.model';
+import { Question } from '@models/question.model';
 import { ActivatedRoute, RouterLinkWithHref } from '@angular/router';
 import { AnswerService } from '@shared/services/answer.service';
 import { StateService } from '@shared/services/state.service';

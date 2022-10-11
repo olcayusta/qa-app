@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { Question } from '@shared/models/question.model';
+import { Question } from '@models/question.model';
 import { Observable, tap } from 'rxjs';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RevisionService } from '@shared/services/revision.service';

@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Tag } from '@shared/models/tag.model';
+import { Tag } from '@models/tag.model';
 import { TagListItemComponent } from '../tag-list-item/tag-list-item.component';
 import { NgForOf } from '@angular/common';
 

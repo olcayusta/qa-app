@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { User } from '@shared/models/user.model';
+import { User } from '@models/user.model';
 import { UserListItemComponent } from '../user-list-item/user-list-item.component';
 import { NgForOf } from '@angular/common';
 

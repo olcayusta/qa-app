@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
-import { User } from '@shared/models/user.model';
+import { User } from '@models/user.model';
 import { HttpClient, HttpContext } from '@angular/common/http';
 import { BYPASS_ERROR } from '../core/interceptors/http-error.interceptor';
 import { environment } from '@environments/environment';

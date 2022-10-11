@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { User } from '@shared/models/user.model';
+import { User } from '@models/user.model';
 import { AuthService } from '@auth/auth.service';
 import { SocketService } from '@shared/services/socket.service';
 import { MatListModule } from '@angular/material/list';

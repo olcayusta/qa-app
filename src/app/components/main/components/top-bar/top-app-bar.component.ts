@@ -7,7 +7,7 @@ import {
   Output,
   Type
 } from '@angular/core';
-import { User } from '@shared/models/user.model';
+import { User } from '@models/user.model';
 import { AuthService } from '@auth/auth.service';
 import { Observable } from 'rxjs';
 import { StateService } from '@shared/services/state.service';

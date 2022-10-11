@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
-import { Tag } from '@shared/models/tag.model';
+import { Tag } from '@models/tag.model';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';

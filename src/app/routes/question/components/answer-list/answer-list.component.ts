@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 import { AnswerService } from '@shared/services/answer.service';
 import { Observable, tap } from 'rxjs';
-import { Answer } from '@shared/models/answer.model';
+import { Answer } from '@models/answer.model';
 import { ActivatedRoute } from '@angular/router';
 import { AsyncPipe, NgForOf, NgIf, ViewportScroller } from '@angular/common';
 import { AnswerItemComponent } from './answer-item/answer-item.component';

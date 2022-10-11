@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { Question } from '@shared/models/question.model';
-import { Tag } from '@shared/models/tag.model';
+import { Question } from '@models/question.model';
+import { Tag } from '@models/tag.model';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatDividerModule } from '@angular/material/divider';
 import { RelativeTimeFormatPipe } from '@shared/pipes/relative-time-format.pipe';

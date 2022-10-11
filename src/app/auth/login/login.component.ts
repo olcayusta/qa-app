@@ -4,7 +4,7 @@ import { AuthService } from '../auth.service';
 import { Router, RouterLinkWithHref } from '@angular/router';
 import { catchError } from 'rxjs/operators';
 import { EMPTY } from 'rxjs';
-import { User } from '@shared/models/user.model';
+import { User } from '@models/user.model';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NgIf } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';

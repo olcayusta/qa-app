@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, OnInit, Type } from '@angular/core';
 import { OverlayModule, ScrollStrategy, ScrollStrategyOptions } from '@angular/cdk/overlay';
-import { User } from '@shared/models/user.model';
+import { User } from '@models/user.model';
 import { AuthService } from '@auth/auth.service';
 
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';

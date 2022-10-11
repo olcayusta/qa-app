@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
-import { Comment } from '@shared/models/comment.model';
+import { Comment } from '@models/comment.model';
 import { CommentService } from '@shared/services/comment.service';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';

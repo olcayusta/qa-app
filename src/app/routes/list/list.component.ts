@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { Question } from '@shared/models/question.model';
+import { Question } from '@models/question.model';
 import { Observable } from 'rxjs';
 import { shareReplay } from 'rxjs/operators';
 import { AuthService } from '@auth/auth.service';

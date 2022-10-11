@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
-import { Question } from '@shared/models/question.model';
+import { Question } from '@models/question.model';
 import { ActivatedRoute } from '@angular/router';
 import { NgForOf } from '@angular/common';
 

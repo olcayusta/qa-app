@@ -1,4 +1,4 @@
-import { User } from '@shared/models/user.model';
+import { User } from '@models/user.model';
 
 export interface ILogin {
   user: User;

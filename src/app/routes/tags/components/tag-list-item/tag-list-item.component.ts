@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
-import { Tag } from '@shared/models/tag.model';
+import { Tag } from '@models/tag.model';
 import { MatIconModule } from '@angular/material/icon';
 import { NgClass, NgIf } from '@angular/common';
 

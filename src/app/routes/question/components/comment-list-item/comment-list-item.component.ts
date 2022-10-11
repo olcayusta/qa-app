@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
-import { Comment } from '@shared/models/comment.model';
+import { Comment } from '@models/comment.model';
 import { MatDividerModule } from '@angular/material/divider';
 import { RelativeTimeFormatPipe } from '@shared/pipes/relative-time-format.pipe';
 import { RouterLinkWithHref } from '@angular/router';

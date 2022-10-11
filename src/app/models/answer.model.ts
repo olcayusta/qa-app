@@ -1,5 +1,5 @@
 import { User } from './user.model';
-import { Question } from '@shared/models/question.model';
+import { Question } from '@models/question.model';
 
 export interface Answer {
   id: number;

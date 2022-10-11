@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { Tag } from '@shared/models/tag.model';
+import { Tag } from '@models/tag.model';
 import { Observable } from 'rxjs';
 import { WatchedTagService } from './watched-tag.service';
 import { AsyncPipe, NgForOf } from '@angular/common';

@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
-import { Tag } from '@shared/models/tag.model';
+import { Tag } from '@models/tag.model';
 import { ActivatedRoute } from '@angular/router';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { TagsService } from './tags.service';

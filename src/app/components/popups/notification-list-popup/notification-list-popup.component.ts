@@ -3,7 +3,7 @@ import { MatListModule } from '@angular/material/list';
 import { NotificationService } from '@shared/services/notification.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Observable } from 'rxjs';
-import { Notification } from '@shared/models/notification.model';
+import { Notification } from '@models/notification.model';
 import { AsyncPipe, NgForOf, NgIf } from '@angular/common';
 import { RelativeTimeFormatPipe } from '@shared/pipes/relative-time-format.pipe';
 

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '@environments/environment';
-import { Question } from '../models/question.model';
-import { Tag } from '@shared/models/tag.model';
-import { User } from '@shared/models/user.model';
+import { Question } from '@models/question.model';
+import { Tag } from '@models/tag.model';
+import { User } from '@models/user.model';
 
 export interface ISearchResult {
   questions: Question[];

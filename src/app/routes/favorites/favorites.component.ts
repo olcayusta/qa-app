@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FavoriteService } from './favorite.service';
-import { Question } from '@shared/models/question.model';
+import { Question } from '@models/question.model';
 import { Observable } from 'rxjs';
 import { AsyncPipe, NgForOf } from '@angular/common';
 

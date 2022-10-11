@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
-import { User } from '@shared/models/user.model';
+import { User } from '@models/user.model';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { MatExpansionModule } from '@angular/material/expansion';

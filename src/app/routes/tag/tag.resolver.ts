@@ -2,7 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 import { TagService } from './tag.service';
-import { Tag } from '@shared/models/tag.model';
+import { Tag } from '@models/tag.model';
 
 @Injectable({
   providedIn: 'root'
