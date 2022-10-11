@@ -24,8 +24,8 @@ export class FeedbackDialogComponent {
   feedbackForm!: FormGroup;
 
   formControl = new FormControl(null, {
-    updateOn: 'submit',
-    validators: [Validators.required]
+    validators: [Validators.required],
+    updateOn: 'submit'
   });
 
   constructor(private formBuilder: FormBuilder) {

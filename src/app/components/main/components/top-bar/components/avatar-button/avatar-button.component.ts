@@ -22,10 +22,8 @@ import { ImgShadowComponent } from '@components/img-shadow/img-shadow.component'
 export class AvatarButtonComponent implements OnInit {
   user!: User;
   popupOpened = false;
-
   componentType!: Type<UserProfilePopupComponent>;
   scrollStrategy: ScrollStrategy = this.sso.block();
-
   isHandset$!: Observable<boolean>;
 
   constructor(

@@ -11,7 +11,8 @@
       "@components/*": ["src/app/components/*"],
       "@modules/*": ["src/app/modules/*"],
       "@dialogs/*": ["src/app/components/dialogs/*"],
-      "@popups/*": ["src/app/components/popups/*"]
+      "@popups/*": ["src/app/components/popups/*"],
+      "@models/*": ["src/app/models/*"],
     },
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",

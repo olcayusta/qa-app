@@ -1,9 +1,9 @@
 import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Event, NavigationCancel, NavigationError, ResolveEnd, ResolveStart, Router } from '@angular/router';
-import { SpinnerService } from '@shared/services/spinner.service';
 import { AsyncPipe, NgIf } from '@angular/common';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { ProgressBarService } from '@shared/services/progress-bar.service';
 
 @Component({
   selector: 'app-progress-bar',
@@ -17,19 +17,19 @@ export class ProgressBarComponent implements OnInit {
   spinner$!: Observable<boolean>;
 
   private router = inject(Router);
-  private spinnerService = inject(SpinnerService);
+  private progressBarService = inject(ProgressBarService);
 
   ngOnInit(): void {
     this.router.events.subscribe((event: Event) => {
       if (event instanceof ResolveStart) {
-        this.spinnerService.show();
+        this.progressBarService.show();
       }
 
       if (event instanceof ResolveEnd || event instanceof NavigationCancel || event instanceof NavigationError) {
-        this.spinnerService.hide();
+        this.progressBarService.hide();
       }
     });
 
-    this.spinner$ = this.spinnerService.subject$;
+    this.spinner$ = this.progressBarService.subject$;
   }
 }
