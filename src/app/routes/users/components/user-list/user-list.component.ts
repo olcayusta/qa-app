@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { User } from '@models/user.model';
 import { UserListItemComponent } from '../user-list-item/user-list-item.component';
@@ -12,12 +12,14 @@ import { NgForOf } from '@angular/common';
   styleUrls: ['./user-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class UserListComponent implements OnInit {
-  users!: User[];
+export class UserListComponent {
+  users: User[] = inject(ActivatedRoute).snapshot.data['users'];
+
+/*  users!: User[];
 
   data = inject(ActivatedRoute).snapshot.data['users'];
 
   ngOnInit(): void {
     this.users = this.data;
-  }
+  }*/
 }

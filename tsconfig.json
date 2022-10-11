@@ -13,6 +13,7 @@
       "@dialogs/*": ["src/app/components/dialogs/*"],
       "@popups/*": ["src/app/components/popups/*"],
       "@models/*": ["src/app/models/*"],
+      "@functions": ["src/app/functions"],
     },
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
