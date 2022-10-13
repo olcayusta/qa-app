@@ -4,18 +4,19 @@ import { environment } from '@environments/environment';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { AppComponent } from './app/app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient } from '@angular/common/http';
 import { JwtInterceptor } from '@auth/interceptors/jwt.interceptor';
 import { HttpErrorInterceptor } from './app/core/interceptors/http-error.interceptor';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import { MAT_ICON_DEFAULT_OPTIONS } from '@angular/material/icon';
 import { provideRouter, TitleStrategy, withInMemoryScrolling, withRouterConfig } from '@angular/router';
 import { AppTitleStrategy } from './app/core/app-title.strategy';
-import { provideAnimations, BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { provideAnimations } from '@angular/platform-browser/animations';
 import { APP_ROUTES } from './app/app.routes';
 
 bootstrapApplication(AppComponent, {
   providers: [
+    provideHttpClient(),
     provideAnimations(),
     provideRouter(
       APP_ROUTES,
@@ -28,7 +29,6 @@ bootstrapApplication(AppComponent, {
       })
     ),
     importProvidersFrom(
-      HttpClientModule,
       ServiceWorkerModule.register('ngsw-worker.js', {
         enabled: environment.production,
         registrationStrategy: 'registerWhenStable:30000'
@@ -59,4 +59,4 @@ bootstrapApplication(AppComponent, {
       useClass: AppTitleStrategy
     }
   ]
-}).catch((err) => console.error(err));
+})

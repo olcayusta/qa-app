@@ -1,18 +1,30 @@
-import { Directive, ElementRef, EmbeddedViewRef, inject, Input, ViewContainerRef } from '@angular/core';
+import {
+  ApplicationRef,
+  Directive,
+  ElementRef,
+  EmbeddedViewRef, EnvironmentInjector,
+  inject,
+  Input,
+  ViewContainerRef
+} from '@angular/core';
 import { SiteCodeComponent } from '@components/site-code/site-code.component';
 
 @Directive({
-  selector: '[qaHeroDelay]',
+  selector: '[appHeroDelay]',
   standalone: true
 })
 export class HeroDelayDirective {
+
+  constructor(private appRef: ApplicationRef, private injector: EnvironmentInjector) {
+  }
+
   fakeDiv: HTMLDivElement = document.createElement('div');
 
   private viewContainerRef = inject(ViewContainerRef);
   private elementRef: HTMLElement = inject(ElementRef).nativeElement;
 
   @Input()
-  set qaHeroDelay(value: string) {
+  set appHeroDelay(value: string) {
     console.log('triggered.')
     this.fakeDiv.innerHTML = value;
 
