@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { User } from '@models/user.model';
-import { ActivatedRoute, RouterLinkActive, RouterLinkWithHref, RouterOutlet } from '@angular/router';
+import { ActivatedRoute, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { NgForOf } from '@angular/common';
 import { RelativeTimeFormatPipe } from '@shared/pipes/relative-time-format.pipe';
 import { MyDatePipe } from '@shared/pipes/my-date.pipe';
@@ -20,7 +20,7 @@ import { ImgShadowComponent } from '@shared/components/img-shadow/img-shadow.com
     RouterOutlet,
     NgForOf,
     RouterLinkActive,
-    RouterLinkWithHref
+    RouterLink
   ],
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss'],
