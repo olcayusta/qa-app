@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { RouterLinkActive, RouterLinkWithHref } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { DrawerService } from '../../services/drawer.service';
 import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -18,8 +18,8 @@ import { GfIconComponent } from '@components/gf-icon/gf-icon.component';
     MatDividerModule,
     MatDialogModule,
     RouterLinkActive,
-    RouterLinkWithHref,
-    GfIconComponent
+    GfIconComponent,
+    RouterLink
   ],
   templateUrl: './nav-drawer.component.html',
   styleUrls: ['./nav-drawer.component.scss'],

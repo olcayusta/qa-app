@@ -8,12 +8,12 @@ import { RelativeTimeFormatPipe } from '@shared/pipes/relative-time-format.pipe'
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { AsyncPipe, NgForOf, NgIf } from '@angular/common';
-import { RouterLinkWithHref } from '@angular/router';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [RelativeTimeFormatPipe, MatIconModule, MatDividerModule, NgForOf, AsyncPipe, NgIf, RouterLinkWithHref],
+  imports: [RelativeTimeFormatPipe, MatIconModule, MatDividerModule, NgForOf, AsyncPipe, NgIf, RouterLink],
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

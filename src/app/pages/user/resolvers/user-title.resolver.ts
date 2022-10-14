@@ -12,3 +12,8 @@ export class UserTitleResolver implements Resolve<string> {
     return of(user.displayName);
   }
 }
+
+export const userTitleResolverFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<string> => {
+  const { user } = route.parent?.data as { user: User };
+  return of(user.displayName);
+};
