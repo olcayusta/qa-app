@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '@auth/auth.service';
 import { Router, RouterLink } from '@angular/router';
 import { catchError } from 'rxjs/operators';
@@ -18,7 +18,6 @@ import { GfIconComponent } from '@components/gf-icon/gf-icon.component';
   standalone: true,
   imports: [
     ReactiveFormsModule,
-    LoginComponent,
     PasswordFormComponent,
     MatInputModule,
     MatProgressBarModule,

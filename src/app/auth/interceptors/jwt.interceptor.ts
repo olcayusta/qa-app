@@ -1,8 +1,33 @@
-import { Injectable } from '@angular/core';
-import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpContextToken } from '@angular/common/http';
+import { inject, Injectable } from '@angular/core';
+import {
+  HttpRequest,
+  HttpHandler,
+  HttpEvent,
+  HttpInterceptor,
+  HttpContextToken,
+  HttpHandlerFn
+} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AuthService } from '../auth.service';
 import { environment } from '@environments/environment';
+
+export function jwtInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn): Observable<HttpEvent<unknown>> {
+  const authService = inject(AuthService);
+
+  const currentUser = authService.userValue;
+  const isLoggedIn = currentUser && currentUser.token;
+  const isApiUrl = req.url.startsWith(environment.apiUrl);
+  if (isLoggedIn && isApiUrl) {
+    req = req.clone({
+      setHeaders: {
+        Authorization: `Bearer ${currentUser.token}`
+      }
+    });
+  }
+
+  return next(req);
+}
+
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
