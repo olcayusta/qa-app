@@ -11,12 +11,12 @@ export class FavoriteService {
   private http = inject(HttpClient);
 
   addToFavorite(questionId: number): Observable<Question> {
-    return this.http.post<Question>(`${environment.apiUrl}/bookmarks`, {
+    return this.http.post<Question>(`${environment.API_URL}/bookmarks`, {
       questionId
     });
   }
 
   getFavoriteQuestions(): Observable<Question[]> {
-    return this.http.get<Question[]>(`${environment.apiUrl}/me/bookmarks`);
+    return this.http.get<Question[]>(`${environment.API_URL}/me/bookmarks`);
   }
 }
