@@ -4,9 +4,9 @@ import { ActivatedRoute, RouterLinkActive, RouterLinkWithHref, RouterOutlet } fr
 import { NgForOf } from '@angular/common';
 import { RelativeTimeFormatPipe } from '@shared/pipes/relative-time-format.pipe';
 import { MyDatePipe } from '@shared/pipes/my-date.pipe';
-import { ImgShadowComponent } from '@components/img-shadow/img-shadow.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
+import { ImgShadowComponent } from '@shared/components/img-shadow/img-shadow.component';
 
 @Component({
   selector: 'app-user',

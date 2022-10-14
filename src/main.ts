@@ -1,6 +1,5 @@
-import { importProvidersFrom } from '@angular/core';
+import { importProvidersFrom, isDevMode } from '@angular/core';
 
-import { environment } from '@environments/environment';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { AppComponent } from './app/app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -30,7 +29,7 @@ bootstrapApplication(AppComponent, {
     ),
     importProvidersFrom(
       ServiceWorkerModule.register('ngsw-worker.js', {
-        enabled: environment.production,
+        enabled: !isDevMode(),
         registrationStrategy: 'registerWhenStable:30000'
       })
     ),

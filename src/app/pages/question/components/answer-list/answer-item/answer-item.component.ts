@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 import { Answer } from '@models/answer.model';
 import { AnswerService } from '@shared/services/answer.service';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AnswerItemCommentListComponent } from './answer-item-comment-list/answer-item-comment-list.component';
 import { HeroDelayDirective } from '../../../directives/hero-delay.directive';
@@ -9,7 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { HighlightElementDirective } from '@shared/directives/highlight-element.directive';
 import { RelativeTimeFormatPipe } from '@shared/pipes/relative-time-format.pipe';
-import { ImgShadowComponent } from '@components/img-shadow/img-shadow.component';
+import { ImgShadowComponent } from '@shared/components/img-shadow/img-shadow.component';
 
 @Component({
   selector: 'app-answer-item',
@@ -17,12 +17,12 @@ import { ImgShadowComponent } from '@components/img-shadow/img-shadow.component'
   imports: [
     AnswerItemCommentListComponent,
     HeroDelayDirective,
-    RouterModule,
     MatButtonModule,
     MatIconModule,
     ImgShadowComponent,
     HighlightElementDirective,
-    RelativeTimeFormatPipe
+    RelativeTimeFormatPipe,
+    RouterLink
   ],
   templateUrl: './answer-item.component.html',
   styleUrls: ['./answer-item.component.scss'],
@@ -33,7 +33,8 @@ export class AnswerItemComponent {
   @Input() acceptedAnswer!: boolean;
   @Input() questionId!: number;
 
-  constructor(private answerService: AnswerService, private route: ActivatedRoute, private snackBar: MatSnackBar) {}
+  constructor(private answerService: AnswerService, private route: ActivatedRoute, private snackBar: MatSnackBar) {
+  }
 
   acceptAnswer() {
     const questionId = Number(this.route.snapshot.paramMap.get('questionId'));

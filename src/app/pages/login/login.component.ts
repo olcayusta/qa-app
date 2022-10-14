@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, UntypedFormGroup, Validators } from '@angular/forms';
 import { AuthService } from '@auth/auth.service';
-import { Router, RouterLinkWithHref } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { catchError } from 'rxjs/operators';
 import { EMPTY } from 'rxjs';
 import { User } from '@models/user.model';
@@ -24,8 +24,8 @@ import { GfIconComponent } from '@components/gf-icon/gf-icon.component';
     MatProgressBarModule,
     MatButtonModule,
     NgIf,
-    RouterLinkWithHref,
-    GfIconComponent
+    GfIconComponent,
+    RouterLink
   ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],

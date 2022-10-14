@@ -3,7 +3,7 @@ import { Comment } from '@models/comment.model';
 import { MatDividerModule } from '@angular/material/divider';
 import { RelativeTimeFormatPipe } from '@shared/pipes/relative-time-format.pipe';
 import { RouterLinkWithHref } from '@angular/router';
-import { ImgShadowComponent } from '@components/img-shadow/img-shadow.component';
+import { ImgShadowComponent } from '@shared/components/img-shadow/img-shadow.component';
 
 @Component({
   selector: 'app-comment-list-item',

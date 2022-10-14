@@ -9,7 +9,7 @@ import {
   ViewContainerRef
 } from '@angular/core';
 import { Question } from '@models/question.model';
-import { ActivatedRoute, RouterLinkWithHref } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { AnswerService } from '@shared/services/answer.service';
 import { StateService } from '@shared/services/state.service';
 import { Observable, Subscription, tap } from 'rxjs';
@@ -30,9 +30,9 @@ import { CommentListComponent } from './components/comment-list/comment-list.com
 import { QuestionTextComponent } from './components/question-text/question-text.component';
 import { EditorButtonsComponent } from './components/answer-form/editor-buttons/editor-buttons.component';
 import { MatCardModule } from '@angular/material/card';
-import { ImgShadowComponent } from '@components/img-shadow/img-shadow.component';
 import { RelativeTimeFormatPipe } from '@shared/pipes/relative-time-format.pipe';
 import { MatButtonModule } from '@angular/material/button';
+import { ImgShadowComponent } from '@shared/components/img-shadow/img-shadow.component';
 
 @Component({
   selector: 'app-question',
@@ -49,8 +49,8 @@ import { MatButtonModule } from '@angular/material/button';
     MatDialogModule,
     AsyncPipe,
     NgIf,
-    RouterLinkWithHref,
-    MatButtonModule
+    MatButtonModule,
+    RouterLink
   ],
   templateUrl: './question.component.html',
   styleUrls: ['./question.component.scss'],

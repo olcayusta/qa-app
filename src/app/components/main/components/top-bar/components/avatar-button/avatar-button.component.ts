@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 import { NgComponentOutlet } from '@angular/common';
 import { PopupContainerComponent } from '@components/popup-container/popup-container.component';
 import { UserProfilePopupComponent } from '@popups/user-profile-popup/user-profile-popup.component';
-import { ImgShadowComponent } from '@components/img-shadow/img-shadow.component';
+import { ImgShadowComponent } from '@shared/components/img-shadow/img-shadow.component';
 
 @Component({
   selector: 'app-avatar-button',

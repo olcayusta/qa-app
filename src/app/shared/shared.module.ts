@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeQuestionListItemComponent } from '@components/home-question-list-item/home-question-list-item.component';
 import { RouterModule } from '@angular/router';
-import { ImgShadowComponent } from '@components/img-shadow/img-shadow.component';
+import { ImgShadowComponent } from '@components/components/img-shadow/img-shadow.component';
 import { RelativeTimeFormatPipe } from './pipes/relative-time-format.pipe';
 import { HighlightElementDirective } from './directives/highlight-element.directive';
 import { SelectedTagPipe } from './pipes/selected-tag.pipe';

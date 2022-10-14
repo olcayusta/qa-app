@@ -6,7 +6,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { RelativeTimeFormatPipe } from '@shared/pipes/relative-time-format.pipe';
 import { NgForOf, NgIf } from '@angular/common';
 import { RouterLinkWithHref } from '@angular/router';
-import { ImgShadowComponent } from '@components/img-shadow/img-shadow.component';
+import { ImgShadowComponent } from '@shared/components/img-shadow/img-shadow.component';
 
 @Component({
   selector: 'app-home-question-list-item',
