@@ -22,7 +22,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 import { StickyDirective } from './components/top-bar/directives/sticky.directive';
 import { ExtendedFabDirective } from './directives/extended-fab.directive';
 import { MatButtonModule } from '@angular/material/button';
-import { GfIconComponent } from '../gf-icon/gf-icon.component';
+import { IconComponent } from '@components/icon/icon.component';
 
 @Component({
   selector: 'app-main',
@@ -35,8 +35,8 @@ import { GfIconComponent } from '../gf-icon/gf-icon.component';
     MatButtonModule,
     NgComponentOutlet,
     RouterOutlet,
-    GfIconComponent,
-    RouterLink
+    RouterLink,
+    IconComponent
   ],
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss'],
@@ -50,7 +50,6 @@ export default class MainComponent implements OnInit, AfterViewInit {
   @ViewChild('sheet') sidenavSheet!: MatSidenav;
   @ViewChild('navDrawerComponentRef', { read: ViewContainerRef })
   navDrawerComponentRef!: ViewContainerRef;
-
   NavDrawerComponent!: Type<NavDrawerComponent>;
   SideSheetComponent!: Type<SideSheetComponent>;
 
@@ -67,7 +66,7 @@ export default class MainComponent implements OnInit, AfterViewInit {
     private snackBar: MatSnackBar,
     private breakpointObserver: BreakpointObserver,
     private renderer: Renderer2,
-    private cd: ChangeDetectorRef,
+    private changeDetectorRef: ChangeDetectorRef,
     private drawerService: DrawerService,
     private socketService: SocketService
   ) {
@@ -115,7 +114,7 @@ export default class MainComponent implements OnInit, AfterViewInit {
   async loadNavDrawerComponent() {
     const { NavDrawerComponent } = await import('./components/nav-drawer/nav-drawer.component');
     this.NavDrawerComponent = NavDrawerComponent;
-    this.cd.markForCheck();
+    this.changeDetectorRef.markForCheck();
   }
 
   sheetOpenedStart(): void {
@@ -131,9 +130,6 @@ export default class MainComponent implements OnInit, AfterViewInit {
   async loadSidenavSheetComponent() {
     const { SideSheetComponent } = await import('./components/side-sheet/side-sheet.component');
     this.SideSheetComponent = SideSheetComponent;
-    this.cd.markForCheck();
-  }
-
-  installApp() {
+    this.changeDetectorRef.markForCheck();
   }
 }

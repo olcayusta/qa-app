@@ -11,7 +11,7 @@ import { User } from '@models/user.model';
 import { AuthService } from '@auth/auth.service';
 import { Observable } from 'rxjs';
 import { StateService } from '@shared/services/state.service';
-import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { SearchFormComponent } from './components/search-form/search-form.component';
 import { NotificationButtonComponent } from './components/notification-button/notification-button.component';
 import { AvatarButtonComponent } from './components/avatar-button/avatar-button.component';
@@ -70,7 +70,7 @@ export class TopAppBarComponent implements OnInit {
     private authService: AuthService,
     private stateService: StateService,
     private breakpointObserver: BreakpointObserver,
-    private cdr: ChangeDetectorRef,
+    private changeDetectorRef: ChangeDetectorRef,
     private drawerService: DrawerService,
     private router: Router
   ) {
@@ -89,7 +89,7 @@ export class TopAppBarComponent implements OnInit {
       this.NotificationButtonComponent = NotificationButtonComponent;
 
       this.componentsLoaded = true;
-      this.cdr.markForCheck();
+      this.changeDetectorRef.markForCheck();
     }
 
     /**
@@ -127,11 +127,11 @@ export class TopAppBarComponent implements OnInit {
   async loadSearchFormComponent() {
     const { SearchFormComponent } = await import('./components/search-form/search-form.component');
     this.searchFormComponentOutlet = SearchFormComponent;
-    this.cdr.markForCheck();
+    this.changeDetectorRef.markForCheck();
   }
 
-  onMenuBtnClickedOpenSidenav() {
-    this.drawerService.toggle();
+  async toggleSidenav() {
+    await this.drawerService.toggle();
   }
 
   signInButtonClicked() {
