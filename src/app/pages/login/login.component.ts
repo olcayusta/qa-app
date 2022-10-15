@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     // private tagService: TagService,
     private router: Router,
-    private cd: ChangeDetectorRef
+    private cdr: ChangeDetectorRef
   ) {
     this.loginForm = this.formBuilder.group(
       {
@@ -78,7 +78,7 @@ export class LoginComponent implements OnInit {
             email.setErrors({
               emailNotFound: true
             });
-            this.cd.markForCheck();
+            this.cdr.markForCheck();
             return EMPTY;
           })
         )

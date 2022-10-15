@@ -63,8 +63,8 @@ export class TopAppBarComponent implements OnInit {
   componentsLoaded = false;
 
   searchFormComponentOutlet!: Type<SearchFormComponent>;
-  notificationButtonOutlet!: Type<NotificationButtonComponent>;
-  avatarButtonOutlet!: Type<AvatarButtonComponent>;
+  NotificationButtonComponent!: Type<NotificationButtonComponent>;
+  AvatarButtonComponent!: Type<AvatarButtonComponent>;
 
   constructor(
     private authService: AuthService,
@@ -85,8 +85,8 @@ export class TopAppBarComponent implements OnInit {
         this.loadAvatarButtonComponent()
       ]);
 
-      this.avatarButtonOutlet = AvatarButtonComponent;
-      this.notificationButtonOutlet = NotificationButtonComponent;
+      this.AvatarButtonComponent = AvatarButtonComponent;
+      this.NotificationButtonComponent = NotificationButtonComponent;
 
       this.componentsLoaded = true;
       this.cdr.markForCheck();

@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { DrawerService } from '../../services/drawer.service';
@@ -25,7 +25,7 @@ import { IconComponent } from '@components/icon/icon.component';
   styleUrls: ['./nav-drawer.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NavDrawerComponent implements OnInit {
+export class NavDrawerComponent {
   private pages = [
     { label: 'Ana sayfa', link: '/' },
     { label: 'Kullanıcılar', link: '/users' },
@@ -33,9 +33,6 @@ export class NavDrawerComponent implements OnInit {
   ];
 
   constructor(private dialog: MatDialog, private drawerService: DrawerService) {
-  }
-
-  ngOnInit(): void {
   }
 
   onClicked(): void {

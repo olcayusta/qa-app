@@ -3,13 +3,13 @@ import { User } from '@models/user.model';
 import { AuthService } from '@auth/auth.service';
 import { SocketService } from '@shared/services/socket.service';
 import { MatListModule } from '@angular/material/list';
-import { RouterLinkWithHref } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { IconComponent } from '@components/icon/icon.component';
 
 @Component({
   selector: 'app-user-profile-popup',
   standalone: true,
-  imports: [MatListModule, RouterLinkWithHref, IconComponent],
+  imports: [MatListModule, RouterLink, IconComponent],
   templateUrl: './user-profile-popup.component.html',
   styleUrls: ['./user-profile-popup.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

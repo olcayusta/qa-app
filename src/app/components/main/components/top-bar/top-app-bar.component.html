@@ -31,10 +31,10 @@
           </button>
 
           <!-- Notification Button -->
-          <ng-container *ngComponentOutlet='notificationButtonOutlet'></ng-container>
+          <ng-container *ngComponentOutlet='NotificationButtonComponent'></ng-container>
 
           <!-- Avatar Button -->
-          <ng-container *ngComponentOutlet='avatarButtonOutlet'></ng-container>
+          <ng-container *ngComponentOutlet='AvatarButtonComponent'></ng-container>
         </ng-container>
 
         <ng-container *ngIf='(isHandset$ | async)'>
@@ -44,10 +44,10 @@
           </a>
 
           <!-- Notification Button -->
-          <ng-container *ngComponentOutlet='notificationButtonOutlet'></ng-container>
+          <ng-container *ngComponentOutlet='NotificationButtonComponent'></ng-container>
 
           <!-- Avatar Button -->
-          <ng-container *ngComponentOutlet='avatarButtonOutlet'></ng-container>
+          <ng-container *ngComponentOutlet='AvatarButtonComponent'></ng-container>
         </ng-container>
       </ng-container>
 

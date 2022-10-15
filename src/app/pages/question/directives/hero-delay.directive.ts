@@ -25,7 +25,7 @@ export class HeroDelayDirective {
 
   @Input()
   set appHeroDelay(value: string) {
-    console.log('triggered.')
+    console.log('triggered.');
     this.fakeDiv.innerHTML = value;
 
     Array.from(this.fakeDiv.children).forEach((el) => {
