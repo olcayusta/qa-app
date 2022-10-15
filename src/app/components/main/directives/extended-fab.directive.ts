@@ -11,13 +11,13 @@ export class ExtendedFabDirective implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.hideFabOnScrollDown();
+      this.hideFabWhenScrollDown();
   }
 
   /**
    * If mobile, the extended fab will be hidden by scroll position.
    */
-  hideFabOnScrollDown() {
+  hideFabWhenScrollDown() {
     fromEvent(window, 'scroll')
       .pipe(
         map(() => window.scrollY),
@@ -28,9 +28,9 @@ export class ExtendedFabDirective implements AfterViewInit {
       )
       .subscribe((value) => {
         const { nativeElement } = this.elementRef;
-        if (value) {
+        if (value)
           this.renderer.addClass(nativeElement, 'mini-fab');
-        } else {
+         else {
           this.renderer.removeClass(nativeElement, 'mini-fab');
         }
       });
