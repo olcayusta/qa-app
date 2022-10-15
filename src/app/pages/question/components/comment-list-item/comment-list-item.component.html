@@ -1,6 +1,6 @@
 <div class='item'>
-  <inek-img-shadow [src]='comment.user.picture' [width]='40' [height]='40' [alt]='comment.user.displayName'
-                   class='comment-user-picture-renderer'></inek-img-shadow>
+  <app-img-shadow [src]='comment.user.picture' [width]='40' [height]='40' [alt]='comment.user.displayName'
+                   class='comment-user-picture-renderer'></app-img-shadow>
   <div class='flex-full'>
     <div class='author-info'>
       <a routerLink='/user/{{comment.user.id}}' [class.comment-badge-renderer]='comment.user.id === 12'>

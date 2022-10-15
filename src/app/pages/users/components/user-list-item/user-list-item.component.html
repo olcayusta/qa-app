@@ -1,12 +1,12 @@
 <div class='user-box'>
-  <inek-img-shadow
+  <app-img-shadow
     alt='{{ user.displayName }}'
     class='user-picture-renderer'
     [src]='user.picture'
     [width]='140'
     [height]='140'
   >
-  </inek-img-shadow>
+  </app-img-shadow>
   <div class='user-info'>
     <a routerLink='/user/{{ user.id }}'>
       <span class='user-title'>{{ user.displayName }}</span>

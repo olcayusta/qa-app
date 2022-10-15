@@ -5,13 +5,13 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatDividerModule } from '@angular/material/divider';
 import { RelativeTimeFormatPipe } from '@shared/pipes/relative-time-format.pipe';
 import { NgForOf, NgIf } from '@angular/common';
-import { RouterLinkWithHref } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { ImgShadowComponent } from '@shared/components/img-shadow/img-shadow.component';
 
 @Component({
   selector: 'app-home-question-list-item',
   standalone: true,
-  imports: [MatChipsModule, MatDividerModule, ImgShadowComponent, RelativeTimeFormatPipe, NgIf, NgForOf, RouterLinkWithHref],
+  imports: [MatChipsModule, MatDividerModule, ImgShadowComponent, RelativeTimeFormatPipe, NgIf, NgForOf, RouterLink],
   templateUrl: './home-question-list-item.component.html',
   styleUrls: ['./home-question-list-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

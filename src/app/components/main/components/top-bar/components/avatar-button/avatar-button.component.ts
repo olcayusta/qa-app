@@ -14,7 +14,7 @@ import { ImgShadowComponent } from '@shared/components/img-shadow/img-shadow.com
 @Component({
   selector: 'app-avatar-button',
   standalone: true,
-  imports: [OverlayModule, NgComponentOutlet, ImgShadowComponent, PopupContainerComponent],
+  imports: [NgComponentOutlet, ImgShadowComponent, PopupContainerComponent, OverlayModule],
   templateUrl: './avatar-button.component.html',
   styleUrls: ['./avatar-button.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

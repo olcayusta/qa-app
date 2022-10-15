@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, ElementRef, HostBinding, inject, In
 import { LazyImgDirective } from '@shared/directives/lazy-img.directive';
 
 @Component({
-  selector: 'inek-img-shadow',
+  selector: 'app-img-shadow',
   standalone: true,
   templateUrl: './img-shadow.component.html',
   styleUrls: ['./img-shadow.component.scss'],

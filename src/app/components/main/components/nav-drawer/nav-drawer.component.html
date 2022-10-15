@@ -1,6 +1,6 @@
 <mat-toolbar>
   <button mat-icon-button (click)='closeSidenav()'>
-    <app-gf-icon name='menu'></app-gf-icon>
+    <app-icon name='menu'></app-icon>
   </button>
 </mat-toolbar>
 
@@ -9,20 +9,20 @@
     <a mat-list-item routerLinkActive='active' #rla='routerLinkActive' routerLink='/'
        [routerLinkActiveOptions]='{exact: true}'
        (click)='onClicked()' title='Ana sayfa'>
-      <app-gf-icon name='home'></app-gf-icon>
+      <app-icon name='home'></app-icon>
       <span>Ana sayfa</span>
     </a>
     <a mat-list-item routerLinkActive='active' routerLink='/list' (click)='onClicked()'>
-      <app-gf-icon name='forum'></app-gf-icon>
+      <app-icon name='forum'></app-icon>
       <span>Sorularım</span>
     </a>
     <a mat-list-item routerLinkActive='active' routerLink='/favorites' (click)='onClicked()'>
-      <app-gf-icon name='favorite'></app-gf-icon>
+      <app-icon name='favorite'></app-icon>
       <span>Favorilerim</span>
     </a>
     <a mat-list-item routerLinkActive='active' routerLink='/watched_tags'
        (click)='onClicked(); openWatchedTagsDialog()'>
-      <app-gf-icon name='tag'></app-gf-icon>
+      <app-icon name='tag'></app-icon>
       <span>Favori etiketler</span>
     </a>
   </mat-nav-list>
@@ -35,30 +35,30 @@
   <mat-nav-list>
     <div matSubheader>Sayfalar</div>
     <a mat-list-item routerLinkActive='active' routerLink='/users' (click)='onClicked()'>
-      <app-gf-icon name='people'></app-gf-icon>
+      <app-icon name='people'></app-icon>
       <span>Kullanıcılar</span>
     </a>
     <a mat-list-item routerLinkActive='active' routerLink='/tags' (click)='onClicked()'>
-      <app-gf-icon name='label'></app-gf-icon>
+      <app-icon name='label'></app-icon>
       <span>Etiketler</span>
     </a>
   </mat-nav-list>
   <mat-divider></mat-divider>
   <mat-nav-list>
     <a mat-list-item routerLinkActive='active' routerLink='/settings' (click)='onClicked()'>
-      <app-gf-icon name='settings'></app-gf-icon>
+      <app-icon name='settings'></app-icon>
       <span>Hesap & ayarlar</span>
     </a>
     <a mat-list-item routerLinkActive='active' routerLink='/flags' (click)='onClicked()'>
-      <app-gf-icon name='flag'></app-gf-icon>
+      <app-icon name='flag'></app-icon>
       <span>İçerik bildirme geçmişi</span>
     </a>
     <a mat-list-item routerLinkActive='active' routerLink='/help' (click)='onClicked()'>
-      <app-gf-icon name='help'></app-gf-icon>
+      <app-icon name='help'></app-icon>
       <span>Yardım</span>
     </a>
     <a mat-list-item routerLinkActive='active' (click)='onClicked(); openFeedbackDialog()'>
-      <app-gf-icon name='feedback'></app-gf-icon>
+      <app-icon name='feedback'></app-icon>
       <span>Geri bildirim gönder</span>
     </a>
   </mat-nav-list>

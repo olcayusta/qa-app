@@ -17,14 +17,13 @@ import { NotificationButtonComponent } from './components/notification-button/no
 import { AvatarButtonComponent } from './components/avatar-button/avatar-button.component';
 import { DrawerService } from '../../services/drawer.service';
 import { map } from 'rxjs/operators';
-import { Event, NavigationStart, Router, RouterLinkWithHref } from '@angular/router';
+import { Event, NavigationStart, Router, RouterLink } from '@angular/router';
 import { TopAppBarLogoComponent } from './components/top-app-bar-logo/top-app-bar-logo.component';
 import { AsyncPipe, NgComponentOutlet, NgIf } from '@angular/common';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { GfIconComponent } from '@components/gf-icon/gf-icon.component';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatIconModule } from '@angular/material/icon';
 import { IconComponent } from '@components/icon/icon.component';
@@ -42,8 +41,7 @@ import { IconComponent } from '@components/icon/icon.component';
     NgIf,
     AsyncPipe,
     MatTooltipModule,
-    RouterLinkWithHref,
-    GfIconComponent,
+    RouterLink,
     MatBadgeModule,
     MatIconModule,
     IconComponent

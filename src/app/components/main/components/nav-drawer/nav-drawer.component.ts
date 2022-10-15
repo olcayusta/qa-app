@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { DrawerService } from '../../services/drawer.service';
@@ -6,7 +6,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
-import { GfIconComponent } from '@components/gf-icon/gf-icon.component';
+import { IconComponent } from '@components/icon/icon.component';
 
 @Component({
   selector: 'app-nav-drawer',
@@ -18,14 +18,14 @@ import { GfIconComponent } from '@components/gf-icon/gf-icon.component';
     MatDividerModule,
     MatDialogModule,
     RouterLinkActive,
-    GfIconComponent,
+    IconComponent,
     RouterLink
   ],
   templateUrl: './nav-drawer.component.html',
   styleUrls: ['./nav-drawer.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NavDrawerComponent implements OnInit, OnDestroy {
+export class NavDrawerComponent implements OnInit {
   private pages = [
     { label: 'Ana sayfa', link: '/' },
     { label: 'Kullanıcılar', link: '/users' },
@@ -35,22 +35,7 @@ export class NavDrawerComponent implements OnInit, OnDestroy {
   constructor(private dialog: MatDialog, private drawerService: DrawerService) {
   }
 
-  ngOnDestroy() {
-    console.log('NavDrawer destroyed!');
-  }
-
   ngOnInit(): void {
-  }
-
-  async openSettingsDialog() {
-    this.drawerService.toggle();
-    /*   const { SettingsDialogComponent } = await import(
-      '@dialogs/settings-dialog/settings-dialog.component'
-    );
-    this.dialog.open(SettingsDialogComponent, {
-      autoFocus: false,
-      minWidth: 900
-    });*/
   }
 
   onClicked(): void {

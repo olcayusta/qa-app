@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 
 @Directive({
-  selector: '[inekLazyImg]',
+  selector: '[appLazyImg]',
   standalone: true
 })
 export class LazyImgDirective implements OnInit, OnDestroy, AfterViewInit {
