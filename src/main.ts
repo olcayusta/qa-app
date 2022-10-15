@@ -1,4 +1,4 @@
-import { importProvidersFrom, inject, isDevMode } from '@angular/core';
+import { importProvidersFrom, isDevMode } from '@angular/core';
 
 import { bootstrapApplication } from '@angular/platform-browser';
 import { AppComponent } from './app/app.component';

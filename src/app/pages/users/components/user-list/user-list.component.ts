@@ -1,8 +1,8 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { User } from '@models/user.model';
 import { UserListItemComponent } from '../user-list-item/user-list-item.component';
 import { NgForOf } from '@angular/common';
+import { getResolverData } from '../../../../core/router.utils';
 
 @Component({
   selector: 'app-user-list',
@@ -13,5 +13,5 @@ import { NgForOf } from '@angular/common';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UserListComponent {
-  users: User[] = inject(ActivatedRoute).snapshot.data['users'];
+  users: User[] = getResolverData('users')
 }

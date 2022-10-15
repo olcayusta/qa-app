@@ -7,8 +7,6 @@ import { MatSidenav } from '@angular/material/sidenav';
 export class DrawerService {
   private sidenav!: MatSidenav;
 
-  constructor() {}
-
   setSidenav(sidenav: MatSidenav) {
     this.sidenav = sidenav;
   }

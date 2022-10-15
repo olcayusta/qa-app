@@ -1,12 +1,13 @@
 import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { User } from '@models/user.model';
-import { ActivatedRoute, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { NgForOf } from '@angular/common';
 import { RelativeTimeFormatPipe } from '@shared/pipes/relative-time-format.pipe';
 import { MyDatePipe } from '@shared/pipes/my-date.pipe';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
 import { ImgShadowComponent } from '@shared/components/img-shadow/img-shadow.component';
+import { getResolverData } from '../../core/router.utils';
 
 @Component({
   selector: 'app-user',
@@ -26,8 +27,8 @@ import { ImgShadowComponent } from '@shared/components/img-shadow/img-shadow.com
   styleUrls: ['./user.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class UserComponent implements OnInit {
-  user!: User;
+export class UserComponent {
+  user: User = <User>getResolverData('user');
 
   links = [
     {
@@ -52,9 +53,4 @@ export class UserComponent implements OnInit {
     }
   ];
 
-  snapshotData = inject(ActivatedRoute).snapshot.data as { user: User };
-
-  ngOnInit(): void {
-    this.user = this.snapshotData.user;
-  }
 }
