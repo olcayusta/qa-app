@@ -14,9 +14,10 @@
                 </div>-->
 
         <div class='header-one'>
-
           <div>
             <h4 itemprop='name' class='headline-4'>{{question.title}}</h4>
+
+            <a routerLink='/question/120'>soruya git</a>
 
             <div class='body-2 header-one-description'>
               <p>{{question.viewCount}} görüntüleme</p>
@@ -101,7 +102,7 @@
     </div>
 
     <!-- Question Content -->
-    <inek-question-text [content]='question.content'></inek-question-text>
+    <app-question-text [content]='question.content'></app-question-text>
 
     <!-- Comments -->
     <app-comment-list></app-comment-list>

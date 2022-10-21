@@ -1,11 +1,11 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
-import { HighlightElementDirective } from '@shared/directives/highlight-element.directive';
 import { HeroDelayDirective } from '../../directives/hero-delay.directive';
+import { Herov2Directive } from '@shared/directives/herov2.directive';
 
 @Component({
-  selector: 'inek-question-text',
+  selector: 'app-question-text',
   standalone: true,
-  imports: [HeroDelayDirective, HighlightElementDirective],
+  imports: [HeroDelayDirective, Herov2Directive],
   templateUrl: './question-text.component.html',
   styleUrls: ['./question-text.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

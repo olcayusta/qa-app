@@ -9,10 +9,7 @@ import { AsyncPipe, NgForOf } from '@angular/common';
   standalone: true,
   templateUrl: './favorites.component.html',
   styleUrls: ['./favorites.component.scss'],
-  imports: [
-    NgForOf,
-    AsyncPipe
-  ],
+  imports: [NgForOf, AsyncPipe],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FavoritesComponent implements OnInit {

@@ -17,8 +17,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { AsyncPipe, NgComponentOutlet } from '@angular/common';
 import { PopupContainerComponent } from '@components/popup-container/popup-container.component';
-import { GfIconComponent } from '@components/gf-icon/gf-icon.component';
 import { NotificationListPopupComponent } from '@popups/notification-list-popup/notification-list-popup.component';
+import { IconComponent } from '@components/icon/icon.component';
 
 @Injectable()
 export class Greeter {
@@ -28,7 +28,7 @@ export class Greeter {
 @Component({
   selector: 'app-notification-button',
   standalone: true,
-  imports: [OverlayModule, MatButtonModule, MatBadgeModule, MatTooltipModule, AsyncPipe, NgComponentOutlet, GfIconComponent, PopupContainerComponent],
+  imports: [OverlayModule, MatButtonModule, MatBadgeModule, MatTooltipModule, AsyncPipe, NgComponentOutlet, IconComponent, PopupContainerComponent],
   templateUrl: './notification-button.component.html',
   styleUrls: ['./notification-button.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

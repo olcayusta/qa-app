@@ -1,4 +1,13 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  Input,
+  Output,
+  EventEmitter,
+  OnDestroy,
+  inject
+} from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
@@ -18,8 +27,7 @@ export class PopupContainerComponent implements OnInit, OnDestroy {
 
   subscription!: Subscription;
 
-  constructor(private router: Router) {
-  }
+  private router = inject(Router);
 
   ngOnInit(): void {
     this.subscription = this.router.events

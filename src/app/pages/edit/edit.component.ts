@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
 import { Question } from '@models/question.model';
 import { Observable, tap } from 'rxjs';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -32,8 +32,9 @@ export class EditComponent implements OnInit {
     { value: 'tacos-2', viewValue: 'Tacos' }
   ];
 
+  readonly formBuilder = inject(FormBuilder);
+
   constructor(
-    private formBuilder: FormBuilder,
     private revisionService: RevisionService,
     private markedService: MarkedService
   ) {

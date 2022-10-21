@@ -71,18 +71,18 @@ export class QuestionComponent implements OnInit, OnDestroy {
   subA!: Subscription;
 
   private document = inject(DOCUMENT);
+  private activatedRoute = inject(ActivatedRoute);
+  private answerService = inject(AnswerService);
+  private dialog = inject(MatDialog);
+  private sso = inject(ScrollStrategyOptions);
+  private overlay = inject(Overlay);
+  private vcr = inject(ViewContainerRef);
 
   constructor(
-    private route: ActivatedRoute,
-    private answerService: AnswerService,
     private stateService: StateService,
     private favoriteService: FavoriteService,
-    private dialog: MatDialog,
     private snackBar: MatSnackBar,
-    private sso: ScrollStrategyOptions,
     private authService: AuthService,
-    private overlay: Overlay,
-    private vcr: ViewContainerRef,
     private socketService: SocketService,
     private voteService: VoteService
   ) {
@@ -100,7 +100,7 @@ export class QuestionComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.initializeSchema();
-    this.question$ = this.route.data.pipe(
+    this.question$ = this.activatedRoute.data.pipe(
       map((data) => data['question']),
       tap(({ id: questionId }) => {
         this.questionId = questionId;

@@ -1,6 +1,5 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Tag } from '@models/tag.model';
-import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AsyncPipe, NgForOf, NgIf } from '@angular/common';
@@ -8,6 +7,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import {
   HomeQuestionListItemComponent
 } from '@components/home-question-list-item/home-question-list-item.component';
+import { getObservableData } from '../../core/router.utils';
 
 @Component({
   selector: 'app-tag',
@@ -17,13 +17,6 @@ import {
   styleUrls: ['./tag.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TagComponent implements OnInit {
-  tag$!: Observable<Tag>;
-
-  constructor(private activatedRoute: ActivatedRoute) {
-  }
-
-  ngOnInit(): void {
-    this.tag$ = this.activatedRoute.data.pipe(map(({ tag }) => tag));
-  }
+export class TagComponent {
+  tag$: Observable<Tag> = getObservableData().pipe(map(({ tag }) => tag));
 }

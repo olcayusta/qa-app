@@ -1,4 +1,4 @@
-import { AfterViewInit, Directive, ElementRef, Renderer2 } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, inject, Renderer2 } from '@angular/core';
 import { fromEvent } from 'rxjs';
 import { distinctUntilChanged, map, pairwise, startWith } from 'rxjs/operators';
 
@@ -7,11 +7,11 @@ import { distinctUntilChanged, map, pairwise, startWith } from 'rxjs/operators';
   standalone: true
 })
 export class ExtendedFabDirective implements AfterViewInit {
-  constructor(private elementRef: ElementRef, private renderer: Renderer2) {
-  }
+  private elementRef = inject(ElementRef).nativeElement;
+  private renderer = inject(Renderer2);
 
   ngAfterViewInit() {
-      this.hideFabWhenScrollDown();
+    this.hideFabWhenScrollDown();
   }
 
   /**
@@ -27,11 +27,10 @@ export class ExtendedFabDirective implements AfterViewInit {
         startWith(false)
       )
       .subscribe((value) => {
-        const { nativeElement } = this.elementRef;
         if (value)
-          this.renderer.addClass(nativeElement, 'mini-fab');
-         else {
-          this.renderer.removeClass(nativeElement, 'mini-fab');
+          this.renderer.addClass(this.elementRef, 'mini-fab');
+        else {
+          this.renderer.removeClass(this.elementRef, 'mini-fab');
         }
       });
   }

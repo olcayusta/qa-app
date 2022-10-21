@@ -4,11 +4,12 @@ import { NgIf } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { IconComponent } from '@components/icon/icon.component';
+import { IsiklandirDirective } from '@shared/directives/isiklandir.directive';
 
 @Component({
   selector: 'app-site-code',
   standalone: true,
-  imports: [MatButtonModule, MatTooltipModule, NgIf, IconComponent],
+  imports: [MatButtonModule, MatTooltipModule, NgIf, IconComponent, IsiklandirDirective],
   templateUrl: './site-code.component.html',
   styleUrls: ['./site-code.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

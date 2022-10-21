@@ -7,7 +7,7 @@ import { MyDatePipe } from '@shared/pipes/my-date.pipe';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
 import { ImgShadowComponent } from '@shared/components/img-shadow/img-shadow.component';
-import { getResolverData } from '../../core/router.utils';
+import { getResolverData, getSnapshotData } from '../core/router.utils';
 
 @Component({
   selector: 'app-user',
@@ -28,7 +28,7 @@ import { getResolverData } from '../../core/router.utils';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UserComponent {
-  user: User = <User>getResolverData('user');
+  user: User = <User>getSnapshotData('user');
 
   links = [
     {

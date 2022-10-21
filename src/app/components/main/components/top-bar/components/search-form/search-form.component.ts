@@ -8,12 +8,12 @@ import {
   MatAutocompleteSelectedEvent,
   MatAutocompleteTrigger
 } from '@angular/material/autocomplete';
-import { Router, RouterLinkWithHref } from '@angular/router';
+import { Router, RouterLink, RouterLinkWithHref } from '@angular/router';
 import { AsyncPipe, NgForOf, NgIf } from '@angular/common';
 import { HighlightSearchPipe } from './pipes/highlight-search.pipe';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { GfIconComponent } from '@components/gf-icon/gf-icon.component';
+import { IconComponent } from '@components/icon/icon.component';
 
 @Component({
   selector: 'app-search-form',
@@ -27,8 +27,8 @@ import { GfIconComponent } from '@components/gf-icon/gf-icon.component';
     AsyncPipe,
     NgForOf,
     NgIf,
-    RouterLinkWithHref,
-    GfIconComponent
+    RouterLink,
+    IconComponent
   ],
   templateUrl: './search-form.component.html',
   styleUrls: ['./search-form.component.scss'],

@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { DrawerService } from '../../services/drawer.service';
@@ -32,8 +32,8 @@ export class NavDrawerComponent {
     { label: 'Etiketler', link: '/tags' }
   ];
 
-  constructor(private dialog: MatDialog, private drawerService: DrawerService) {
-  }
+  private dialog = inject(MatDialog);
+  private drawerService = inject(DrawerService);
 
   onClicked(): void {
     this.drawerService.toggle();

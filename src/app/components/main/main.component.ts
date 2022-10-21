@@ -77,10 +77,14 @@ export default class MainComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+    this.initializeDrawerMode();
+    this.listenToAnsweredQuestions();
+  }
+
+  initializeDrawerMode() {
     this.isSmallScreen = this.breakpointObserver.isMatched('(max-width: 599px)');
     this.isSmallScreen ? (this.mode = 'over') : 'side';
     this.mode = 'side';
-    this.listenToAnsweredQuestions();
   }
 
   listenToAnsweredQuestions() {
@@ -117,6 +121,12 @@ export default class MainComponent implements OnInit, AfterViewInit {
     this.changeDetectorRef.markForCheck();
   }
 
+  async loadSidenavSheetComponent() {
+    const { SideSheetComponent } = await import('./components/side-sheet/side-sheet.component');
+    this.SideSheetComponent = SideSheetComponent;
+    this.changeDetectorRef.markForCheck();
+  }
+
   sheetOpenedStart(): void {
     if (this.isSmallScreen) {
       this.document.body.style.overflow = 'hidden';
@@ -125,11 +135,5 @@ export default class MainComponent implements OnInit, AfterViewInit {
 
   sheetClosedStart(): void {
     this.document.body.style.overflow = '';
-  }
-
-  async loadSidenavSheetComponent() {
-    const { SideSheetComponent } = await import('./components/side-sheet/side-sheet.component');
-    this.SideSheetComponent = SideSheetComponent;
-    this.changeDetectorRef.markForCheck();
   }
 }

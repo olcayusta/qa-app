@@ -14,7 +14,7 @@ export const APP_ROUTES: Routes = [
       },
       {
         path: 'users',
-        loadChildren: () => import('./pages/users/users.routes')
+        loadChildren: () => import('./users/users.routes')
       },
       {
         path: 'tags',
@@ -43,7 +43,7 @@ export const APP_ROUTES: Routes = [
       },
       {
         path: 'user/:userId',
-        loadChildren: () => import('./pages/user/user.routes')
+        loadChildren: () => import('./user/user.routes')
       },
       {
         path: 'question/:questionId',
@@ -79,14 +79,14 @@ export const APP_ROUTES: Routes = [
   },
   {
     path: '404',
-    loadChildren: () => import('./pages/page-not-found/page-not-found-routes')
+    loadChildren: () => import('./page-not-found/page-not-found-routes')
   },
   {
     path: '500',
-    loadChildren: () => import('./pages/page-internal-server-error/page-internal-server-error.routes')
+    loadChildren: () => import('./page-internal-server-error/page-internal-server-error.routes')
   },
   {
     path: '**',
-    loadChildren: () => import('./pages/page-not-found/page-not-found-routes')
+    loadChildren: () => import('./page-not-found/page-not-found-routes')
   }
 ];

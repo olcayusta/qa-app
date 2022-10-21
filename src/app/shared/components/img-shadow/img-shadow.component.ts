@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, HostBinding, inject, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, HostBinding, inject, Input, Renderer2 } from '@angular/core';
 import { LazyImgDirective } from '@shared/directives/lazy-img.directive';
 
 @Component({
@@ -6,9 +6,7 @@ import { LazyImgDirective } from '@shared/directives/lazy-img.directive';
   standalone: true,
   templateUrl: './img-shadow.component.html',
   styleUrls: ['./img-shadow.component.scss'],
-  imports: [
-    LazyImgDirective
-  ],
+  imports: [LazyImgDirective],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ImgShadowComponent {
@@ -19,12 +17,14 @@ export class ImgShadowComponent {
   @HostBinding('style.width.px') @Input() width: number = 40;
   @HostBinding('style.height.px') @Input() height: number = 40;
 
-  private elementRef = inject(ElementRef);
+  private elementRef: ElementRef<HTMLElement> = inject(ElementRef);
+  private renderer = inject(Renderer2);
 
   /**
    * Host component set attribute loaded if image is loaded
    */
   onLoad(): void {
+    // this.renderer.setAttribute(this.elementRef.nativeElement, 'loaded', '');
     this.elementRef.nativeElement.setAttribute('loaded', '');
   }
 }

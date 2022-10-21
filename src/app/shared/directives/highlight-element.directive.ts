@@ -29,7 +29,7 @@ hljs.configure({
 });
 
 @Directive({
-  selector: '[qaHighlightElement]',
+  selector: '[appHighlightElement]',
   standalone: true
 })
 export class HighlightElementDirective implements AfterViewInit {

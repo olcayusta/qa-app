@@ -3,8 +3,8 @@
         #notificationButton='cdkOverlayOrigin'
         cdkOverlayOrigin
         (click)='togglePopup()'>
-  <app-gf-icon name='notifications' matBadge='{{notificationCount$ | async}}' matBadgeColor='warn'
-               [matBadgeHidden]='(notificationCount$ | async) === 0'></app-gf-icon>
+  <app-icon name='notifications' matBadge='{{notificationCount$ | async}}' matBadgeColor='warn'
+               [matBadgeHidden]='(notificationCount$ | async) === 0'></app-icon>
 </button>
 
 <ng-template
