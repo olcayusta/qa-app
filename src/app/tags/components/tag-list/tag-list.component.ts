@@ -2,7 +2,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Tag } from '@models/tag.model';
 import { TagListItemComponent } from '../tag-list-item/tag-list-item.component';
 import { NgForOf } from '@angular/common';
-import { getSnapshotData } from '../../../../core/router.utils';
+import { getSnapshotData } from '../../../core/router.utils';
 
 @Component({
   selector: 'app-tag-list',

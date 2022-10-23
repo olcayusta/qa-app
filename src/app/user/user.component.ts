@@ -7,7 +7,7 @@ import { MyDatePipe } from '@shared/pipes/my-date.pipe';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
 import { ImgShadowComponent } from '@shared/components/img-shadow/img-shadow.component';
-import { getResolverData, getSnapshotData } from '../core/router.utils';
+import { getSnapshotData } from '../core/router.utils';
 
 @Component({
   selector: 'app-user',

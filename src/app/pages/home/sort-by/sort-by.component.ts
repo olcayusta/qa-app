@@ -10,7 +10,7 @@ import {
   EventEmitter
 } from '@angular/core';
 import { MatMenu, MatMenuItem, MatMenuModule } from '@angular/material/menu';
-import { ActivatedRoute, RouterLink, RouterLinkWithHref, RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { MatButtonModule } from '@angular/material/button';

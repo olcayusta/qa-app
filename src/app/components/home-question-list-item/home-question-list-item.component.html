@@ -1,6 +1,12 @@
 <div class='item'>
-
   <a class='avatar-link' routerLink='/user/{{question.user.id}}' title='{{question.user.displayName}}'>
+
+<!--
+    <div class='author-image-renderer'>
+      <img ngSrc='{{question.user.picture}}' alt='' width='40' height='40'>
+    </div>
+-->
+
     <app-img-shadow [width]='40' [height]='40' src='{{question.user.picture}}' alt=''
                      class='author-image-renderer'></app-img-shadow>
 

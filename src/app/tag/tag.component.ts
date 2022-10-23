@@ -7,7 +7,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import {
   HomeQuestionListItemComponent
 } from '@components/home-question-list-item/home-question-list-item.component';
-import { getObservableData } from '../../core/router.utils';
+import { getObservableData } from '../core/router.utils';
 
 @Component({
   selector: 'app-tag',

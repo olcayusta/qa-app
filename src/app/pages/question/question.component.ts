@@ -20,10 +20,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Overlay, OverlayRef, ScrollStrategyOptions } from '@angular/cdk/overlay';
 import { AuthService } from '@auth/auth.service';
 import { TemplatePortal } from '@angular/cdk/portal';
-import { AsyncPipe, DOCUMENT, NgIf } from '@angular/common';
+import { AsyncPipe, DOCUMENT, NgIf, NgOptimizedImage } from '@angular/common';
 import { SocketService } from '@shared/services/socket.service';
 import { VoteService } from '@shared/services/vote.service';
-import { FavoriteService } from 'src/app/pages/favorites/favorite.service';
+import { FavoriteService } from 'src/app/favorites/favorite.service';
 import { AnswerListComponent } from './components/answer-list/answer-list.component';
 import { AnswerFormComponent } from './components/answer-form/answer-form.component';
 import { CommentListComponent } from './components/comment-list/comment-list.component';
@@ -50,7 +50,8 @@ import { ImgShadowComponent } from '@shared/components/img-shadow/img-shadow.com
     AsyncPipe,
     NgIf,
     MatButtonModule,
-    RouterLink
+    RouterLink,
+    NgOptimizedImage
   ],
   templateUrl: './question.component.html',
   styleUrls: ['./question.component.scss'],

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { AuthService } from '@auth/auth.service';
 import { CanLoad, Route, Router, UrlSegment, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -7,8 +7,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthGuard implements CanLoad {
-  constructor(private authService: AuthService, private router: Router) {
-  }
+  private router = inject(Router);
+  private authService = inject(AuthService);
 
   canLoad(
     route: Route,

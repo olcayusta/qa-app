@@ -7,7 +7,7 @@ import { debounceTime, distinctUntilChanged, map, startWith, switchMap } from 'r
 import { Tag } from '@models/tag.model';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
-import { TagService } from '../../tag/tag.service';
+import { TagService } from '../../../tag/tag.service';
 import { AsyncPipe, NgForOf, NgIf } from '@angular/common';
 import { MatChipInputEvent, MatChipsModule } from '@angular/material/chips';
 

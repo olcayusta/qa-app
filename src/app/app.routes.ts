@@ -18,24 +18,24 @@ export const APP_ROUTES: Routes = [
       },
       {
         path: 'tags',
-        loadChildren: () => import('./pages/tags/tags.routes')
+        loadChildren: () => import('./tags/tags.routes')
       },
       {
         path: 'tag/:tagId',
-        loadChildren: () => import('./pages/tag/tag.routes')
+        loadChildren: () => import('./tag/tag.routes')
       },
       {
         path: 'search',
-        loadChildren: () => import('./pages/search/search.routes')
+        loadChildren: () => import('./search/search.routes')
       },
       {
         path: 'settings',
-        loadChildren: () => import('./pages/settings/settings.routes'),
+        loadChildren: () => import('./settings/settings.routes'),
         canLoad: [AuthGuard]
       },
       {
         path: 'list',
-        loadChildren: () => import('./pages/list/list.routes')
+        loadChildren: () => import('./list/list.routes')
       },
       {
         path: 'watched_tags',
@@ -59,7 +59,7 @@ export const APP_ROUTES: Routes = [
       },
       {
         path: 'favorites',
-        loadChildren: () => import('./pages/favorites/favorites.routes')
+        loadChildren: () => import('./favorites/favorites.routes')
       },
       {
         path: 'help',

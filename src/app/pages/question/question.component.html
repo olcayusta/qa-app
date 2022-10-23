@@ -83,9 +83,12 @@
 
         <div itemprop='author' itemscope itemtype='https://schema.org/Person'>
           <div class='author'>
-            <app-img-shadow class='question-user-picture-render' [src]='question.user.picture' [width]='64'
+
+            <img ngSrc='{{question.user.picture}}' width='64' height='64' itemprop alt='{{question.user.displayName}}' class='question-user-picture-render'>
+
+<!--            <app-img-shadow class='question-user-picture-render' [src]='question.user.picture' [width]='64'
                              [height]='64' [itemprop]='true'
-                             [alt]='question.user.displayName'></app-img-shadow>
+                             [alt]='question.user.displayName'></app-img-shadow>-->
 
             <div class='author-info'>
               <div>

@@ -1,16 +1,17 @@
 import { Routes } from '@angular/router';
 import { UserComponent } from './user.component';
-import { UserResolver } from './user.resolver';
+import { userResolverFn } from './user.resolver';
 import { userTitleResolverFn } from './resolvers/user-title.resolver';
 import { UserQuestionsResolver } from './components/user-questions/user-questions.resolver';
 import { UserAnswersResolver } from './components/user-answers/user-answers.resolver';
+
 
 export default [
   {
     path: '',
     component: UserComponent,
     resolve: {
-      user: UserResolver
+      user: userResolverFn
     },
     children: [
       {
